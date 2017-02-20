@@ -5,9 +5,14 @@ $border-color: #c8c8cd;
 $success-color: #4caf50;
 $error-color: #f44336;
 $warning-color: #ffc107;
-
+/*bh-mint-ui*/
 $color-green: #06c1ae;
 $font-color-grey: #1e2329;
+$bg-lv1: #f4f4f4;
+$grey-lv5: #e8e8e8;
+$theme-lv1: #06c1ae;
+/*bh-mint-ui*/
+
 
 /* Cell Component */
 $cell-value-color: #888;

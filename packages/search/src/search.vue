@@ -106,14 +106,15 @@ export default {
   @component-namespace mint {
     @component search {
       height: 100%;
-      height: 100vh;
+      height: 44px;
+      border-bottom: 0.5px solid $grey-lv5;
       overflow: hidden;
     }
 
     @component searchbar {
       position: relative;
       align-items: center;
-      background-color: $color-grey;
+      background-color: $bg-lv1;
       box-sizing: border-box;
       display: flex;
       padding: 8px 10px;
@@ -122,14 +123,15 @@ export default {
       @descendent inner {
         align-items: center;
         background-color: $color-white;
-        border-radius: 2px;
+        border-radius: 5px;
         display: flex;
         flex: 1;
-        height: 28px;
+        height: 29px;
         padding: 4px 6px;
+        border: 0.5px solid $grey-lv5;
 
         .mintui-search {
-          font-size: 12px;
+          font-size: 14px;
           color: $color-grey;
         }
       }
@@ -139,6 +141,7 @@ export default {
         border: 0;
         box-sizing: border-box;
         height: 100%;
+        font-size: 14px;
         outline: 0;
       }
 
@@ -146,19 +149,20 @@ export default {
         align-items: center;
         color: #9b9b9b;
         display: flex;
-        font-size: 12px;
+        font-size: 14px;
         justify-content: center;
         position: absolute 0 0 0 0;
 
         .mintui-search {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
 
       @descendent cancel {
-        color: $color-blue;
+        color: $theme-lv1;
         margin-left: 10px;
         text-decoration: none;
+        font-size: 15px;
       }
     }
 
