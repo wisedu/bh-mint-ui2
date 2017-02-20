@@ -44,18 +44,18 @@ export default {
   @component-namespace mint {
     @component header {
       align-items: center;
-      background-color: $color-blue;
+      background-color: $color-green;
       box-sizing: border-box;
-      color: $color-white;
+      color: $color-grey;
       display: flex;
-      font-size: 14px;
+      font-size: 18px;
       height: $header-height;
       line-height: 1;
       padding: 0 10px;
       position: relative;
       text-align: center;
       white-space: nowrap;
-
+      border-bottom: 1px solid $header-bottom-line;
       .mint-button {
         background-color: transparent;
         border: 0;
