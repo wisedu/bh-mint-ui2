@@ -1,11 +1,13 @@
 $color-blue: #26a2ff;
-$color-green: #06c1ae;
 $color-white: #fff;
-$color-grey: #1e2329;
+$color-grey: #d9d9d9;
 $border-color: #c8c8cd;
 $success-color: #4caf50;
 $error-color: #f44336;
 $warning-color: #ffc107;
+
+$color-green: #06c1ae;
+$font-color-grey: #1e2329;
 
 /* Cell Component */
 $cell-value-color: #888;
