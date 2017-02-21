@@ -91,8 +91,8 @@ export default {
 
         &:checked {
           + .mint-switch-core {
-            border-color: $color-blue;
-            background-color: $color-blue;
+            border-color: $color-green;
+            background-color: $color-green;
 
             &::before {
               transform: scale(0);
