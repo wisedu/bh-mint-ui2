@@ -1,9 +1,11 @@
 <template>
   <transition name="mint-indicator">
     <div class="mint-indicator" v-show="visible">
-      <div class="mint-indicator-wrapper" :style="{ 'padding': text ? '20px' : '15px' }">
-        <spinner class="mint-indicator-spin" :type="convertedSpinnerType" :size="32"></spinner>
-        <span class="mint-indicator-text" v-show="text">{{ text }}</span>
+      <div class="mint-indicator-wrapper"
+           :class="{'mint-indicator-top': !!text}"
+           :style="{ 'padding': text ? '5px 10px' : '15px' }">
+        <spinner class="mint-indicator-spin" :type="convertedSpinnerType" :size="!!text ? 20 : 32"></spinner>
+        <span class="mint-indicator-text" :class="{'is-top': !!text}" v-show="text">{{ text }}</span>
       </div>
       <div class="mint-indicator-mask" @touchmove.stop.prevent></div>
     </div>
@@ -24,6 +26,11 @@
       box-sizing: border-box;
       text-align: center;
     }
+    @descendent top {
+      position: fixed 10% * * 50%;
+      display: flex;
+      border-radius: 20px;
+    }
 
     @descendent text {
       display: block;
@@ -31,6 +38,13 @@
       text-align: center;
       margin-top: 10px;
       font-size: 16px;
+      @when top {
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 6px;
+        margin-top: 0px;
+      }
     }
 
     @descendent spin {
