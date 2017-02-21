@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'component') {
  * mt-header
  * @module components/button
  * @desc 按钮
- * @param {string} [type=default] - 显示类型，接受 default, primary, danger
+ * @param {string} [type=default] - 显示类型，接受 default, primary, warning, danger
  * @param {boolean} [disabled=false] - 禁用
  * @param {boolean} [plain=false] - 幽灵按钮
  * @param {string} [size=normal] - 尺寸，接受 normal, small, large
@@ -59,6 +59,7 @@ export default {
         return [
           'default',
           'danger',
+          'warning',
           'primary'
         ].indexOf(value) > -1;
       }
@@ -84,7 +85,7 @@ export default {
   @component-namespace mint {
     @component button {
       appearance: none;
-      border-radius: 4px;
+      border-radius: 5px;
       border: 0;
       box-sizing: border-box;
       color: inherit;
@@ -104,7 +105,7 @@ export default {
       }
 
       &:not(.is-disabled):active::after {
-        opacity: .4;
+        opacity: .1;
       }
 
       @descendent icon {
@@ -136,6 +137,17 @@ export default {
         }
       }
 
+      @modifier warning {
+        color: $button-warning-color;
+        background-color: $button-warning-background-color;
+
+        @when plain {
+          border: 1px solid $button-warning-background-color;
+          background-color: transparent;
+          color: $button-warning-background-color;
+        }
+      }
+
       @modifier danger {
         color: $button-danger-color;
         background-color: $button-danger-background-color;
@@ -154,18 +166,20 @@ export default {
 
       @modifier normal {
         display: inline-block;
-        padding: 0 12px;
+        font-size: 12px;
+        padding: 7 10px;
+        height: 28px;
       }
 
       @modifier small {
         display: inline-block;
-        font-size: 14px;
-        padding: 0 12px;
-        height: 33px;
+        font-size: 11px;
+        padding: 7 8px;
+        height: 25px;
       }
 
       @when disabled {
-        opacity: .6;
+        opacity: .3;
       }
     }
   }
