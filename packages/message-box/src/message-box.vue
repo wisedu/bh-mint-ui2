@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="mint-msgbox-btns">
-          <button :class="[ cancelButtonClasses ]" v-show="showCancelButton" @click="handleAction('cancel')">{{ cancelButtonText }}</button>
-          <button :class="[ confirmButtonClasses ]" v-show="showConfirmButton" @click="handleAction('confirm')">{{ confirmButtonText }}</button>
+          <button class="bh-mint-btn bh-mint-btn-cancel" v-show="showCancelButton" @click="handleAction('cancel')">{{ cancelButtonText }}</button>
+          <button class="bh-mint-btn bh-mint-btn-confirm" v-show="showConfirmButton" @click="handleAction('confirm')">{{ confirmButtonText }}</button>
         </div>
       </div>
     </transition>
@@ -22,6 +22,7 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component msgbox {
       position: fixed;
@@ -43,7 +44,7 @@
 
       @descendent content {
         padding: 10px 20px 15px;
-        border-bottom: 1px solid #ddd;
+        /*border-bottom: 1px solid #ddd;*/
         min-height: 36px;
         position: relative;
       }
@@ -51,10 +52,12 @@
       @descendent input {
         padding-top: 15px;
         & input {
-          border: 1px solid #dedede;
+          border: 1px solid #bdc0c5;
           border-radius: 5px;
           padding: 4px 5px;
           width: 100%;
+          font-size: 17px;
+          color: #bdc0c5;
           appearance: none;
           outline: none;
         }
@@ -94,8 +97,37 @@
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        height: 40px;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
         line-height: 40px;
+        & .bh-mint-btn {
+          appearance: none;
+          border-radius: 5px;
+          border: 0;
+          box-sizing: border-box;
+          display: block;
+          font-size: 18px;
+          height: 41px;
+          flex: 0 1 auto;
+          outline: 0;
+          overflow: hidden;
+          position: relative;
+          text-align: center;
+        }
+        & .bh-mint-btn-cancel {
+          width: 90%;
+          margin: 0 6px;
+          color: $button-default-color;
+          background-color: $button-default-background-color;
+          box-shadow: $button-default-box-shadow;
+        }
+        & .bh-mint-btn-confirm {
+          width: 90%;
+          margin: 0 6px;
+          color: $button-primary-color;
+          background-color: $button-primary-background-color;
+        }
       }
 
       @descendent btn {
