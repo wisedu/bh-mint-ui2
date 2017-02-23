@@ -60,8 +60,8 @@ export default {
         }
 
         &.is-selected {
-          border-bottom: 3px solid $color-blue;
-          color: $color-blue;
+          border-bottom: 3px solid $color-green;
+          color: $color-green;
           margin-bottom: -3px;
         }
       }
