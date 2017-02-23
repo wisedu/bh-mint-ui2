@@ -167,14 +167,14 @@ export default {
       @modifier normal {
         display: inline-block;
         font-size: 12px;
-        padding: 7 10px;
+        padding: 7px 10px;
         height: 28px;
       }
 
       @modifier small {
         display: inline-block;
         font-size: 11px;
-        padding: 7 8px;
+        padding: 7px 8px;
         height: 25px;
       }
 
