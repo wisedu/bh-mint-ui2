@@ -1,3 +1,5 @@
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -11,19 +13,20 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #26a2ff;
+    background-color: #06c1ae;
     box-sizing: border-box;
-    color: #fff;
+    color: #1e2329;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: 14px;
-    height: 40px;
+    font-size: 18px;
+    height: 44px;
     line-height: 1;
     padding: 0 10px;
     position: relative;
     text-align: center;
     white-space: nowrap;
+    border-bottom: 1px solid #d6d6d6;
 }
 .mint-header .mint-button {
     background-color: transparent;
@@ -68,6 +71,8 @@
         -ms-flex: 1;
             flex: 1;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -81,7 +86,7 @@
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    border-radius: 4px;
+    border-radius: 5px;
     border: 0;
     box-sizing: border-box;
     color: inherit;
@@ -104,19 +109,19 @@
     position: absolute
 }
 .mint-button:not(.is-disabled):active::after {
-    opacity: .4
+    opacity: .1
 }
 .mint-button.is-disabled {
-    opacity: .6
+    opacity: .3
 }
 .mint-button-icon {
     vertical-align: middle;
     display: inline-block
 }
 .mint-button--default {
-    color: #656b79;
-    background-color: #f6f8fa;
-    box-shadow: 0 0 1px #b8bbbf
+    color: #2f343b;
+    background-color: #ffffff;
+    box-shadow: 0 0 1px #bdc0c5
 }
 .mint-button--default.is-plain {
     border: 1px solid #5a5a5a;
@@ -126,12 +131,21 @@
 }
 .mint-button--primary {
     color: #fff;
-    background-color: #26a2ff
+    background-color: #06c1ae
 }
 .mint-button--primary.is-plain {
-    border: 1px solid #26a2ff;
+    border: 1px solid #06c1ae;
     background-color: transparent;
-    color: #26a2ff
+    color: #06c1ae
+}
+.mint-button--warning {
+    color: #fff;
+    background-color: #ffb200
+}
+.mint-button--warning.is-plain {
+    border: 1px solid #ffb200;
+    background-color: transparent;
+    color: #ffb200
 }
 .mint-button--danger {
     color: #fff;
@@ -148,14 +162,18 @@
 }
 .mint-button--normal {
     display: inline-block;
-    padding: 0 12px
+    font-size: 12px;
+    padding: 7px 10px;
+    height: 28px
 }
 .mint-button--small {
     display: inline-block;
-    font-size: 14px;
-    padding: 0 12px;
-    height: 33px
+    font-size: 11px;
+    padding: 7px 8px;
+    height: 25px
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -277,6 +295,8 @@
     -webkit-transform: translateY(-50%) rotate(45deg);
             transform: translateY(-50%) rotate(45deg);
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -301,6 +321,8 @@
     padding: 0 10px;
     line-height: 48px;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -385,6 +407,8 @@
     right: 0;
     position: absolute;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -426,6 +450,8 @@
 .mint-badge.is-success {
     background-color: #4caf50
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -490,8 +516,8 @@
     display: none;
 }
 .mint-switch-input:checked + .mint-switch-core {
-    border-color: #26a2ff;
-    background-color: #26a2ff;
+    border-color: #06c1ae;
+    background-color: #06c1ae;
 }
 .mint-switch-input:checked + .mint-switch-core::before {
     -webkit-transform: scale(0);
@@ -728,6 +754,8 @@ display: inline-block;
         opacity: 1
     }
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -785,6 +813,8 @@ display: inline-block;
     display: -ms-flexbox;
     display: flex;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -809,8 +839,8 @@ display: inline-block;
     border-right: 0;
 }
 .mint-navbar .mint-tab-item.is-selected {
-    border-bottom: 3px solid #26a2ff;
-    color: #26a2ff;
+    border-bottom: 3px solid #06c1ae;
+    color: #06c1ae;
     margin-bottom: -3px;
 }
 .mint-navbar.is-fixed {
@@ -820,6 +850,8 @@ display: inline-block;
     position: fixed;
     z-index: 1;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -857,6 +889,8 @@ display: inline-block;
     position: fixed;
     z-index: 1;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -868,7 +902,8 @@ display: inline-block;
 /* z-index */
 .mint-search {
     height: 100%;
-    height: 100vh;
+    height: 44px;
+    border-bottom: 0.5px solid #e8e8e8;
     overflow: hidden;
 }
 .mint-searchbar {
@@ -876,7 +911,7 @@ display: inline-block;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background-color: #d9d9d9;
+    background-color: #f4f4f4;
     box-sizing: border-box;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -889,18 +924,19 @@ display: inline-block;
         -ms-flex-align: center;
             align-items: center;
     background-color: #fff;
-    border-radius: 2px;
+    border-radius: 5px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    height: 28px;
+    height: 29px;
     padding: 4px 6px;
+    border: 0.5px solid #e8e8e8;
 }
 .mint-searchbar-inner .mintui-search {
-    font-size: 12px;
+    font-size: 14px;
     color: #d9d9d9;
 }
 .mint-searchbar-core {
@@ -910,6 +946,7 @@ display: inline-block;
     border: 0;
     box-sizing: border-box;
     height: 100%;
+    font-size: 14px;
     outline: 0;
 }
 .mint-searchbar-placeholder {
@@ -920,7 +957,7 @@ display: inline-block;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: 12px;
+    font-size: 14px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -931,12 +968,13 @@ display: inline-block;
     position: absolute;
 }
 .mint-searchbar-placeholder .mintui-search {
-    font-size: 12px;
+    font-size: 14px;
 }
 .mint-searchbar-cancel {
-    color: #26a2ff;
+    color: #06c1ae;
     margin-left: 10px;
     text-decoration: none;
+    font-size: 15px;
 }
 .mint-search-list {
     overflow: auto;
@@ -947,6 +985,8 @@ display: inline-block;
     left: 0;
     position: absolute;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -1024,6 +1064,8 @@ display: inline-block;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -1058,8 +1100,8 @@ display: inline-block;
     display: none;
 }
 .mint-radio-input:checked + .mint-radio-core {
-    background-color: #26a2ff;
-    border-color: #26a2ff;
+    background-color: #06c1ae;
+    border-color: #06c1ae;
 }
 .mint-radio-input:checked + .mint-radio-core::after {
     background-color: #fff;
@@ -1626,12 +1668,28 @@ display: inline-block;
   box-sizing: border-box;
   text-align: center;
 }
+.mint-indicator-top {
+  top: 10%;
+  left: 50%;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 20px;
+}
 .mint-indicator-text {
   display: block;
   color: #fff;
   text-align: center;
   margin-top: 10px;
   font-size: 16px;
+}
+.mint-indicator-text.is-top {
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  margin-left: 6px;
+  margin-top: 0px;
 }
 .mint-indicator-spin {
   display: inline-block;
@@ -1649,7 +1707,17 @@ display: inline-block;
 .mint-indicator-enter, .mint-indicator-leave-active {
   opacity: 0;
 }
-
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-msgbox {
   position: fixed;
   top: 50%;
@@ -1672,7 +1740,7 @@ display: inline-block;
 }
 .mint-msgbox-content {
   padding: 10px 20px 15px;
-  border-bottom: 1px solid #ddd;
+  /*border-bottom: 1px solid #ddd;*/
   min-height: 36px;
   position: relative;
 }
@@ -1680,10 +1748,12 @@ display: inline-block;
   padding-top: 15px;
 }
 .mint-msgbox-input input {
-  border: 1px solid #dedede;
+  border: 1px solid #bdc0c5;
   border-radius: 5px;
   padding: 4px 5px;
   width: 100%;
+  font-size: 17px;
+  color: #bdc0c5;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -1719,8 +1789,45 @@ display: inline-block;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60px;
   line-height: 40px;
+}
+.mint-msgbox-btns .bh-mint-btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 5px;
+  border: 0;
+  box-sizing: border-box;
+  display: block;
+  font-size: 18px;
+  height: 41px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  outline: 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+.mint-msgbox-btns .bh-mint-btn-cancel {
+  width: 90%;
+  margin: 0 6px;
+  color: #2f343b;
+  background-color: #ffffff;
+  box-shadow: 0 0 1px #bdc0c5;
+}
+.mint-msgbox-btns .bh-mint-btn-confirm {
+  width: 90%;
+  margin: 0 6px;
+  color: #fff;
+  background-color: #06c1ae;
 }
 .mint-msgbox-btn {
   line-height: 35px;
@@ -1808,6 +1915,8 @@ display: inline-block;
   opacity: 0.5;
   background: #000;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */
@@ -1841,6 +1950,8 @@ display: inline-block;
 .mint-datetime-confirm {
     float: right;
 }
+/*bh-mint-ui*/
+/*bh-mint-ui*/
 /* Cell Component */
 /* Header Component */
 /* Button Component */

@@ -21,8 +21,8 @@
     "dist": "npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
     "deploy": "npm run build:entry && cooking build -c build/cooking.demo.js -p && gh-pages -d example/dist --remote origin",
     "build:entry": "node build/bin/build-entry",
-    "pub": "sh build/release.sh",
-    "pub:all": "node build/bin/build-all.js && lerna publish",
+//    "pub": "sh build/release.sh",
+//    "pub:all": "node build/bin/build-all.js && lerna publish",
     "clean": "rimraf lib && rimraf packages/*/lib",
     "lint": "eslint src/**/*.js packages/**/*.{js,vue} build/**/*.js --quiet"
   },
