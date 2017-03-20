@@ -37,7 +37,7 @@
     </div>
 
     <div class="page-button-group">
-      <mt-button>
+      <mt-button size="large" type="danger">
         <img src="../assets/100x100.png" height="20" width="20" slot="icon">
         带自定义图标
       </mt-button>
