@@ -9,7 +9,7 @@
 
 > Mobile UI elements for **Vue 2.0**
 
-- [Homepage](http://mint-ui.github.io)
+- [Homepage](https://wisedu.github.io/bh-mint-ui2/)
 - [Documentation](http://mint-ui.github.io/docs)
 
 ## Installation
