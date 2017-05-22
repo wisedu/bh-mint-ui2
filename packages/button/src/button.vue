@@ -18,9 +18,9 @@
 </template>
 
 <script>
-if (process.env.NODE_ENV === 'component') {
-  require('bh-mint-ui2/packages/font/style.css');
-}
+// if (process.env.NODE_ENV === 'component') {
+//   require('bh-mint-ui2/packages/font/style.css');
+// }
 
 /**
  * mt-header
