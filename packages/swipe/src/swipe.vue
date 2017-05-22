@@ -119,6 +119,11 @@
       prevent: {
         type: Boolean,
         default: false
+      },
+
+      stopPropagation: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -458,6 +463,19 @@
         this.dragState = {};
       },
 
+      initTimer() {
+        if (this.auto > 0 && !this.timer) {
+          this.timer = setInterval(() => {
+            if (!this.continuous && (this.index >= this.pages.length - 1)) {
+              return this.clearTimer();
+            }
+            if (!this.dragging && !this.animating) {
+              this.next();
+            }
+          }, this.auto);
+        }
+      },
+
       clearTimer() {
         clearInterval(this.timer);
         this.timer = null;
@@ -477,25 +495,15 @@
     mounted() {
       this.ready = true;
 
-      if (this.auto > 0) {
-        this.timer = setInterval(() => {
-          if (!this.continuous && (this.index >= this.pages.length - 1)) {
-            return this.clearTimer();
-          }
-          if (!this.dragging && !this.animating) {
-            this.next();
-          }
-        }, this.auto);
-      }
+      this.initTimer();
 
       this.reInitPages();
 
       var element = this.$el;
 
       element.addEventListener('touchstart', (event) => {
-        if (this.prevent) {
-          event.preventDefault();
-        }
+        if (this.prevent) event.preventDefault();
+        if (this.stopPropagation) event.stopPropagation();
         if (this.animating) return;
         this.dragging = true;
         this.userScrolling = false;
@@ -504,6 +512,7 @@
 
       element.addEventListener('touchmove', (event) => {
         if (!this.dragging) return;
+        if (this.timer) this.clearTimer();
         this.doOnTouchMove(event);
       });
 
@@ -514,6 +523,7 @@
           return;
         }
         if (!this.dragging) return;
+        this.initTimer();
         this.doOnTouchEnd(event);
         this.dragging = false;
       });

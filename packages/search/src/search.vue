@@ -2,13 +2,13 @@
   <div class="mint-search">
     <div class="mint-searchbar">
       <div class="mint-searchbar-inner">
-        <i class="mintui mintui-search" v-show="visible"></i>
+        <i class="mintui mintui-search"></i>
         <input
         ref="input"
         @click="visible = true"
         type="search"
         v-model="currentValue"
-        :placeholder="visible ? placeholder : ''"
+        :placeholder="placeholder"
         class="mint-searchbar-core">
       </div>
       <a
@@ -17,13 +17,6 @@
         v-show="visible"
         v-text="cancelText">
       </a>
-      <label
-        @click="visible = true, $refs.input.focus()"
-        class="mint-searchbar-placeholder"
-        v-show="!visible">
-        <i class="mintui mintui-search"></i>
-        <span class="mint-searchbar-text" v-text="placeholder"></span>
-      </label>
     </div>
     <div class="mint-search-list" v-show="show || currentValue">
       <div class="mint-search-list-warp">
@@ -140,6 +133,7 @@ export default {
         appearance: none;
         border: 0;
         box-sizing: border-box;
+        width: 100%;
         height: 100%;
         font-size: 14px;
         outline: 0;
@@ -157,7 +151,6 @@ export default {
           font-size: 14px;
         }
       }
-
       @descendent cancel {
         color: $theme-lv1;
         margin-left: 10px;

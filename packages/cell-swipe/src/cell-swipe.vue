@@ -130,7 +130,7 @@ export default {
       this.wrap.style.webkitTransform = this.translate3d(offset);
       this.rightWrapElm.style.webkitTransform = this.translate3d(this.rightWidth + offset);
       this.leftWrapElm.style.webkitTransform = this.translate3d(-this.leftWidth + offset);
-      this.swiping = true;
+      offset && (this.swiping = true);
     },
 
     swipeLeaveTransition(direction) {
@@ -218,6 +218,10 @@ export default {
         display: inline-block;
         padding: 0 10px;
         line-height: 48px;
+      }
+
+      .mint-cell-wrapper {
+        position: relative;
       }
 
       .mint-cell-wrapper,

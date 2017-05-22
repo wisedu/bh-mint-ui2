@@ -10,6 +10,7 @@ var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}});';
 var MAIN_TEMPLATE = `{{include}}
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
+
 const version = '{{version}}';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
@@ -19,6 +20,7 @@ const install = function(Vue, config = {}) {
     loading: require('./assets/loading-spin.svg'),
     attempt: 3
   }, config.lazyload));
+
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;
   Vue.$indicator = Vue.prototype.$indicator = Indicator;

@@ -33,7 +33,8 @@ import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
-const version = '0.0.5';
+
+const version = '0.0.6';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -69,6 +70,7 @@ const install = function(Vue, config = {}) {
     loading: require('./assets/loading-spin.svg'),
     attempt: 3
   }, config.lazyload));
+
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;
   Vue.$indicator = Vue.prototype.$indicator = Indicator;
