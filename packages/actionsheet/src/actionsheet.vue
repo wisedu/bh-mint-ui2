@@ -107,7 +107,7 @@
     },
 
     methods: {
-      itemClick(item) {
+      itemClick(item, index) {
         if (item.method && typeof item.method === 'function') {
           item.method(item, index);
         }

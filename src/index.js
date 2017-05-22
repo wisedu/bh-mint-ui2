@@ -32,11 +32,10 @@ import IndexList from '../packages/index-list';
 import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
-
-const version = '0.0.4';
-const install = function(Vue) {
+import merge from './utils/merge';
+const version = '0.0.5';
+const install = function(Vue, config = {}) {
   if (install.installed) return;
-
   Vue.component(Header.name, Header);
   Vue.component(Button.name, Button);
   Vue.component(Cell.name, Cell);
@@ -66,21 +65,18 @@ const install = function(Vue) {
   Vue.component(IndexSection.name, IndexSection);
   Vue.component(PaletteButton.name, PaletteButton);
   Vue.use(InfiniteScroll);
-  Vue.use(Lazyload, {
+  Vue.use(Lazyload, merge({
     loading: require('./assets/loading-spin.svg'),
-    try: 3
-  });
-
+    attempt: 3
+  }, config.lazyload));
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;
   Vue.$indicator = Vue.prototype.$indicator = Indicator;
 };
-
 // auto install
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
-
 module.exports = {
   install,
   version,
