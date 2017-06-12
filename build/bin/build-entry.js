@@ -29,7 +29,7 @@ const install = function(Vue, config = {}) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
-module.exports = {
+export default {
   install,
   version,
 {{list}}

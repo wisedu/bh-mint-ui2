@@ -131,6 +131,11 @@
         "path": "/search",
         "name": "Search",
         "icon": "searchbar"
+      },
+      {
+        "path": "/layout-left-right",
+        "name": "LayoutLeftRight",
+        "icon": "navebar"
       }
     ]
   },
