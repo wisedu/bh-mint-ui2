@@ -12,7 +12,11 @@ export default {
   },
     computed: {
         percentageWidth: function() {
-            return this.percentage + '%';
+            let percentage = this.percentage;
+            if (typeof percentage === 'undefined' || percentage === null) {
+                percentage = '50';
+            }
+            return percentage + '%';
         }
     }
 };
