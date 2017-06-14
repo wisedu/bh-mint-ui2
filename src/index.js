@@ -31,6 +31,8 @@ import DatetimePicker from '../packages/datetime-picker';
 import IndexList from '../packages/index-list';
 import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
+import Text from '../packages/text';
+import Image from '../packages/image';
 import LayoutLeftRight from '../packages/layout-left-right';
 import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import '../src/assets/font/iconfont.css';
@@ -67,6 +69,8 @@ const install = function(Vue, config = {}) {
   Vue.component(IndexList.name, IndexList);
   Vue.component(IndexSection.name, IndexSection);
   Vue.component(PaletteButton.name, PaletteButton);
+  Vue.component(Text.name, Text);
+  Vue.component(Image.name, Image);
   Vue.component(LayoutLeftRight.name, LayoutLeftRight);
   Vue.component(LayoutLeftRightItem.name, LayoutLeftRightItem);
   Vue.use(InfiniteScroll);
@@ -119,6 +123,8 @@ export default {
   IndexList,
   IndexSection,
   PaletteButton,
+  Text,
+  Image,
   LayoutLeftRight,
   LayoutLeftRightItem
 };

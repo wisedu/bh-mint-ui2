@@ -136,6 +136,16 @@
         "path": "/layout-left-right",
         "name": "LayoutLeftRight",
         "icon": "navebar"
+      },
+      {
+        "path": "/text",
+        "name": "Text",
+        "icon": "navebar"
+      },
+      {
+        "path": "/image",
+        "name": "Image",
+        "icon": "navebar"
       }
     ]
   },

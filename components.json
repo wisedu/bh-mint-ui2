@@ -33,6 +33,8 @@
   "index-list": "./packages/index-list/index.js",
   "index-section": "./packages/index-section/index.js",
   "palette-button": "./packages/palette-button/index.js",
+  "text": "./packages/text/index.js",
+  "image": "./packages/image/index.js",
   "layout-left-right": "./packages/layout-left-right/index.js",
   "layout-left-right-item": "./packages/layout-left-right-item/index.js"
 }
