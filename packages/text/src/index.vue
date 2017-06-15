@@ -44,6 +44,10 @@ export default {
       @modifier danger {
         color: $button-danger-background-color;
       }
+
+      @modifier grey {
+        color: #d9d9d9;
+      }
     }
   }
 </style>

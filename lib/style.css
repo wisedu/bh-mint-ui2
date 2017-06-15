@@ -2120,6 +2120,9 @@ display: inline-block;
 .mint-text--danger {
     color: #ef4f4f
 }
+.mint-text--grey {
+    color: #d9d9d9
+}
 /*bh-mint-ui*/
 /*bh-mint-ui*/
 /* Cell Component */

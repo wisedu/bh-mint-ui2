@@ -146,6 +146,11 @@
         "path": "/image",
         "name": "Image",
         "icon": "navebar"
+      },
+      {
+        "path": "/fixed-button",
+        "name": "FixedButton",
+        "icon": "navebar"
       }
     ]
   },

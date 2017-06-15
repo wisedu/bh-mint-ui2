@@ -33,6 +33,7 @@ import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
 import Text from '../packages/text';
 import Image from '../packages/image';
+import FixedButton from '../packages/fixed-button';
 import LayoutLeftRight from '../packages/layout-left-right';
 import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import '../src/assets/font/iconfont.css';
@@ -71,6 +72,7 @@ const install = function(Vue, config = {}) {
   Vue.component(PaletteButton.name, PaletteButton);
   Vue.component(Text.name, Text);
   Vue.component(Image.name, Image);
+  Vue.component(FixedButton.name, FixedButton);
   Vue.component(LayoutLeftRight.name, LayoutLeftRight);
   Vue.component(LayoutLeftRightItem.name, LayoutLeftRightItem);
   Vue.use(InfiniteScroll);
@@ -125,6 +127,7 @@ export default {
   PaletteButton,
   Text,
   Image,
+  FixedButton,
   LayoutLeftRight,
   LayoutLeftRightItem
 };
