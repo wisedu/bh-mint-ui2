@@ -2108,6 +2108,43 @@ display: inline-block;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-text {
+    position: relative
+}
+.mint-text--primary {
+    color: #06c1ae
+}
+.mint-text--warning {
+    color: #ffb200
+}
+.mint-text--danger {
+    color: #ef4f4f
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-image {
+    position: relative
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-layout-lr {
     position: relative;
     display: table;
