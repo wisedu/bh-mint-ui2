@@ -2148,6 +2148,80 @@ display: inline-block;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-fixed-button {
+    position: fixed;
+    border-radius: 50%;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 88px;
+    width: 5.5rem;
+    height: 88px;
+    height: 5.5rem;
+    font-size: 64px;
+    font-size: 4rem
+}
+.mint-fixed-button--top-left {
+    top: 24px;
+    top: 1.5rem;
+    left: 24px;
+    left: 1.5rem
+}
+.mint-fixed-button--top-right {
+    top: 24px;
+    top: 1.5rem;
+    right: 24px;
+    right: 1.5rem
+}
+.mint-fixed-button--bottom-left {
+    bottom: 24px;
+    bottom: 1.5rem;
+    left: 24px;
+    left: 1.5rem
+}
+.mint-fixed-button--bottom-right {
+    bottom: 24px;
+    bottom: 1.5rem;
+    right: 24px;
+    right: 1.5rem
+}
+.mint-fixed-button--primary {
+    background-color: #06c1ae
+}
+.mint-fixed-button--warning {
+    background-color: #ffb200
+}
+.mint-fixed-button--danger {
+    background-color: #ef4f4f
+}
+.mint-fixed-button--grey {
+    background-color: #d9d9d9
+}
+.mint-fixed-button--content {
+    position: relative;
+    color: inherit;
+    font-size: inherit;
+    margin-top: -11.2px;
+    margin-top: -0.7rem
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-layout-lr {
     position: relative;
     display: table;
