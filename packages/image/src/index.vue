@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" :style="computeStyle" />
+  <img class="mint-image" :src="src" :style="computeStyle" />
 </template>
 
 <script>
@@ -34,6 +34,7 @@ export default {
   @component-namespace mint {
     @component image {
       position: relative;
+      width: 100%;
     }
   }
 </style>

@@ -792,9 +792,11 @@ display: inline-block;
 }
 
 .mint-tab-container-item {
+    position: relative;
     -ms-flex-negative: 0;
         flex-shrink: 0;
-    width: 100%
+    width: 100%;
+    box-sizing: border-box
 }
 
 .mint-tab-container {
@@ -2135,7 +2137,8 @@ display: inline-block;
 /* Radio Component */
 /* z-index */
 .mint-image {
-    position: relative
+    position: relative;
+    width: 100%
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
@@ -2225,7 +2228,8 @@ display: inline-block;
 .mint-layout-lr {
     position: relative;
     display: table;
-    width: 100%
+    width: 100%;
+    box-sizing: border-box
 }
 
 /*bh-mint-ui*/

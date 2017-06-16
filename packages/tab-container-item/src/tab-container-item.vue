@@ -31,8 +31,10 @@ export default {
 <style>
   @component-namespace mint {
     @component tab-container-item {
+      position: relative;
       flex-shrink: 0;
       width: 100%;
+      box-sizing: border-box;
     }
   }
 </style>

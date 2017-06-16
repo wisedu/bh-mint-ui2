@@ -12,15 +12,7 @@ export default {
       size: String,
       type: {
         type: String,
-        default: 'default',
-        validator(value) {
-          return [
-            'default',
-            'danger',
-            'warning',
-            'primary'
-          ].indexOf(value) > -1;
-        }
+        default: 'default'
       }
   }
 };
