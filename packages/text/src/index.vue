@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-text" :class="['mint-text--' + type]" :style="{ fontSize: size}">
+  <div @click="handleClick" class="mint-text" :class="['mint-text--' + type]" :style="{ fontSize: size}">
     <slot></slot>
   </div>
 </template>
@@ -7,7 +7,11 @@
 <script>
 export default {
   name: 'mt-text',
-
+    methods: {
+        handleClick(evt) {
+            this.$emit('click', evt);
+        }
+    },
   props: {
       size: String,
       type: {

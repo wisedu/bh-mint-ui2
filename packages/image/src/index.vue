@@ -1,11 +1,15 @@
 <template>
-  <img class="mint-image" :src="src" :style="computeStyle" />
+  <img @click="handleClick" class="mint-image" :src="src" :style="computeStyle" />
 </template>
 
 <script>
 export default {
   name: 'mt-image',
-
+    methods: {
+        handleClick(evt) {
+            this.$emit('click', evt);
+        }
+    },
   props: {
       src: String,
       width: String,

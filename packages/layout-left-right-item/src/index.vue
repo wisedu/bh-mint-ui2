@@ -1,11 +1,16 @@
 <template>
-  <div class="mint-layout-lr-item" :position="position" :style="{ width: percentageWidth}">
+  <div @click="handleClick" class="mint-layout-lr-item" :position="position" :style="{ width: percentageWidth}">
       <slot></slot>
   </div>
 </template>
 <script>
 export default {
   name: 'mt-layout-left-right-item',
+    methods: {
+        handleClick(evt) {
+            this.$emit('click', evt);
+        }
+    },
   props: {
       position: String,
       percentage: String

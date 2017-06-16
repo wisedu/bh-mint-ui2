@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-fixed-button" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type]" :style="{computeStyle}">
+  <div @click="handleClick" class="mint-fixed-button" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type]" :style="{computeStyle}">
     <div class="mint-fixed-button--content" :style="computeContentStyle">
       <slot></slot>
     </div>
@@ -9,7 +9,11 @@
 <script>
   export default {
     name: 'mt-fixed-button',
-
+      methods: {
+          handleClick(evt) {
+              this.$emit('click', evt);
+          }
+      },
     props: {
       position: {
         type: String,
