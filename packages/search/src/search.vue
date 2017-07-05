@@ -92,7 +92,7 @@ export default {
   },
 
   methods: {
-    handleCancel(){
+    handleCancel() {
       this.visible = false;
       this.currentValue = '';
       this.$emit('canceled');
