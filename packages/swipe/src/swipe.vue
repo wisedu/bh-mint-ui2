@@ -47,7 +47,7 @@
 </style>
 
 <template>
-  <div class="mint-swipe">
+  <div class="mint-swipe" :style="computeStyle">
     <div class="mint-swipe-items-wrap" ref="wrap">
       <slot></slot>
     </div>
@@ -124,7 +124,8 @@
       stopPropagation: {
         type: Boolean,
         default: false
-      }
+      },
+      height: String
     },
 
     watch: {
@@ -527,6 +528,17 @@
         this.doOnTouchEnd(event);
         this.dragging = false;
       });
-    }
+    },
+
+      computed: {
+          computeStyle: function() {
+              let _style = '';
+              let height = this.height;
+              if (height) {
+                  _style = 'height: ' + height + ';';
+              }
+              return _style;
+          }
+      }
   };
 </script>
