@@ -13,7 +13,7 @@
       </div>
       <a
         class="mint-searchbar-cancel"
-        @click="visible = false, currentValue = ''"
+        @click="handleCancel"
         v-show="visible"
         v-text="cancelText">
       </a>
@@ -89,6 +89,14 @@ export default {
 
   mounted() {
     this.autofocus && this.$refs.input.focus();
+  },
+
+  methods: {
+    handleCancel() {
+      this.visible = false;
+      this.currentValue = '';
+      this.$emit('canceled');
+    }
   }
 };
 </script>

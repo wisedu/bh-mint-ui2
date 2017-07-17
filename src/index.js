@@ -39,7 +39,7 @@ import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.0.6';
+const version = '0.0.10';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -89,7 +89,7 @@ const install = function(Vue, config = {}) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
-export default {
+export {
   install,
   version,
   Header,
