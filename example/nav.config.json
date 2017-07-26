@@ -103,6 +103,11 @@
         "icon": "navbar"
       },
       {
+        "path": "/side-navbar",
+        "name": "SideNavbar",
+        "icon": "navbar"
+      },
+      {
         "path": "/button",
         "name": "Button",
         "icon": "button"

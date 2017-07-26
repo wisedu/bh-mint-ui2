@@ -10,6 +10,7 @@ import TabItem from '../packages/tab-item';
 import TabContainerItem from '../packages/tab-container-item';
 import TabContainer from '../packages/tab-container';
 import Navbar from '../packages/navbar';
+import SideNavbar from '../packages/side-navbar';
 import Tabbar from '../packages/tabbar';
 import Search from '../packages/search';
 import Checklist from '../packages/checklist';
@@ -54,6 +55,7 @@ const install = function(Vue, config = {}) {
   Vue.component(TabContainerItem.name, TabContainerItem);
   Vue.component(TabContainer.name, TabContainer);
   Vue.component(Navbar.name, Navbar);
+  Vue.component(SideNavbar.name, SideNavbar);
   Vue.component(Tabbar.name, Tabbar);
   Vue.component(Search.name, Search);
   Vue.component(Checklist.name, Checklist);
@@ -104,6 +106,7 @@ export {
   TabContainerItem,
   TabContainer,
   Navbar,
+  SideNavbar,
   Tabbar,
   Search,
   Checklist,

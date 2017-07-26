@@ -12,6 +12,7 @@
   "tab-container-item": "./packages/tab-container-item/index.js",
   "tab-container": "./packages/tab-container/index.js",
   "navbar": "./packages/navbar/index.js",
+  "side-navbar": "./packages/side-navbar/index.js",
   "tabbar": "./packages/tabbar/index.js",
   "search": "./packages/search/index.js",
   "checklist": "./packages/checklist/index.js",
