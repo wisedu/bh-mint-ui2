@@ -866,6 +866,56 @@ display: inline-block;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-side-navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.mint-side-navbar .navbar {
+    background-color: #e8e8e8;
+    display: block;
+}
+.mint-side-navbar .navbar .mint-tab-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 8px ;
+    font-size: 15px;
+    box-shadow: inset 0px -1px 1px -1px #fff;
+    border-left: 3px solid #e8e8e8;
+}
+.mint-side-navbar .navbar .mint-tab-item .mint-tab-item-icon {
+    margin-right: 5px;
+}
+.mint-side-navbar .navbar .mint-tab-item.is-selected {
+    border-left: 3px solid #06c1ae;
+    color: #06c1ae;
+    background-color: #fff;
+}
+.mint-side-navbar .navbar.is-fixed {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+.mint-side-navbar .nav-content {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-tabbar {
     background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
