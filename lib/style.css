@@ -200,14 +200,12 @@
     background-origin:border-box;
 }
 .mint-cell:last-child {
-    background-image:-webkit-linear-gradient(bottom, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-image:linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-size:100% 1px;
     background-repeat:no-repeat;
     background-position:bottom;
 }
 .mint-cell-wrapper {
-    background-image:-webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-image:linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-size: 120% 1px;
     background-repeat: no-repeat;
@@ -310,7 +308,6 @@
     position: relative;
 }
 .mint-cell-swipe .mint-cell-wrapper, .mint-cell-swipe .mint-cell-left, .mint-cell-swipe .mint-cell-right {
-    -webkit-transition: -webkit-transform 150ms ease-in-out;
     transition: -webkit-transform 150ms ease-in-out;
     transition: transform 150ms ease-in-out;
     transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
@@ -498,7 +495,6 @@
     top: 0;
     left: 0;
     position: absolute;
-    -webkit-transition: -webkit-transform .3s;
     transition: -webkit-transform .3s;
     transition: transform .3s;
     transition: transform .3s, -webkit-transform .3s;
@@ -808,7 +804,6 @@ display: inline-block;
     position: relative;
 }
 .mint-tab-container .swipe-transition {
-    -webkit-transition: -webkit-transform 150ms ease-in-out;
     transition: -webkit-transform 150ms ease-in-out;
     transition: transform 150ms ease-in-out;
     transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
@@ -917,7 +912,6 @@ display: inline-block;
 /* Radio Component */
 /* z-index */
 .mint-tabbar {
-    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-size: 100% 1px;
     background-repeat: no-repeat;
@@ -1115,7 +1109,6 @@ display: inline-block;
     height: 8px;
     -webkit-transform: rotate(45deg) scale(0);
             transform: rotate(45deg) scale(0);
-    -webkit-transition: -webkit-transform .2s;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
@@ -1187,7 +1180,6 @@ display: inline-block;
     position: absolute;
     width: 8px;
     height: 8px;
-    -webkit-transition: -webkit-transform .2s;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
@@ -1200,7 +1192,6 @@ display: inline-block;
 }
 .mint-loadmore-content {}
 .mint-loadmore-content.is-dropped {
-    -webkit-transition: .2s;
     transition: .2s
 }
 .mint-loadmore-top, .mint-loadmore-bottom {
@@ -1234,7 +1225,6 @@ display: inline-block;
           transform: translate3d(-50%, 0, 0);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition: -webkit-transform .3s ease-out;
   transition: -webkit-transform .3s ease-out;
   transition: transform .3s ease-out;
   transition: transform .3s ease-out, -webkit-transform .3s ease-out;
@@ -1324,7 +1314,6 @@ display: inline-block;
           transform: translate3d(-50%, -50%, 0);
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition: .2s ease-out;
   transition: .2s ease-out;
 }
 .mint-popup-top {
@@ -1559,16 +1548,13 @@ display: inline-block;
           align-items: center
 }
 .picker-slot-wrapper {
-  -webkit-transition-duration: 0.3s;
-          transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
 .picker-slot-wrapper.dragging, .picker-slot-wrapper.dragging .picker-item {
-  -webkit-transition-duration: 0s;
-          transition-duration: 0s;
+  transition-duration: 0s;
 }
 .picker-item {
   height: 36px;
@@ -1583,8 +1569,7 @@ display: inline-block;
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  transition-duration: .3s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -1616,8 +1601,7 @@ display: inline-block;
           transform-origin: center center;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out
+  transition-timing-function: ease-out
 }
 
 .mt-progress {
@@ -1674,7 +1658,6 @@ display: inline-block;
     box-sizing: border-box;
     text-align: center;
     z-index: 1000;
-    -webkit-transition: opacity .3s linear;
     transition: opacity .3s linear
 }
 .mint-toast.is-placebottom {
@@ -1710,7 +1693,6 @@ display: inline-block;
 }
 
 .mint-indicator {
-  -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear;
 }
 .mint-indicator-wrapper {
@@ -1789,7 +1771,6 @@ display: inline-block;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transition: .2s;
   transition: .2s;
 }
 .mint-msgbox-header {
@@ -2108,7 +2089,6 @@ display: inline-block;
   height:56px;
   line-height:56px;
   text-align:center;
-  -webkit-transition:-webkit-transform .1s ease-in-out;
   transition:-webkit-transform .1s ease-in-out;
   transition:transform .1s ease-in-out;
   transition:transform .1s ease-in-out, -webkit-transform .1s ease-in-out;
@@ -2133,7 +2113,6 @@ display: inline-block;
   left:15px;
   width:25px;
   height:25px;
-  -webkit-transition:-webkit-transform .3s ease-in-out;
   transition:-webkit-transform .3s ease-in-out;
   transition:transform .3s ease-in-out;
   transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
@@ -2318,6 +2297,60 @@ display: inline-block;
     position: relative;
     display: table-cell;
     vertical-align: middle
+}
+
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-layout-container {
+    position: relative
+}
+.mint-layout-container:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-hr {
+    position: relative;
+    height: 1px;
+    margin: 2px;
+    background: #ddd
+}
+
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-layout-spacing {
+    position: relative;
+    height: 4px
 }
 
 
