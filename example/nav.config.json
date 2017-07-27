@@ -143,8 +143,23 @@
         "icon": "navebar"
       },
       {
+        "path": "/layout-container",
+        "name": "LayoutContainer",
+        "icon": "navebar"
+      },
+      {
+        "path": "/layout-spacing",
+        "name": "LayoutSpacing",
+        "icon": "navebar"
+      },
+      {
         "path": "/text",
         "name": "Text",
+        "icon": "navebar"
+      },
+      {
+        "path": "/hr",
+        "name": "Hr",
         "icon": "navebar"
       },
       {

@@ -10,3 +10,5 @@ lib/*
 node_modules
 example/dist
 
+node_modules-dev.zip
+node_modules-dist.zip

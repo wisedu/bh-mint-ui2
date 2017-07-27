@@ -38,5 +38,8 @@
   "image": "./packages/image/index.js",
   "fixed-button": "./packages/fixed-button/index.js",
   "layout-left-right": "./packages/layout-left-right/index.js",
-  "layout-left-right-item": "./packages/layout-left-right-item/index.js"
+  "layout-left-right-item": "./packages/layout-left-right-item/index.js",
+  "layout-container": "./packages/layout-container/index.js",
+  "hr": "./packages/hr/index.js",
+  "layout-spacing": "./packages/layout-spacing/index.js"
 }

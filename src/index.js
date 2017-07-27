@@ -37,6 +37,9 @@ import Image from '../packages/image';
 import FixedButton from '../packages/fixed-button';
 import LayoutLeftRight from '../packages/layout-left-right';
 import LayoutLeftRightItem from '../packages/layout-left-right-item';
+import LayoutContainer from '../packages/layout-container';
+import Hr from '../packages/hr';
+import LayoutSpacing from '../packages/layout-spacing';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
@@ -77,6 +80,9 @@ const install = function(Vue, config = {}) {
   Vue.component(FixedButton.name, FixedButton);
   Vue.component(LayoutLeftRight.name, LayoutLeftRight);
   Vue.component(LayoutLeftRightItem.name, LayoutLeftRightItem);
+  Vue.component(LayoutContainer.name, LayoutContainer);
+  Vue.component(Hr.name, Hr);
+  Vue.component(LayoutSpacing.name, LayoutSpacing);
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, merge({
     loading: require('./assets/loading-spin.svg'),
@@ -132,5 +138,8 @@ export {
   Image,
   FixedButton,
   LayoutLeftRight,
-  LayoutLeftRightItem
+  LayoutLeftRightItem,
+  LayoutContainer,
+  Hr,
+  LayoutSpacing
 };
