@@ -44,7 +44,6 @@
     @component hr {
       position: relative;
       height: 1px;
-      margin: 2px;
       background: #ddd;
     }
   }
