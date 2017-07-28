@@ -73,6 +73,11 @@
         "icon": "time"
       },
       {
+        "path": "/select",
+        "name": "Select",
+        "icon": "picker"
+      },
+      {
         "path": "/index-list",
         "name": "Index List",
         "icon": "alphabet"
