@@ -37,7 +37,7 @@
   @component-namespace mint {
     @component layout-spacing {
       position: relative;
-      height: 4px;
+      height: 16px;
     }
   }
 

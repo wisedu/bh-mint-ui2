@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-text" :class="['mint-text--' + type]" :style="{ fontSize: size}">
+  <div @click="handleClick" class="mint-text" :class="['mint-text--' + type]" :style="computeStyle">
     <slot></slot>
   </div>
 </template>
@@ -17,8 +17,25 @@ export default {
       type: {
         type: String,
         default: 'default'
-      }
-  }
+      },
+      color: String
+  },
+    computed: {
+        computeStyle: function() {
+            let _style = '';
+            let size = this.size;
+            let color = this.color;
+            if (size) {
+                _style += `font-size: ${size};`;
+            }
+
+            if (color) {
+                _style += `color: ${color};`;
+            }
+
+            return _style;
+        }
+    }
 };
 </script>
 
