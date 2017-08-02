@@ -44,7 +44,7 @@ import LayoutSpacing from '../packages/layout-spacing';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.0.12';
+const version = '0.0.21';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -100,6 +100,53 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 export {
+  install,
+  version,
+  Header,
+  Button,
+  Cell,
+  CellSwipe,
+  Field,
+  Badge,
+  Switch,
+  Spinner,
+  TabItem,
+  TabContainerItem,
+  TabContainer,
+  Navbar,
+  SideNavbar,
+  Tabbar,
+  Search,
+  Checklist,
+  Radio,
+  Loadmore,
+  Actionsheet,
+  Popup,
+  Swipe,
+  SwipeItem,
+  Range,
+  Picker,
+  Select,
+  Progress,
+  Toast,
+  Indicator,
+  MessageBox,
+  InfiniteScroll,
+  Lazyload,
+  DatetimePicker,
+  IndexList,
+  IndexSection,
+  PaletteButton,
+  Text,
+  Image,
+  FixedButton,
+  LayoutLeftRight,
+  LayoutLeftRightItem,
+  LayoutContainer,
+  Hr,
+  LayoutSpacing
+}
+export default {
   install,
   version,
   Header,

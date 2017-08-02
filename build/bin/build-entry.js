@@ -33,6 +33,11 @@ export {
   install,
   version,
 {{list}}
+}
+export default {
+  install,
+  version,
+{{list}}
 };
 `;
 

@@ -9,7 +9,7 @@ cooking.set({
   clean: false,
   template: false,
   minimize: false,
-  format: 'cjs',
+  format: 'umd',
   extractCSS: '[name]/style.css',
   extends: ['vue2', 'saladcss', 'buble'],
   alias: config.alias,

@@ -6,7 +6,7 @@ cooking.set({
   dist: './lib/',
   clean: false,
   template: false,
-  format: 'cjs',
+  format: 'umd',
   minimize: false,
   moduleName: 'MINT',
   extractCSS: 'style.css',
