@@ -1,36 +1,82 @@
 <template>
   <div class="page-select">
-    <h1 class="page-title">Picker</h1>
-    <div class="page-select-wrapper">
-      <mt-select :slots="yearSlot" @change="onYearChange" :visible-item-count="3"></mt-select>
+    <h1 class="page-title">Select</h1>
+    <div class="">
+      <mt-select label="单选" :slots="yearSlot" :value.sync="value">
+        <template scope="scope" slot="display">
+          {{scope.value}}
+        </template>
+        <template scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.slots[0].values" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)"></mt-cell>
+        </template>
+      </mt-select>
     </div>
-    <p class="page-select-desc">出生年份: {{ year }}</p>
 
-    <!-- <div class="page-select-wrapper">
-      <mt-select :slots="dateSlots" @change="onDateChange" :visible-item-count="3"></mt-select>
+    <h1 class="page-title">Multi Select</h1>
+    <div class="">
+      <mt-select label="多选" :slots="yearSlot" :value.sync="multiValue">
+        <template scope="scope" slot="display">
+          {{scope.value.join(',')}}
+        </template>
+        <template scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item" @click.native.stop="multiValue.push(item)"></mt-cell>
+        </template>
+      </mt-select>
     </div>
-    <p class="page-select-desc">在校时间: {{ dateStart }} 至 {{ dateEnd }}</p>
 
-    <div class="page-select-wrapper">
-      <mt-select :slots="addressSlots" @change="onAddressChange" :visible-item-count="5"></mt-select>
+    <h1 class="page-title">字典 Select</h1>
+    <div class="">
+      <mt-select label="字典多选" :slots="dicSlot" :value.sync="dicValue">
+        <template scope="scope" slot="display">
+          {{scope.value.map(item => item.name).join(',')}}
+        </template>
+        <template scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
+        </template>
+      </mt-select>
+      <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
     </div>
-    <p class="page-select-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
-    
-    defaultIndex 参数变化
-    <div class="page-select-wrapper">
-      <mt-select :slots="numberSlot" @change="onNumberChange" :visible-item-count="3"></mt-select>
+
+    <h1 class="page-title">异步加载数据 Select</h1>
+    <div class="">
+      <mt-select label="异步字典多选" :slots="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick">
+        <template scope="scope" slot="display">
+          {{scope.value.map(item => item.name).join(',')}}
+        </template>
+        <template scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"></mt-cell>
+        </template>
+      </mt-select>
+      <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
     </div>
-    <p class="page-select-desc">动态默认选项: {{ number }}</p> -->
+
+    <!-- <h1 class="page-title">日期</h1>
+    <div class="">
+      <mt-select label="异步字典多选" :slots="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick">
+        <template scope="scope" slot="display">
+          {{scope.value.map(item => item.name).join(',')}}
+        </template>
+        <template scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"></mt-cell>
+        </template>
+      </mt-select>
+      <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
+    </div> -->
+
+
   </div>
 </template>
 
 <style>
+  body {
+    background: #ddd;
+    padding: 0;
+  }
   @component-namespace page {
     @component select {
-      padding: 0 10px 20px;
+      padding-top: 50px;
       @descendent wrapper {
         background-color: #fff;
-        text-align: center;
       }
 
       @descendent desc {
@@ -45,6 +91,8 @@
 </style>
 
 <script type="text/babel">
+  /* eslint-disable */
+  import axios from 'axios'
   const address = {
     '北京': ['北京'],
     '广东': ['广州', '深圳', '珠海', '汕头', '韶关', '佛山', '江门', '湛江', '茂名', '肇庆', '惠州', '梅州', '汕尾', '河源', '阳江', '清远', '东莞', '中山', '潮州', '揭阳', '云浮'],
@@ -84,37 +132,56 @@
 
   export default {
     methods: {
-      onYearChange(select, values) {
-        this.year = values[0];
-      },
-
-      onNumberChange(select, values) {
-        this.number = values[0];
-      },
-
-      onDateChange(select, values) {
-        if (values[0] > values[1]) {
-          select.setSlotValue(1, values[0]);
+      selectClick (item) {
+        this.value = item
+        if (window.location.hash.indexOf('smile-select') > -1) {
+          history.back()
         }
-        this.dateStart = values[0];
-        this.dateEnd = values[1];
       },
-
-      onAddressChange(select, values) {
-        select.setSlotValues(1, address[values[0]]);
-        this.addressProvince = values[0];
-        this.addressCity = values[1];
+      handleDicSelectorClick () {
+        axios.get('/mock/dic.json').then(resp => {
+          let respData = resp.data
+          if (respData.code == '0') {
+            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
+            this.asyncDicSlot[0].values = respData.data
+          }
+          console.log(resp)
+        })
       }
     },
 
     data() {
       return {
+        value: '1984',
+        multiValue: [],
+        dicValue: [],
+        asynvDicValue: [],
         year: '1984',
         number: 0,
         yearSlot: [{
           flex: 1,
           values: ['1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995'],
           className: 'slot1'
+        }],
+        dicSlot: [{
+          flex: 1,
+          values: [
+            { id: 1, name: '奔波儿灞' },
+            { id: 2, name: '霸波尔奔' },
+            { id: 3, name: '金角大王' },
+            { id: 4, name: '银角大王' },
+            { id: 5, name: '虎力大仙' },
+            { id: 6, name: '鹿力大仙' },
+            { id: 7, name: '羊力大仙' },
+            { id: 8, name: '黄袍怪' },
+            { id: 9, name: '白骨精' },
+            { id: 10, name: '小钻风' }
+          ],
+          className: 'slot1'
+        }],
+        asyncDicSlot: [{
+          flex: 1,
+          values: []
         }],
         numberSlot: [{
           flex: 1,
@@ -134,7 +201,7 @@
             className: 'slot2'
           }, {
             flex: 1,
-            values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
+            values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
             className: 'slot3',
             textAlign: 'left'
           }

@@ -41,6 +41,11 @@
       visible() {
         return ['/', '/header', '/search'].indexOf(this.$route.path) < 0;
       }
+    },
+    mounted() {
+      if (window.location.hash.indexOf('smile-select') > -1) {
+        history.back();
+      }
     }
   };
 </script>
