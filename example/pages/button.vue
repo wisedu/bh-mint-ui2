@@ -30,6 +30,7 @@
     </div>
 
     <div class="page-button-group">
+      <!-- 幽灵按钮 -->
       <mt-button plain size="large">default</mt-button>
       <mt-button plain size="large" type="primary">primary</mt-button>
       <mt-button plain size="large" type="danger">danger</mt-button>
@@ -41,6 +42,14 @@
         <img src="../assets/100x100.png" height="20" width="20" slot="icon">
         带自定义图标
       </mt-button>
+    </div>
+
+    <div class="page-button-group">
+      <!-- 小号幽灵按钮 -->
+      <!-- <mt-button plain size="large">default</mt-button> -->
+      <mt-button plain size="large" type="primary">large</mt-button>
+      <mt-button plain size="normal" type="primary">normal</mt-button>
+      <mt-button plain size="small" class="mt-active" type="primary">small</mt-button>
     </div>
   </div>
 </template>

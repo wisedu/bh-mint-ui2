@@ -118,6 +118,11 @@
         "icon": "button"
       },
       {
+        "path": "/button-list",
+        "name": "ButtonList",
+        "icon": "button"
+      },
+      {
         "path": "/cell",
         "name": "Cell",
         "icon": "cell"

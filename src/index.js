@@ -1,5 +1,6 @@
 import Header from '../packages/header';
 import Button from '../packages/button';
+import ButtonList from '../packages/button-list';
 import Cell from '../packages/cell';
 import CellSwipe from '../packages/cell-swipe';
 import Field from '../packages/field';
@@ -50,6 +51,7 @@ const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
   Vue.component(Button.name, Button);
+  Vue.component(ButtonList.name, ButtonList);
   Vue.component(Cell.name, Cell);
   Vue.component(CellSwipe.name, CellSwipe);
   Vue.component(Field.name, Field);
@@ -106,6 +108,7 @@ export {
   version,
   Header,
   Button,
+  ButtonList,
   Cell,
   CellSwipe,
   Field,
@@ -154,6 +157,7 @@ export default {
   version,
   Header,
   Button,
+  ButtonList,
   Cell,
   CellSwipe,
   Field,

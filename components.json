@@ -2,6 +2,7 @@
   "font": "./src/assets/font/iconfont.css",
   "header": "./packages/header/index.js",
   "button": "./packages/button/index.js",
+  "button-list": "./packages/button-list/index.js",
   "cell": "./packages/cell/index.js",
   "cell-swipe": "./packages/cell-swipe/index.js",
   "field": "./packages/field/index.js",

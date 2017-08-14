@@ -135,6 +135,7 @@ export default {
           background-color: transparent;
           color: $button-primary-background-color;
         }
+
       }
 
       @modifier warning {
@@ -169,13 +170,16 @@ export default {
         font-size: 12px;
         padding: 7px 10px;
         height: 28px;
+        border-radius: 14px;
       }
 
       @modifier small {
         display: inline-block;
         font-size: 11px;
-        padding: 7px 8px;
+        padding: 0px 8px;
         height: 25px;
+        line-height: 25px;
+        border-radius: 12px;
       }
 
       @when disabled {
