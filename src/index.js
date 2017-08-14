@@ -5,6 +5,7 @@ import CellSwipe from '../packages/cell-swipe';
 import Field from '../packages/field';
 import Badge from '../packages/badge';
 import Switch from '../packages/switch';
+import Switcher from '../packages/switcher';
 import Spinner from '../packages/spinner';
 import TabItem from '../packages/tab-item';
 import TabContainerItem from '../packages/tab-container-item';
@@ -44,7 +45,7 @@ import LayoutSpacing from '../packages/layout-spacing';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.0.21';
+const version = '0.0.26';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -54,6 +55,7 @@ const install = function(Vue, config = {}) {
   Vue.component(Field.name, Field);
   Vue.component(Badge.name, Badge);
   Vue.component(Switch.name, Switch);
+  Vue.component(Switcher.name, Switcher);
   Vue.component(Spinner.name, Spinner);
   Vue.component(TabItem.name, TabItem);
   Vue.component(TabContainerItem.name, TabContainerItem);
@@ -109,6 +111,7 @@ export {
   Field,
   Badge,
   Switch,
+  Switcher,
   Spinner,
   TabItem,
   TabContainerItem,
@@ -145,7 +148,7 @@ export {
   LayoutContainer,
   Hr,
   LayoutSpacing
-}
+};
 export default {
   install,
   version,
@@ -156,6 +159,7 @@ export default {
   Field,
   Badge,
   Switch,
+  Switcher,
   Spinner,
   TabItem,
   TabContainerItem,

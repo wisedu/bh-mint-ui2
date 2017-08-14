@@ -7,6 +7,7 @@
   "field": "./packages/field/index.js",
   "badge": "./packages/badge/index.js",
   "switch": "./packages/switch/index.js",
+  "switcher": "./packages/switcher/index.js",
   "spinner": "./packages/spinner/index.js",
   "tab-item": "./packages/tab-item/index.js",
   "tab-container-item": "./packages/tab-container-item/index.js",

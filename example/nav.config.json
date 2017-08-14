@@ -188,6 +188,11 @@
         "icon": "switch"
       },
       {
+        "path": "/switcher",
+        "name": "Switcher",
+        "icon": "switch"
+      },
+      {
         "path": "/checklist",
         "name": "Checklist",
         "icon": "checklist"

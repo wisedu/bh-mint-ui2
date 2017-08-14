@@ -1,12 +1,12 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick">
     <div class="select-value" >
-      <template v-if="type = 'select'">{{value.name}}</template>
-      <template v-if="type = 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template>
+      <template v-if="type === 'select'">{{value.name}}</template>
+      <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template>
       <slot v-else name="display" :slots="slots" :value="value"></slot>
     </div>
     <div class="select-container" v-show="selectorShow" @click.stop>
-      <template v-if="type = 'select'">
+      <template v-if="type === 'select'">
         <mt-cell v-for="item in slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
       </template>
       <slot v-else name="selector" :slots="slots" :value="value"></slot>
@@ -19,6 +19,7 @@ export default {
   name: 'mt-select',
   props: {
     value: { required: true },
+    url: { type: String, default: '' },
     label: { type: String, required: true },
     placeholder: { type: String, default: '请选择' },
     slots: { type: Array, required: true },
@@ -30,11 +31,13 @@ export default {
     };
   },
   methods: {
-    handleDisplayClick() {
+    handleDisplayClick(e) {
       if (this.type === 'select') {
 
       }
-      this.$emit('selector-click')
+      this.$emit('selector-click', {
+        url: this.url
+      })
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },
