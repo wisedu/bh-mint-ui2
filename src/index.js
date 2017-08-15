@@ -25,6 +25,7 @@ import SwipeItem from '../packages/swipe-item';
 import Range from '../packages/range';
 import Picker from '../packages/picker';
 import Select from '../packages/select';
+import TreeSelector from '../packages/tree-selector';
 import Progress from '../packages/progress';
 import Toast from '../packages/toast';
 import Indicator from '../packages/indicator';
@@ -76,6 +77,7 @@ const install = function(Vue, config = {}) {
   Vue.component(Range.name, Range);
   Vue.component(Picker.name, Picker);
   Vue.component(Select.name, Select);
+  Vue.component(TreeSelector.name, TreeSelector);
   Vue.component(Progress.name, Progress);
   Vue.component(DatetimePicker.name, DatetimePicker);
   Vue.component(IndexList.name, IndexList);
@@ -133,6 +135,7 @@ export {
   Range,
   Picker,
   Select,
+  TreeSelector,
   Progress,
   Toast,
   Indicator,
@@ -182,6 +185,7 @@ export default {
   Range,
   Picker,
   Select,
+  TreeSelector,
   Progress,
   Toast,
   Indicator,

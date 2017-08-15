@@ -27,6 +27,7 @@
   "range": "./packages/range/index.js",
   "picker": "./packages/picker/index.js",
   "select": "./packages/select/index.js",
+  "tree-selector": "./packages/tree-selector/index.js",
   "progress": "./packages/progress/index.js",
   "toast": "./packages/toast/index.js",
   "indicator": "./packages/indicator/index.js",

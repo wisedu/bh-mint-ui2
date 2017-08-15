@@ -78,6 +78,11 @@
         "icon": "picker"
       },
       {
+        "path": "/tree-selector",
+        "name": "TreeSelector",
+        "icon": "picker"
+      },
+      {
         "path": "/index-list",
         "name": "Index List",
         "icon": "alphabet"

@@ -1,16 +1,18 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick">
     <div class="select-value" >
-      <template v-if="type === 'select'">{{value.name}}</template>
-      <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template>
-      <slot v-else name="display" :slots="slots" :value="value"></slot>
+      <!-- <template v-if="type === 'select'">{{value.name}}</template>
+      <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template> -->
+      <slot  name="display" :options="options" :value="value"></slot>
     </div>
-    <div class="select-container" v-show="selectorShow" @click.stop>
-      <template v-if="type === 'select'">
-        <mt-cell v-for="item in slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
-      </template>
-      <slot v-else name="selector" :slots="slots" :value="value"></slot>
-    </div>
+    <transition name="slide">
+      <div class="select-container" v-show="selectorShow" @click.stop>
+        <!-- <template v-if="type === 'select'">
+          <mt-cell v-for="item in slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
+        </template> -->
+        <slot  name="selector" :options="options" :value="value"></slot>
+      </div>
+    </transition>
   </mt-cell>
 </template>
 <script>
@@ -22,7 +24,7 @@ export default {
     url: { type: String, default: '' },
     label: { type: String, required: true },
     placeholder: { type: String, default: '请选择' },
-    slots: { type: Array, required: true },
+    options: { type: Array, required: true },
     type: ''
   },
   data() {
@@ -32,12 +34,7 @@ export default {
   },
   methods: {
     handleDisplayClick(e) {
-      if (this.type === 'select') {
-
-      }
-      this.$emit('selector-click', {
-        url: this.url
-      })
+      this.$emit('selector-click', '')
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },
@@ -54,13 +51,20 @@ export default {
 };
 </script>
 <style>
+.slide-enter-active, .slide-leave-active {
+  transition: transform .25s
+}
+.slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
+  transform: translateX(100%);
+}
 .select-value {
 }
 .select-container {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #fff;
   left: 0;
   top: 0;
   z-index: 999;

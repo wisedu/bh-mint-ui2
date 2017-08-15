@@ -2,36 +2,36 @@
   <div class="page-select">
     <h1 class="page-title">Select</h1>
     <div class="">
-      <mt-select label="单选" :slots="yearSlot" :value.sync="value">
+      <mt-select label="单选" :options="yearSlot" :value.sync="value">
         <template scope="scope" slot="display">
           {{scope.value}}
         </template>
         <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.slots[0].values" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)"></mt-cell>
+          <mt-cell v-for="item in scope.options" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)"></mt-cell>
         </template>
       </mt-select>
     </div>
 
     <h1 class="page-title">Multi Select</h1>
     <div class="">
-      <mt-select label="多选" :slots="yearSlot" :value.sync="multiValue">
+      <mt-select label="多选" :options="yearSlot" :value.sync="multiValue">
         <template scope="scope" slot="display">
           {{scope.value.join(',')}}
         </template>
         <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item" @click.native.stop="multiValue.push(item)"></mt-cell>
+          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item" @click.native.stop="multiValue.push(item)"></mt-cell>
         </template>
       </mt-select>
     </div>
 
     <h1 class="page-title">字典 Select</h1>
     <div class="">
-      <mt-select label="字典多选" :slots="dicSlot" :value.sync="dicValue">
+      <mt-select label="字典多选" :options="dicSlot" :value.sync="dicValue">
         <template scope="scope" slot="display">
           {{scope.value.map(item => item.name).join(',')}}
         </template>
         <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
+          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
         </template>
       </mt-select>
       <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
@@ -39,12 +39,12 @@
 
     <h1 class="page-title">异步加载数据 Select</h1>
     <div class="">
-      <mt-select label="异步字典多选" :slots="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick">
+      <mt-select label="异步字典多选" :options="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick">
         <template scope="scope" slot="display">
           {{scope.value.map(item => item.name).join(',')}}
         </template>
         <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"></mt-cell>
+          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"></mt-cell>
         </template>
       </mt-select>
       <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
@@ -143,7 +143,7 @@
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.asyncDicSlot[0].values = respData.data
+            this.asyncDicSlot = respData.data
           }
           console.log(resp)
         })
@@ -158,88 +158,26 @@
         asynvDicValue: [],
         year: '1984',
         number: 0,
-        yearSlot: [{
-          flex: 1,
-          values: ['1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995'],
-          className: 'slot1'
-        }],
-        dicSlot: [{
-          flex: 1,
-          values: [
-            { id: 1, name: '奔波儿灞' },
-            { id: 2, name: '霸波尔奔' },
-            { id: 3, name: '金角大王' },
-            { id: 4, name: '银角大王' },
-            { id: 5, name: '虎力大仙' },
-            { id: 6, name: '鹿力大仙' },
-            { id: 7, name: '羊力大仙' },
-            { id: 8, name: '黄袍怪' },
-            { id: 9, name: '白骨精' },
-            { id: 10, name: '小钻风' }
-          ],
-          className: 'slot1'
-        }],
-        asyncDicSlot: [{
-          flex: 1,
-          values: []
-        }],
-        numberSlot: [{
-          flex: 1,
-          defaultIndex: 0,
-          values: [0, 1, 2, 3, 4, 5, 6],
-          className: 'slot1'
-        }],
-        dateSlots: [
-          {
-            flex: 1,
-            values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
-            className: 'slot1',
-            textAlign: 'right'
-          }, {
-            divider: true,
-            content: '-',
-            className: 'slot2'
-          }, {
-            flex: 1,
-            values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            className: 'slot3',
-            textAlign: 'left'
-          }
+        yearSlot: [ '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995' ],
+        dicSlot: [
+          { id: 1, name: '奔波儿灞' },
+          { id: 2, name: '霸波尔奔' },
+          { id: 3, name: '金角大王' },
+          { id: 4, name: '银角大王' },
+          { id: 5, name: '虎力大仙' },
+          { id: 6, name: '鹿力大仙' },
+          { id: 7, name: '羊力大仙' },
+          { id: 8, name: '黄袍怪' },
+          { id: 9, name: '白骨精' },
+          { id: 10, name: '小钻风' }
         ],
-        dateStart: '2002',
-        dateEnd: '2002',
-        addressSlots: [
-          {
-            flex: 1,
-            values: Object.keys(address),
-            className: 'slot1',
-            textAlign: 'center'
-          }, {
-            divider: true,
-            content: '-',
-            className: 'slot2'
-          }, {
-            flex: 1,
-            values: ['北京'],
-            className: 'slot3',
-            textAlign: 'center'
-          }
-        ],
-        addressProvince: '北京',
+        asyncDicSlot: [],
+        numberSlot: [ 0, 1, 2, 3, 4, 5, 6],
         addressCity: '北京'
-      };
+      }
     },
 
     mounted() {
-      this.$nextTick(() => {
-        let step = 0;
-        setInterval(() => {
-          this.numberSlot[0].defaultIndex = step++;
-          if (step > this.numberSlot[0].values.length - 1) {
-            step = 0;
-          }
-        }, 1000);
-      });
     }
   };
 </script>
