@@ -57,10 +57,10 @@ export default {
     }
   },
   mounted() {
-    this.resetPostion();
+    this.resetPosition();
   },
   methods: {
-    resetPostion() {
+    resetPosition() {
       if (this.top === '0') {
         this.$el.querySelector('.navbar').style.top = this.$el.offsetTop + 'px';
       }
