@@ -5,6 +5,7 @@
       <!-- {{scope.value.join(',')}} -->
     </template>
     <template scope="scope" slot="selector">
+      <bread :data="breadData" :active-id="(activePid.length ? activePid[activePid.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-show="scope.options.length > 0">
         <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
@@ -24,6 +25,7 @@
  * @example
  */
 // import MtSelect from 'mint-ui/packages/tree-selector/index.js';
+import Bread from './bread.vue';
 export default {
   name: 'mt-tree-selector',
   props: {
@@ -39,14 +41,43 @@ export default {
       activePid: []
     };
   },
+  watch: {
+    // options: {
+    //   deep: true,
+    //   handler() {
+    //     /* eslint-disable */
+    //     debugger
+    //     this.$forceUpdate();
+    //   }
+    // }
+  },
   computed: {
     activeOptions() {
       if (this.activePid.length === 0) return this.options;
       // let resultOptions = [];
-      for (let i = 0; i < this.activePid.lentgh; i++) {
+      for (let i = 0; i < this.activePid.length; i++) {
         let optionItem = this.options.filter(item => item.id === this.activePid[i])[0];
-        return optionItem.children || [];
+        if (optionItem) {
+          return optionItem.children || [];
+        } else {
+          return [];
+        }
       }
+    },
+    breadData() {
+      if (this.activePid.length === 0) {
+        return [];
+      }
+      let result = [];
+      let activeOptions = this.options;
+      this.activePid.map(item => {
+        let activeItem = activeOptions.filter(o => o.id === item)[0];
+        if (activeItem) {
+          result.push(activeItem);
+          activeOptions = activeItem.children || [];
+        }
+      });
+      return result;
     },
     currentValue: {
       get() {
@@ -76,7 +107,9 @@ export default {
     }
   },
   methods: {
-    handleChange() { },
+    handleBreadClick(id) {
+      console.log(id);
+    },
     getType(id) {
       if (this.multiple) {
         return this.currentValue.indexOf(id.toString()) > -1 ? 'primary' : 'default';
@@ -92,6 +125,7 @@ export default {
         // 是父节点则展开并进入下一级
         this.$emit('selector-click', item.id);
       }
+      this.activePid.push(item.id);
     },
     handleClick(id) {
       if (this.multiple) {
@@ -109,8 +143,8 @@ export default {
       }
       this.$emit('change', this.currentValue);
     }
-  }
-  // components: { MtSelect }
+  },
+  components: { Bread }
 };
 </script>
 

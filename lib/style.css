@@ -184,13 +184,24 @@
     width: 0
 }
 
+.slide-enter-active, .slide-leave-active {
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s
+}
+.slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
 .select-value {
 }
 .select-container {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #fff;
   left: 0;
   top: 0;
   z-index: 999;
@@ -1006,10 +1017,13 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-hr {
-    position: relative;
-    height: 1px;
-    background: #ddd
+.mint-layout-container {
+    position: relative
+}
+.mint-layout-container:after {
+    content: "";
+    display: table;
+    clear: both
 }
 
 /*bh-mint-ui*/
@@ -1039,13 +1053,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-layout-container {
-    position: relative
-}
-.mint-layout-container:after {
-    content: "";
-    display: table;
-    clear: both
+.mint-hr {
+    position: relative;
+    height: 1px;
+    background: #ddd
 }
 
 /*bh-mint-ui*/
@@ -1209,6 +1220,41 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-datetime {
+    width: 100%;
+}
+.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.mint-datetime .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
+}
+.mint-datetime-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: #26a2ff;
+}
+.mint-datetime-cancel {
+    float: left;
+}
+.mint-datetime-confirm {
+    float: right;
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-indexlist {
     width: 100%;
     position: relative;
@@ -1288,103 +1334,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-datetime {
-    width: 100%;
-}
-.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-}
-.mint-datetime .picker-toolbar {
-    border-bottom: solid 1px #eaeaea;
-}
-.mint-datetime-action {
-    display: inline-block;
-    width: 50%;
+.mint-tree-selector {}
+.mint-tree-selector-loading {
     text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    color: #26a2ff;
-}
-.mint-datetime-cancel {
-    float: left;
-}
-.mint-datetime-confirm {
-    float: right;
-}
-/*bh-mint-ui*/
-/*bh-mint-ui*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-radiolist .mint-cell {
-    padding: 0;
-}
-.mint-radiolist-label {
-    display: block;
-    padding: 0 10px;
-}
-.mint-radiolist-title {
-    font-size: 12px;
-    margin: 8px;
-    display: block;
-    color: #888;
-}
-.mint-radio {}
-.mint-radio.is-right {
-    float: right;
-}
-.mint-radio-label {
-    vertical-align: middle;
-    margin-left: 6px;
-}
-.mint-radio-input {
-    display: none;
-}
-.mint-radio-input:checked + .mint-radio-core {
-    background-color: #06c1ae;
-    border-color: #06c1ae;
-}
-.mint-radio-input:checked + .mint-radio-core::after {
-    background-color: #fff;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-.mint-radio-input[disabled] + .mint-radio-core {
-    background-color: #d9d9d9;
-    border-color: #ccc;
-}
-.mint-radio-core {
-    box-sizing: border-box;
-    display: inline-block;
-    background-color: #fff;
-    border-radius: 100%;
-    border: 1px solid #ccc;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-}
-.mint-radio-core::after {
-    content: " ";
-    border-radius: 100%;
-    top: 5px;
-    left: 5px;
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    -webkit-transition: -webkit-transform .2s;
-    transition: -webkit-transform .2s;
-    transition: transform .2s;
-    transition: transform .2s, -webkit-transform .2s;
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    line-height: 80px
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
@@ -1464,6 +1417,80 @@ left: 0;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-radiolist .mint-cell {
+    padding: 0;
+}
+.mint-radiolist-label {
+    display: block;
+    padding: 0 10px;
+}
+.mint-radiolist-title {
+    font-size: 12px;
+    margin: 8px;
+    display: block;
+    color: #888;
+}
+.mint-radio {}
+.mint-radio.is-right {
+    float: right;
+}
+.mint-radio-label {
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.mint-radio-input {
+    display: none;
+}
+.mint-radio-input:checked + .mint-radio-core {
+    background-color: #06c1ae;
+    border-color: #06c1ae;
+}
+.mint-radio-input:checked + .mint-radio-core::after {
+    background-color: #fff;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+.mint-radio-input[disabled] + .mint-radio-core {
+    background-color: #d9d9d9;
+    border-color: #ccc;
+}
+.mint-radio-core {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.mint-radio-core::after {
+    content: " ";
+    border-radius: 100%;
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s;
+    -webkit-transform: scale(0);
+            transform: scale(0);
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/

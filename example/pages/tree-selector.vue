@@ -46,7 +46,12 @@
             if (pId === '' || pId.length === 0) {
               this.options = respData.datas ? respData.datas.code.rows : []
             } else {
-              this.options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
+              let options = this.options
+              options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
+              this.$set(this, 'options', [])
+              this.$nextTick(_ => {
+                this.$set(this, 'options', options)
+              })
             }
           }
         })

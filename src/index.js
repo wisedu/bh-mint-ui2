@@ -47,7 +47,7 @@ import LayoutSpacing from '../packages/layout-spacing';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.0.27';
+const version = '0.0.28';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
