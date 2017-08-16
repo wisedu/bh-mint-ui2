@@ -1,5 +1,5 @@
 <template>
-  <mt-select :label="label" :options="options" v-model="currentValue" @selector-click="handleSelectorClick">
+  <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick">
     <template scope="scope" slot="display">
       {{scope.value === '' ? placeholder : scope.value}}
       <!-- {{scope.value.join(',')}} -->
@@ -7,7 +7,7 @@
     <template scope="scope" slot="selector">
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-show="scope.options.length > 0">
-        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="multiValue.push(item)" :is-link="item.isParent"></mt-cell>
+        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
       </template>
     </template>
   </mt-select>
@@ -34,7 +34,20 @@ export default {
     multiple: { type: Boolean, default: false },
     options: { type: Array, default() { return []; } }
   },
+  data() {
+    return {
+      activePid: []
+    };
+  },
   computed: {
+    activeOptions() {
+      if (this.activePid.length === 0) return this.options;
+      // let resultOptions = [];
+      for (let i = 0; i < this.activePid.lentgh; i++) {
+        let optionItem = this.options.filter(item => item.id === this.activePid[i])[0];
+        return optionItem.children || [];
+      }
+    },
     currentValue: {
       get() {
         if (this.multiple) {
@@ -73,6 +86,12 @@ export default {
     },
     handleSelectorClick(pid) {
       this.$emit('selector-click', pid);
+    },
+    handleItemClick(item) {
+      if (item.isParent) {
+        // 是父节点则展开并进入下一级
+        this.$emit('selector-click', item.id);
+      }
     },
     handleClick(id) {
       if (this.multiple) {

@@ -32,6 +32,10 @@ export default {
       selectorShow: false
     };
   },
+  watch: {
+    options() {
+    }
+  },
   methods: {
     handleDisplayClick(e) {
       this.$emit('selector-click', '')

@@ -45,6 +45,8 @@
           if (respData.code == '0') {
             if (pId === '' || pId.length === 0) {
               this.options = respData.datas ? respData.datas.code.rows : []
+            } else {
+              this.options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
             }
           }
         })
