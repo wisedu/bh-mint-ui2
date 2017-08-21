@@ -1,7 +1,12 @@
 <template>
   <div class="page-select">
-    <h1 class="page-title">Select</h1>
+    <h1 class="page-title">Select 快捷语法糖</h1>
     <div class="">
+      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" type="select" @selector-click="singleSelectClick">
+      </mt-select>
+      <p>{{singleSelectValue}}</p>
+    </div>
+    <!-- <div class="">
       <mt-select label="单选" :options="yearSlot" :value.sync="value">
         <template scope="scope" slot="display">
           {{scope.value}}
@@ -10,9 +15,9 @@
           <mt-cell v-for="item in scope.options" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)"></mt-cell>
         </template>
       </mt-select>
-    </div>
+    </div> -->
 
-    <h1 class="page-title">Multi Select</h1>
+    <!-- <h1 class="page-title">Multi Select</h1>
     <div class="">
       <mt-select label="多选" :options="yearSlot" :value.sync="multiValue">
         <template scope="scope" slot="display">
@@ -48,7 +53,7 @@
         </template>
       </mt-select>
       <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
-    </div>
+    </div> -->
 
     <!-- <h1 class="page-title">日期</h1>
     <div class="">
@@ -147,11 +152,22 @@
           }
           console.log(resp)
         })
+      },
+      singleSelectClick () {
+        axios.get('/mock/dic.json').then(resp => {
+          let respData = resp.data
+          if (respData.code == '0') {
+            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
+            this.singleSelectOptions = respData.data
+          }
+        })
       }
     },
 
     data() {
       return {
+        singleSelectValue: '2',
+        singleSelectOptions: [],
         value: '1984',
         multiValue: [],
         dicValue: [],
@@ -172,7 +188,7 @@
           { id: 10, name: '小钻风' }
         ],
         asyncDicSlot: [],
-        numberSlot: [ 0, 1, 2, 3, 4, 5, 6],
+        numberSlot: [ 0, 1, 2, 3, 4, 5, 6 ],
         addressCity: '北京'
       }
     },

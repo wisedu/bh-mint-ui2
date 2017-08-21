@@ -1,21 +1,24 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick">
     <div class="select-value" >
-      <!-- <template v-if="type === 'select'">{{value.name}}</template>
-      <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template> -->
-      <slot  name="display" :options="options" :value="value"></slot>
+      <template v-if="type === 'select'">{{singleSelectDisplay()}}</template>
+      <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template>
+      <slot v-else  name="display" :options="options" :value="value"></slot>
     </div>
     <transition name="slide">
       <div class="select-container" v-show="selectorShow" @click.stop>
-        <!-- <template v-if="type === 'select'">
-          <mt-cell v-for="item in slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)"></mt-cell>
-        </template> -->
-        <slot  name="selector" :options="options" :value="value"></slot>
+        <template v-if="type === 'select'">
+          <mt-cell v-for="item in options" :class="{active: item.id === value }" :key="item.id" :title="item.name" @click.native.stop="handleClick_select(item)"></mt-cell>
+        </template>
+        <slot v-else name="selector" :options="options" :value="value"></slot>
       </div>
     </transition>
   </mt-cell>
 </template>
 <script>
+/**
+ * @event selector-click - 点击选择器触发的事件
+ */
 /* eslint-disable */
 export default {
   name: 'mt-select',
@@ -37,6 +40,19 @@ export default {
     }
   },
   methods: {
+    singleSelectDisplay () {
+      if (this.value === '') return this.placeholder
+      if (this.options.length === 0) {
+        this.$emit('selector-click', '')
+        return ''
+      }
+      return this.options.filter(item => item.id.toString() === this.value.toString())[0].name
+    },
+    handleClick_select(item) {
+      this.$emit('input', item.id)
+      this.$emit('change', item.id)
+      this.selectorShow = false
+    },
     handleDisplayClick(e) {
       this.$emit('selector-click', '')
       history.pushState('', null, '#/smile-select');

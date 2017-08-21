@@ -29,15 +29,22 @@ const install = function(Vue, config = {}) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
+
+window.MINT = {
+  install,
+  version,
+  {{list}}
+};
+
 export {
   install,
   version,
-{{list}}
+  {{list}}
 };
 export default {
   install,
   version,
-{{list}}
+  {{list}}
 };
 `;
 
