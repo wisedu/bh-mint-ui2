@@ -45,5 +45,6 @@
   "layout-left-right-item": "./packages/layout-left-right-item/index.js",
   "layout-container": "./packages/layout-container/index.js",
   "hr": "./packages/hr/index.js",
-  "layout-spacing": "./packages/layout-spacing/index.js"
+  "layout-spacing": "./packages/layout-spacing/index.js",
+  "form": "./packages/form/index.js"
 }

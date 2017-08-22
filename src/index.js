@@ -44,10 +44,11 @@ import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import LayoutContainer from '../packages/layout-container';
 import Hr from '../packages/hr';
 import LayoutSpacing from '../packages/layout-spacing';
+import Form from '../packages/form';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.0.28';
+const version = '0.0.29';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -91,6 +92,7 @@ const install = function(Vue, config = {}) {
   Vue.component(LayoutContainer.name, LayoutContainer);
   Vue.component(Hr.name, Hr);
   Vue.component(LayoutSpacing.name, LayoutSpacing);
+  Vue.component(Form.name, Form);
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, merge({
     loading: require('./assets/loading-spin.svg'),
@@ -154,7 +156,8 @@ window.MINT = {
   LayoutLeftRightItem,
   LayoutContainer,
   Hr,
-  LayoutSpacing
+  LayoutSpacing,
+  Form
 };
 
 export {
@@ -205,7 +208,8 @@ export {
   LayoutLeftRightItem,
   LayoutContainer,
   Hr,
-  LayoutSpacing
+  LayoutSpacing,
+  Form
 };
 export default {
   install,
@@ -255,5 +259,6 @@ export default {
   LayoutLeftRightItem,
   LayoutContainer,
   Hr,
-  LayoutSpacing
+  LayoutSpacing,
+  Form
 };
