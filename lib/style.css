@@ -1697,43 +1697,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-navbar {
-    background-color: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    text-align: center;
-}
-.mint-navbar .mint-tab-item {
-    padding: 17px 0;
-    font-size: 15px
-}
-.mint-navbar .mint-tab-item:last-child {
-    border-right: 0;
-}
-.mint-navbar .mint-tab-item.is-selected {
-    border-bottom: 3px solid #06c1ae;
-    color: #06c1ae;
-    margin-bottom: -3px;
-}
-.mint-navbar.is-fixed {
-    top: 0;
-    right: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
-}
-/*bh-mint-ui*/
-/*bh-mint-ui*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-side-navbar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1772,6 +1735,43 @@ left: 0;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-navbar {
+    background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+}
+.mint-navbar .mint-tab-item {
+    padding: 17px 0;
+    font-size: 15px
+}
+.mint-navbar .mint-tab-item:last-child {
+    border-right: 0;
+}
+.mint-navbar .mint-tab-item.is-selected {
+    border-bottom: 3px solid #06c1ae;
+    color: #06c1ae;
+    margin-bottom: -3px;
+}
+.mint-navbar.is-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
@@ -2018,35 +2018,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-cell-swipe .mint-cell-wrapper {
-    position: relative;
-}
-.mint-cell-swipe .mint-cell-wrapper, .mint-cell-swipe .mint-cell-left, .mint-cell-swipe .mint-cell-right {
-    -webkit-transition: -webkit-transform 150ms ease-in-out;
-    transition: -webkit-transform 150ms ease-in-out;
-    transition: transform 150ms ease-in-out;
-    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
-}
-.mint-cell-swipe-buttongroup {
-    height: 100%;
-}
-.mint-cell-swipe-button {
-    height: 100%;
-    display: inline-block;
-    padding: 0 10px;
-    line-height: 48px;
-}
-/*bh-mint-ui*/
-/*bh-mint-ui*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-field {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2121,6 +2092,35 @@ left: 0;
     top: 0;
     right: 0;
     position: relative;
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-cell-swipe .mint-cell-wrapper {
+    position: relative;
+}
+.mint-cell-swipe .mint-cell-wrapper, .mint-cell-swipe .mint-cell-left, .mint-cell-swipe .mint-cell-right {
+    -webkit-transition: -webkit-transform 150ms ease-in-out;
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+.mint-cell-swipe-buttongroup {
+    height: 100%;
+}
+.mint-cell-swipe-button {
+    height: 100%;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 48px;
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
@@ -2259,110 +2259,6 @@ left: 0;
 .mint-button-list {}
 .mint-button-list-btn {
     margin-left: 8px
-}
-/*bh-mint-ui*/
-/*bh-mint-ui*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-button {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    border-radius: 5px;
-    border: 0;
-    box-sizing: border-box;
-    color: inherit;
-    display: block;
-    font-size: 18px;
-    height: 41px;
-    outline: 0;
-    overflow: hidden;
-    position: relative;
-    text-align: center
-}
-.mint-button::after {
-    background-color: #000;
-    content: " ";
-    opacity: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute
-}
-.mint-button:not(.is-disabled):active::after {
-    opacity: .1
-}
-.mint-button.is-disabled {
-    opacity: .3
-}
-.mint-button-icon {
-    vertical-align: middle;
-    display: inline-block
-}
-.mint-button--default {
-    color: #2f343b;
-    background-color: #ffffff;
-    box-shadow: 0 0 1px #bdc0c5
-}
-.mint-button--default.is-plain {
-    border: 1px solid #5a5a5a;
-    background-color: transparent;
-    box-shadow: none;
-    color: #5a5a5a
-}
-.mint-button--primary {
-    color: #fff;
-    background-color: #06c1ae
-}
-.mint-button--primary.is-plain {
-    border: 1px solid #06c1ae;
-    background-color: transparent;
-    color: #06c1ae
-}
-.mint-button--warning {
-    color: #fff;
-    background-color: #ffb200
-}
-.mint-button--warning.is-plain {
-    border: 1px solid #ffb200;
-    background-color: transparent;
-    color: #ffb200
-}
-.mint-button--danger {
-    color: #fff;
-    background-color: #ef4f4f
-}
-.mint-button--danger.is-plain {
-    border: 1px solid #ef4f4f;
-    background-color: transparent;
-    color: #ef4f4f
-}
-.mint-button--large {
-    display: block;
-    width: 100%
-}
-.mint-button--normal {
-    display: inline-block;
-    font-size: 12px;
-    padding: 7px 10px;
-    height: 28px;
-    border-radius: 14px
-}
-.mint-button--small {
-    display: inline-block;
-    font-size: 11px;
-    padding: 0px 8px;
-    height: 25px;
-    line-height: 25px;
-    border-radius: 12px
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
@@ -2525,6 +2421,110 @@ left: 0;
   opacity: 0;
   -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
           transform: translate3d(-50%, -50%, 0) scale(0.9);
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border-radius: 5px;
+    border: 0;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font-size: 18px;
+    height: 41px;
+    outline: 0;
+    overflow: hidden;
+    position: relative;
+    text-align: center
+}
+.mint-button::after {
+    background-color: #000;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute
+}
+.mint-button:not(.is-disabled):active::after {
+    opacity: .1
+}
+.mint-button.is-disabled {
+    opacity: .3
+}
+.mint-button-icon {
+    vertical-align: middle;
+    display: inline-block
+}
+.mint-button--default {
+    color: #2f343b;
+    background-color: #ffffff;
+    box-shadow: 0 0 1px #bdc0c5
+}
+.mint-button--default.is-plain {
+    border: 1px solid #5a5a5a;
+    background-color: transparent;
+    box-shadow: none;
+    color: #5a5a5a
+}
+.mint-button--primary {
+    color: #fff;
+    background-color: #06c1ae
+}
+.mint-button--primary.is-plain {
+    border: 1px solid #06c1ae;
+    background-color: transparent;
+    color: #06c1ae
+}
+.mint-button--warning {
+    color: #fff;
+    background-color: #ffb200
+}
+.mint-button--warning.is-plain {
+    border: 1px solid #ffb200;
+    background-color: transparent;
+    color: #ffb200
+}
+.mint-button--danger {
+    color: #fff;
+    background-color: #ef4f4f
+}
+.mint-button--danger.is-plain {
+    border: 1px solid #ef4f4f;
+    background-color: transparent;
+    color: #ef4f4f
+}
+.mint-button--large {
+    display: block;
+    width: 100%
+}
+.mint-button--normal {
+    display: inline-block;
+    font-size: 12px;
+    padding: 7px 10px;
+    height: 28px;
+    border-radius: 14px
+}
+.mint-button--small {
+    display: inline-block;
+    font-size: 11px;
+    padding: 0px 8px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 12px
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/
