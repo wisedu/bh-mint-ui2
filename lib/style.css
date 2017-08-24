@@ -2271,6 +2271,110 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border-radius: 5px;
+    border: 0;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font-size: 18px;
+    height: 41px;
+    outline: 0;
+    overflow: hidden;
+    position: relative;
+    text-align: center
+}
+.mint-button::after {
+    background-color: #000;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute
+}
+.mint-button:not(.is-disabled):active::after {
+    opacity: .1
+}
+.mint-button.is-disabled {
+    opacity: .3
+}
+.mint-button-icon {
+    vertical-align: middle;
+    display: inline-block
+}
+.mint-button--default {
+    color: #2f343b;
+    background-color: #ffffff;
+    box-shadow: 0 0 1px #bdc0c5
+}
+.mint-button--default.is-plain {
+    border: 1px solid #5a5a5a;
+    background-color: transparent;
+    box-shadow: none;
+    color: #5a5a5a
+}
+.mint-button--primary {
+    color: #fff;
+    background-color: #06c1ae
+}
+.mint-button--primary.is-plain {
+    border: 1px solid #06c1ae;
+    background-color: transparent;
+    color: #06c1ae
+}
+.mint-button--warning {
+    color: #fff;
+    background-color: #ffb200
+}
+.mint-button--warning.is-plain {
+    border: 1px solid #ffb200;
+    background-color: transparent;
+    color: #ffb200
+}
+.mint-button--danger {
+    color: #fff;
+    background-color: #ef4f4f
+}
+.mint-button--danger.is-plain {
+    border: 1px solid #ef4f4f;
+    background-color: transparent;
+    color: #ef4f4f
+}
+.mint-button--large {
+    display: block;
+    width: 100%
+}
+.mint-button--normal {
+    display: inline-block;
+    font-size: 12px;
+    padding: 7px 10px;
+    height: 28px;
+    border-radius: 14px
+}
+.mint-button--small {
+    display: inline-block;
+    font-size: 11px;
+    padding: 0px 8px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 12px
+}
+/*bh-mint-ui*/
+/*bh-mint-ui*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-msgbox {
   position: fixed;
   top: 50%;
@@ -2421,110 +2525,6 @@ left: 0;
   opacity: 0;
   -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
           transform: translate3d(-50%, -50%, 0) scale(0.9);
-}
-/*bh-mint-ui*/
-/*bh-mint-ui*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-button {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    border-radius: 5px;
-    border: 0;
-    box-sizing: border-box;
-    color: inherit;
-    display: block;
-    font-size: 18px;
-    height: 41px;
-    outline: 0;
-    overflow: hidden;
-    position: relative;
-    text-align: center
-}
-.mint-button::after {
-    background-color: #000;
-    content: " ";
-    opacity: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute
-}
-.mint-button:not(.is-disabled):active::after {
-    opacity: .1
-}
-.mint-button.is-disabled {
-    opacity: .3
-}
-.mint-button-icon {
-    vertical-align: middle;
-    display: inline-block
-}
-.mint-button--default {
-    color: #2f343b;
-    background-color: #ffffff;
-    box-shadow: 0 0 1px #bdc0c5
-}
-.mint-button--default.is-plain {
-    border: 1px solid #5a5a5a;
-    background-color: transparent;
-    box-shadow: none;
-    color: #5a5a5a
-}
-.mint-button--primary {
-    color: #fff;
-    background-color: #06c1ae
-}
-.mint-button--primary.is-plain {
-    border: 1px solid #06c1ae;
-    background-color: transparent;
-    color: #06c1ae
-}
-.mint-button--warning {
-    color: #fff;
-    background-color: #ffb200
-}
-.mint-button--warning.is-plain {
-    border: 1px solid #ffb200;
-    background-color: transparent;
-    color: #ffb200
-}
-.mint-button--danger {
-    color: #fff;
-    background-color: #ef4f4f
-}
-.mint-button--danger.is-plain {
-    border: 1px solid #ef4f4f;
-    background-color: transparent;
-    color: #ef4f4f
-}
-.mint-button--large {
-    display: block;
-    width: 100%
-}
-.mint-button--normal {
-    display: inline-block;
-    font-size: 12px;
-    padding: 7px 10px;
-    height: 28px;
-    border-radius: 14px
-}
-.mint-button--small {
-    display: inline-block;
-    font-size: 11px;
-    padding: 0px 8px;
-    height: 25px;
-    line-height: 25px;
-    border-radius: 12px
 }
 /*bh-mint-ui*/
 /*bh-mint-ui*/

@@ -21,16 +21,20 @@ export default {
   name: 'mt-switcher',
 
   props: {
-    value: Boolean,
+    value: { default: 0 },
     label: String
   },
   computed: {
     currentValue: {
       get() {
-        return this.value;
+        if (this.value === '0' || this.value === 0) {
+          return false;
+        } else {
+          return true;
+        }
       },
       set(val) {
-        this.$emit('input', val);
+        this.$emit('input', val ? 1 : 0);
       }
     }
   },

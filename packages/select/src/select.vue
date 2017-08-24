@@ -1,15 +1,20 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick">
     <div class="select-value" >
+      <!-- select 模板 -->
       <template v-if="type === 'select'">{{singleSelectDisplay()}}</template>
+      <!-- multi-select 模板 -->
       <template v-if="type === 'multi-select'">{{scope.value.map(item => item.name).join(',')}}</template>
+      <!-- 自定义 -->
       <slot v-else  name="display" :options="options" :value="value"></slot>
     </div>
     <transition name="slide">
       <div class="select-container" v-show="selectorShow" @click.stop>
+        <!-- select 模板 -->
         <template v-if="type === 'select'">
-          <mt-cell v-for="item in options" :class="{active: item.id === value }" :key="item.id" :title="item.name" @click.native.stop="handleClick_select(item)"></mt-cell>
+          <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio>
         </template>
+        <!-- 自定义 -->
         <slot v-else name="selector" :options="options" :value="value"></slot>
       </div>
     </transition>
@@ -35,11 +40,37 @@ export default {
       selectorShow: false
     };
   },
-  watch: {
-    options() {
+  computed: {
+    currentValue: {
+      get () {
+        return this.value;
+      }, 
+      set (val) {
+        this.$emit('input', val.toString());
+      }
     }
   },
   methods: {
+    handleDisplayClick(e) {
+      this.$emit('selector-click', '')
+      history.pushState('', null, '#/smile-select');
+      this.selectorShow = true;
+    },
+    historyChange(e) {
+      this.selectorShow = false;
+    },
+    /***** select 专有方法 *****/
+    getOptions_select (options) {
+      if (!options || options.length === 0) {
+        return []
+      }
+      return options.map(item => {
+        return {
+          value: item.id,
+          label: item.name
+        }
+      })
+    },
     singleSelectDisplay () {
       if (this.value === '') return this.placeholder
       if (this.options.length === 0) {
@@ -48,19 +79,12 @@ export default {
       }
       return this.options.filter(item => item.id.toString() === this.value.toString())[0].name
     },
-    handleClick_select(item) {
-      this.$emit('input', item.id)
-      this.$emit('change', item.id)
+    handleClick_select(val) {
+      this.$emit('change', val)
       this.selectorShow = false
-    },
-    handleDisplayClick(e) {
-      this.$emit('selector-click', '')
-      history.pushState('', null, '#/smile-select');
-      this.selectorShow = true;
-    },
-    historyChange(e) {
-      this.selectorShow = false;
+      history.back()
     }
+    /***** select 专有方法 end *****/
   },
   mounted () {
     window.addEventListener("popstate", this.historyChange)
@@ -95,15 +119,6 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-.mint-cell.active .mint-cell-title:after {
-  content: '√';
-  float: right;
-}
-
-.mint-cell.active {
-  background: #e5e5e5;
 }
 
 </style>
