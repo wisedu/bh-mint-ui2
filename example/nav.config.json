@@ -78,6 +78,11 @@
         "icon": "picker"
       },
       {
+        "path": "/infinite-calendar",
+        "name": "infinite calender",
+        "icon": "infinite-scroll"
+      },
+      {
         "path": "/tree-selector",
         "name": "TreeSelector",
         "icon": "picker"
