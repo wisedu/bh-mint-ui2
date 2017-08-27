@@ -1,14 +1,18 @@
 <template>
     <div class=calendar>
         <div class=calendar-header>
-            <p class=calendar-title :class="{'html-title': isHtmlTitle}" v-html=title v-show="title !== ''"></p>
+            <div class=calendar-title>
+                <div class="control" style="float:left" @click="preYear"><</div> 
+                <div class="control">2017年</div> 
+                <div class="control" style="float:right" @click="nextYear">></div>
+            </div>
             <div class=week-number>
                 <span v-for='item in weekList' v-text=item :key='item'></span>
             </div>
         </div>
-        <div :style="{marginTop: title === '' ? '33px': isHtmlTitle ? '85px': '65px'}">
+        <div :style="{marginTop: title === '' ? '50px': '82px'}">
             <div class=calendar-wrapper v-for='item in calendar' :key='item'>
-                <h3 v-text="item.year + '年' + item.month + '月'" :class="this.title == '' ? 'top-low': isHtmlTitle ? 'top-high-html': 'top-high'"></h3>
+                <h3 v-text="item.year + '年' + item.month + '月'" :class="this.title == '' ? 'top-low': 'top-high'"></h3>
                 <ul class=each-month>
                     <li class=each-day track-by=$index v-for='day in item.dayList' @click='chooseDate(day, item.month, item.year)' :key='day'>
                         <div :class="[addClassName(day, item.month, item.year), {'trip-time': isCurrent(day, item.month, item.year)}]"> {{ showDate(day, item.month, item.year) }} </div>
@@ -36,12 +40,17 @@
 }
 
 .calendar .calendar-header .calendar-title {
-    height: 32px;
-    line-height: 32px;
-    background: #fff7dc;
-    font-size: 12px;
-    padding-left: 15px;
-    color: #9e8052
+    height: 48px;
+    line-height: 48px;
+    background: #fff;
+    /* color: #9e8052; */
+    text-align: center;
+}
+
+.calendar .calendar-header .calendar-title .control{
+    display: inline;
+    font-size: 16px;
+    padding: 0 16px;
 }
 
 .calendar .calendar-header .calendar-title.html-title {
@@ -177,15 +186,11 @@
 }
 
 .calendar .calendar-wrapper .top-high {
-    top: 65px
-}
-
-.calendar .calendar-wrapper .top-high-html {
-    top: 83px
+    top: 82px
 }
 
 .calendar .calendar-wrapper .top-low {
-    top: 33px
+    top: 50px
 }
 </style>
 <script>
@@ -356,8 +361,7 @@ export default {
             var year_num = this._endDate.getFullYear();
             var month_num = this._endDate.getMonth() + 1;
             var end = 12 * (year_num - this.year) + month_num - this.month;
-            var n = 0;
-            for (; n <= end; n++) {
+            for (var n = 0; n <= end; n++) {
                 var month = this.month + n;
                 var year = this.year;
                 var retObj = {
@@ -474,6 +478,12 @@ export default {
                 }
             }
             return n;
+        },
+        preYear: function() {
+            console.log(1);
+        },
+        nextYear: function() {
+            console.log(2);
         }
     }
 };

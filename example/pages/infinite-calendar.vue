@@ -14,7 +14,7 @@
                 title: 'abc',
                 today: new Date(),
                 name: '',
-                endDate: '2017-11-9',
+                endDate: '2018-11-9',
                 currentDate: '2017-8-29'
             };
         },
