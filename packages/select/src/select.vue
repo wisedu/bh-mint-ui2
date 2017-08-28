@@ -9,14 +9,14 @@
       <slot v-else  name="display" :options="options" :value="value"></slot>
     </div>
     <transition name="slide">
-      <div class="select-container" v-show="selectorShow" @click.stop>
+      <div class="select-container" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <!-- select 模板 -->
         <template v-if="type === 'select'">
           <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio>
         </template>
         <!-- multi-select 模板 -->
         <template v-if="type === 'multi-select'">
-          <mt-checklist v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist>
+          <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist>
           <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
         </template>
         <!-- 自定义 -->
@@ -65,6 +65,9 @@ export default {
           this.$emit('input', val.join(','))
         }
       }
+    },
+    cHeight () {
+      return document.documentElement.clientHeight
     }
     /***** select 专有属性 end *****/
   },
@@ -143,6 +146,7 @@ export default {
   left: 0;
   top: 0;
   z-index: 999;
+  overflow: auto;
 }
 
 .select-picker {

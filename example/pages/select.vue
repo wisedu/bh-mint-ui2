@@ -115,7 +115,7 @@
         }
       },
       handleDicSelectorClick () {
-        axios.get('/mock/dic.json').then(resp => {
+        axios.get('/mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
@@ -125,19 +125,19 @@
         })
       },
       singleSelectClick () {
-        axios.get('/mock/dic.json').then(resp => {
+        axios.get('/mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.singleSelectOptions = respData.data
+            this.singleSelectOptions = respData.datas.code.rows
           }
         })
       },
       multiSelectClick () {
-        axios.get('/mock/dic.json').then(resp => {
+        axios.get('/mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
-            this.multiSelectOptions = respData.data
+            this.multiSelectOptions = respData.datas.code.rows
           }
         })
       }
@@ -145,7 +145,7 @@
 
     data() {
       return {
-        singleSelectValue: '2',
+        singleSelectValue: '',
         singleSelectOptions: [],
 
         multiSelectValue: '',
