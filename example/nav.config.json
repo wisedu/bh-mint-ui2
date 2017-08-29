@@ -93,6 +93,11 @@
         "icon": "alphabet"
       },
       {
+        "path": "/file-list",
+        "name": "File List",
+        "icon": "alphabet"
+      },
+      {
         "path": "/palette-button",
         "name": "Palette Button",
         "icon": "alphabet"

@@ -4,6 +4,7 @@ import ButtonList from '../packages/button-list';
 import Cell from '../packages/cell';
 import CellSwipe from '../packages/cell-swipe';
 import Field from '../packages/field';
+import FileList from '../packages/file-list';
 import Badge from '../packages/badge';
 import Switch from '../packages/switch';
 import Switcher from '../packages/switcher';
@@ -58,6 +59,7 @@ const install = function(Vue, config = {}) {
   Vue.component(Cell.name, Cell);
   Vue.component(CellSwipe.name, CellSwipe);
   Vue.component(Field.name, Field);
+  Vue.component(FileList.name, FileList);
   Vue.component(Badge.name, Badge);
   Vue.component(Switch.name, Switch);
   Vue.component(Switcher.name, Switcher);
@@ -119,6 +121,7 @@ window.MINT = {
   Cell,
   CellSwipe,
   Field,
+  FileList,
   Badge,
   Switch,
   Switcher,
@@ -172,6 +175,7 @@ export {
   Cell,
   CellSwipe,
   Field,
+  FileList,
   Badge,
   Switch,
   Switcher,
@@ -224,6 +228,7 @@ export default {
   Cell,
   CellSwipe,
   Field,
+  FileList,
   Badge,
   Switch,
   Switcher,
