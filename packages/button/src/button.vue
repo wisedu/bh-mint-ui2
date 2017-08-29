@@ -23,20 +23,14 @@
 // }
 
 /**
- * mt-header
- * @module components/button
+ * @name Button
+ * @namespace mt-button
  * @desc 按钮
- * @param {string} [type=default] - 显示类型，接受 default, primary, warning, danger
- * @param {boolean} [disabled=false] - 禁用
- * @param {boolean} [plain=false] - 幽灵按钮
- * @param {string} [size=normal] - 尺寸，接受 normal, small, large
- * @param {string} [native-type] - 原生 type 属性
- * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .mintui-xxx）
- * @param {slot} - 显示文本
- * @param {slot} [icon] 显示图标
- *
- * @example
- * <mt-button size="large" icon="back" type="primary">按钮</mt-button>
+ * @class mint-button
+ * @display inline
+ * @noteType component
+ * @html
+ * <mt-button type="primary">{{space}}</mt-button>
  */
 export default {
   name: 'mt-button',
@@ -48,10 +42,57 @@ export default {
   },
 
   props: {
+      /**
+       * @noteType prop
+       * @field icon
+       * @desc 图标
+       * @type select
+       * @option
+       [
+       {
+         "text": "空",
+         "value": ""
+       },
+       {
+         "text": "返回",
+         "value": "back"
+       },
+       {
+         "text": "更多",
+         "value": "more"
+       }
+       ]
+       */
     icon: String,
     disabled: Boolean,
     nativeType: String,
     plain: Boolean,
+      /**
+       * @noteType prop
+       * @field type
+       * @desc 样式
+       * @type select
+       * @option
+       [
+       {
+         "text": "default",
+         "value": "default"
+       },
+       {
+         "text": "primary",
+         "value": "primary",
+         "select": true
+       },
+       {
+         "text": "danger",
+         "value": "danger"
+       },
+       {
+         "text": "warning",
+         "value": "warning"
+       }
+       ]
+       */
     type: {
       type: String,
       default: 'default',
@@ -64,6 +105,28 @@ export default {
         ].indexOf(value) > -1;
       }
     },
+      /**
+       * @noteType prop
+       * @field size
+       * @desc 大小
+       * @type select
+       * @option
+       [
+       {
+         "text": "normal",
+         "value": "normal",
+         "select": true
+       },
+       {
+         "text": "small",
+         "value": "small"
+       },
+       {
+         "text": "large",
+         "value": "large"
+       }
+       ]
+       */
     size: {
       type: String,
       default: 'normal',
@@ -77,6 +140,27 @@ export default {
     }
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+   "edit": [
+   {
+     "selector": "label",
+     "forAttribute": "space"
+   }
+   ],
+   "mock": {
+            "space": "按钮"
+          },
+   "textField": {
+            "field": "space",
+            "className": "mint-button-text"
+          },
+   "bindField":"space"
+ }
+ */
 </script>
 
 <style lang="css">
