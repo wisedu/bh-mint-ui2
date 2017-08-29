@@ -31,15 +31,68 @@ import SelectedFooter from './selected-footer.vue';
  * @event selector-click - 点击选择器触发的事件
  */
 /* eslint-disable */
+
+/**
+ * @noteType component
+ * @name Select
+ * @namespace mt-select
+ * @desc 选择器
+ * @class mint-select
+ * @html
+ * <mt-select label="标题文字"></mt-select>
+ */
 export default {
   name: 'mt-select',
   components: { SelectedFooter },
   props: {
     value: { required: true },
-    url: { type: String, default: '' },
+    // url: { type: String, default: '' },
+
+    /**
+     * @noteType prop
+     * @field label
+     * @desc 标题
+     * @type input
+     * @value 标题
+     */
     label: { type: String, required: true },
+    /**
+     * @noteType prop
+     * @field placeholder
+     * @desc 占位文本
+     * @type input
+     * @value 请选择
+     */
     placeholder: { type: String, default: '请选择' },
+    /**
+     * @noteType prop
+     * @field options
+     * @desc 选项字典数据
+     * @type textarea
+     * @value
+     */
     options: { type: Array, required: true },
+    /**
+     * @noteType prop
+     * @field type
+     * @desc 选择器类型
+     * @type select
+     * @option 
+      [
+        {
+          "text": "自定义",
+          "value": ""
+        },
+        {
+          "text": "单选",
+          "value": "select"
+        },
+        {
+          "text": "多选",
+          "value": "multi-select"
+        }
+      ]
+     */
     type: ''
   },
   data() {
@@ -128,6 +181,17 @@ export default {
     window.removeEventListener("popstate", this.historyChange)
   }
 };
+
+/**
+ * @noteType external
+ * @content
+  {
+    "mock": {
+    "selected": ""
+  },
+  "modelName": "selected"
+ }
+ */
 </script>
 <style>
 @import "../../../src/style/var.css";
