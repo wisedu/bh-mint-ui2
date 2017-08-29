@@ -27,6 +27,17 @@
  * </mt-navbar>
  *
  */
+
+/**
+ * @noteType component
+ * @name Navbar
+ * @namespace mt-navbar
+ * @desc 选项卡
+ * @type tab
+ * @class mint-navbar
+ * @html
+ * <mt-navbar v-model="selected"></mt-navbar>
+ */
 export default {
   name: 'mt-navbar',
 
@@ -35,6 +46,25 @@ export default {
     value: {}
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+    "item": {
+      "componentName": "TabItem",
+      "count": 2,
+      "showProp": "space"
+    },
+    "mock": {
+      "selected": "0"
+    },
+    "modelName": "selected",
+    "relation": {
+      "componentName": "TabContainer"
+    }
+ }
+ */
 </script>
 
 <style lang="css">

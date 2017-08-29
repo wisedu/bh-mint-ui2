@@ -22,11 +22,45 @@
  *   订单
  * </mt-tab-item>
  */
+
+/**
+ * @noteType component
+ * @name TabItem
+ * @namespace mt-tab-item
+ * @desc 选项卡头节点
+ * @type tabItem
+ * @class mint-tab-item
+ * @uniqueKey id
+ * @noDisplayInComponents true
+ * @html
+ * <mt-tab-item id="1">{{space}}</mt-tab-item>
+ */
 export default {
   name: 'mt-tab-item',
 
+    /**
+     * @noteType prop
+     * @field id
+     * @desc id
+     * @type input
+     * @value
+     */
   props: ['id']
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      "space": "tab"
+    },
+    "textField": {
+      "field": "space",
+      "className": "mint-tab-item-label"
+    }
+ }
+ */
 </script>
 
 <style lang="css">

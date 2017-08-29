@@ -3,6 +3,16 @@
   </div>
 </template>
 <script>
+    /**
+     * @noteType component
+     * @name LayoutSpacing
+     * @namespace mt-layout-spacing
+     * @desc 间距
+     * @type container
+     * @class mint-layout-spacing
+     * @html
+     * <mt-layout-spacing></mt-layout-spacing>
+     */
     export default {
         name: 'mt-layout-spacing',
         methods: {
@@ -12,6 +22,13 @@
         },
         props: {
             background: String,
+            /**
+             * @noteType prop
+             * @field height
+             * @desc 高度
+             * @type input
+             * @value
+             */
             height: String
         },
         computed: {

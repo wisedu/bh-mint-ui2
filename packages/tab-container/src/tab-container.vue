@@ -50,6 +50,18 @@ import arrayFindIndex from 'array-find-index';
  *   <mt-tab-container-item id="3"> 内容C </mt-tab-container-item>
  * </mt-tab-container>
  */
+
+/**
+ * @noteType component
+ * @name TabContainer
+ * @namespace mt-tab-container
+ * @desc 选项卡内容容器
+ * @type tab
+ * @class mint-tab-container
+ * @noDisplayInComponents true
+ * @html
+ * <mt-tab-container v-model="selected"></mt-tab-container>
+ */
 export default {
   name: 'mt-tab-container',
 
@@ -174,4 +186,18 @@ export default {
     }
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+    "item": {
+      "componentName": "TabContainerItem",
+      "count": 2
+    },
+    "mock": {
+      "selected": "0"
+    }
+ }
+ */
 </script>

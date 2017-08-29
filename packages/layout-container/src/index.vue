@@ -4,6 +4,16 @@
   </div>
 </template>
 <script>
+    /**
+     * @noteType component
+     * @name LayoutContainer
+     * @namespace mt-layout-container
+     * @desc 普通容器
+     * @type container
+     * @class mint-layout-container
+     * @html
+     * <mt-layout-container></mt-layout-container>
+     */
     export default {
         name: 'mt-layout-container',
         methods: {

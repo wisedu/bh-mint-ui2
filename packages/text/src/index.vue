@@ -5,6 +5,15 @@
 </template>
 
 <script>
+    /**
+     * @noteType component
+     * @name Text
+     * @namespace mt-text
+     * @desc 文本
+     * @class mint-text
+     * @html
+     * <mt-text>{{text}}</mt-text>
+     */
 export default {
   name: 'mt-text',
     methods: {
@@ -14,6 +23,36 @@ export default {
     },
   props: {
       size: String,
+      /**
+       * @noteType prop
+       * @field type
+       * @desc 样式
+       * @type select
+       * @option
+       [
+       {
+         "text": "default",
+         "value": "default",
+         "select": true
+       },
+       {
+         "text": "primary",
+         "value": "primary"
+       },
+       {
+         "text": "warning",
+         "value": "warning"
+       },
+       {
+         "text": "danger",
+         "value": "danger"
+       },
+       {
+         "text": "grey",
+         "value": "grey"
+       }
+       ]
+       */
       type: {
         type: String,
         default: 'default'
@@ -37,6 +76,16 @@ export default {
         }
     }
 };
+
+    /**
+     * @noteType external
+     * @content
+     {
+       "mock": {
+          "text": "文本"
+        }
+     }
+     */
 </script>
 
 <style lang="css">

@@ -3,6 +3,15 @@
 </template>
 
 <script>
+    /**
+     * @noteType component
+     * @name Image
+     * @namespace mt-image
+     * @desc 图片
+     * @class mint-image
+     * @html
+     * <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png"></mt-image>
+     */
 export default {
   name: 'mt-image',
     methods: {
@@ -11,8 +20,29 @@ export default {
         }
     },
   props: {
+      /**
+       * @noteType prop
+       * @field src
+       * @desc 地址
+       * @type input
+       * @value http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png
+       */
       src: String,
+      /**
+       * @noteType prop
+       * @field width
+       * @desc 宽度
+       * @type input
+       * @value
+       */
       width: String,
+      /**
+       * @noteType prop
+       * @field height
+       * @desc 高度
+       * @type input
+       * @value
+       */
       height: String
   },
     computed: {

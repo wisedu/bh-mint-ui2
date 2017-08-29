@@ -3,6 +3,15 @@
   </div>
 </template>
 <script>
+    /**
+     * @noteType component
+     * @name Hr
+     * @namespace mt-hr
+     * @desc 分隔线
+     * @class mint-hr
+     * @html
+     * <mt-hr></mt-hr>
+     */
     export default {
         name: 'mt-hr',
         methods: {
@@ -13,6 +22,13 @@
         props: {
             background: String,
             margin: String,
+            /**
+             * @noteType prop
+             * @field height
+             * @desc 线的粗细
+             * @type input
+             * @value
+             */
             height: String
         },
         computed: {

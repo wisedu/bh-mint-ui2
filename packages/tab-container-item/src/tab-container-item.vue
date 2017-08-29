@@ -21,9 +21,29 @@
  *   <mt-tab-container-item id="3"> 内容C </mt-tab-container-item>
  * </mt-tab-container>
  */
+
+/**
+ * @noteType component
+ * @name TabContainerItem
+ * @namespace mt-tab-container-item
+ * @desc 选项卡内容节点
+ * @type container|tabItem
+ * @class mint-tab-container-item
+ * @uniqueKey id
+ * @noDisplayInComponents true
+ * @html
+ * <mt-tab-container-item id="1"></mt-tab-container-item>
+ */
 export default {
   name: 'mt-tab-container-item',
 
+    /**
+     * @noteType prop
+     * @field id
+     * @desc id
+     * @type input
+     * @value
+     */
   props: ['id']
 };
 </script>
