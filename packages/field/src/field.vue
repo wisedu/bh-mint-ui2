@@ -73,6 +73,16 @@ if (process.env.NODE_ENV === 'component') {
  * <mt-field v-model="value" label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
  * <mt-field v-model="value" label="邮箱" placeholder="成功状态" state="success"></mt-field>
  */
+
+/**
+ * @noteType component
+ * @name Field
+ * @namespace mt-field
+ * @desc 输入框
+ * @class mint-field
+ * @html
+ * <mt-field label="输入框"></mt-field>
+ */
 export default {
   name: 'mt-field',
 
@@ -88,16 +98,132 @@ export default {
   },
 
   props: {
+      /**
+       * @noteType prop
+       * @field type
+       * @desc 输入类型
+       * @type select
+       * @option
+       [
+       {
+         "text": "文本",
+         "value": ""
+       },
+       {
+         "text": "密码",
+         "value": "password"
+       },
+       {
+         "text": "日期",
+         "value": "date"
+       },
+       {
+         "text": "数字",
+         "value": "number"
+       },
+       {
+         "text": "文本域",
+         "value": "textarea"
+       },
+       {
+         "text": "邮箱",
+         "value": "email"
+       },
+       {
+         "text": "链接",
+         "value": "url"
+       },
+       {
+         "text": "电话",
+         "value": "tel"
+       }
+       ]
+       */
     type: {
       type: String,
       default: 'text'
     },
     rows: String,
+      /**
+       * @noteType prop
+       * @field label
+       * @desc 内容
+       * @type input
+       * @value 输入框
+       */
     label: String,
+      /**
+       * @noteType prop
+       * @field placeholder
+       * @desc placeholder
+       * @type input
+       * @value
+       */
     placeholder: String,
+      /**
+       * @noteType prop
+       * @field readonly
+       * @desc 是否只读
+       * @valueType boolean
+       * @type radio
+       * @option
+       [
+       {
+           "text": "否",
+           "value": false
+       },
+       {
+           "text": "是",
+           "value": true
+       }
+       ]
+       */
     readonly: Boolean,
+      /**
+       * @noteType prop
+       * @field disabled
+       * @desc 是否disabled
+       * @valueType boolean
+       * @type radio
+       * @option
+       [
+       {
+           "text": "否",
+           "value": false
+       },
+       {
+           "text": "是",
+           "value": true
+       }
+       ]
+       */
     disabled: Boolean,
     disableClear: Boolean,
+      /**
+       * @noteType prop
+       * @field state
+       * @desc 校验样式
+       * @type select
+       * @option
+       [
+       {
+         "text": "默认",
+         "value": ""
+       },
+       {
+         "text": "成功",
+         "value": "success"
+       },
+       {
+         "text": "失败",
+         "value": "error"
+       },
+       {
+         "text": "警告",
+         "value": "warning"
+       }
+       ]
+       */
     state: {
       type: String,
       default: 'default'
