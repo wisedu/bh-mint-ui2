@@ -52,15 +52,85 @@
  *   <div slot="value">描述文字啊哈</div>
  * </mt-cell>
  */
+
+/**
+ * @noteType component
+ * @name Cell
+ * @namespace mt-cell
+ * @desc 单元格
+ * @class mint-cell
+ * @html
+ * <mt-cell title="标题文字"></mt-cell>
+ */
 export default {
   name: 'mt-cell',
 
   props: {
     to: [String, Object],
+      /**
+       * @noteType prop
+       * @field icon
+       * @desc 图标
+       * @type select
+       * @option
+       [
+       {
+         "text": "",
+         "value": ""
+       },
+       {
+         "text": "返回",
+         "value": "back"
+       },
+       {
+         "text": "更多",
+         "value": "more"
+       }
+       ]
+       */
     icon: String,
+      /**
+       * @noteType prop
+       * @field title
+       * @desc 标题
+       * @type input
+       * @value 标题文字
+       */
     title: String,
+      /**
+       * @noteType prop
+       * @field label
+       * @desc 备注
+       * @type input
+       * @value
+       */
     label: String,
+      /**
+       * @noteType prop
+       * @field isLink
+       * @desc 可点击的链接
+       * @type select
+       * @valueType boolean
+       * @option
+       [
+       {
+         "text": "否",
+         "value": false
+       },
+       {
+         "text": "是",
+         "value": true
+       }
+       ]
+       */
     isLink: Boolean,
+      /**
+       * @noteType prop
+       * @field value
+       * @desc 右侧显示文字
+       * @type input
+       * @value
+       */
     value: {}
   },
 
@@ -87,6 +157,23 @@ export default {
     }
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+   "slot": [
+          {
+            "field": "icon",
+            "desc": "图标",
+            "caption": "",
+            "option": [
+              "Image"
+            ]
+          }
+        ]
+ }
+ */
 </script>
 
 <style lang="css">
