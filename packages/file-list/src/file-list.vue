@@ -14,7 +14,7 @@
 /**
  * @noteType component
  * @name FileList
- * @namespace mt-select
+ * @namespace mt-file-list
  * @desc 文件列表
  * @class mint-file-list
  * @html
