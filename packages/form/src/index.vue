@@ -12,7 +12,7 @@
      * @type container
      * @wrapClassName mint-form
      * @html
-     * <mt-cell title="标题文字"></mt-cell>
+     * <mt-form></mt-form>
      */
     export default {
         name: 'mt-form',
