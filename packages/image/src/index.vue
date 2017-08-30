@@ -6,9 +6,9 @@
     /**
      * @noteType component
      * @name Image
-     * @namespace mt-image
+     * @tagName mt-image
      * @desc 图片
-     * @class mint-image
+     * @wrapClassName mint-image
      * @html
      * <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png"></mt-image>
      */

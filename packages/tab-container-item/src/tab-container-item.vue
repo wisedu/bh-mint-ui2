@@ -25,10 +25,10 @@
 /**
  * @noteType component
  * @name TabContainerItem
- * @namespace mt-tab-container-item
+ * @tagName mt-tab-container-item
  * @desc 选项卡内容节点
  * @type container|tabItem
- * @class mint-tab-container-item
+ * @wrapClassName mint-tab-container-item
  * @uniqueKey id
  * @noDisplayInComponents true
  * @html

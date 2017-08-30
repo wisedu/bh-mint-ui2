@@ -6,10 +6,10 @@
     /**
      * @noteType component
      * @name LayoutSpacing
-     * @namespace mt-layout-spacing
+     * @tagName mt-layout-spacing
      * @desc 间距
      * @type container
-     * @class mint-layout-spacing
+     * @wrapClassName mint-layout-spacing
      * @html
      * <mt-layout-spacing></mt-layout-spacing>
      */

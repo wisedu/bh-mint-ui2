@@ -56,9 +56,9 @@
 /**
  * @noteType component
  * @name Cell
- * @namespace mt-cell
+ * @tagName mt-cell
  * @desc 单元格
- * @class mint-cell
+ * @wrapClassName mint-cell
  * @html
  * <mt-cell title="标题文字"></mt-cell>
  */

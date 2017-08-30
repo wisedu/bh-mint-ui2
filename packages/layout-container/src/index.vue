@@ -7,10 +7,10 @@
     /**
      * @noteType component
      * @name LayoutContainer
-     * @namespace mt-layout-container
+     * @tagName mt-layout-container
      * @desc 普通容器
      * @type container
-     * @class mint-layout-container
+     * @wrapClassName mint-layout-container
      * @html
      * <mt-layout-container></mt-layout-container>
      */

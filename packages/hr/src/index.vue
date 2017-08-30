@@ -6,9 +6,9 @@
     /**
      * @noteType component
      * @name Hr
-     * @namespace mt-hr
+     * @tagName mt-hr
      * @desc 分隔线
-     * @class mint-hr
+     * @wrapClassName mint-hr
      * @html
      * <mt-hr></mt-hr>
      */

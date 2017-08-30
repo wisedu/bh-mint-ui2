@@ -8,9 +8,9 @@
     /**
      * @noteType component
      * @name Text
-     * @namespace mt-text
+     * @tagName mt-text
      * @desc 文本
-     * @class mint-text
+     * @wrapClassName mint-text
      * @html
      * <mt-text>{{text}}</mt-text>
      */

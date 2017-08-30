@@ -77,9 +77,9 @@ if (process.env.NODE_ENV === 'component') {
 /**
  * @noteType component
  * @name Field
- * @namespace mt-field
+ * @tagName mt-field
  * @desc 输入框
- * @class mint-field
+ * @wrapClassName mint-field
  * @html
  * <mt-field label="输入框"></mt-field>
  */

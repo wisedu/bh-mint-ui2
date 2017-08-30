@@ -24,9 +24,9 @@
 
 /**
  * @name Button
- * @namespace mt-button
+ * @tagName mt-button
  * @desc 按钮
- * @class mint-button
+ * @wrapClassName mint-button
  * @display inline
  * @noteType component
  * @html

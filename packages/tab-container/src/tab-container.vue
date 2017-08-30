@@ -54,10 +54,10 @@ import arrayFindIndex from 'array-find-index';
 /**
  * @noteType component
  * @name TabContainer
- * @namespace mt-tab-container
+ * @tagName mt-tab-container
  * @desc 选项卡内容容器
  * @type tab
- * @class mint-tab-container
+ * @wrapClassName mint-tab-container
  * @noDisplayInComponents true
  * @html
  * <mt-tab-container v-model="selected"></mt-tab-container>

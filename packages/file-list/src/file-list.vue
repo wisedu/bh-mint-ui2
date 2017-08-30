@@ -14,9 +14,9 @@
 /**
  * @noteType component
  * @name FileList
- * @namespace mt-file-list
+ * @tagName mt-file-list
  * @desc 文件列表
- * @class mint-file-list
+ * @wrapClassName mint-file-list
  * @html
  * <mt-file-list label="标题文字" :file-list="[]"></mt-file-list>
  */

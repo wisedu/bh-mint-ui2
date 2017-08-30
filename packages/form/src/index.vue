@@ -7,10 +7,10 @@
     /**
      * @noteType component
      * @name Form
-     * @namespace mt-form
+     * @tagName mt-form
      * @desc 表单容器
      * @type container
-     * @class mint-form
+     * @wrapClassName mint-form
      * @html
      * <mt-cell title="标题文字"></mt-cell>
      */

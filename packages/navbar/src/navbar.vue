@@ -31,10 +31,10 @@
 /**
  * @noteType component
  * @name Navbar
- * @namespace mt-navbar
+ * @tagName mt-navbar
  * @desc 选项卡
  * @type tab
- * @class mint-navbar
+ * @wrapClassName mint-navbar
  * @html
  * <mt-navbar v-model="selected"></mt-navbar>
  */

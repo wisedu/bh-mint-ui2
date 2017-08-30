@@ -26,10 +26,10 @@
 /**
  * @noteType component
  * @name TabItem
- * @namespace mt-tab-item
+ * @tagName mt-tab-item
  * @desc 选项卡头节点
  * @type tabItem
- * @class mint-tab-item
+ * @wrapClassName mint-tab-item
  * @uniqueKey id
  * @noDisplayInComponents true
  * @html
