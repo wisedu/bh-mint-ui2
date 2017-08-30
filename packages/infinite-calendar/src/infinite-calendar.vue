@@ -15,9 +15,9 @@
                 <h3 v-text="item.year + '年' + item.month + '月'" class="top-high"></h3>
                 <ul class=each-month>
                     <li class=each-day track-by=$index v-for='day in item.dayList' @click='chooseDate(day, item.month, item.year)' :key='day'>
-                        <div :class="[addClassName(day, item.month, item.year), {'trip-time': isCurrent(day, item.month, item.year)}]"> {{ showDate(day, item.month, item.year) }} </div>
-                        <span class=jia v-if='setFestival(day, item.month, item.year) !== 0'>假</span>
-                        <span class=recent v-text='setTip(day, item.month, item.year)'></span>
+                        <div :class="[addClassName(day.day, item.month, item.year), {'trip-time': day.selected}]"> {{ showDate(day.day, item.month, item.year) }} </div>
+                        <span class=jia v-if='setFestival(day.day, item.month, item.year) !== 0'>假</span>
+                        <span class=recent v-text='setTip(day.day, item.month, item.year)'></span>
                     </li>
                 </ul>
             </div>
@@ -225,6 +225,8 @@ export default {
             }
         }
     },
+    computed: {
+    },
     data: function() {
         return {
             weekList: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -314,14 +316,20 @@ export default {
         createDayList: function(month, year) {
             var daysInMonth = this.getDayNum(month, year);
             var padLength = (new Date(year + '/' + month + '/1')).getDay();
-            var eventPath = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28];
+            var eventPath = [];
+            for (var index = 1; index <= 28; index++) {
+                eventPath.push({day:index, selected: false});
+            }
             var cur = 29;
             for (; cur <= daysInMonth; cur++) {
-                eventPath.push(cur);
+                eventPath.push({
+                    day:cur,
+                    selected: false
+                });
             }
             var i = 0;
             for (; i < padLength; i++) {
-                eventPath.unshift(null);
+                eventPath.unshift({day:undefined, selected: false});
             }
             return eventPath;
         },
@@ -383,25 +391,19 @@ export default {
                 return expires;
             }
         },
-        isCurrent: function(day, month, year) {
-            if (!day) {
-                return false;
-            }
-            var indate = new Date(year + '/' + month + '/' + day);
-            return 1 * indate === 1 * this._currentDate;
-        },
         chooseDate: function(day, month, year) {
-            if (day) {
-                var in_date = new Date(year + '/' + month + '/' + day);
+            if (day.day) {
+                var in_date = new Date(year + '/' + month + '/' + day.day);
                 var parts = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
                 var week = parts[in_date.getDay()];
                 if (!(1 * in_date < 1 * this._today || (this.mode === 'rangeTo' && 1 * in_date < 1 * this._currentDate || (1 * in_date > 1 * this._endDate)))) {
                     var data = {
                         week: week,
-                        date: [year, month, day],
+                        date: [year, month, day.day],
                         recent: this.friendlyDayName(in_date, this._today)
                     };
                     this._currentDate = in_date;
+                    day.selected = !day.selected;
                     this.callback(data);
                 }
             }
