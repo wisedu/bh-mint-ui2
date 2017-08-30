@@ -2,17 +2,17 @@
     <div class=calendar>
         <div class=calendar-header>
             <div class=calendar-title>
-                <div class="control" style="float:left" @click="preYear"><</div> 
+                <div class="control" style="float:left" @click="prevYear">&lt;</div> 
                 <div class="control">2017年</div> 
-                <div class="control" style="float:right" @click="nextYear">></div>
+                <div class="control" style="float:right" @click="nextYear">&gt;</div>
             </div>
             <div class=week-number>
                 <span v-for='item in weekList' v-text=item :key='item'></span>
             </div>
         </div>
-        <div :style="{marginTop: title === '' ? '50px': '82px'}">
+        <div style="margin-top:82px">
             <div class=calendar-wrapper v-for='item in calendar' :key='item'>
-                <h3 v-text="item.year + '年' + item.month + '月'" :class="this.title == '' ? 'top-low': 'top-high'"></h3>
+                <h3 v-text="item.year + '年' + item.month + '月'" class="top-high"></h3>
                 <ul class=each-month>
                     <li class=each-day track-by=$index v-for='day in item.dayList' @click='chooseDate(day, item.month, item.year)' :key='day'>
                         <div :class="[addClassName(day, item.month, item.year), {'trip-time': isCurrent(day, item.month, item.year)}]"> {{ showDate(day, item.month, item.year) }} </div>
@@ -43,7 +43,6 @@
     height: 48px;
     line-height: 48px;
     background: #fff;
-    /* color: #9e8052; */
     text-align: center;
 }
 
@@ -135,12 +134,6 @@
     border-radius: 5px
 }
 
-.calendar .calendar-wrapper .each-month .each-day .f12_2 {
-    font-size: 12px;
-    position: relative;
-    top: -2px
-}
-
 .calendar .calendar-wrapper .each-month .each-day .trip-time {
     background: #06C0AE;
     color: #fff!important;
@@ -189,9 +182,6 @@
     top: 82px
 }
 
-.calendar .calendar-wrapper .top-low {
-    top: 50px
-}
 </style>
 <script>
 export default {
@@ -203,32 +193,20 @@ export default {
                 return new Date();
             }
         },
-        title: {
-            type: [String],
-            default: function() {
-                return '';
-            }
-        },
-        isAboard: {
-            type: Boolean,
-            default: function() {
-                return false;
-            }
-        },
         mode: {
             type: [String, Object],
             default: function() {
                 return 'rangeFrom';
             }
         },
-        leaveDate: {
+        currentDate: {
             type: [String, Object],
             default: function() {
                 return '';
             }
         },
-        backDate: {
-            type: [String, Object],
+        startDate: {
+            type: [String, Object, Date],
             default: function() {
                 return '';
             }
@@ -245,13 +223,6 @@ export default {
                 return function() {
                 };
             }
-        },
-        isHtmlTitle: false,
-        from: {
-            type: [String],
-            default: function() {
-                return '';
-            }
         }
     },
     data: function() {
@@ -260,10 +231,10 @@ export default {
             year: 0,
             month: 0,
             calendar: [],
-            _today: new Date(),
-            _endDate: new Date(),
-            _leaveDate: new Date(),
-            _backDate: new Date(),
+            _startDate: null,
+            _today: null,
+            _endDate: null,
+            _currentDate: null,
             festival: {
                 '2017-10-1': '国庆',
                 '2017-10-2': '假',
@@ -310,11 +281,12 @@ export default {
     },
     methods: {
         init: function() {
-            if (typeof this.today === 'string') {
-                this._today = new Date(this.today.replace(/-/g, '/'));
+            
+            if (this.startDate === '') {
+                this._startDate = new Date(1 * this._today + 15552E6);
             } else {
-                this._today = this.today;
-                this.resetTime(this._today);
+                this._startDate = this.startDate;
+                this._startDate = this.resetTime(new Date(this._startDate.replace(/-/g, '/')));
             }
             if (this.endDate === '') {
                 this._endDate = new Date(1 * this._today + 15552E6);
@@ -322,18 +294,19 @@ export default {
                 this._endDate = this.endDate;
                 this._endDate = this.resetTime(new Date(this._endDate.replace(/-/g, '/')));
             }
-            if (this.leaveDate === '') {
-                this._leaveDate = new Date(1 * this._today + 864E5);
+            if (this.currentDate === '') {
+                this._currentDate = new Date(1 * this._today + 864E5);
             } else {
-                this._leaveDate = this.leaveDate;
-                this._leaveDate = this.resetTime(new Date(this._leaveDate.replace(/-/g, '/')));
+                this._currentDate = this.currentDate;
+                this._currentDate = this.resetTime(new Date(this._currentDate.replace(/-/g, '/')));
             }
-            if (this.isAboard) {
-                if (this.backDate !== '') {
-                    this._backDate = this.backDate;
-                    this._backDate = this.resetTime(new Date(this._backDate.replace(/-/g, '/')));
-                }
+            if (this.today === '') {
+                this._today = new Date(val.replace(/-/g, '/'));
+            } else {
+                this._today = this.today;
+                this.resetTime(this._today);
             }
+
             this.year = this._today.getFullYear();
             this.month = this._today.getMonth() + 1;
             this.createClendar();
@@ -385,12 +358,9 @@ export default {
                 var classes = [];
                 var holiday = this.festival[year + '-' + month + '-' + day];
                 d.getDay() !== 0 && d.getDay() !== 6 || classes.push('weekend');
-                1 * d < 1 * this._today || (this.mode === 'rangeTo' && 1 * d < 1 * this._leaveDate || 1 * d > 1 * this._endDate) ? classes.push('disabled') : 1 * d === 1 * this._today && classes.push('today');
+                1 * d < 1 * this._today || (this.mode === 'rangeTo' && 1 * d < 1 * this._currentDate || 1 * d > 1 * this._endDate) ? classes.push('disabled') : 1 * d === 1 * this._today && classes.push('today');
                 if (holiday) {
                     holiday === '假' ? classes.push('holiday') : classes.push('festival holiday');
-                }
-                if (this.from === 'flight') {
-                    ['今天', '明天', '后天'].indexOf(this.showDate(day, month, year)) !== -1 && classes.push('f12_2');
                 }
                 return classes.join(' ');
             }
@@ -408,13 +378,8 @@ export default {
         },
         setTip: function(day, month, year) {
             if (day) {
-                var against = new Date(year + '/' + month + '/' + day);
-                var expires = void 0;
-                1 * against === 1 * this._today ? expires = '今天' : 1 * against - 1 * this._today === 864E5 ? expires = '明天' : 1 * against - 1 * this._today === 1728E5 && (expires = '后天');
-                this.from === 'flight' && (expires = '');
-                if (this.isAboard) {
-                    this.mode === 'rangeTo' ? 1 * against === 1 * this._leaveDate && 1 * against === 1 * this._backDate ? expires = '去/返' : 1 * against === 1 * this._backDate ? expires = '返程' : 1 * against === 1 * this._leaveDate && (expires = '去程') : 1 * against === 1 * this._leaveDate && (expires = '去程');
-                }
+                var in_date = new Date(year + '/' + month + '/' + day);
+                var expires = this.friendlyDayName(this._today, in_date);
                 return expires;
             }
         },
@@ -423,35 +388,20 @@ export default {
                 return false;
             }
             var indate = new Date(year + '/' + month + '/' + day);
-            return 1 * indate === 1 * this._leaveDate || (this.mode === 'rangeTo' && 1 * indate === 1 * this._backDate || void 0);
+            return 1 * indate === 1 * this._currentDate;
         },
         chooseDate: function(day, month, year) {
             if (day) {
-                var d = new Date(year + '/' + month + '/' + day);
+                var in_date = new Date(year + '/' + month + '/' + day);
                 var parts = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-                var week = parts[d.getDay()];
-                if (!(1 * d < 1 * this._today || (this.mode === 'rangeTo' && 1 * d < 1 * this._leaveDate || (1 * d > 1 * this._endDate)))) {
+                var week = parts[in_date.getDay()];
+                if (!(1 * in_date < 1 * this._today || (this.mode === 'rangeTo' && 1 * in_date < 1 * this._currentDate || (1 * in_date > 1 * this._endDate)))) {
                     var data = {
                         week: week,
                         date: [year, month, day],
-                        recent: ''
+                        recent: this.friendlyDayName(in_date, this._today)
                     };
-                    if (1 * d === 1 * this._today) {
-                        data.recent = '今天';
-                    } else {
-                        if (1 * d - 1 * this._today === 864E5) {
-                            data.recent = '明天';
-                        } else {
-                            if (1 * d - 1 * this._today === 1728E5) {
-                                data.recent = '后天';
-                            }
-                        }
-                    }
-                    if (this.from === 'flight' && this.mode === 'rangeTo') {
-                        this._backDate = d;
-                    } else {
-                        this._leaveDate = d;
-                    }
+                    this._currentDate = in_date;
                     this.callback(data);
                 }
             }
@@ -463,27 +413,31 @@ export default {
                 if (step !== '假') {
                     n = step;
                 }
-                if (this.from === 'flight') {
-                    var a = (new Date(year + '/' + month + '/' + day)).getTime();
-                    var b = this._today.getTime();
-                    if (a === b) {
-                        return '今天';
-                    }
-                    if (a === b + 864E5) {
-                        return '明天';
-                    }
-                    if (a === b + 1728E5) {
-                        return '后天';
-                    }
-                }
             }
             return n;
         },
-        preYear: function() {
+        prevYear: function() {
             console.log(1);
         },
         nextYear: function() {
             console.log(2);
+        },
+        friendlyDayName: function(today, in_date) {
+            if (1 * today - 1 * in_date === 1728E5) {
+                return '前天';
+            }
+            if (1 * today - 1 * in_date === 864E5) {
+                return '昨天';
+            }
+            if (1 * in_date === 1 * today) {
+                return '今天';
+            }
+            if (1 * in_date - 1 * today === 864E5) {
+                return '明天';
+            }
+            if (1 * in_date - 1 * today === 1728E5) {
+                return '后天';
+            }
         }
     }
 };

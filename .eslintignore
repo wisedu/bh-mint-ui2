@@ -1,3 +1,5 @@
 release.sh
 node_modules
 lib
+example
+packages
