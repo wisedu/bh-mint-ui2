@@ -72,6 +72,7 @@ export default {
        * @field type
        * @desc 样式
        * @type select
+       * @value primary
        * @option
        [
        {
@@ -80,8 +81,7 @@ export default {
        },
        {
          "text": "primary",
-         "value": "primary",
-         "select": true
+         "value": "primary"
        },
        {
          "text": "danger",
@@ -114,8 +114,7 @@ export default {
        [
        {
          "text": "normal",
-         "value": "normal",
-         "select": true
+         "value": "normal"
        },
        {
          "text": "small",

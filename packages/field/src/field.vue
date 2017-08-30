@@ -166,6 +166,7 @@ export default {
        * @desc 是否只读
        * @valueType boolean
        * @type radio
+       * @value false
        * @option
        [
        {
@@ -185,6 +186,7 @@ export default {
        * @desc 是否disabled
        * @valueType boolean
        * @type radio
+       * @value false
        * @option
        [
        {

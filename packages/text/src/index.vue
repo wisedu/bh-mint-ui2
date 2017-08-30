@@ -28,12 +28,12 @@ export default {
        * @field type
        * @desc 样式
        * @type select
+       * @value default
        * @option
        [
        {
          "text": "default",
-         "value": "default",
-         "select": true
+         "value": "default"
        },
        {
          "text": "primary",

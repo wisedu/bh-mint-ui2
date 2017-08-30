@@ -111,6 +111,7 @@ export default {
        * @desc 可点击的链接
        * @type select
        * @valueType boolean
+       * @value false
        * @option
        [
        {
