@@ -274,6 +274,13 @@ export default {
     }
   }
 };
+/**
+ * @noteType external
+ * @content
+ {
+   "xtype": [ "text", "textarea" ]
+ }
+ */
 </script>
 
 <style lang="css">

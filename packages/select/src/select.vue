@@ -45,7 +45,7 @@ export default {
   name: 'mt-select',
   components: { SelectedFooter },
   props: {
-    value: { required: true },
+    value: { default: '' },
     // url: { type: String, default: '' },
 
     /**
@@ -189,7 +189,8 @@ export default {
     "mock": {
     "selected": ""
   },
-  "modelName": "selected"
+  "modelName": "selected",
+  "xtype": [ "select", "multi-select", "multi-select2" ]
  }
  */
 </script>
