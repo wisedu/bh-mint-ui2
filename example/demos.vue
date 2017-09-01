@@ -3,7 +3,7 @@
     <div v-for="group in navs">
       <div class="page-title" v-text="group.title"></div>
       <mt-cell
-        v-for="item in group.list"
+        v-for="item in group.list" :key="item.path"
         :to="item.path"
         is-link>
         <div slot="title">

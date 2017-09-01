@@ -1,7 +1,7 @@
 <template>
   <div>
     <infinite-calendar :current-date="currentDate" :today="today" :end-date="endDate" 
-        :callback="setTime"></infinite-calendar>
+       :start-date="startDate" mode="rangeTo" :callback="setTime"></infinite-calendar>
   </div>
 </template>
 <style>
@@ -12,6 +12,7 @@
         data: function() {
             return {
                 today: new Date(),
+                startDate: '2017-4-10',
                 endDate: '2018-11-9',
                 currentDate: '2017-8-31'
             };

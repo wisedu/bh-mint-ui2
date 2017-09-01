@@ -309,8 +309,8 @@ export default {
                 this.resetTime(this._today);
             }
 
-            this.year = this._today.getFullYear();
-            this.month = this._today.getMonth() + 1;
+            this.year = this._startDate.getFullYear();
+            this.month = this._startDate.getMonth() + 1;
             this.createClendar();
         },
         createDayList: function(month, year) {
