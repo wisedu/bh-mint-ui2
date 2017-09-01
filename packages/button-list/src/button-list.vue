@@ -16,7 +16,7 @@
  * @param {Array} options - 选项数据
  * @example
  */
-import MtCell from 'mint-ui/packages/cell/index.js';
+import MtCell from 'bh-mint-ui2/packages/cell/index.js';
 export default {
   name: 'mt-button-list',
   props: {

@@ -24,7 +24,7 @@
  * @param {Array} options - 格式化后的树形字典数据，请求和格式化的过程在组件外完成
  * @example
  */
-// import MtSelect from 'mint-ui/packages/tree-selector/index.js';
+// import MtSelect from 'bh-mint-ui2/packages/tree-selector/index.js';
 import Bread from './bread.vue';
 export default {
   name: 'mt-tree-selector',

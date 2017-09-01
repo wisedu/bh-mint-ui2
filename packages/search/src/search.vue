@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import XCell from 'mint-ui/packages/cell/index.js';
+import XCell from 'bh-mint-ui2/packages/cell/index.js';
 if (process.env.NODE_ENV === 'component') {
-  require('mint-ui/packages/cell/style.css');
+  require('bh-mint-ui2/packages/cell/style.css');
 }
 
 /**

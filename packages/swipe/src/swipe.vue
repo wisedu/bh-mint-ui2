@@ -60,8 +60,8 @@
 </template>
 
 <script>
-  import { once } from 'mint-ui/src/utils/dom';
-  import { addClass, removeClass } from 'mint-ui/src/utils/dom';
+  import { once } from 'bh-mint-ui2/src/utils/dom';
+  import { addClass, removeClass } from 'bh-mint-ui2/src/utils/dom';
 
   export default {
     name: 'mt-swipe',

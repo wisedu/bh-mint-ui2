@@ -15,8 +15,8 @@
  * @example
  * <mt-switch v-model="value"></mt-switch>
  */
-import MtCell from 'mint-ui/packages/cell/index.js';
-import MtSwitch from 'mint-ui/packages/switch/index.js';
+import MtCell from 'bh-mint-ui2/packages/cell/index.js';
+import MtSwitch from 'bh-mint-ui2/packages/switch/index.js';
 export default {
   name: 'mt-switcher',
 

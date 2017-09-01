@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "main": "lib/index.js",
   "author": "lgh",
-  "homepage": "https://github.com/ElemeFE/mint-ui",
+  "homepage": "https://github.com/ElemeFE/bh-mint-ui2",
   "license": "MIT",
-  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-hr",
+  "repository": "https://github.com/ElemeFE/bh-mint-ui2/tree/master/components/mint-hr",
   "dependencies": {
   }
 }

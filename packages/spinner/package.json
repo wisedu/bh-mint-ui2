@@ -8,11 +8,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mint-ui/mint-spinner.git"
+    "url": "git+https://github.com/bh-mint-ui2/mint-spinner.git"
   },
-  "homepage": "https://github.com/mint-ui/mint-spinner#readme",
+  "homepage": "https://github.com/bh-mint-ui2/mint-spinner#readme",
   "bugs": {
-    "url": "https://github.com/mint-ui/mint-spinner/issues"
+    "url": "https://github.com/bh-mint-ui2/mint-spinner/issues"
   },
   "author": "qingwei-li<cinwell.li@gmail.com>",
   "license": "MIT",

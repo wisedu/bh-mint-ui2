@@ -33,7 +33,7 @@
 </style>
 
 <script>
-import { once } from 'mint-ui/src/utils/dom';
+import { once } from 'bh-mint-ui2/src/utils/dom';
 import arrayFindIndex from 'array-find-index';
 
 /**

@@ -4,8 +4,8 @@ var dependencies = require('../package.json').dependencies;
 var externals = {};
 var pkg = {};
 Object.keys(Components).forEach(function(key) {
-  externals[`mint-ui/packages/${key}/index.js`] = `mint-ui/lib/${key}`;
-  externals[`mint-ui/packages/${key}/style.css`] = `mint-ui/lib/${key}/style.css`;
+  externals[`bh-mint-ui2/packages/${key}/index.js`] = `bh-mint-ui2/lib/${key}`;
+  externals[`bh-mint-ui2/packages/${key}/style.css`] = `bh-mint-ui2/lib/${key}/style.css`;
 });
 Object.keys(dependencies).forEach(function(key) {
   externals[key] = key;
@@ -24,7 +24,7 @@ exports.pkg = Object.assign({
 }, pkg);
 
 exports.alias = {
-  'mint-ui': path.join(__dirname, '..'),
+  'bh-mint-ui2': path.join(__dirname, '..'),
   'src': path.join(__dirname, '../src')
 };
 

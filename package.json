@@ -1,6 +1,6 @@
 {
   "name": "bh-mint-ui2",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -8,7 +8,7 @@
     "mobile",
     "eleme"
   ],
-  "main": "lib/mint-ui.common.js",
+  "main": "lib/bh-mint-ui2.common.js",
   "style": "lib/style.css",
   "files": [
     "lib",

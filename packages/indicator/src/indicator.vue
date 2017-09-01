@@ -68,9 +68,9 @@
 </style>
 
 <script type="text/babel">
-  import Spinner from 'mint-ui/packages/spinner/index.js';
+  import Spinner from 'bh-mint-ui2/packages/spinner/index.js';
   if (process.env.NODE_ENV === 'component') {
-    require('mint-ui/packages/spinner/style.css');
+    require('bh-mint-ui2/packages/spinner/style.css');
   }
 
   export default {

@@ -16,7 +16,7 @@ cooking.set({
 });
 
 cooking.remove('output.publicPath');
-cooking.add('output.filename', 'mint-ui.common.js');
+cooking.add('output.filename', 'bh-mint-ui2.common.js');
 cooking.add('performance.hints', false);
 cooking.add('loader.js.exclude', config.jsexclude);
 

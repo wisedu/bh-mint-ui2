@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import XCell from 'mint-ui/packages/cell/index.js';
-import Clickoutside from 'mint-ui/src/utils/clickoutside';
+import XCell from 'bh-mint-ui2/packages/cell/index.js';
+import Clickoutside from 'bh-mint-ui2/src/utils/clickoutside';
 if (process.env.NODE_ENV === 'component') {
-  require('mint-ui/packages/cell/style.css');
+  require('bh-mint-ui2/packages/cell/style.css');
 }
 
 /**

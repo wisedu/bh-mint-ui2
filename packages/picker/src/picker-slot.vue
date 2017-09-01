@@ -101,8 +101,8 @@
 <script type="text/babel">
   import draggable from './draggable';
   import translateUtil from './translate';
-  import { once, addClass, removeClass } from 'mint-ui/src/utils/dom';
-  import emitter from 'mint-ui/src/mixins/emitter';
+  import { once, addClass, removeClass } from 'bh-mint-ui2/src/utils/dom';
+  import emitter from 'bh-mint-ui2/src/mixins/emitter';
   import Vue from 'vue';
   if (!Vue.prototype.$isServer) {
     require('raf.js');
