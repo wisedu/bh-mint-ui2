@@ -110,6 +110,7 @@ export default {
        * @field size
        * @desc 大小
        * @type select
+       * @value normal
        * @option
        [
        {
