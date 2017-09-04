@@ -172,7 +172,8 @@ export default {
               "Image"
             ]
           }
-        ]
+        ],
+   "bindField": ":value"
  }
  */
 </script>
