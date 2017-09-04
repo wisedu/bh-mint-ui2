@@ -1,6 +1,6 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick">
-    <div class="select-value" >
+    <div class="select-value">
       <template>{{singleSelectDisplay()}}</template>
     </div>
     <transition name="slide">
@@ -110,6 +110,7 @@ export default {
     },
     selectOption(content){
       this.currentValue += " " + content;
+      this.$emit('input', this.currentValue);
     },
     singleSelectDisplay () {
       if (this.value === '') return this.placeholder
@@ -117,7 +118,7 @@ export default {
         this.$emit('selector-click', '')
         return ''
       }
-      return this.options.filter(item => item.id.toString() === this.value.toString())[0].name
+      return this.currentValue;
     }
   },
   mounted () {
