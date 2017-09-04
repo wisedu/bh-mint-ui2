@@ -1119,6 +1119,22 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-form {
+    position: relative
+}
+
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-layout-spacing {
     position: relative;
     height: 16px
@@ -1136,8 +1152,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-form {
-    position: relative
+.mint-hr {
+    position: relative;
+    height: 1px;
+    background: #ddd
 }
 
 /* $color-blue: #26a2ff; */
@@ -1159,24 +1177,6 @@ left: 0;
     content: "";
     display: table;
     clear: both
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-hr {
-    position: relative;
-    height: 1px;
-    background: #ddd
 }
 
 /* $color-blue: #26a2ff; */
@@ -1462,6 +1462,23 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-tree-selector {}
+.mint-tree-selector-loading {
+    text-align: center;
+    line-height: 80px
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-bread {
   background: #fff;
   white-space: nowrap;
@@ -1493,23 +1510,6 @@ left: 0;
 }
 .mint-bread > span:last-child:after {
   display: none;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-tree-selector {}
-.mint-tree-selector-loading {
-    text-align: center;
-    line-height: 80px
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/

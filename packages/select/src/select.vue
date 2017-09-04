@@ -190,7 +190,8 @@ export default {
     "selected": ""
   },
   "modelName": "selected",
-  "xtype": [ "select", "multi-select", "multi-select2" ]
+  "xtype": [ "select", "multi-select", "multi-select2" ],
+  "bindField": "v-model"
  }
  */
 </script>
