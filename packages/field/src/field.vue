@@ -161,7 +161,6 @@ export default {
        */
     placeholder: String,
       /**
-       * @noteType prop
        * @field readonly
        * @desc 是否只读
        * @valueType boolean
@@ -181,7 +180,6 @@ export default {
        */
     readonly: Boolean,
       /**
-       * @noteType prop
        * @field disabled
        * @desc 是否disabled
        * @valueType boolean
@@ -278,7 +276,8 @@ export default {
  * @noteType external
  * @content
  {
-   "xtype": [ "text", "textarea" ]
+   "xtype": [ "text", "textarea" ],
+   "bindField": "v-model"
  }
  */
 </script>
