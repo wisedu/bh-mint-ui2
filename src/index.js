@@ -26,6 +26,7 @@ import SwipeItem from '../packages/swipe-item';
 import Range from '../packages/range';
 import Picker from '../packages/picker';
 import Select from '../packages/select';
+import TextSelect from '../packages/text-select';
 import InfiniteCalendar from '../packages/infinite-calendar';
 import TreeSelector from '../packages/tree-selector';
 import Progress from '../packages/progress';
@@ -81,6 +82,7 @@ const install = function(Vue, config = {}) {
   Vue.component(Range.name, Range);
   Vue.component(Picker.name, Picker);
   Vue.component(Select.name, Select);
+  Vue.component(TextSelect.name, TextSelect);
   Vue.component(InfiniteCalendar.name, InfiniteCalendar);
   Vue.component(TreeSelector.name, TreeSelector);
   Vue.component(Progress.name, Progress);
@@ -143,6 +145,7 @@ window.MINT = {
   Range,
   Picker,
   Select,
+  TextSelect,
   InfiniteCalendar,
   TreeSelector,
   Progress,
@@ -197,6 +200,7 @@ export {
   Range,
   Picker,
   Select,
+  TextSelect,
   InfiniteCalendar,
   TreeSelector,
   Progress,
@@ -250,6 +254,7 @@ export default {
   Range,
   Picker,
   Select,
+  TextSelect,
   InfiniteCalendar,
   TreeSelector,
   Progress,

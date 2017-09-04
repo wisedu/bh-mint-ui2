@@ -28,6 +28,7 @@
   "range": "./packages/range/index.js",
   "picker": "./packages/picker/index.js",
   "select": "./packages/select/index.js",
+  "text-select": "./packages/text-select/index.js",
   "infinite-calendar": "./packages/infinite-calendar/index.js",
   "tree-selector": "./packages/tree-selector/index.js",
   "progress": "./packages/progress/index.js",
