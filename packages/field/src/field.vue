@@ -161,6 +161,7 @@ export default {
        */
     placeholder: String,
       /**
+       * @noteType prop
        * @field readonly
        * @desc 是否只读
        * @valueType boolean
@@ -180,8 +181,9 @@ export default {
        */
     readonly: Boolean,
       /**
+       * @noteType prop
        * @field disabled
-       * @desc 是否disabled
+       * @desc 是否禁用
        * @valueType boolean
        * @type radio
        * @value false
