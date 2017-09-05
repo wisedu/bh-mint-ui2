@@ -37,7 +37,7 @@ import SelectedFooter from './selected-footer.vue';
  * @name Select
  * @tagName mt-select
  * @desc 选择器
- * @wrapClassName mint-select
+ * @wrapClassName mint-cell
  * @html
  * <mt-select label="标题文字"></mt-select>
  */
