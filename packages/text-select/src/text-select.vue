@@ -9,7 +9,7 @@
           <div style="padding:8px 12px;">
             <mt-text type="primary">{{label}}</mt-text>
           </div>
-          <mt-field placeholder="自我介绍" type="textarea" v-model="currentValue" rows="4"></mt-field>
+          <mt-field :placeholder="placeholder" type="textarea" v-model="currentValue" rows="4"></mt-field>
           <div style="padding:8px">
             <div style="margin:4px 8px;display:inline-block" v-for="opt in options">
               <mt-button size="normal" @click="selectOption(opt.name)">{{opt.name}}</mt-button>
@@ -28,12 +28,12 @@
 
 /**
  * @noteType component
- * @name Select
- * @tagName mt-select
+ * @name text-select
+ * @tagName mt-text-select
  * @desc 选择器
- * @wrapClassName mint-select
+ * @wrapClassName mint-text-select
  * @html
- * <mt-select label="标题文字"></mt-select>
+ * <mt-text-select label="标题文字"></mt-text-select>
  */
 export default {
   name: 'mt-text-select',
@@ -64,29 +64,7 @@ export default {
      * @type textarea
      * @value
      */
-    options: { type: Array, required: true },
-    /**
-     * @noteType prop
-     * @field type
-     * @desc 选择器类型
-     * @type select
-     * @option 
-      [
-        {
-          "text": "自定义",
-          "value": ""
-        },
-        {
-          "text": "单选",
-          "value": "select"
-        },
-        {
-          "text": "多选",
-          "value": "multi-select"
-        }
-      ]
-     */
-    type: ''
+    options: { type: Array, required: true }
   },
   data() {
     return {
@@ -133,11 +111,9 @@ export default {
  * @noteType external
  * @content
   {
-    "mock": {
-    "selected": ""
-  },
   "modelName": "selected",
-  "xtype": [ "select", "multi-select", "multi-select2" ]
+  "xtype": [ "text-select" ],
+  "bindField": "v-model"
  }
  */
 </script>
