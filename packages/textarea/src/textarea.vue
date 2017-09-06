@@ -14,6 +14,7 @@
       class="mint-field-core"
       :placeholder="placeholder"
       :rows="rows"
+      :maxlength="maxlength"
       :disabled="disabled"
       :readonly="readonly"
       v-model="currentValue">
