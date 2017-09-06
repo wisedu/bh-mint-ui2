@@ -30,7 +30,7 @@
  * @noteType component
  * @name TextSelect
  * @tagName mt-text-select
- * @desc 选择器
+ * @desc 文本域(带选项)
  * @wrapClassName mint-text-select
  * @html
  * <mt-text-select label="标题文字"></mt-text-select>
@@ -126,8 +126,13 @@ export default {
  * @noteType external
  * @content
 {
-  "xtype": [ "text-select" ],
-  "bindField": "v-model"
+   "mock": {
+      "label": "文本域",
+      "rows": "4",
+      "maxlength": "100"
+   },
+   "xtype": [ "text-select" ],
+   "bindField": "v-model"
 }
  */
 </script>

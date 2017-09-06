@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'component') {
  * @noteType component
  * @name Textarea
  * @tagName mt-textarea
- * @desc 输入框
+ * @desc 文本域
  * @wrapClassName mint-textarea
  * @html
  * <mt-textarea label="输入框"></mt-textarea>
@@ -88,8 +88,8 @@ export default {
     rows: String,
     /**
        * @noteType prop
-       * @field rows
-       * @desc 行数
+       * @field maxlength
+       * @desc 最大长度
        * @type input
        * @value 100
        */
@@ -99,7 +99,7 @@ export default {
        * @field label
        * @desc 内容
        * @type input
-       * @value 输入框
+       * @value 100
        */
     label: String,
       /**
@@ -221,6 +221,11 @@ export default {
  * @noteType external
  * @content
  {
+   "mock": {
+      "label": "文本域",
+      "rows": "4",
+      "maxlength": "100"
+   },
    "xtype": [ "text", "textarea" ],
    "bindField": "v-model"
  }

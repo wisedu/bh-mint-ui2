@@ -49,6 +49,21 @@ export default {
   }
 
 };
+/**
+ * @noteType external
+ * @content
+{
+   "mock": {
+      "fileList": [{
+        id: "att1", name: "附件1"
+      },{
+        id: "att2", name: "附件2"
+      },{
+        id: "att3", name: "附件3"
+      }]
+   }
+}
+ */
 </script>
 
 <style lang="css">

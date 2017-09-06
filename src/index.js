@@ -52,7 +52,7 @@ import Form from '../packages/form';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.3.8';
+const version = '0.3.10';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
