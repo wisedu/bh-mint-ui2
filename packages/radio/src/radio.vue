@@ -38,16 +38,58 @@ if (process.env.NODE_ENV === 'component') {
  * @example
  * <mt-radio v-model="value" :options="['a', 'b', 'c']"></mt-radio>
  */
+
+/**
+ * @noteType component
+ * @name Radio
+ * @tagName mt-radio
+ * @desc 单选列表
+ * @wrapClassName mint-radio
+ * @html
+ * <mt-radio v-model="value" title="" :options="['a', 'b', 'c']"></mt-radio>
+ */
 export default {
   name: 'mt-radio',
 
   props: {
+    /**
+     * @noteType prop
+     * @field title
+     * @desc 标题
+     * @type input
+     */
     title: String,
+    /**
+     * @noteType prop
+     * @field align
+     * @desc 对其位置
+     * @type select
+     * @option
+     [{
+        "text": "left",
+         "value": "left"
+      },{
+        "text": "right",
+         "value": "right"
+      }]
+      */
     align: String,
+    /**
+     * @noteType prop
+     * @field options
+     * @desc 选择项
+     * @type textarea
+      */
     options: {
       type: Array,
       required: true
     },
+    /**
+     * @noteType prop
+     * @field value
+     * @desc 绑定值
+     * @type textarea
+      */
     value: String
   },
 
@@ -71,6 +113,19 @@ export default {
     XCell
   }
 };
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      "title": "单选列表",
+      "options": [{"label":"选项A","value":"A"}, {"label":"选项B","value":"B"}],
+      "value": []
+   },
+   "xtype": [ "radiolist" ],
+   "bindField": "v-model"
+ }
+ */
 </script>
 
 <style lang="css">

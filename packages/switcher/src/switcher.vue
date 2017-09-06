@@ -17,11 +17,41 @@
  */
 import MtCell from 'bh-mint-ui2/packages/cell/index.js';
 import MtSwitch from 'bh-mint-ui2/packages/switch/index.js';
+
+/**
+ * @noteType component
+ * @name Switcher
+ * @tagName mt-switcher
+ * @desc 开关
+ * @wrapClassName mint-switcher
+ * @html
+ * <mt-switch v-model="value"></mt-switch>
+ */
 export default {
   name: 'mt-switcher',
 
   props: {
+    /**
+     * @noteType prop
+     * @field value
+     * @desc 绑定值
+     * @type select
+     * @option
+     [{
+        "text": "关",
+         "value": "0"
+      },{
+        "text": "开",
+         "value": "1"
+      }]
+      */
     value: { default: 0 },
+    /**
+     * @noteType prop
+     * @field label
+     * @desc 标题
+     * @type input
+     */
     label: String
   },
   computed: {
@@ -43,6 +73,18 @@ export default {
   },
   components: { MtSwitch, MtCell }
 };
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      "label": "开关",
+      "value": 1
+   },
+   "xtype": [ "switch" ],
+   "bindField": "v-model"
+ }
+ */
 </script>
 
 <style lang="css">

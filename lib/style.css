@@ -1135,10 +1135,9 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-hr {
+.mint-layout-spacing {
     position: relative;
-    height: 1px;
-    background: #ddd
+    height: 16px
 }
 
 /* $color-blue: #26a2ff; */
@@ -1153,9 +1152,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-layout-spacing {
+.mint-hr {
     position: relative;
-    height: 16px
+    height: 1px;
+    background: #ddd
 }
 
 /* $color-blue: #26a2ff; */
@@ -1552,6 +1552,23 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-tree-selector {}
+.mint-tree-selector-loading {
+    text-align: center;
+    line-height: 80px
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-bread {
   background: #fff;
   white-space: nowrap;
@@ -1596,11 +1613,34 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-tree-selector {}
-.mint-tree-selector-loading {
-    text-align: center;
-    line-height: 80px
+.slide-enter-active[data-v-896bc102], .slide-leave-active[data-v-896bc102] {
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s
 }
+.slide-enter[data-v-896bc102], .slide-leave-to[data-v-896bc102] /* .slide-leave-active in below version 2.1.8 */ {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.select-container[data-v-896bc102] {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #f9f9f9;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  overflow: auto;
+}
+.select-picker[data-v-896bc102] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -1635,46 +1675,6 @@ left: 0;
   overflow: auto;
 }
 .select-picker {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.slide-enter-active[data-v-896bc102], .slide-leave-active[data-v-896bc102] {
-  -webkit-transition: -webkit-transform .25s;
-  transition: -webkit-transform .25s;
-  transition: transform .25s;
-  transition: transform .25s, -webkit-transform .25s
-}
-.slide-enter[data-v-896bc102], .slide-leave-to[data-v-896bc102] /* .slide-leave-active in below version 2.1.8 */ {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-.select-container[data-v-896bc102] {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: #f9f9f9;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  overflow: auto;
-}
-.select-picker[data-v-896bc102] {
   position: absolute;
   bottom: 0;
   left: 0;

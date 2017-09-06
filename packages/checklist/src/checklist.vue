@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === 'component') {
  * @noteType component
  * @name CheckList
  * @tagName mt-checklist
- * @desc 复选框列表
+ * @desc 多选列表
  * @wrapClassName mint-checklist
  * @html
  * <mt-checklist v-model="value" title="" :options="['a', 'b', 'c']"></mt-checklist>
@@ -136,7 +136,9 @@ export default {
  {
    "mock": {
       "title": "复选框列表",
-      ":options": "['选项A', '选项B', '选项C']"
+      "max": 100,
+      "options": [{"label":"选项A","value":"A"}, {"label":"选项B","value":"B"}],
+      "value": []
    },
    "xtype": [ "checkboxlist" ],
    "bindField": "v-model"
