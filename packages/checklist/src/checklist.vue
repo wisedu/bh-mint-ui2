@@ -41,17 +41,66 @@ if (process.env.NODE_ENV === 'component') {
  * @example
  * <mt-checklist :v-model="value" :options="['a', 'b', 'c']"></mt-checklist>
  */
+
+/**
+ * @noteType component
+ * @name CheckList
+ * @tagName mt-checklist
+ * @desc 复选框列表
+ * @wrapClassName mint-checklist
+ * @html
+ * <mt-checklist v-model="value" title="" :options="['a', 'b', 'c']"></mt-checklist>
+ */
 export default {
   name: 'mt-checklist',
 
   props: {
+    /**
+     * @noteType prop
+     * @field max
+     * @desc 最多可选个数
+     * @type input
+     * @valueType number
+     */
     max: Number,
+    /**
+     * @noteType prop
+     * @field title
+     * @desc 标题
+     * @type input
+     */
     title: String,
+    /**
+     * @noteType prop
+     * @field align
+     * @desc 对其位置
+     * @type select
+     * @option
+     [{
+        "text": "left",
+         "value": "left"
+      },{
+        "text": "right",
+         "value": "right"
+      }]
+      */
     align: String,
+    /**
+     * @noteType prop
+     * @field options
+     * @desc 选择项
+     * @type textarea
+      */
     options: {
       type: Array,
       required: true
     },
+    /**
+     * @noteType prop
+     * @field value
+     * @desc 绑定值
+     * @type textarea
+      */
     value: Array
   },
 
@@ -80,6 +129,19 @@ export default {
     }
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      "title": "复选框列表",
+      ":options": "['选项A', '选项B', '选项C']"
+   },
+   "xtype": [ "checkboxlist" ],
+   "bindField": "v-model"
+ }
+ */
 </script>
 
 <style lang="css">

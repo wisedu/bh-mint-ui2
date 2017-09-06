@@ -64,66 +64,175 @@
     m: 'minute'
   };
 
+  /**
+   * @noteType component
+   * @name DatetimePicker
+   * @tagName mt-datetime-picker
+   * @desc 日期时间
+   * @wrapClassName mint-datetime-picker
+   * @html
+   * <mt-datetime-picker type="date" v-model="pickerValue"></mt-datetime-picker>
+   */
   export default {
     name: 'mt-datetime-picker',
 
     props: {
+      /**
+       * @noteType prop
+       * @field cancelText
+       * @desc 取消按钮文本
+       * @type input
+       * @value 取消
+       */
       cancelText: {
         type: String,
         default: '取消'
       },
+      /**
+       * @noteType prop
+       * @field confirmText
+       * @desc 确定按钮文本
+       * @type input
+       * @value 确定
+       */
       confirmText: {
         type: String,
         default: '确定'
       },
+      /**
+       * @noteType prop
+       * @field type
+       * @desc 组件的类型
+       * @type select
+       * @option
+      [{
+          "text": "日期时间",
+          "value": "datetime"
+        },{
+          "text": "日期",
+          "value": "date"
+        },{
+          "text": "时间",
+          "value": "time"
+        }]
+        */
       type: {
         type: String,
         default: 'datetime'
       },
+      /**
+       * @noteType prop
+       * @field startDate
+       * @desc 日期最小可选值
+       * @type input
+        */
       startDate: {
         type: Date,
         default() {
           return new Date(new Date().getFullYear() - 10, 0, 1);
         }
       },
+      /**
+       * @noteType prop
+       * @field endDate
+       * @desc 日期最大可选值
+       * @type input
+        */
       endDate: {
         type: Date,
         default() {
           return new Date(new Date().getFullYear() + 10, 11, 31);
         }
       },
+      /**
+       * @noteType prop
+       * @field startHour
+       * @desc 时间最小可选值
+       * @type input
+       * @valueType number
+        */
       startHour: {
         type: Number,
         default: 0
       },
+      /**
+       * @noteType prop
+       * @field endHour
+       * @desc 时间最大可选值
+       * @type input
+       * @valueType number
+        */
       endHour: {
         type: Number,
         default: 23
       },
+      /**
+       * @noteType prop
+       * @field yearFormat
+       * @desc 年份模板
+       * @type input
+        */
       yearFormat: {
         type: String,
         default: '{value}'
       },
+      /**
+       * @noteType prop
+       * @field monthFormat
+       * @desc 月份模板
+       * @type input
+        */
       monthFormat: {
         type: String,
         default: '{value}'
       },
+      /**
+       * @noteType prop
+       * @field monthFormat
+       * @desc 日期模板
+       * @type input
+        */
       dateFormat: {
         type: String,
         default: '{value}'
       },
+      /**
+       * @noteType prop
+       * @field hourFormat
+       * @desc 小时模板
+       * @type input
+        */
       hourFormat: {
         type: String,
         default: '{value}'
       },
+      /**
+       * @noteType prop
+       * @field minuteFormat
+       * @desc 分钟模板
+       * @type input
+        */
       minuteFormat: {
         type: String,
         default: '{value}'
       },
+      /**
+       * @noteType prop
+       * @field visibleItemCount
+       * @desc 可显示项数量
+       * @type input
+       * @valueType number
+        */
       visibleItemCount: {
         type: Number,
         default: 7
       },
+      /**
+       * @noteType prop
+       * @field value
+       * @desc 绑定值
+       * @type textarea
+        */
       value: null
     },
 
@@ -425,4 +534,15 @@
       this.generateSlots();
     }
   };
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      "type": "datetime"
+   },
+   "xtype": [ "date-full" ],
+   "bindField": "v-model"
+ }
+ */
 </script>
