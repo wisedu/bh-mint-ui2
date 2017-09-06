@@ -9,7 +9,7 @@
           <div style="padding:8px 12px;">
             <mt-text type="primary">{{label}}</mt-text>
           </div>
-          <mt-field :placeholder="placeholder" type="textarea" v-model="currentValue" rows="4"></mt-field>
+          <mt-textarea :placeholder="placeholder" v-model="currentValue" :rows="rows" :maxlength="maxlength"></mt-textarea>
           <div style="padding:8px">
             <div style="margin:4px 8px;display:inline-block" v-for="opt in options">
               <mt-button size="normal" @click="selectOption(opt.name)">{{opt.name}}</mt-button>
@@ -40,7 +40,22 @@ export default {
   props: {
     value: { default: '' },
     // url: { type: String, default: '' },
-
+    /**
+       * @noteType prop
+       * @field rows
+       * @desc 行数
+       * @type input
+       * @value 4
+       */
+    rows: String,
+    /**
+       * @noteType prop
+       * @field rows
+       * @desc 行数
+       * @type input
+       * @value 100
+       */
+    maxlength: String,
     /**
      * @noteType prop
      * @field label

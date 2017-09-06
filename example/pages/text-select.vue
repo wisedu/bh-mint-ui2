@@ -2,7 +2,7 @@
   <div class="page-select">
     <h1 class="page-title">TextSelect</h1>
     <div class="">
-      <mt-text-select label="抄送人员" placeholder="aaa" :options="dicSlot" v-model="singleSelectValue" @selector-click="singleSelectClick">
+      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="dicSlot" v-model="singleSelectValue" @selector-click="singleSelectClick">
       </mt-text-select>
       <p>{{singleSelectValue}}</p>
     </div>

@@ -5,7 +5,7 @@
     :title="label"
     v-clickoutside="doCloseActive"
     :class="[{
-      'is-textarea': type === 'textarea',
+      'is-textarea': true,
       'is-nolabel': !label
     }]">
     <textarea
@@ -25,7 +25,7 @@
       <slot></slot>
     </div>
   </x-cell>
-  <div class="mint-field-count">{{count}}</div>
+  <div class="mint-field-count">{{showLimt}}</div>
 </div>
 </template>
 
@@ -78,7 +78,22 @@ export default {
   },
 
   props: {
+    /**
+       * @noteType prop
+       * @field rows
+       * @desc 行数
+       * @type input
+       * @value 4
+       */
     rows: String,
+    /**
+       * @noteType prop
+       * @field rows
+       * @desc 行数
+       * @type input
+       * @value 100
+       */
+    maxlength: String,
       /**
        * @noteType prop
        * @field label
@@ -160,7 +175,6 @@ export default {
        ]
        */
     state: {
-      type: String,
       default: 'default'
     },
     value: {},
@@ -183,7 +197,11 @@ export default {
       this.currentValue = '';
     }
   },
-
+  computed: {
+    showLimt: function(){
+      return this.count + "/" + this.maxlength;
+    }
+  },
   watch: {
     value(val) {
       this.currentValue = val;

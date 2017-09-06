@@ -2,10 +2,10 @@
   <div class="page-textarea">
     <div class="page-title">textarea</div>
     <div class="page-part">
-      <mt-textarea label="全宽度" placeholder="全宽度" rows="4"></mt-textarea>
-      <mt-textarea label="success" placeholder="success" rows="4" state="success"></mt-textarea>
-      <mt-textarea label="error" placeholder="error" rows="4" state="error"></mt-textarea>
-      <mt-textarea label="warning" placeholder="warning" rows="4" state="warning"></mt-textarea>
+      <mt-textarea label="全宽度" placeholder="全宽度" rows=4 maxlength=100></mt-textarea>
+      <mt-textarea label="success" placeholder="success" rows=4 maxlength=50 state="success"></mt-textarea>
+      <mt-textarea label="error" placeholder="error" rows=4 maxlength=20 state="error"></mt-textarea>
+      <mt-textarea label="warning" placeholder="warning" rows=4 maxlength=10 state="warning"></mt-textarea>
     </div>
 
     <div class="page-part">
