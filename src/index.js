@@ -39,6 +39,7 @@ import DatetimePicker from '../packages/datetime-picker';
 import IndexList from '../packages/index-list';
 import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
+import Textarea from '../packages/textarea';
 import Text from '../packages/text';
 import Image from '../packages/image';
 import FixedButton from '../packages/fixed-button';
@@ -90,6 +91,7 @@ const install = function(Vue, config = {}) {
   Vue.component(IndexList.name, IndexList);
   Vue.component(IndexSection.name, IndexSection);
   Vue.component(PaletteButton.name, PaletteButton);
+  Vue.component(Textarea.name, Textarea);
   Vue.component(Text.name, Text);
   Vue.component(Image.name, Image);
   Vue.component(FixedButton.name, FixedButton);
@@ -158,6 +160,7 @@ window.MINT = {
   IndexList,
   IndexSection,
   PaletteButton,
+  Textarea,
   Text,
   Image,
   FixedButton,
@@ -213,6 +216,7 @@ export {
   IndexList,
   IndexSection,
   PaletteButton,
+  Textarea,
   Text,
   Image,
   FixedButton,
@@ -267,6 +271,7 @@ export default {
   IndexList,
   IndexSection,
   PaletteButton,
+  Textarea,
   Text,
   Image,
   FixedButton,

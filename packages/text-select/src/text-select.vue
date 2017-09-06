@@ -110,11 +110,10 @@ export default {
 /**
  * @noteType external
  * @content
-  {
-  "modelName": "selected",
+{
   "xtype": [ "text-select" ],
   "bindField": "v-model"
- }
+}
  */
 </script>
 <style scoped>

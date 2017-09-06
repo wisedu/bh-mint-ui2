@@ -41,6 +41,7 @@
   "index-list": "./packages/index-list/index.js",
   "index-section": "./packages/index-section/index.js",
   "palette-button": "./packages/palette-button/index.js",
+  "textarea": "./packages/textarea/index.js",
   "text": "./packages/text/index.js",
   "image": "./packages/image/index.js",
   "fixed-button": "./packages/fixed-button/index.js",

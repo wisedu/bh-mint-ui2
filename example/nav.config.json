@@ -78,6 +78,11 @@
         "icon": "picker"
       },
       {
+        "path": "/textarea",
+        "name": "Textarea",
+        "icon": "field"
+      },
+      {
         "path": "/text-select",
         "name": "TextSelect",
         "icon": "picker"
