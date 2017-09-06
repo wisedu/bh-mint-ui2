@@ -1346,6 +1346,96 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-field {
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-align:inherit;
+        -ms-flex-align:inherit;
+            align-items:inherit;
+}
+.mint-field .mint-cell-title {
+    padding:10px 0;
+}
+.mint-field .mint-cell-value {
+    padding:5px 0;
+}
+.mint-field .mint-cell-title {
+    width:105px;
+    -webkit-box-flex:0;
+        -ms-flex:none;
+            flex:none;
+}
+.mint-field .mint-cell-value {
+    -webkit-box-flex:1;
+        -ms-flex:1;
+            flex:1;
+    color:inherit;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+}
+.mint-field.is-nolabel .mint-cell-title {
+    display:none;
+}
+.mint-field-count {
+    text-align:right;
+    background-color:#fff;
+    padding: 4px 16px;
+}
+.mint-field-core {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border-radius: 0;
+    border: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    outline: 0;
+    line-height: 1.6;
+    font-size: inherit;
+    width: 100%;
+}
+.mint-field-clear {
+    opacity: .2;
+}
+.mint-field-state {
+    color: inherit;
+    margin-left: 20px;
+}
+.mint-field-state .mintui {
+    font-size: 20px;
+}
+.mint-field-state.is-default {
+    margin-left:0;
+}
+.mint-field-state.is-success {
+    color:#4caf50;
+}
+.mint-field-state.is-warning {
+    color:#ffc107;
+}
+.mint-field-state.is-error {
+    color:#f44336;
+}
+.mint-field-other {
+    top:0;
+    right:0;
+    position: relative;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-indexlist {
     width: 100%;
     position: relative;
@@ -1511,6 +1601,46 @@ left: 0;
 .mint-bread > span:last-child:after {
   display: none;
 }
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.slide-enter-active[data-v-896bc102], .slide-leave-active[data-v-896bc102] {
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s
+}
+.slide-enter[data-v-896bc102], .slide-leave-to[data-v-896bc102] /* .slide-leave-active in below version 2.1.8 */ {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.select-container[data-v-896bc102] {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #f9f9f9;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  overflow: auto;
+}
+.select-picker[data-v-896bc102] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -2033,44 +2163,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-tab-item {
-    display: block;
-    padding: 7px 0;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    text-decoration: none
-}
-.mint-tab-item-icon {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto 5px
-}
-.mint-tab-item-icon:empty {
-    display: none
-}
-.mint-tab-item-icon > * {
-    display: block;
-    width: 100%;
-    height: 100%
-}
-.mint-tab-item-label {
-    color: inherit;
-    font-size: 12px;
-    line-height: 1
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-switch {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2136,6 +2228,44 @@ left: 0;
 .mint-switch-input:checked + .mint-switch-core::after {
     -webkit-transform: translateX(20px);
             transform: translateX(20px);
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-tab-item {
+    display: block;
+    padding: 7px 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-decoration: none
+}
+.mint-tab-item-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 5px
+}
+.mint-tab-item-icon:empty {
+    display: none
+}
+.mint-tab-item-icon > * {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+.mint-tab-item-label {
+    color: inherit;
+    font-size: 12px;
+    line-height: 1
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/

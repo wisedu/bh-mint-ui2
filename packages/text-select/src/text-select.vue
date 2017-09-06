@@ -28,7 +28,7 @@
 
 /**
  * @noteType component
- * @name text-select
+ * @name TextSelect
  * @tagName mt-text-select
  * @desc 选择器
  * @wrapClassName mint-text-select

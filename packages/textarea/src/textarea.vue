@@ -186,15 +186,6 @@ export default {
   methods: {
     doCloseActive() {
       this.active = false;
-    },
-
-    handleInput(evt) {
-      this.currentValue = evt.target.value;
-    },
-
-    handleClear() {
-      if (this.disabled || this.readonly) return;
-      this.currentValue = '';
     }
   },
   computed: {
