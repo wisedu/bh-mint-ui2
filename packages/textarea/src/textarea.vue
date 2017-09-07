@@ -178,6 +178,12 @@ export default {
     state: {
       default: 'default'
     },
+    /**
+     * @noteType prop
+     * @field value
+     * @desc 默认值
+     * @type textarea
+      */
     value: {},
     attr: Object
   },

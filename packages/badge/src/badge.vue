@@ -20,15 +20,72 @@
  * <mt-badge color="error">错误</mt-badge>
  * <mt-badge color="#333">30</mt-badge>
  */
+
+/**
+ * @name Badge
+ * @tagName mt-badge
+ * @desc 徽章
+ * @wrapClassName mint-badge
+ * @display inline
+ * @noteType component
+ * @html
+ * <mt-badge color="#333">30</mt-badge>
+ */
 export default {
   name: 'mt-badge',
 
   props: {
+    /**
+     * @noteType prop
+     * @field color
+     * @desc 颜色值
+     * @type input
+     * @placeholder #333
+     */
     color: String,
+    /**
+     * @noteType prop
+     * @field type
+     * @desc 样式类型
+     * @type select
+     * @value primary
+     * @option
+     [{
+       "text": "default",
+        "value": "default"
+      },{
+        "text": "primary",
+        "value": "primary"
+      },{
+        "text": "danger",
+        "value": "danger"
+      },{
+        "text": "warning",
+        "value": "warning"
+      }]
+      */
     type: {
       type: String,
       default: 'primary'
     },
+    /**
+     * @noteType prop
+     * @field size
+     * @desc 文字大小
+     * @type select
+     * @value primary
+     * @option
+     [{
+       "text": "正常",
+        "value": "normal"
+      },{
+        "text": "小",
+        "value": "small"
+      },{
+        "text": "大",
+        "value": "large"
+      }]
+      */
     size: {
       type: String,
       default: 'normal'
@@ -80,4 +137,14 @@ export default {
       }
     }
   }
+
+  /**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+      
+   }
+ }
+ */
 </style>

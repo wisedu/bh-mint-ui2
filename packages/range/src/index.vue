@@ -78,29 +78,92 @@
 <script type="text/babel">
   import draggable from './draggable';
 
+  /**
+   * @name Range
+   * @tagName mt-range
+   * @desc 滑块
+   * @wrapClassName mint-range
+   * @noteType component
+   * @html
+   * <mt-range v-model="rangeValue"></mt-range>
+   */
   export default {
     name: 'mt-range',
 
     props: {
+      /**
+       * @noteType prop
+       * @field min
+       * @desc 最小值
+       * @type input
+       * @valueType number
+       * @placeholder 0
+       */
       min: {
         type: Number,
         default: 0
       },
+      /**
+       * @noteType prop
+       * @field max
+       * @desc 最大值
+       * @type input
+       * @valueType number
+       * @placeholder 100
+       */
       max: {
         type: Number,
         default: 100
       },
+      /**
+       * @noteType prop
+       * @field step
+       * @desc 步长
+       * @type input
+       * @valueType number
+       * @placeholder 1
+       */
       step: {
         type: Number,
         default: 1
       },
+      /**
+       * @noteType prop
+       * @field disabled
+       * @desc 是否禁用
+       * @valueType boolean
+       * @type radio
+       * @value false
+       * @option
+       [{
+           "text": "否",
+           "value": false
+       },{
+           "text": "是",
+           "value": true
+       }]
+       */
       disabled: {
         type: Boolean,
         default: false
       },
+      /**
+       * @noteType prop
+       * @field value
+       * @desc 默认值
+       * @type textarea
+        */
       value: {
         type: Number
       },
+      /**
+       * @noteType prop
+       * @field barHeight
+       * @desc 滑槽的线宽
+       * @type input
+       * @valueType number
+       * @placeholder 1
+       */
       barHeight: {
         type: Number,
         default: 1
@@ -166,4 +229,14 @@
       });
     }
   };
+/**
+ * @noteType external
+ * @content
+ {
+   "mock": {
+     
+   },
+   "bindField": "v-model"
+ }
+ */
 </script>

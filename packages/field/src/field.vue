@@ -188,16 +188,13 @@ export default {
        * @type radio
        * @value false
        * @option
-       [
-       {
+       [{
            "text": "否",
            "value": false
-       },
-       {
+       },{
            "text": "是",
            "value": true
-       }
-       ]
+       }]
        */
     disabled: Boolean,
     disableClear: Boolean,
@@ -211,25 +208,27 @@ export default {
        {
          "text": "默认",
          "value": ""
-       },
-       {
+       },{
          "text": "成功",
          "value": "success"
-       },
-       {
+       },{
          "text": "失败",
          "value": "error"
-       },
-       {
+       },{
          "text": "警告",
          "value": "warning"
-       }
-       ]
+       }]
        */
     state: {
       type: String,
       default: 'default'
     },
+    /**
+     * @noteType prop
+     * @field value
+     * @desc 默认值
+     * @type textarea
+      */
     value: {},
     attr: Object
   },

@@ -98,7 +98,7 @@ export default {
     /**
      * @noteType prop
      * @field value
-     * @desc 绑定值
+     * @desc 默认值
      * @type textarea
       */
     value: Array
