@@ -78,11 +78,11 @@ export default {
    "bindField": ":token",
    "mock": {
       "fileList": [{
-        id: "att1", name: "附件1"
+        "id": "att1", "name": "附件1"
       },{
-        id: "att2", name: "附件2"
+        "id": "att2", "name": "附件2"
       },{
-        id: "att3", name: "附件3"
+        "id": "att3", "name": "附件3"
       }]
    }
 }
