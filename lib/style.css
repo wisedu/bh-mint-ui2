@@ -1653,46 +1653,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.slide-enter-active, .slide-leave-active {
-  -webkit-transition: -webkit-transform .25s;
-  transition: -webkit-transform .25s;
-  transition: transform .25s;
-  transition: transform .25s, -webkit-transform .25s
-}
-.slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-.select-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: #f9f9f9;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  overflow: auto;
-}
-.select-picker {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-selected-footer {
   position: absolute;
   width: 100%;
@@ -1769,6 +1729,46 @@ left: 0;
 .mint-selected-footer-list {
   overflow: auto;
 }
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.slide-enter-active, .slide-leave-active {
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s
+}
+.slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.select-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #f9f9f9;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  overflow: auto;
+}
+.select-picker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -2034,6 +2034,46 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-tabbar {
+    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: relative;
+    background-color: #fafafa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+    background-color: #eaeaea;
+    color: #06c1ae;
+}
+.mint-tabbar.is-fixed {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-side-navbar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2072,46 +2112,6 @@ left: 0;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-tabbar {
-    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    position: relative;
-    background-color: #fafafa;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    text-align: center;
-}
-.mint-tabbar > .mint-tab-item.is-selected {
-    background-color: #eaeaea;
-    color: #06c1ae;
-}
-.mint-tabbar.is-fixed {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -2279,22 +2279,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-file-list {}
-.mint-file-list .mint-cell-text {
-  word-break: break-all;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-switch {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2426,6 +2410,27 @@ left: 0;
   }
 }
 */
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-file-list {}
+.mint-file-list .mint-cell-text {
+  word-break: break-all;
+}
+.mint-file-list-title {
+  font-size: 14px;
+  padding: 0 12px;
+  color: #92969c;
+}
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -2679,6 +2684,22 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-button-list {}
+.mint-button-list-btn {
+    margin-left: 8px
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-button {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -2771,22 +2792,6 @@ left: 0;
     height: 25px;
     line-height: 25px;
     border-radius: 12px
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-button-list {}
-.mint-button-list-btn {
-    margin-left: 8px
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
