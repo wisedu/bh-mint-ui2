@@ -1,5 +1,6 @@
 <template>
   <div class="mint-file-list">
+    <h4 class="mint-file-list-title" v-if="label !== ''">{{label}}</h4>
     <mt-cell v-for="item in fileList" :key="item.id" :title="item.name" is-link></mt-cell>
   </div>
 </template>
@@ -33,6 +34,14 @@ export default {
     label: { type: String, default: '' },
     /**
      * @noteType prop
+     * @field token
+     * @desc token
+     * @type input
+     * @value token
+     */
+    token: { type: String, default: '' },
+    /**
+     * @noteType prop
      * @field label
      * @desc 文件列表数据
      * @type textarea
@@ -46,6 +55,18 @@ export default {
       active: false,
       currentValue: this.value
     };
+  },
+
+  watch: {
+    token (val) {
+      this.$emit('token-change', val)
+    }
+  },
+
+  mounted() {
+    if (this.token !== undefined && this.token !== '') {
+      this.$emit('token-change', this.token)
+    }
   }
 
 };
@@ -53,6 +74,8 @@ export default {
  * @noteType external
  * @content
 {
+   "xtype": "uploadfile",
+   "bindField": ":token",
    "mock": {
       "fileList": [{
         id: "att1", name: "附件1"
@@ -76,5 +99,11 @@ export default {
 
   .mint-file-list .mint-cell-text {
     word-break: break-all;
+  }
+
+  .mint-file-list-title {
+    font-size: 14px;
+    padding: 0 12px;
+    color: $grey-lv3;
   }
 </style>
