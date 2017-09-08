@@ -66,7 +66,7 @@
   export default {
     data() {
       return {
-        value: null,
+        value: '2017-7-8 8:21',
         value2: null,
         value3: null,
         value4: null,

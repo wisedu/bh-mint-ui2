@@ -88,6 +88,11 @@
         "icon": "picker"
       },
       {
+        "path": "/datetime-selector",
+        "name": "DatetimeSelector",
+        "icon": "time"
+      },
+      {
         "path": "/infinite-calendar",
         "name": "infinite calender",
         "icon": "infinite-scroll"

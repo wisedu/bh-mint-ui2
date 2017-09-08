@@ -234,7 +234,7 @@
  * @content
  {
    "mock": {
-     
+     value: 88
    },
    "bindField": "v-model"
  }

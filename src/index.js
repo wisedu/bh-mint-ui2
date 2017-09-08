@@ -27,6 +27,7 @@ import Range from '../packages/range';
 import Picker from '../packages/picker';
 import Select from '../packages/select';
 import TextSelect from '../packages/text-select';
+import DatetimeSelector from '../packages/datetime-selector';
 import InfiniteCalendar from '../packages/infinite-calendar';
 import TreeSelector from '../packages/tree-selector';
 import Progress from '../packages/progress';
@@ -84,6 +85,7 @@ const install = function(Vue, config = {}) {
   Vue.component(Picker.name, Picker);
   Vue.component(Select.name, Select);
   Vue.component(TextSelect.name, TextSelect);
+  Vue.component(DatetimeSelector.name, DatetimeSelector);
   Vue.component(InfiniteCalendar.name, InfiniteCalendar);
   Vue.component(TreeSelector.name, TreeSelector);
   Vue.component(Progress.name, Progress);
@@ -148,6 +150,7 @@ window.MINT = {
   Picker,
   Select,
   TextSelect,
+  DatetimeSelector,
   InfiniteCalendar,
   TreeSelector,
   Progress,
@@ -204,6 +207,7 @@ export {
   Picker,
   Select,
   TextSelect,
+  DatetimeSelector,
   InfiniteCalendar,
   TreeSelector,
   Progress,
@@ -259,6 +263,7 @@ export default {
   Picker,
   Select,
   TextSelect,
+  DatetimeSelector,
   InfiniteCalendar,
   TreeSelector,
   Progress,
