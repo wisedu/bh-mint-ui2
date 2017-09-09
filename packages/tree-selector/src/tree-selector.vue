@@ -1,11 +1,11 @@
 <template>
   <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick">
     <template scope="scope" slot="display">
-      {{scope.value === '' ? placeholder : scope.value}}
+      {{scope.value === '' ? placeholder : getDisplay(scope.value)}}
       <!-- {{scope.value.join(',')}} -->
     </template>
     <template scope="scope" slot="selector">
-      <bread :data="breadData" :active-id="(activePid.length ? activePid[activePid.length - 1] : '')" @item-click="handleBreadClick"></bread> 
+      <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-show="scope.options.length > 0">
         <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
@@ -38,43 +38,36 @@ export default {
   },
   data() {
     return {
-      activePid: []
+      activePids: []
     };
   },
   watch: {
-    // options: {
-    //   deep: true,
-    //   handler() {
-    //     /* eslint-disable */
-    //     debugger
-    //     this.$forceUpdate();
-    //   }
-    // }
+    options (val) {
+    }
   },
   computed: {
     activeOptions() {
-      if (this.activePid.length === 0) return this.options;
-      // let resultOptions = [];
-      for (let i = 0; i < this.activePid.length; i++) {
-        let optionItem = this.options.filter(item => item.id === this.activePid[i])[0];
-        if (optionItem) {
-          return optionItem.children || [];
-        } else {
-          return [];
+      let pid = this.activePids[this.activePids.length - 1]
+      if (pid === undefined) pid = ''
+      if (pid !== '') {
+        let activeItem = this.options.filter(item => item.id === pid)[0]
+        // 已经选择到叶子节点时，使用父节点作为pId
+        if (activeItem && activeItem.isParent === 0) {
+          pid = this.activePids[this.activePids.length - 2]
         }
       }
+      return this.options.filter(item => item.pId === pid)
     },
     breadData() {
-      if (this.activePid.length === 0) {
-        return [];
+      if (this.activePids.length === 0) {
+        return [{ name: '全部', id: ''}]
       }
-      let result = [];
-      let activeOptions = this.options;
-      this.activePid.map(item => {
-        let activeItem = activeOptions.filter(o => o.id === item)[0];
+      let result = [{ name: '全部', id: ''}]
+      let options = this.options;
+      this.activePids.map(item => {
+        let activeItem = options.filter(o => o.id === item)[0];
         if (activeItem) {
           result.push(activeItem);
-          activeOptions = activeItem.children || [];
         }
       });
       return result;
@@ -89,43 +82,50 @@ export default {
         }
       },
       set(val) {
+        if (val === '' || val.length === 0) this.$emit('input', '')
         if (this.multiple) {
           this.$emit('input', val.join(','));
         } else {
           this.$emit('input', val);
-        }
-        if (this.options.length > 0) {
-          if (this.multiple) {
-            let optionItems = this.options.filter(item => (val.indexOf(item.id.toString()) > -1));
-            this.$emit('update:display', optionItems.map(item => item.name).join(','));
-          } else {
-            let optionItem = this.options.filter(item => item.id === val)[0];
-            this.$emit('update:display', optionItem.name);
-          }
         }
       }
     }
   },
   methods: {
     handleBreadClick(id) {
-      console.log(id);
-    },
-    getType(id) {
-      if (this.multiple) {
-        return this.currentValue.indexOf(id.toString()) > -1 ? 'primary' : 'default';
-      } else {
-        return id === this.currentValue ? 'primary' : 'default';
-      }
+      // 点击顶部面包屑导航的节点
+      console.log(id)
+      let activePids = this.activePids
+      let index = activePids.indexOf(id) + 1
+      activePids.splice(index, activePids.length)
+      this.$set(this, 'activePids', activePids)
     },
     handleSelectorClick(pid) {
       this.$emit('selector-click', pid);
     },
     handleItemClick(item) {
+      // 点击节点
       if (item.isParent) {
         // 是父节点则展开并进入下一级
+        this.activePids.push(item.id);
         this.$emit('selector-click', item.id);
+      } else {
+        // 叶子节点
+        if (this.multiple) {
+
+        } else {
+          // 末位的pId验证，防止重复pId
+          if (item.pId === this.activePids[this.activePids.length - 1]) {
+            this.activePids.push(item.id)
+          } else {
+            let activePids = this.activePids
+            activePids.splice(activePids.length - 1, 1, item.id)
+            this.$set(this, 'activePids', activePids)
+          }
+          this.currentValue = this.activePids[this.activePids.length - 1]
+          window.history.back()
+        }
       }
-      this.activePid.push(item.id);
     },
     handleClick(id) {
       if (this.multiple) {
@@ -142,6 +142,24 @@ export default {
         this.currentValue = id;
       }
       this.$emit('change', this.currentValue);
+    },
+    getDisplay (value) {
+      if (this.multiple === true) {
+
+      } else {
+        // 单选
+        return this.getItemDisplay(value)
+      }
+    },
+    getItemDisplay (value) {
+      let result = ''
+      let options = this.options
+      let optionItem = options.filter(item => item.id === value)[0]
+      result += optionItem.name
+      if (optionItem.pId !== undefined && optionItem.pId !== '') {
+        result = this.getItemDisplay(optionItem.pId) + result
+      }
+      return result
     }
   },
   components: { Bread }

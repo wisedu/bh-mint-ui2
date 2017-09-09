@@ -60,19 +60,27 @@
         })
       },
       loadOptionsEmap (pId) {
+        if (this.options.filter(item => item.pId === pId).length > 0) return
         axios.get('http://localhost:8080/emap/code/c9fe4e9d-5460-4372-87ca-437d373c2531.do?pId=' + pId).then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
-            if (pId === '' || pId.length === 0) {
-              this.options = respData.datas ? respData.datas.code.rows : []
-            } else {
-              let options = this.options
-              options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
-              this.$set(this, 'options', [])
-              this.$nextTick(_ => {
-                this.$set(this, 'options', options)
-              })
+            let options = this.options
+            if (respData.datas) {
+              options = options.concat(respData.datas.code.rows)
             }
+            this.$set(this, 'options', options)
+
+
+            // if (pId === '' || pId.length === 0) {
+            //   this.options = respData.datas ? respData.datas.code.rows : []
+            // } else {
+            //   let options = this.options
+            //   options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
+            //   this.$set(this, 'options', [])
+            //   this.$nextTick(_ => {
+            //     this.$set(this, 'options', options)
+            //   })
+            // }
           }
         })
       }

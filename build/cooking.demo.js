@@ -9,7 +9,7 @@ cooking.set({
   devServer: {
     port: 8790,
     host: require('my-local-ip')(),
-    publicPath: '/',
+    publicPath: '/emap/sys/student_app1.2/*default/index.do',
     log: false,
     proxy: {
       '/emap/sys/student_app1.2/*default/index.do': {
