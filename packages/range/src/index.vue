@@ -85,7 +85,7 @@
    * @wrapClassName mint-range
    * @noteType component
    * @html
-   * <mt-range v-model="rangeValue"></mt-range>
+   * <mt-range></mt-range>
    */
   export default {
     name: 'mt-range',
@@ -97,7 +97,7 @@
        * @desc 最小值
        * @type input
        * @valueType number
-       * @placeholder 0
+       * @value 0
        */
       min: {
         type: Number,
@@ -109,7 +109,7 @@
        * @desc 最大值
        * @type input
        * @valueType number
-       * @placeholder 100
+       * @value 100
        */
       max: {
         type: Number,
@@ -121,7 +121,7 @@
        * @desc 步长
        * @type input
        * @valueType number
-       * @placeholder 1
+       * @value 1
        */
       step: {
         type: Number,
@@ -234,7 +234,10 @@
  * @content
  {
    "mock": {
-     value: 88
+     "value": 88,
+     "min": 0,
+     "max": 100,
+     "step": 1
    },
    "bindField": "v-model"
  }

@@ -78,6 +78,7 @@ export default {
      * @field type
      * @desc 类型
      * @type select
+     * @value datetime
      * @option
      [{
          "text": "日期时间",
@@ -96,7 +97,6 @@ export default {
      * @field label
      * @desc 内容
      * @type input
-     * @value 输入框
      */
     label: String,
     /**
@@ -104,7 +104,6 @@ export default {
      * @field placeholder
      * @desc placeholder
      * @type input
-     * @value
      */
     placeholder: String,
     /**
@@ -264,8 +263,12 @@ export default {
  * @noteType external
  * @content
  {
-   "xtype": [ "date-full" ],
-   "bindField": "v-model"
+    "mock": {
+      "label": "日期输入",
+      "placeholder": "请选择"
+    },
+    "xtype": [ "date-full" ],
+    "bindField": "v-model"
  }
  */
 </script>
