@@ -1,6 +1,9 @@
 <template>
+  <!-- <div class="page-select">
+    <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptions"></mt-tree-selector> -->
+  <!-- </div> -->
   <div class="page-select">
-    <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptions"></mt-tree-selector>
+    <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
   </div>
 </template>
 
@@ -56,14 +59,21 @@
           }
         })
       },
-      handleDicSelectorClick () {
-        axios.get('/mock/dic.json').then(resp => {
+      loadOptionsEmap (pId) {
+        axios.get('http://localhost:8080/emap/code/c9fe4e9d-5460-4372-87ca-437d373c2531.do?pId=' + pId).then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
-            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.asyncDicSlot[0].values = respData.data
+            if (pId === '' || pId.length === 0) {
+              this.options = respData.datas ? respData.datas.code.rows : []
+            } else {
+              let options = this.options
+              options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
+              this.$set(this, 'options', [])
+              this.$nextTick(_ => {
+                this.$set(this, 'options', options)
+              })
+            }
           }
-          console.log(resp)
         })
       }
     },

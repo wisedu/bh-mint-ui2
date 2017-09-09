@@ -22,6 +22,8 @@ export default {
   background: #fff;
   white-space: nowrap;
   font-size: 0;
+  width: 100%;
+  overflow: auto;
 }
 .mint-bread > span {
   line-height: 42px;

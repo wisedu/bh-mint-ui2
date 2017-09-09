@@ -21,7 +21,7 @@
  * @desc 树形选择器
  * @param {String} label - 字段中文名
  * @param {String} [value] - 绑定值，支持双向绑定
- * @param {Array} options - 格式化后的树形字典数据，请求和格式化的过程在组件外完成
+ * @param {Array} options - 格式化后的树形字典数据，结构平铺， 不需要格式化
  * @example
  */
 // import MtSelect from 'bh-mint-ui2/packages/tree-selector/index.js';

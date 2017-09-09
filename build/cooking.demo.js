@@ -10,7 +10,18 @@ cooking.set({
     port: 8790,
     host: require('my-local-ip')(),
     publicPath: '/',
-    log: false
+    log: false,
+    proxy: {
+      '/emap/sys/student_app1.2/*default/index.do': {
+        bypass: function(req, res, proxyOptions) {
+          if (req.url.indexOf('index.do') > -1) {
+            return '/index.html'
+          } else {
+            return req.url.replace('/emap/sys/student_app1.2/*default', '')
+          }
+        }
+      } 
+    }
   },
   clean: true,
   hash: true,
