@@ -11,9 +11,10 @@
         <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
       </template>
       <template v-else-if="multiple" v-show="scope.options.length > 0">
-        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
+        <!-- <div v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></div> -->
+        <tree-checkbox-list :options="scope.options" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>
       </template>
-      <selected-footer v-if="multiple" :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
+      <selected-footer v-if="multiple" :options="footerOptions" v-model="currentValue" @confirm-click="handleConfirmClick"></selected-footer>
     </template>
   </mt-select>
 </template>
@@ -31,6 +32,7 @@
 // import MtSelect from 'bh-mint-ui2/packages/tree-selector/index.js';
 import Bread from './bread.vue';
 import SelectedFooter from '../../select/src/selected-footer.vue';
+import TreeCheckboxList from './tree-checkbox-list';
 export default {
   name: 'mt-tree-selector',
   props: {
@@ -94,6 +96,15 @@ export default {
           this.$emit('input', val);
         }
       }
+    },
+    footerOptions () {
+      if (this.currentValue.length === 0) return []
+      return this.currentValue.map(item => {
+        return {
+          name: this.getItemDisplay(item),
+          id: item
+        }
+      })
     }
   },
   methods: {
@@ -150,7 +161,8 @@ export default {
     },
     getDisplay (value) {
       if (this.multiple === true) {
-
+        if (value.length  === 0) return ''
+        return value.map(item => this.getItemDisplay(item)).join(',')
       } else {
         // 单选
         return this.getItemDisplay(value)
@@ -165,9 +177,13 @@ export default {
         result = this.getItemDisplay(optionItem.pId) + result
       }
       return result
+    },
+    // 多选树点击footer确认按钮
+    handleConfirmClick () {
+      window.history.back()
     }
   },
-  components: { Bread, SelectedFooter }
+  components: { Bread, SelectedFooter, TreeCheckboxList }
 };
 </script>
 

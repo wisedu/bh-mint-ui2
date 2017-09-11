@@ -252,6 +252,7 @@ export default {
 
       @descendent title {
         flex: 1;
+        min-width: 40px;
       }
 
       @descendent value {

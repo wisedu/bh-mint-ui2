@@ -7,7 +7,7 @@
       <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
     </div>
     <div class="page-select">
-      <mt-tree-selector label="树形多选择器" :options="multiOptions" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap"></mt-tree-selector>
+      <mt-tree-selector label="树形多选择器" :multiple="true" :options="multiOptions" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap"></mt-tree-selector>
     </div>
   </div>
 </template>
