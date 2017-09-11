@@ -7,9 +7,13 @@
     <template scope="scope" slot="selector">
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
-      <template v-show="scope.options.length > 0">
+      <template v-if="!multiple" v-show="scope.options.length > 0">
         <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
       </template>
+      <template v-else-if="multiple" v-show="scope.options.length > 0">
+        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
+      </template>
+      <selected-footer v-if="multiple" :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
     </template>
   </mt-select>
 </template>
@@ -26,6 +30,7 @@
  */
 // import MtSelect from 'bh-mint-ui2/packages/tree-selector/index.js';
 import Bread from './bread.vue';
+import SelectedFooter from '../../select/src/selected-footer.vue';
 export default {
   name: 'mt-tree-selector',
   props: {
@@ -162,7 +167,7 @@ export default {
       return result
     }
   },
-  components: { Bread }
+  components: { Bread, SelectedFooter }
 };
 </script>
 
