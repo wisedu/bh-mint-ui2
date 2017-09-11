@@ -9,7 +9,7 @@ cooking.set({
   devServer: {
     port: 8790,
     host: require('my-local-ip')(),
-    publicPath: '/emap/sys/student_app1.2/*default/index.do',
+    publicPath: '',
     log: false,
     proxy: {
       '/emap/sys/student_app1.2/*default/index.do': {
@@ -25,7 +25,7 @@ cooking.set({
   },
   clean: true,
   hash: true,
-  publicPath: '/bh-mint-ui2/',
+  publicPath: '',
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: true,
