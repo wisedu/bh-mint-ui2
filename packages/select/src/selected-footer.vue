@@ -72,7 +72,7 @@ export default {
 <style>
 @import "../../../src/style/var.css";
 .mint-selected-footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   border-top: 1px solid $grey-lv5;
   background: $bg-lv2;
