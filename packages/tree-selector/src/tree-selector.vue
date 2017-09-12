@@ -12,7 +12,7 @@
       </template>
       <template v-else-if="multiple" v-show="scope.options.length > 0">
         <!-- <div v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></div> -->
-        <tree-checkbox-list :options="scope.options" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>
+        <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>
       </template>
       <selected-footer v-if="multiple" :options="footerOptions" v-model="currentValue" @confirm-click="handleConfirmClick"></selected-footer>
     </template>
@@ -197,5 +197,9 @@ export default {
       line-height: 80px;
     }
   }
+}
+
+.mint-tree-selector-multi-list {
+  padding-bottom: 60px;
 }
 </style>
