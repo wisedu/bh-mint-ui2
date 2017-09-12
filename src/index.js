@@ -47,6 +47,7 @@ import FixedButton from '../packages/fixed-button';
 import LayoutLeftRight from '../packages/layout-left-right';
 import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import LayoutContainer from '../packages/layout-container';
+import LayoutList from '../packages/layout-list';
 import Hr from '../packages/hr';
 import LayoutSpacing from '../packages/layout-spacing';
 import Form from '../packages/form';
@@ -100,6 +101,7 @@ const install = function(Vue, config = {}) {
   Vue.component(LayoutLeftRight.name, LayoutLeftRight);
   Vue.component(LayoutLeftRightItem.name, LayoutLeftRightItem);
   Vue.component(LayoutContainer.name, LayoutContainer);
+  Vue.component(LayoutList.name, LayoutList);
   Vue.component(Hr.name, Hr);
   Vue.component(LayoutSpacing.name, LayoutSpacing);
   Vue.component(Form.name, Form);
@@ -170,6 +172,7 @@ window.MINT = {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
+  LayoutList,
   Hr,
   LayoutSpacing,
   Form
@@ -227,6 +230,7 @@ export {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
+  LayoutList,
   Hr,
   LayoutSpacing,
   Form
@@ -283,6 +287,7 @@ export default {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
+  LayoutList,
   Hr,
   LayoutSpacing,
   Form
