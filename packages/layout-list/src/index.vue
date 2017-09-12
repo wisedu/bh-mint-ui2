@@ -22,6 +22,18 @@
             }
         }
     };
+
+    /**
+     * @noteType external
+     * @content
+     {
+       "containerItem": [
+          {
+            "tagName": "LayoutContainer"
+          }
+        ]
+     }
+     */
 </script>
 <style lang="css">
   @import "../../../src/style/var.css";
