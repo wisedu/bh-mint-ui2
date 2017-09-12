@@ -9,7 +9,7 @@
      * @name LayoutList
      * @tagName mt-layout-list
      * @desc 列表容器
-     * @type containerWrap
+     * @type list
      * @wrapClassName mint-layout-list
      * @html
      * <mt-layout-list></mt-layout-list>
@@ -29,7 +29,10 @@
      {
        "containerItem": [
           {
-            "tagName": "LayoutContainer"
+            "tagName": "LayoutContainer",
+            "attrs": {
+              "v-for": "n in 3"
+            }
           }
         ]
      }
