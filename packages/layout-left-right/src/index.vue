@@ -8,10 +8,10 @@
     /**
      * @noteType component
      * @name LayoutLeftRight
-     * @tagName mt-layout-lr
+     * @tagName mt-layout-left-right
      * @desc 左右布局容器
      * @type containerWrap
-     * @wrapClassName mint-layout-left-right
+     * @wrapClassName mint-layout-lr
      * @html
      * <mt-layout-left-right></mt-layout-left-right>
      */
