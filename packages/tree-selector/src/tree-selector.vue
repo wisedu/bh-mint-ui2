@@ -33,14 +33,59 @@
 import Bread from './bread.vue';
 import SelectedFooter from '../../select/src/selected-footer.vue';
 import TreeCheckboxList from './tree-checkbox-list';
+/**
+ * @noteType component
+ * @name TreeSelect
+ * @tagName mt-tree-selector
+ * @desc 树形选择器
+ * @html
+ * <mt-tree-selector label="树形选择器" :options="[]" v-model="value" placeholder="请选择"></mt-tree-selector>
+ */
 export default {
   name: 'mt-tree-selector',
   props: {
     value: [String, Number],
-    display: { type: String, default: '' },
+    /**
+     * @noteType prop
+     * @field label
+     * @desc 标题
+     * @type input
+     * @value 标题
+     */
     label: String,
+    /**
+     * @noteType prop
+     * @field placeholder
+     * @desc 占位文本
+     * @type input
+     * @value 请选择
+     */
     placeholder: String,
+    /**
+     * @noteType prop
+     * @field multiple
+     * @desc 是否多选
+     * @type select
+     * @option 
+      [
+        {
+          "text": "单选",
+          "value": false
+        },
+        {
+          "text": "多选",
+          "value": true
+        }
+      ]
+     */
     multiple: { type: Boolean, default: false },
+    /**
+     * @noteType prop
+     * @field options
+     * @desc 选项字典数据
+     * @type textarea
+     * @value
+     */
     options: { type: Array, default() { return []; } }
   },
   data() {
