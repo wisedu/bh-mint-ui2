@@ -1212,94 +1212,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-directive-show {
+.mint-layout-list {
     position: relative
 }
-.mint-directive-show:after {
-    content: "";
-    display: table;
-    clear: both
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-directive-else-if {
-    position: relative
-}
-.mint-directive-else-if:after {
-    content: "";
-    display: table;
-    clear: both
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-directive-else {
-    position: relative
-}
-.mint-directive-else:after {
-    content: "";
-    display: table;
-    clear: both
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-directive-if {
-    position: relative
-}
-.mint-directive-if:after {
-    content: "";
-    display: table;
-    clear: both
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-directive-for {
-    position: relative
-}
-.mint-directive-for:after {
+.mint-layout-list:after {
     content: "";
     display: table;
     clear: both
@@ -1342,25 +1258,6 @@ left: 0;
     position: relative;
     display: table-cell;
     vertical-align: middle
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-layout-lr {
-    position: relative;
-    display: table;
-    width: 100%;
-    box-sizing: border-box
 }
 
 /* $color-blue: #26a2ff; */
@@ -1438,6 +1335,25 @@ left: 0;
     margin-top: -11.2px;
     margin-top: -0.7rem
 }
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-layout-lr {
+    position: relative;
+    display: table;
+    width: 100%;
+    box-sizing: border-box
+}
+
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -2193,6 +2109,46 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-tabbar {
+    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: relative;
+    background-color: #fafafa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+    background-color: #eaeaea;
+    color: #06c1ae;
+}
+.mint-tabbar.is-fixed {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-checklist .mint-cell {
     padding: 0;
 }
@@ -2260,46 +2216,6 @@ left: 0;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-tabbar {
-    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    position: relative;
-    background-color: #fafafa;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    text-align: center;
-}
-.mint-tabbar > .mint-tab-item.is-selected {
-    background-color: #eaeaea;
-    color: #06c1ae;
-}
-.mint-tabbar.is-fixed {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -2940,6 +2856,80 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-header {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: #06c1ae;
+    box-sizing: border-box;
+    color: #1e2329;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 18px;
+    height: 44px;
+    line-height: 1;
+    padding: 0 10px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    border-bottom: 1px solid #d6d6d6;
+}
+.mint-header .mint-button {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    display: inline-block;
+    padding: 0;
+    font-size: inherit
+}
+.mint-header .mint-button::after {
+    content: none;
+}
+.mint-header.is-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+.mint-header-button {
+    -webkit-box-flex: .5;
+        -ms-flex: .5;
+            flex: .5;
+}
+.mint-header-button > a {
+    color: inherit;
+}
+.mint-header-button.is-right {
+    text-align: right;
+}
+.mint-header-button.is-left {
+    text-align: left;
+}
+.mint-header-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: inherit;
+    font-weight: 400;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-button {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -3195,78 +3185,4 @@ left: 0;
   opacity: 0;
   -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
           transform: translate3d(-50%, -50%, 0) scale(0.9);
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-header {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background-color: #06c1ae;
-    box-sizing: border-box;
-    color: #1e2329;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 18px;
-    height: 44px;
-    line-height: 1;
-    padding: 0 10px;
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    border-bottom: 1px solid #d6d6d6;
-}
-.mint-header .mint-button {
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
-    color: inherit;
-    display: inline-block;
-    padding: 0;
-    font-size: inherit
-}
-.mint-header .mint-button::after {
-    content: none;
-}
-.mint-header.is-fixed {
-    top: 0;
-    right: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
-}
-.mint-header-button {
-    -webkit-box-flex: .5;
-        -ms-flex: .5;
-            flex: .5;
-}
-.mint-header-button > a {
-    color: inherit;
-}
-.mint-header-button.is-right {
-    text-align: right;
-}
-.mint-header-button.is-left {
-    text-align: left;
-}
-.mint-header-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: inherit;
-    font-weight: 400;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
 }

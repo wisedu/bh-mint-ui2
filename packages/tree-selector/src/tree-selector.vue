@@ -35,7 +35,7 @@ import SelectedFooter from '../../select/src/selected-footer.vue';
 import TreeCheckboxList from './tree-checkbox-list';
 /**
  * @noteType component
- * @name TreeSelect
+ * @name TreeSelector
  * @tagName mt-tree-selector
  * @desc 树形选择器
  * @html
@@ -230,6 +230,14 @@ export default {
   },
   components: { Bread, SelectedFooter, TreeCheckboxList }
 };
+/**
+ * @noteType external
+ * @content
+  {
+    "xtype": [ "tree", "multi-tree" ],
+    "bindField": "v-model"
+  }
+ */
 </script>
 
 <style lang="css">
