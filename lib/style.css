@@ -1291,33 +1291,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-text {
-    position: relative
-}
-.mint-text--primary {
-    color: #06c1ae
-}
-.mint-text--warning {
-    color: #ffb200
-}
-.mint-text--danger {
-    color: #ef4f4f
-}
-.mint-text--grey {
-    color: #d9d9d9
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-fixed-button {
     position: fixed;
     border-radius: 50%;
@@ -1396,6 +1369,33 @@ left: 0;
 .mint-image {
     position: relative;
     width: 100%
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-text {
+    position: relative
+}
+.mint-text--primary {
+    color: #06c1ae
+}
+.mint-text--warning {
+    color: #ffb200
+}
+.mint-text--danger {
+    color: #ef4f4f
+}
+.mint-text--grey {
+    color: #d9d9d9
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -1617,8 +1617,11 @@ left: 0;
 /* z-index */
 .mint-tree-selector {}
 .mint-tree-selector-loading {
-    text-align: center;
-    line-height: 80px
+  text-align: center;
+  line-height: 80px;
+}
+.mint-tree-selector-multi-list {
+  padding-bottom: 60px;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -1633,7 +1636,7 @@ left: 0;
 /* Radio Component */
 /* z-index */
 .mint-selected-footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   border-top: 1px solid #e8e8e8;
   background: #f9f9f9;
@@ -2088,6 +2091,46 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-tabbar {
+    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: relative;
+    background-color: #fafafa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+    background-color: #eaeaea;
+    color: #06c1ae;
+}
+.mint-tabbar.is-fixed {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-search {
     height: 100%;
     height: 44px;
@@ -2173,46 +2216,6 @@ left: 0;
     bottom: 0;
     left: 0;
     position: absolute;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-tabbar {
-    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    position: relative;
-    background-color: #fafafa;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    text-align: center;
-}
-.mint-tabbar > .mint-tab-item.is-selected {
-    background-color: #eaeaea;
-    color: #06c1ae;
-}
-.mint-tabbar.is-fixed {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
