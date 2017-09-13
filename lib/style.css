@@ -1194,6 +1194,27 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-directive-show {
+    position: relative
+}
+.mint-directive-show:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-hr {
     position: relative;
     height: 1px;
@@ -1212,10 +1233,73 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-layout-list {
+.mint-directive-else-if {
     position: relative
 }
-.mint-layout-list:after {
+.mint-directive-else-if:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-directive-else {
+    position: relative
+}
+.mint-directive-else:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-directive-if {
+    position: relative
+}
+.mint-directive-if:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-directive-for {
+    position: relative
+}
+.mint-directive-for:after {
     content: "";
     display: table;
     clear: both
@@ -2091,46 +2175,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-tabbar {
-    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: top left;
-    position: relative;
-    background-color: #fafafa;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    text-align: center;
-}
-.mint-tabbar > .mint-tab-item.is-selected {
-    background-color: #eaeaea;
-    color: #06c1ae;
-}
-.mint-tabbar.is-fixed {
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-search {
     height: 100%;
     height: 44px;
@@ -2216,6 +2260,46 @@ left: 0;
     bottom: 0;
     left: 0;
     position: absolute;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-tabbar {
+    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    position: relative;
+    background-color: #fafafa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+.mint-tabbar > .mint-tab-item.is-selected {
+    background-color: #eaeaea;
+    color: #06c1ae;
+}
+.mint-tabbar.is-fixed {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/

@@ -49,7 +49,11 @@
   "layout-left-right": "./packages/layout-left-right/index.js",
   "layout-left-right-item": "./packages/layout-left-right-item/index.js",
   "layout-container": "./packages/layout-container/index.js",
-  "layout-list": "./packages/layout-list/index.js",
+  "directive-for": "./packages/directive-for/index.js",
+  "directive-if": "./packages/directive-if/index.js",
+  "directive-else": "./packages/directive-else/index.js",
+  "directive-else-if": "./packages/directive-else-if/index.js",
+  "directive-show": "./packages/directive-show/index.js",
   "hr": "./packages/hr/index.js",
   "layout-spacing": "./packages/layout-spacing/index.js",
   "form": "./packages/form/index.js"
