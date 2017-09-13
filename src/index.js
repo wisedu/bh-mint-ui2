@@ -47,14 +47,18 @@ import FixedButton from '../packages/fixed-button';
 import LayoutLeftRight from '../packages/layout-left-right';
 import LayoutLeftRightItem from '../packages/layout-left-right-item';
 import LayoutContainer from '../packages/layout-container';
-import LayoutList from '../packages/layout-list';
+import DirectiveFor from '../packages/directive-for';
+import DirectiveIf from '../packages/directive-if';
+import DirectiveElse from '../packages/directive-else';
+import DirectiveElseIf from '../packages/directive-else-if';
+import DirectiveShow from '../packages/directive-show';
 import Hr from '../packages/hr';
 import LayoutSpacing from '../packages/layout-spacing';
 import Form from '../packages/form';
 import '../src/assets/font/iconfont.css';
 import merge from './utils/merge';
 
-const version = '0.3.22';
+const version = '0.3.26';
 const install = function(Vue, config = {}) {
   if (install.installed) return;
   Vue.component(Header.name, Header);
@@ -101,7 +105,11 @@ const install = function(Vue, config = {}) {
   Vue.component(LayoutLeftRight.name, LayoutLeftRight);
   Vue.component(LayoutLeftRightItem.name, LayoutLeftRightItem);
   Vue.component(LayoutContainer.name, LayoutContainer);
-  Vue.component(LayoutList.name, LayoutList);
+  Vue.component(DirectiveFor.name, DirectiveFor);
+  Vue.component(DirectiveIf.name, DirectiveIf);
+  Vue.component(DirectiveElse.name, DirectiveElse);
+  Vue.component(DirectiveElseIf.name, DirectiveElseIf);
+  Vue.component(DirectiveShow.name, DirectiveShow);
   Vue.component(Hr.name, Hr);
   Vue.component(LayoutSpacing.name, LayoutSpacing);
   Vue.component(Form.name, Form);
@@ -172,7 +180,11 @@ window.MINT = {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
-  LayoutList,
+  DirectiveFor,
+  DirectiveIf,
+  DirectiveElse,
+  DirectiveElseIf,
+  DirectiveShow,
   Hr,
   LayoutSpacing,
   Form
@@ -230,7 +242,11 @@ export {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
-  LayoutList,
+  DirectiveFor,
+  DirectiveIf,
+  DirectiveElse,
+  DirectiveElseIf,
+  DirectiveShow,
   Hr,
   LayoutSpacing,
   Form
@@ -287,7 +303,11 @@ export default {
   LayoutLeftRight,
   LayoutLeftRightItem,
   LayoutContainer,
-  LayoutList,
+  DirectiveFor,
+  DirectiveIf,
+  DirectiveElse,
+  DirectiveElseIf,
+  DirectiveShow,
   Hr,
   LayoutSpacing,
   Form
