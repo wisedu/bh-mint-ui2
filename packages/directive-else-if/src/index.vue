@@ -8,7 +8,7 @@
      * @noteType component
      * @name DirectiveElseIf
      * @tagName mt-directive-else-if
-     * @desc 列表容器
+     * @desc else-if容器
      * @type container|directive
      * @directiveName v-else-if
      * @wrapClassName mint-directive-else-if

@@ -8,7 +8,7 @@
      * @noteType component
      * @name DirectiveIf
      * @tagName mt-directive-if
-     * @desc 列表容器
+     * @desc if容器
      * @type container|directive
      * @directiveName v-if
      * @wrapClassName mint-directive-if

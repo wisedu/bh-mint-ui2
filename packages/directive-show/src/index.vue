@@ -8,7 +8,7 @@
      * @noteType component
      * @name DirectiveShow
      * @tagName mt-directive-show
-     * @desc 列表容器
+     * @desc show容器
      * @type container|directive
      * @directiveName v-show
      * @wrapClassName mint-directive-show
