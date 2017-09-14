@@ -1254,10 +1254,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-directive-if {
+.mint-directive-else {
     position: relative
 }
-.mint-directive-if:after {
+.mint-directive-else:after {
     content: "";
     display: table;
     clear: both
@@ -1275,10 +1275,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-directive-else {
+.mint-directive-if {
     position: relative
 }
-.mint-directive-else:after {
+.mint-directive-if:after {
     content: "";
     display: table;
     clear: both
@@ -1583,6 +1583,42 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-datetime {
+    width: 100%;
+}
+.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.mint-datetime .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
+}
+.mint-datetime-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: #06c1ae;
+}
+.mint-datetime-cancel {
+    float: left;
+}
+.mint-datetime-confirm {
+    float: right;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-indexlist {
     width: 100%;
     position: relative;
@@ -1650,42 +1686,6 @@ left: 0;
     border-radius: 5px;
     color: #fff;
     font-size: 22px
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-datetime {
-    width: 100%;
-}
-.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-}
-.mint-datetime .picker-toolbar {
-    border-bottom: solid 1px #eaeaea;
-}
-.mint-datetime-action {
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    color: #06c1ae;
-}
-.mint-datetime-cancel {
-    float: left;
-}
-.mint-datetime-confirm {
-    float: right;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -1853,46 +1853,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.slide-enter-active[data-v-896bc102], .slide-leave-active[data-v-896bc102] {
-  -webkit-transition: -webkit-transform .25s;
-  transition: -webkit-transform .25s;
-  transition: transform .25s;
-  transition: transform .25s, -webkit-transform .25s
-}
-.slide-enter[data-v-896bc102], .slide-leave-to[data-v-896bc102] /* .slide-leave-active in below version 2.1.8 */ {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-}
-.select-container[data-v-896bc102] {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: #f9f9f9;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  overflow: auto;
-}
-.select-picker[data-v-896bc102] {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-field {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1968,6 +1928,46 @@ left: 0;
     right: 0;
     position: relative;
 }
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.slide-enter-active[data-v-896bc102], .slide-leave-active[data-v-896bc102] {
+  -webkit-transition: -webkit-transform .25s;
+  transition: -webkit-transform .25s;
+  transition: transform .25s;
+  transition: transform .25s, -webkit-transform .25s
+}
+.slide-enter[data-v-896bc102], .slide-leave-to[data-v-896bc102] /* .slide-leave-active in below version 2.1.8 */ {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.select-container[data-v-896bc102] {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.4); */
+  background: #f9f9f9;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  overflow: auto;
+}
+.select-picker[data-v-896bc102] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
 /*bh-bh-mint-ui2*/
@@ -2313,44 +2313,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-navbar {
-    background-color: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    text-align: center;
-}
-.mint-navbar .mint-tab-item {
-    padding: 17px 0;
-    font-size: 15px
-}
-.mint-navbar .mint-tab-item:last-child {
-    border-right: 0;
-}
-.mint-navbar .mint-tab-item.is-selected {
-    border-bottom: 3px solid #06c1ae;
-    color: #06c1ae;
-    margin-bottom: -3px;
-}
-.mint-navbar.is-fixed {
-    top: 0;
-    right: 0;
-    left: 0;
-    position: fixed;
-    z-index: 1;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-side-navbar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2389,6 +2351,44 @@ left: 0;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-navbar {
+    background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+}
+.mint-navbar .mint-tab-item {
+    padding: 17px 0;
+    font-size: 15px
+}
+.mint-navbar .mint-tab-item:last-child {
+    border-right: 0;
+}
+.mint-navbar .mint-tab-item.is-selected {
+    border-bottom: 3px solid #06c1ae;
+    color: #06c1ae;
+    margin-bottom: -3px;
+}
+.mint-navbar.is-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -2924,6 +2924,22 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-button-list {}
+.mint-button-list-btn {
+    margin-left: 8px
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-button {
     -webkit-appearance: none;
        -moz-appearance: none;
@@ -3016,22 +3032,6 @@ left: 0;
     height: 25px;
     line-height: 25px;
     border-radius: 12px
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-button-list {}
-.mint-button-list-btn {
-    margin-left: 8px
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
