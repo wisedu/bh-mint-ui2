@@ -1177,10 +1177,9 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-hr {
+.mint-layout-spacing {
     position: relative;
-    height: 1px;
-    background: #ddd
+    height: 16px
 }
 
 /* $color-blue: #26a2ff; */
@@ -1195,9 +1194,10 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-layout-spacing {
+.mint-hr {
     position: relative;
-    height: 16px
+    height: 1px;
+    background: #ddd
 }
 
 /* $color-blue: #26a2ff; */
@@ -1583,42 +1583,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-datetime {
-    width: 100%;
-}
-.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-}
-.mint-datetime .picker-toolbar {
-    border-bottom: solid 1px #eaeaea;
-}
-.mint-datetime-action {
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    line-height: 40px;
-    font-size: 16px;
-    color: #06c1ae;
-}
-.mint-datetime-cancel {
-    float: left;
-}
-.mint-datetime-confirm {
-    float: right;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-indexlist {
     width: 100%;
     position: relative;
@@ -1699,6 +1663,42 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-datetime {
+    width: 100%;
+}
+.mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+}
+.mint-datetime .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
+}
+.mint-datetime-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    color: #06c1ae;
+}
+.mint-datetime-cancel {
+    float: left;
+}
+.mint-datetime-confirm {
+    float: right;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-tree-selector {}
 .mint-tree-selector-loading {
   text-align: center;
@@ -1706,6 +1706,52 @@ left: 0;
 }
 .mint-tree-selector-multi-list {
   padding-bottom: 60px;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-bread {
+  background: #fff;
+  white-space: nowrap;
+  font-size: 0;
+  width: 100%;
+  overflow: auto;
+}
+.mint-bread > span {
+  line-height: 42px;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  padding: 0 16px;
+  color: #2f343b
+}
+.mint-bread > span.active {
+  color: #06c1ae;
+  border-bottom: 2px solid #06c1ae;
+}
+.mint-bread > span:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -2px;
+  top: 17px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: transparent transparent transparent #2f343b;
+}
+.mint-bread > span:last-child:after {
+  display: none;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -1794,52 +1840,6 @@ left: 0;
 }
 .mint-selected-footer-list {
   overflow: auto;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
-.mint-bread {
-  background: #fff;
-  white-space: nowrap;
-  font-size: 0;
-  width: 100%;
-  overflow: auto;
-}
-.mint-bread > span {
-  line-height: 42px;
-  display: inline-block;
-  position: relative;
-  font-size: 16px;
-  padding: 0 16px;
-  color: #2f343b
-}
-.mint-bread > span.active {
-  color: #06c1ae;
-  border-bottom: 2px solid #06c1ae;
-}
-.mint-bread > span:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  right: -2px;
-  top: 17px;
-  border-style: solid;
-  border-width: 4px;
-  border-color: transparent transparent transparent #2f343b;
-}
-.mint-bread > span:last-child:after {
-  display: none;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/
@@ -2095,86 +2095,6 @@ left: 0;
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-checklist .mint-cell {
-    padding: 0;
-}
-.mint-checklist.is-limit .mint-checkbox-core:not(:checked) {
-    background-color: #d9d9d9;
-    border-color: #d9d9d9;
-}
-.mint-checklist-label {
-    display: block;
-    padding: 0 10px;
-}
-.mint-checklist-title {
-    color: #888;
-    display: block;
-    font-size: 12px;
-    margin: 8px;
-}
-.mint-checkbox {}
-.mint-checkbox.is-right {
-    float: right;
-}
-.mint-checkbox-label {
-    vertical-align: middle;
-    margin-left: 6px;
-}
-.mint-checkbox-input {
-    display: none;
-}
-.mint-checkbox-input:checked + .mint-checkbox-core {
-    background-color: #06c1ae;
-    border-color: #06c1ae;
-}
-.mint-checkbox-input:checked + .mint-checkbox-core::after {
-    border-color: #fff;
-    -webkit-transform: rotate(45deg) scale(1);
-            transform: rotate(45deg) scale(1);
-}
-.mint-checkbox-input[disabled] + .mint-checkbox-core {
-    background-color: #d9d9d9;
-    border-color: #ccc;
-}
-.mint-checkbox-core {
-    display: inline-block;
-    background-color: #fff;
-    border-radius: 100%;
-    border: 1px solid #ccc;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-}
-.mint-checkbox-core::after {
-    border: 2px solid transparent;
-    border-left: 0;
-    border-top: 0;
-    content: " ";
-    top: 3px;
-    left: 6px;
-    position: absolute;
-    width: 4px;
-    height: 8px;
-    -webkit-transform: rotate(45deg) scale(0);
-            transform: rotate(45deg) scale(0);
-    -webkit-transition: -webkit-transform .2s;
-    transition: -webkit-transform .2s;
-    transition: transform .2s;
-    transition: transform .2s, -webkit-transform .2s;
-}
-/* $color-blue: #26a2ff; */
-/*bh-bh-mint-ui2*/
-/*bh-bh-mint-ui2*/
-/* Cell Component */
-/* Header Component */
-/* Button Component */
-/* Tab Item Component */
-/* Tabbar Component */
-/* Navbar Component */
-/* Checklist Component */
-/* Radio Component */
-/* z-index */
 .mint-search {
     height: 100%;
     height: 44px;
@@ -2260,6 +2180,86 @@ left: 0;
     bottom: 0;
     left: 0;
     position: absolute;
+}
+/* $color-blue: #26a2ff; */
+/*bh-bh-mint-ui2*/
+/*bh-bh-mint-ui2*/
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-checklist .mint-cell {
+    padding: 0;
+}
+.mint-checklist.is-limit .mint-checkbox-core:not(:checked) {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+}
+.mint-checklist-label {
+    display: block;
+    padding: 0 10px;
+}
+.mint-checklist-title {
+    color: #888;
+    display: block;
+    font-size: 12px;
+    margin: 8px;
+}
+.mint-checkbox {}
+.mint-checkbox.is-right {
+    float: right;
+}
+.mint-checkbox-label {
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.mint-checkbox-input {
+    display: none;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core {
+    background-color: #06c1ae;
+    border-color: #06c1ae;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core::after {
+    border-color: #fff;
+    -webkit-transform: rotate(45deg) scale(1);
+            transform: rotate(45deg) scale(1);
+}
+.mint-checkbox-input[disabled] + .mint-checkbox-core {
+    background-color: #d9d9d9;
+    border-color: #ccc;
+}
+.mint-checkbox-core {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.mint-checkbox-core::after {
+    border: 2px solid transparent;
+    border-left: 0;
+    border-top: 0;
+    content: " ";
+    top: 3px;
+    left: 6px;
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    -webkit-transform: rotate(45deg) scale(0);
+            transform: rotate(45deg) scale(0);
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s;
 }
 /* $color-blue: #26a2ff; */
 /*bh-bh-mint-ui2*/

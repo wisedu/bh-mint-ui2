@@ -10,8 +10,8 @@
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
         <slot name="title">
-          <span class="mint-cell-text" v-text="title"></span>
-          <span v-if="label" class="mint-cell-label" v-text="label"></span>
+          <span class="mint-cell-text" v-html="title"></span>
+          <span v-if="label" class="mint-cell-label" v-html="label"></span>
         </slot>
       </div>
       <div class="mint-cell-value" :class="{ 'is-link' : isLink }">

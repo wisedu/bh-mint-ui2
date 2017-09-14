@@ -1,7 +1,7 @@
 <template>
   <div class="page-cell">
     <div class="page-title">Cell</div>
-    <mt-cell title="标题文字"></mt-cell>
+    <mt-cell title="标题\n文字"></mt-cell>
     <mt-cell title="标题文字" value="说明文字"></mt-cell>
     <mt-cell title="标题文字" icon="more" value="带 icon"></mt-cell>
     <mt-cell title="标题文字" icon="more">
