@@ -1,6 +1,6 @@
 {
   "name": "bh-mint-ui2",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -13,7 +13,8 @@
   "files": [
     "lib",
     "src",
-    "packages"
+    "packages",
+    "example"
   ],
   "scripts": {
     "dev": "npm run bootstrap && npm run build:entry && cooking watch -c build/cooking.demo.js -p",
