@@ -75,7 +75,7 @@ export default {
        * @option
        [
        {
-         "text": "",
+         "text": "空",
          "value": ""
        },
        {
@@ -166,7 +166,7 @@ export default {
    "slot": [
           {
             "field": "icon",
-            "desc": "图标",
+            "desc": "自定义图标",
             "caption": "",
             "option": [
               "Image"
