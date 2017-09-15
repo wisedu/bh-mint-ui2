@@ -3,7 +3,7 @@
     <mt-cell v-for="option in options" @click.native="handleClick(option)">
       <div class="mint-checklist-label" slot="title">
         <label @click.stop>
-          <span  class="mint-checkbox">
+          <span  class="mint-checkbox" v-if="!option.isParent || parentSelectable">
             <input class="mint-checkbox-input" type="checkbox" v-model="currentValue" :disabled="option.disabled" :value="option.id !== undefined ? option.id : option">
             <span class="mint-checkbox-core"></span>
           </span>
@@ -18,7 +18,9 @@
 export default {
   props: {
     options: { type: Array, default () { return [] } },
-    value: { type: Array, default () { return [] } }
+    value: { type: Array, default () { return [] } },
+    // 是否允许父节点被选中
+    parentSelectable: { type: Boolean, default: false }
   },
   computed: {
     currentValue: {
