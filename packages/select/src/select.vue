@@ -64,13 +64,6 @@ export default {
      * @value 请选择
      */
     placeholder: { type: String, default: '请选择' },
-    /**
-     * @noteType prop
-     * @field options
-     * @desc 选项字典数据
-     * @type textarea
-     * @value
-     */
     options: { type: Array, required: true },
     /**
      * @noteType prop
