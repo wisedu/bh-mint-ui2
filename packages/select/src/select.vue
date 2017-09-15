@@ -139,12 +139,15 @@ export default {
       })
     },
     singleSelectDisplay () {
-      if (this.value === '') return this.placeholder
+      if (this.value === '' || this.value === null || this.value === undefined) return this.placeholder
       if (this.options.length === 0) {
         this.$emit('selector-click', '')
         return ''
       }
-      return this.options.filter(item => item.id.toString() === this.value.toString())[0].name
+      return this.options.filter(item => {
+        if (!item) return false
+        return item.id.toString() === this.value.toString()
+      })[0].name
     },
     handleClick_select(val) {
       this.$emit('change', val)
