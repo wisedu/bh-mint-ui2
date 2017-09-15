@@ -29,11 +29,18 @@
  * @display inline
  * @noteType component
  * @html
- * <mt-badge color="#333">30</mt-badge>
+ * <mt-badge color="#333">{{text}}</mt-badge>
  */
 export default {
   name: 'mt-badge',
 
+    /**
+     * @noteType prop
+     * @field text
+     * @desc 内容
+     * @type input
+     * @value 30
+     */
   props: {
     /**
      * @noteType prop
@@ -73,7 +80,7 @@ export default {
      * @field size
      * @desc 文字大小
      * @type select
-     * @value primary
+     * @value small
      * @option
      [{
        "text": "正常",
@@ -92,6 +99,14 @@ export default {
     }
   }
 };
+
+/**
+ * @noteType external
+ * @content
+ {
+    "bindField":"text"
+ }
+ */
 </script>
 <style lang="css">
   @import "../../../src/style/var.css";

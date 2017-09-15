@@ -30,7 +30,7 @@
  * @display inline
  * @noteType component
  * @html
- * <mt-button type="primary">{{space}}</mt-button>
+ * <mt-button type="primary">{{text}}</mt-button>
  */
 export default {
   name: 'mt-button',
@@ -41,6 +41,13 @@ export default {
     }
   },
 
+    /**
+     * @noteType prop
+     * @field text
+     * @desc 文字
+     * @type input
+     * @value 按钮
+     */
   props: {
       /**
        * @noteType prop
@@ -148,17 +155,17 @@ export default {
    "edit": [
    {
      "selector": "label",
-     "forAttribute": "space"
+     "forAttribute": "text"
    }
    ],
    "mock": {
-            "space": "按钮"
+            "text": "按钮"
           },
    "textField": {
-            "field": "space",
+            "field": "text",
             "className": "mint-button-text"
           },
-   "bindField":"space"
+   "bindField":"text"
  }
  */
 </script>

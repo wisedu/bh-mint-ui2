@@ -21,6 +21,13 @@ export default {
             this.$emit('click', evt);
         }
     },
+        /**
+         * @noteType prop
+         * @field text
+         * @desc 内容
+         * @type input
+         * @value 标题
+         */
   props: {
       size: String,
       /**
@@ -82,8 +89,9 @@ export default {
      * @content
      {
        "mock": {
-          "text": "文本"
-        }
+          "text": "标题"
+        },
+        "bindField":"text"
      }
      */
 </script>
