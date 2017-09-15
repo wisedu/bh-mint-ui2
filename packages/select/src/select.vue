@@ -145,7 +145,7 @@ export default {
         return ''
       }
       return this.options.filter(item => {
-        if (!item) return false
+        if (!item || item.id === null) return false
         return item.id.toString() === this.value.toString()
       })[0].name
     },
