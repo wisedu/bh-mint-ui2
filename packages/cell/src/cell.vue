@@ -169,7 +169,14 @@ export default {
             "desc": "自定义图标",
             "caption": "",
             "option": [
-              "Image"
+              {
+                "componentName": "Image",
+                "attr": {
+                  "height": "20px",
+                  "width": "20px",
+                  "smile-display": "inline-block"
+                }
+              }
             ]
           }
         ],
