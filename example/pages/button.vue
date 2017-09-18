@@ -39,7 +39,7 @@
       @name small-primary-icon-custom
       -->
       <mt-button size="small" type="primary">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -82,7 +82,7 @@
       @name primary-icon-custom
       -->
       <mt-button type="primary">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -125,7 +125,7 @@
       @name large-primary-icon-custom
       -->
       <mt-button size="large" type="primary">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -172,7 +172,7 @@
       @name small-icon-custom
       -->
       <mt-button size="small" type="default">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -218,7 +218,7 @@
       @name normal-icon-custom
       -->
       <mt-button type="default">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -264,7 +264,7 @@
       @name large-icon-custom
       -->
       <mt-button size="large" type="default">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -311,7 +311,7 @@
       @name small-warning-icon-custom
       -->
       <mt-button size="small" type="warning">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -357,7 +357,7 @@
       @name warning-icon-custom
       -->
       <mt-button type="warning">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -400,7 +400,7 @@
       @name large-warning-icon-custom
       -->
       <mt-button size="large" type="warning">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -449,7 +449,7 @@
       @name small-danger-icon-custom
       -->
       <mt-button size="small" type="danger">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -495,7 +495,7 @@
       @name danger-icon-custom
       -->
       <mt-button type="danger">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
@@ -538,7 +538,7 @@
       @name large-danger-icon-custom
       -->
       <mt-button size="large" type="danger">
-        <mt-image src="../assets/100x100.png" height="20" width="20" slot="icon"></mt-image>
+        <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" height="20px" width="20px" slot="icon"></mt-image>
         自定义图标
       </mt-button>
       <!--end-->
