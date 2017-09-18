@@ -1,8 +1,11 @@
 <template>
-  <mt-layout-left-right>
-    <mt-layout-left-right-item slot="left" position="left" percentage="30"><div class="aaa">111</div></mt-layout-left-right-item>
-    <mt-layout-left-right-item slot="right" position="right" percentage="70"><div class="bbb">222</div></mt-layout-left-right-item>
-  </mt-layout-left-right>
+  <div style="margin-top: 60px;">
+    <mt-layout-left-right>
+      <mt-layout-left-right-item slot="left" position="left" percentage="30"><div class="aaa">111</div></mt-layout-left-right-item>
+      <mt-layout-left-right-item slot="right" position="right" percentage="70"><div class="bbb">222</div></mt-layout-left-right-item>
+    </mt-layout-left-right>
+  </div>
+
 </template>
 
 <script>
