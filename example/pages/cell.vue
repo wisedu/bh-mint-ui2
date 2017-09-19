@@ -23,7 +23,7 @@
      @name title-value-icon-custom-img
      -->
     <mt-cell title="标题文字" value="icon 是自定义图片">
-      <mt-image slot="icon" src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" width="24px" height="24px"></mt-image>
+      <mt-image slot="icon" src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" width="24px" height="24px" smile-display="inline-block"></mt-image>
     </mt-cell>
     <!--end-->
 

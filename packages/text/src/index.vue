@@ -29,6 +29,12 @@ export default {
          * @value 标题
          */
   props: {
+      /**
+       * @noteType prop
+       * @field size
+       * @desc 字体大小
+       * @type input
+       */
       size: String,
       /**
        * @noteType prop
@@ -64,6 +70,12 @@ export default {
         type: String,
         default: 'default'
       },
+      /**
+       * @noteType prop
+       * @field color
+       * @desc 字体颜色
+       * @type input
+       */
       color: String
   },
     computed: {
@@ -91,7 +103,11 @@ export default {
        "mock": {
           "text": "标题"
         },
-        "bindField":"text"
+        "bindField":"text",
+        "textField": {
+            "field": "text",
+            "className": "mint-text"
+          }
      }
      */
 </script>
