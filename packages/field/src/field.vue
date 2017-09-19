@@ -303,7 +303,7 @@ export default {
       }
 
       .mint-cell-title {
-        width: 105px;
+        width: 72px;
         flex: none;
       }
 
