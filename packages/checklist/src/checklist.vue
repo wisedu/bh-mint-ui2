@@ -49,7 +49,7 @@ if (process.env.NODE_ENV === 'component') {
  * @desc 多选列表
  * @wrapClassName mint-checklist
  * @html
- * <mt-checklist v-model="value" title="" :options="['a', 'b', 'c']"></mt-checklist>
+ * <mt-checklist v-model="value"></mt-checklist>
  */
 export default {
   name: 'mt-checklist',
@@ -90,6 +90,7 @@ export default {
      * @field options
      * @desc 选择项
      * @type textarea
+     * @valueType object
       */
     options: {
       type: Array,
@@ -100,6 +101,7 @@ export default {
      * @field value
      * @desc 默认值
      * @type textarea
+     * @valueType object
       */
     value: Array
   },
@@ -141,6 +143,7 @@ export default {
       "value": []
    },
    "xtype": [ "checkboxlist" ],
+   "modelName": "value",
    "bindField": "v-model"
  }
  */

@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
  *
  * @example
- * <mt-radio v-model="value" :options="['a', 'b', 'c']"></mt-radio>
+ * <mt-radio v-model="value"></mt-radio>
  */
 
 /**
@@ -79,6 +79,7 @@ export default {
      * @field options
      * @desc 选择项
      * @type textarea
+     * @valueType object
       */
     options: {
       type: Array,
@@ -89,6 +90,7 @@ export default {
      * @field value
      * @desc 绑定值
      * @type textarea
+     * @valueType object
       */
     value: String
   },
@@ -123,6 +125,7 @@ export default {
       "value": []
    },
    "xtype": [ "radiolist" ],
+   "modelName": "value",
    "bindField": "v-model"
  }
  */
