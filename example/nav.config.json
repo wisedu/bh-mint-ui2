@@ -153,6 +153,11 @@
         "icon": "button"
       },
       {
+        "path": "/command-bar",
+        "name": "CommandBar",
+        "icon": "button"
+      },
+      {
         "path": "/cell",
         "name": "Cell",
         "icon": "cell"
