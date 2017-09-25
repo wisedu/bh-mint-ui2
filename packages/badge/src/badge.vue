@@ -105,7 +105,11 @@ export default {
  * @content
  {
     "bindField":"text"
- }
+ },
+ "textField": {
+    "field": "text",
+    "className": "mint-badge"
+  }
  */
 </script>
 <style lang="css">
