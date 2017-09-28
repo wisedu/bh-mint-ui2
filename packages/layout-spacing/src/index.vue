@@ -8,7 +8,6 @@
      * @name LayoutSpacing
      * @tagName mt-layout-spacing
      * @desc 间距
-     * @type container
      * @wrapClassName mint-layout-spacing
      * @html
      * <mt-layout-spacing></mt-layout-spacing>
