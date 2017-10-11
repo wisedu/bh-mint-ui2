@@ -9,6 +9,7 @@ var IMPORT_TEMPLATE = 'import {{name}} from \'../packages/{{package}}\';';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}});';
 var MAIN_TEMPLATE = `{{include}}
 import '../src/assets/font/iconfont.css';
+import '../src/style/reset.css';
 import merge from './utils/merge';
 
 const version = '{{version}}';

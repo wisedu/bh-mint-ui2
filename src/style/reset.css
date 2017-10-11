@@ -1,0 +1,9 @@
+button,
+input[type='number'],input[type='text'],input[type='password'],input[type='email'],input[type='search'],
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  -webkit-appearance: none;
+}
