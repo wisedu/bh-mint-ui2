@@ -57,5 +57,6 @@
   "directive-show": "./packages/directive-show/index.js",
   "hr": "./packages/hr/index.js",
   "layout-spacing": "./packages/layout-spacing/index.js",
-  "form": "./packages/form/index.js"
+  "form": "./packages/form/index.js",
+  "validate-rules": "./packages/validate-rules/index.js"
 }

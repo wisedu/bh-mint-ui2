@@ -73,7 +73,10 @@ ComponentNames.forEach(name => {
       // services
     'MessageBox',
     'Toast',
-    'Indicator'
+    'Indicator',
+
+    // 校验规则库
+    'ValidateRules'
   ].indexOf(componentName) === -1) {
     installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
       name: componentName,

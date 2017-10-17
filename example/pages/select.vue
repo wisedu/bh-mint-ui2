@@ -148,7 +148,7 @@
         singleSelectValue: '',
         singleSelectOptions: [],
 
-        multiSelectValue: '',
+        multiSelectValue: '0000001005,0000001007',
         multiSelectOptions: [],
 
         value: '1984',
