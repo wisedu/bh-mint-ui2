@@ -104,12 +104,12 @@ export default {
  * @noteType external
  * @content
  {
-    "bindField":"text"
- },
- "textField": {
-    "field": "text",
-    "className": "mint-badge"
-  }
+    "bindField":"text",
+    "textField": {
+        "field": "text",
+        "className": "mint-badge"
+      }
+ }
  */
 </script>
 <style lang="css">

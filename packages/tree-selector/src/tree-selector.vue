@@ -84,7 +84,7 @@ export default {
      * @field options
      * @desc 选项字典数据
      * @type textarea
-     * @value
+     * @value []
      */
     options: { type: Array, default() { return []; } }
   },
@@ -234,7 +234,8 @@ export default {
  * @content
   {
     "xtype": [ "tree", "multi-tree" ],
-    "bindField": "v-model"
+    "bindField": "v-model",
+    "mock": { "value": "" }
   }
  */
 </script>
