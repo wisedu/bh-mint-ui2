@@ -20,7 +20,8 @@
             handleClick(evt) {
                 this.$emit('click', evt);
             }
-        }
+        },
+        props: {}
     };
 </script>
 
