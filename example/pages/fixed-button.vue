@@ -1,12 +1,19 @@
 <template>
   <div>
-    <mt-fixed-button>+</mt-fixed-button>
+    <mt-fixed-button :type="args.type" :size="args.size" :width="args.width" :height="args.height">+</mt-fixed-button>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'button'
+    name: 'button',
+    data() {
+      return {
+        args: {
+          type:"danger"
+        }
+      }
+    }
 };
 </script>
 

@@ -100,9 +100,7 @@
 </template>
 
 <script>
-    import MtImage from "../../packages/image/src/index";
 export default {
-    components: {MtImage},
     name: 'page-field'
 };
 </script>

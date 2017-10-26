@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-fixed-button" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type]" :style="{computeStyle}">
+  <div @click="handleClick" class="mint-fixed-button" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type]" :style="computeStyle">
     <div class="mint-fixed-button--content" :style="computeContentStyle">
       <slot></slot>
     </div>
@@ -104,9 +104,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 5.5rem;
-      height: 5.5rem;
-      font-size: 4rem;
+      width: 4rem;
+      height: 4rem;
+      font-size: 3rem;
 
       @modifier top-left {
         top: 1.5rem;
