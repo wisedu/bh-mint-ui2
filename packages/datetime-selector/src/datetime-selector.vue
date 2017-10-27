@@ -227,7 +227,7 @@ export default {
   computed: {
     showValue: {
       get: function() {
-        if (this.currentValue === undefined || this.currentValue === "") {
+        if (this.currentValue === undefined || this.currentValue === "" || this.currentValue === null) {
           return this.placeholder;
         } else {
           return this.currentValue;
