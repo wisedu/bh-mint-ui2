@@ -2,14 +2,14 @@
   <div class="page-select">
     <h1 class="page-title">Select 快捷语法糖</h1>
     <div class="">
-      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" type="select" @selector-click="singleSelectClick">
+      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick">
       </mt-select>
       <p>{{singleSelectValue}}</p>
     </div>
 
     <h1 class="page-title">Multi Select 快捷语法糖</h1>
     <div class="">
-      <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" type="multi-select" @selector-click="multiSelectClick">
+      <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" select-type="multi-select" @selector-click="multiSelectClick">
       </mt-select>
       <p>{{multiSelectValue}}</p>
     </div>
@@ -79,7 +79,7 @@
   </div>
 </template>
 
-<style>
+<style lang="postcss">
   body {
     background: #ddd;
     padding: 0;

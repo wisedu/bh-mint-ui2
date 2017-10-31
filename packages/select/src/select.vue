@@ -2,20 +2,20 @@
   <mt-cell :title="label" @click.native="handleDisplayClick">
     <div class="select-value" >
       <!-- select 模板 -->
-      <template v-if="type === 'select'">{{singleSelectDisplay()}}</template>
+      <template v-if="selectType === 'select'">{{singleSelectDisplay()}}</template>
       <!-- multi-select 模板 -->
-      <template v-if="type === 'multi-select'">{{multiSelectDisplay()}}</template>
+      <template v-if="selectType === 'multi-select'">{{multiSelectDisplay()}}</template>
       <!-- 自定义 -->
       <slot v-else  name="display" :options="options" :value="value"></slot>
     </div>
     <transition name="slide">
       <div class="select-container" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <!-- select 模板 -->
-        <template v-if="type === 'select'">
+        <template v-if="selectType === 'select'">
           <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio>
         </template>
         <!-- multi-select 模板 -->
-        <template v-if="type === 'multi-select'">
+        <template v-if="selectType === 'multi-select'">
           <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist>
           <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
         </template>
@@ -67,7 +67,7 @@ export default {
     options: { type: Array, required: true },
     /**
      * @noteType prop
-     * @field type
+     * @field selectType
      * @desc 选择器类型
      * @type select
      * @option 
@@ -86,7 +86,7 @@ export default {
         }
       ]
      */
-    type: ''
+    selectType: { type: String, default: 'select' }
   },
   data() {
     return {
@@ -97,17 +97,17 @@ export default {
     /***** select 专有属性 *****/
     currentValue: {
       get () {
-        if (this.type === 'select') {
+        if (this.selectType === 'select') {
           return this.value;
-        } else if (this.type === 'multi-select') {
+        } else if (this.selectType === 'multi-select') {
           if (this.value === '') return []
           return this.value.split(',')
         }
       }, 
       set (val) {
-        if (this.type === 'select') {
+        if (this.selectType === 'select') {
           this.$emit('input', val.toString());
-        } else if (this.type === 'multi-select') {
+        } else if (this.selectType === 'multi-select') {
           this.$emit('input', val.join(','))
         }
       }

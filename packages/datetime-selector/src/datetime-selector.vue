@@ -89,6 +89,9 @@ export default {
       },{
           "text": "时间",
           "value": "time"
+      },{
+          "text": "年月",
+          "value": "ym"
       }]
       */
     type: String,
@@ -200,6 +203,8 @@ export default {
         case "date":
           this.currentValue = this.formatDate(val, "date");
           break;
+        case "ym":
+          this.currentValue = this.formatDate(val, "ym");
         default:
           this.currentValue = val;
       }
@@ -219,6 +224,8 @@ export default {
         result = this.$refs.picker.getYear(date) + "-" + month + "-" + day + " " + hour + ":" + min + ":00";
       } else if (type === "date") {
         result = this.$refs.picker.getYear(date) + "-" + month + "-" + day;
+      } else if (type === "ym") {
+        result = this.$refs.picker.getYear(date) + "-" + month;
       }
       return result;
     }
