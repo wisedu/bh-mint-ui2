@@ -1,6 +1,6 @@
 {
   "name": "bh-mint-ui2",
-  "version": "0.5.11",
+  "version": "0.6.0",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -39,6 +39,7 @@
     "array-find-index": "^1.0.2",
     "axios": "^0.16.2",
     "babel-preset-es2015": "^6.24.1",
+    "element-theme-chalk": "^2.0.1",
     "raf.js": "0.0.4",
     "vue-lazyload": "^1.0.1"
   },

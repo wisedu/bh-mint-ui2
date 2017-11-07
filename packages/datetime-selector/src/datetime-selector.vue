@@ -226,6 +226,8 @@ export default {
         result = this.$refs.picker.getYear(date) + "-" + month + "-" + day;
       } else if (type === "ym") {
         result = this.$refs.picker.getYear(date) + "-" + month;
+      } else {
+        
       }
       return result;
     }

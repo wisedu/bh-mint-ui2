@@ -1,9 +1,18 @@
 <template>
-  <mt-cell :title="label">
+  <div>
+    <h4 class="mint-button-list-title">{{label}}</h4>
+    <div class="mint-button-list-button-container">
       <template v-for="item in options">
         <mt-button class="mint-button-list-btn" @click="handleClick(item.id)" :key="item.id" plain size="small" :type="getType(item.id)" >{{item.name}}</mt-button>
       </template>
-  </mt-cell>
+    </div>
+  </div>
+
+  <!-- <mt-cell :title="label">
+      <template v-for="item in options">
+        <mt-button class="mint-button-list-btn" @click="handleClick(item.id)" :key="item.id" plain size="small" :type="getType(item.id)" >{{item.name}}</mt-button>
+      </template>
+  </mt-cell> -->
 </template>
 
 <script>
@@ -84,7 +93,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="postcss">
   @import "../../../src/style/var.css";
 
   @component-namespace mint {
@@ -93,5 +102,16 @@ export default {
         margin-left: 8px;
       }
     }
+  }
+
+  .mint-button-list-title {
+    font-size: 14px;
+    padding: 0 12px;
+    color: $grey-lv3;
+  }
+
+  .mint-button-list-button-container {
+    background: $bg-lv3;
+    padding: 8px;
   }
 </style>
