@@ -69,9 +69,6 @@ export default {
     methods:{
       doSome () {
         alert('you are clcik');
-      },
-      changeColor () {
-
       }
     }
 };
