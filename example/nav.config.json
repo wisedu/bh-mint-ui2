@@ -208,6 +208,11 @@
         "icon": "navebar"
       },
       {
+        "path": "/icon",
+        "name": "icon",
+        "icon": "navebar"
+      },
+      {
         "path": "/image",
         "name": "Image",
         "icon": "navebar"
