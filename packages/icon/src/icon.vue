@@ -1,6 +1,6 @@
 <template>
-    <span class="box" :class="animateClass">
-        <i @click="handleClick" class="iconfont" :style="computeStyle" :class="type">
+    <span class="mt-icon-box" :class="animateClass">
+        <i @click="handleClick" class="iconfont mt-icon-i" :style="computeStyle" :class="type">
         </i>
     </span>
 
@@ -83,10 +83,7 @@
       background: #ddd;
     }
   }
-    .box{
+    .mt-icon-box,.mt-icon-i{
         display: inline-block;
-    }
-    i{
-        display:inline-block;
     }
 </style>
