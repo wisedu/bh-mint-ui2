@@ -6,7 +6,7 @@
     <title>Mint UI</title>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1469597443_9221172.css">
     <link rel="stylesheet" href="http://res.wisedu.com/fe_components/iconfont_mobile/iconfont.css">
-    <link rel="stylesheet" href="https://daneden.github.io/animate.css/animate.min.css">
+    <link rel="stylesheet" href="http://res.wisedu.com/bower_components/animate.css/animate.min.css">
   </head>
   <body>
     <div id="app"></div><% if (process.env.NODE_ENV === 'production') { %>

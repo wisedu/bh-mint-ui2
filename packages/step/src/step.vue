@@ -1,10 +1,14 @@
 <template>
   <div class="mint-step mint-hairline" :class="stepClass">
     <div class="mint-step__circle-container">
-      <i class="mint-step__circle" v-if="status !== 'process'"></i>
-      <i class="mint-icon mint-icon-checked" :style="{ color: $parent.activeColor }" v-else></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-chenggong" v-if="status === 'finish'"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi" v-else-if="status === 'process'" :style="{ color: $parent.activeColor }"></i>
+      <i class="mint-step__circle" v-else></i>
     </div>
-    <div class="mint-step__title" :style="titleStyle">
+    <div class="mint-step__time">
+      <slot name="left"></slot>
+    </div>
+    <div class="mint-step__title">
       <slot></slot>
     </div>
     <div class="mint-step__line"></div>
@@ -14,19 +18,12 @@
 <script>
 export default {
   name: "mint-step",
+  //finish/process
+  props: ["status"],
   beforeCreate() {
     this.$parent.steps.push(this);
   },
   computed: {
-    status() {
-      const index = this.$parent.steps.indexOf(this);
-      const active = this.$parent.active;
-      if (index < active) {
-        return "finish";
-      } else if (index === active) {
-        return "process";
-      }
-    },
     stepClass() {
       const status = this.status;
       const statusClass = status ? "mint-step--" + status : "";
@@ -43,7 +40,9 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="css">
+  @import "../../../src/style/var.css";
+
 .mint-step {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -94,7 +93,7 @@ export default {
 }
 
 .mint-step--horizontal .mint-step__title {
-  font-size: 12px;
+  font-size: 14px;
   -webkit-transform: translate3d(-50%, 0, 0);
   transform: translate3d(-50%, 0, 0);
   display: inline-block;
@@ -104,40 +103,50 @@ export default {
 .mint-step--horizontal .mint-step__line {
   position: absolute;
   left: 0px;
-  top: 30px;
+  top: 32px;
   width: 100%;
   height: 1px;
   background-color: #e5e5e5;
 }
 
-.mint-step--horizontal.mint-step--finish {
+.mint-step--finish {
   color: #333;
 }
 
-.mint-step--horizontal.mint-step--finish .mint-step__circle,
-.mint-step--horizontal.mint-step--finish .mint-step__line {
-  background-color: #06bf04;
+.mint-step--finish .mint-step__circle,
+.mint-step--finish .mint-step__line {
+  background-color: $success-color;
 }
 
-.mint-step--horizontal.mint-step--process {
+.mint-step--process {
   color: #333;
 }
 
-.mint-step--horizontal.mint-step--process .mint-step__circle-container {
+.mint-step--horizontal.mint-step--process .mint-step__circle-container,
+.mint-step--horizontal.mint-step--finish .mint-step__circle-container {
   top: 24px;
 }
 
-.mint-step--horizontal.mint-step--process .mint-icon {
-  font-size: 12px;
-  color: #06bf04;
+.mint-step--process .mint-icon {
+  font-size: 18px;
+  color: $warning-color;
+  background-color: white;
+  line-height: 1;
+  display: block;
+}
+
+.mint-step--finish .mint-icon {
+  font-size: 18px;
+  color: $success-color;
+  background-color: white;
   line-height: 1;
   display: block;
 }
 
 .mint-step .mint-step__circle {
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 9px;
+  height: 9px;
   background-color: #888;
   border-radius: 50%;
 }
@@ -147,7 +156,14 @@ export default {
   display: block;
   font-size: 14px;
   line-height: 18px;
-  padding: 10px 10px 10px 0;
+  padding: 10px 10px 20px 0;
+}
+
+.mint-step--vertical .mint-step__time{
+    left: -110px;
+    width: 80px;
+    text-align: right;
+    position: absolute;
 }
 
 .mint-step--vertical:not(:last-child)::after {
@@ -161,7 +177,7 @@ export default {
   height: 20px;
   background-color: #fff;
   top: 0;
-  left: -15px;
+  left: -14px;
   z-index: 1;
 }
 
@@ -174,18 +190,18 @@ export default {
   top: 12px;
   left: -20px;
   line-height: 1;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .mint-step--vertical .mint-step__circle {
   top: 16px;
-  left: -17px;
+  left: -16px;
 }
 
 .mint-step--vertical .mint-step__line {
   position: absolute;
   top: 0;
-  left: -15px;
+  left: -12px;
   width: 1px;
   height: 100%;
   background-color: #e5e5e5;

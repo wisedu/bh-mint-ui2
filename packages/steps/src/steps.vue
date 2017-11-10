@@ -3,7 +3,7 @@
     <div class="mint-steps__status" v-if="title || description">
       <div class="mint-steps__icon" v-if="icon || $slots.icon">
         <slot name="icon">
-          <!-- <mint-icon :name="icon" :class="iconClass"></mint-icon> -->
+          <mint-icon :name="icon" :class="iconClass"></mint-icon>
         </slot>
       </div>
       <div class="mint-steps__message">
@@ -24,12 +24,8 @@
 </template>
 
 <script>
-// import Icon from '../icon';
 export default {
   name: "mint-steps",
-  components: {
-    // [Icon.name]: Icon
-  },
   props: {
     active: Number,
     icon: String,
@@ -45,7 +41,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: "#06bf04"
+      default: "#ffc107"
     }
   },
   data() {
@@ -55,7 +51,8 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="css">
+  @import "../../../src/style/var.css";
 .mint-steps {
   overflow: hidden;
   background-color: #fff;
@@ -72,7 +69,7 @@ export default {
   margin: 0 0 10px;
   overflow: hidden;
   position: relative;
-  padding-bottom: 22px;
+  padding-bottom: 26px;
 }
 
 .mint-steps--horizontal .mint-steps__items.mint-steps__items--alone {
@@ -80,7 +77,7 @@ export default {
 }
 
 .mint-steps--vertical {
-  padding: 0 0 0 35px;
+  padding: 0 0 0 150px;
 }
 
 .mint-steps__icon {
