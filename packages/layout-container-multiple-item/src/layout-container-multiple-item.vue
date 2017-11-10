@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-layout-container-multiple-item">
+  <div @click="handleClick" class="mint-layout-container-multiple-item" :style="styleComputed">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,19 @@
                 this.$emit('click', evt);
             }
         },
-        props: {}
+        props: {
+            width: String
+        },
+        computed: {
+            styleComputed: function() {
+                let _style = '';
+                let width = this.width;
+                if (width) {
+                    _style += 'width:'+width;
+                }
+                return _style;
+            }
+        }
     };
 </script>
 <style lang="css">
