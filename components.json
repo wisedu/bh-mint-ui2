@@ -9,6 +9,8 @@
   "field": "./packages/field/index.js",
   "file-list": "./packages/file-list/index.js",
   "badge": "./packages/badge/index.js",
+  "step": "./packages/step/index.js",
+  "steps": "./packages/steps/index.js",
   "switch": "./packages/switch/index.js",
   "switcher": "./packages/switcher/index.js",
   "spinner": "./packages/spinner/index.js",

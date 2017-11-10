@@ -251,6 +251,11 @@
         "path": "/badge",
         "name": "Badge",
         "icon": "badge"
+      },
+      {
+        "path": "/step",
+        "name": "Step",
+        "icon": "badge"
       }
     ]
   }
