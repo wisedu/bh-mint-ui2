@@ -5,7 +5,7 @@
 </template>
 <script>
     export default {
-        name: 'mint-layout-container-multiple-item',
+        name: 'mt-layout-container-multiple-item',
         methods: {
             handleClick(evt) {
                 this.$emit('click', evt);
