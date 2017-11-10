@@ -6,7 +6,7 @@
     "component",
     "vue",
     "mobile",
-    "eleme"
+    "wisedu"
   ],
   "main": "lib/bh-mint-ui2.common.js",
   "style": "lib/style.css",
