@@ -13,4 +13,4 @@ example/dist
 node_modules-dev.zip
 node_modules-dist.zip
 lib
-index.js
+src/index.js
