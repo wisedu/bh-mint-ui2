@@ -51,4 +51,10 @@ export default {
     }
   }
 
+    .mint-layout-lr-item:after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+
 </style>

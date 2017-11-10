@@ -71,4 +71,10 @@
     }
   }
 
+  .mint-layout-container:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+
 </style>
