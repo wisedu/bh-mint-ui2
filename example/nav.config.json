@@ -193,6 +193,11 @@
         "icon": "navebar"
       },
       {
+        "path": "/layout-container-multiple",
+        "name": "LayoutContainerMultiple",
+        "icon": "navebar"
+      },
+      {
         "path": "/layout-spacing",
         "name": "LayoutSpacing",
         "icon": "navebar"
@@ -205,6 +210,11 @@
       {
         "path": "/hr",
         "name": "Hr",
+        "icon": "navebar"
+      },
+      {
+        "path": "/icon",
+        "name": "icon",
         "icon": "navebar"
       },
       {
