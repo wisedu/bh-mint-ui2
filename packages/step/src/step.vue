@@ -2,7 +2,7 @@
   <div class="mint-step mint-hairline" :class="stepClass">
     <div class="mint-step__circle-container">
       <i class="mint-icon mint-icon-checked iconfont icon-chenggong" v-if="status === 'finish'"></i>
-      <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi" v-else-if="status === 'process'" :style="{ color: $parent.activeColor }"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi" v-else-if="status === 'process'"></i>
       <i class="mint-step__circle" v-else></i>
     </div>
     <div class="mint-step__time">
@@ -18,8 +18,14 @@
 <script>
 export default {
   name: "mint-step",
-  //finish/process
-  props: ["status"],
+  //finish/process/
+  props: {
+    status: String
+  },
+  data() {
+    return {
+    };
+  },
   beforeCreate() {
     this.$parent.steps.push(this);
   },
@@ -29,13 +35,6 @@ export default {
       const statusClass = status ? "mint-step--" + status : "";
       const directionClass = `mint-step--${this.$parent.direction}`;
       return [directionClass, statusClass];
-    },
-    titleStyle() {
-      if (this.status === "process") {
-        return {
-          color: this.$parent.activeColor
-        };
-      }
     }
   }
 };

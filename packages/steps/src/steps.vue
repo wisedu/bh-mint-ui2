@@ -3,7 +3,7 @@
     <div class="mint-steps__status" v-if="title || description">
       <div class="mint-steps__icon" v-if="icon || $slots.icon">
         <slot name="icon">
-          <mint-icon :name="icon" :class="iconClass"></mint-icon>
+          <mint-icon :class="iconClass"></mint-icon>
         </slot>
       </div>
       <div class="mint-steps__message">
@@ -27,8 +27,6 @@
 export default {
   name: "mint-steps",
   props: {
-    active: Number,
-    icon: String,
     iconClass: {
       type: String,
       default: ""
@@ -38,10 +36,6 @@ export default {
     direction: {
       type: String,
       default: "horizontal"
-    },
-    activeColor: {
-      type: String,
-      default: "#ffc107"
     }
   },
   data() {
