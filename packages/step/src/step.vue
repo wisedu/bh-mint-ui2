@@ -1,7 +1,8 @@
 <template>
   <div class="mint-step mint-hairline" :class="stepClass">
     <div class="mint-step__circle-container">
-      <i class="mint-icon mint-icon-checked iconfont icon-chenggong" v-if="status === 'finish'"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-wancheng" v-if="status === 'finish'"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-weiwancheng" v-else-if="status === 'error'"></i>
       <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi" v-else-if="status === 'process'"></i>
       <i class="mint-step__circle" v-else></i>
     </div>
@@ -86,6 +87,7 @@ export default {
   position: absolute;
   top: 28px;
   left: -8px;
+  height: 18px;
   padding: 0 8px;
   background-color: #fff;
   z-index: 1;
@@ -122,6 +124,7 @@ export default {
 }
 
 .mint-step--horizontal.mint-step--process .mint-step__circle-container,
+.mint-step--horizontal.mint-step--error .mint-step__circle-container,
 .mint-step--horizontal.mint-step--finish .mint-step__circle-container {
   top: 24px;
 }
@@ -130,16 +133,24 @@ export default {
   font-size: 18px;
   color: $warning-color;
   background-color: white;
-  line-height: 1;
-  display: block;
+  line-height: 18px;
+  /* display: block; */
 }
 
 .mint-step--finish .mint-icon {
   font-size: 18px;
   color: $success-color;
   background-color: white;
-  line-height: 1;
-  display: block;
+  line-height: 18px;
+  /* display: block; */
+}
+
+.mint-step--error .mint-icon {
+  font-size: 18px;
+  color: $error-color;
+  background-color: white;
+  line-height: 18px;
+  /* display: block; */
 }
 
 .mint-step .mint-step__circle {
@@ -204,5 +215,13 @@ export default {
   width: 1px;
   height: 100%;
   background-color: #e5e5e5;
+}
+.mint-step--vertical:first-child .mint-step__line{
+  top: 16px;
+  height: calc(100% - 16px);
+}
+
+.mint-step--vertical:last-child .mint-step__line {
+  height: 16px;
 }
 </style>
