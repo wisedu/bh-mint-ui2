@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "mint-step",
+  name: "mt-step",
   //finish/process/
   props: {
     status: String
