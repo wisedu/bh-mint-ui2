@@ -145,6 +145,7 @@ export default {
         height: 100%;
         font-size: 14px;
         outline: 0;
+        padding-left: 8px;
       }
 
       @descendent placeholder {
