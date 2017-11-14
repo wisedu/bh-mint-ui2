@@ -85,9 +85,9 @@ export default {
 
 .mint-step--horizontal .mint-step__circle-container {
   position: absolute;
-  top: 28px;
+  top: 30px;
   left: -6px;
-  height: 18px;
+  height: 23px;
   padding: 0 8px;
   background-color: #fff;
   z-index: 1;
@@ -104,7 +104,7 @@ export default {
 .mint-step--horizontal .mint-step__line {
   position: absolute;
   left: 0px;
-  top: 32px;
+  top: 34px;
   width: 100%;
   height: 1px;
   background-color: #e5e5e5;
@@ -130,24 +130,24 @@ export default {
 }
 
 .mint-step--process .mint-icon {
-  font-size: 18px;
+  font-size: 23px;
   color: $warning-color;
   background-color: white;
-  line-height: 18px;
+  line-height: 23px;
 }
 
 .mint-step--finish .mint-icon {
-  font-size: 18px;
+  font-size: 23px;
   color: $success-color;
   background-color: white;
-  line-height: 18px;
+  line-height: 23px;
 }
 
 .mint-step--error .mint-icon {
-  font-size: 18px;
+  font-size: 23px;
   color: $error-color;
   background-color: white;
-  line-height: 18px;
+  line-height: 23px;
 }
 
 .mint-step .mint-step__circle {
@@ -162,12 +162,12 @@ export default {
   float: none;
   display: block;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 23px;
   padding: 10px 10px 20px 0;
 }
 
 .mint-step--vertical .mint-step__time{
-    left: -110px;
+    left: -132px;
     width: 80px;
     text-align: right;
     position: absolute;
@@ -195,20 +195,20 @@ export default {
 
 .mint-step--vertical .mint-icon-checked {
   top: 12px;
-  left: -20px;
-  height: 18px;
-  font-size: 18px;
+  left: -37px;
+  height: 23px;
+  font-size: 23px;
 }
 
 .mint-step--vertical .mint-step__circle {
   top: 16px;
-  left: -16px;
+  left: -30px;
 }
 
 .mint-step--vertical .mint-step__line {
   position: absolute;
   top: 0;
-  left: -12px;
+  left: -26px;
   width: 1px;
   height: 100%;
   background-color: #e5e5e5;

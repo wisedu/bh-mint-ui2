@@ -63,7 +63,7 @@ export default {
   margin: 0 0 10px;
   overflow: hidden;
   position: relative;
-  padding-bottom: 26px;
+  padding-bottom: 32px;
 }
 
 .mint-steps--horizontal .mint-steps__items.mint-steps__items--alone {
