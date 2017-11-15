@@ -1,7 +1,7 @@
 <template>
-  <div :class="['mint-steps', `mint-steps--${direction}`]">
+  <div :class="['mint-steps', `mint-steps--${direction}`]" :style="{'padding-left': direction === 'vertical' ? (paddingLeft + 'px') : '0'}">
     <div class="mint-steps__status" v-if="title || description">
-      <div class="mint-steps__icon" v-if="icon || $slots.icon">
+      <div class="mint-steps__icon" v-if="iconClass || $slots.icon">
         <slot name="icon">
           <mt-icon :class="iconClass"></mt-icon>
         </slot>
@@ -36,6 +36,10 @@ export default {
     direction: {
       type: String,
       default: "horizontal"
+    },
+    paddingLeft: {
+      type: Number,
+      default: 150
     }
   },
   data() {
