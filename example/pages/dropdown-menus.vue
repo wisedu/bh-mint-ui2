@@ -1,185 +1,242 @@
 <template>
-    <div class="page_border">
-        <div style="padding-top:48px;">
-            <!-- <drop-down-buttons :options="options" @dropDownButtons="getSelectedButton"></drop-down-buttons>
-            <drop-down-menu  :menuParent="menuParent" :options="menuOptions" :type="type" :line="line" @dropDownMenu="getSelectedMenu"></drop-down-menu> -->
-            <mt-dropdown-menus :options="options" :menuOption="menuOptions" @dropDownButtonMenu="getSelectedMenu"></mt-dropdown-menus>
+    <div class="page-field">
+        <h1 class="page-title">Dropdown-Menus</h1>
+        <div class="page-part">
+            <mt-dropdown-menus :isShowMenu="isShowMenu">
+                <div slot="menu" v-for=" item in menuDatas" class="bh-ddm-item" :class="{'bh-ddm-item-selected':item.active}" @click="setSelected(item)">
+                    {{item.text}}
+                    <i class="bh-ddm-item-img" v-if="item.active"></i>
+                </div>
+            </mt-dropdown-menus>
         </div>
-        
-        <!-- 静态图片的写法请参照以下方式 -->
-        <h1 class="index">
-            首页
-        </h1>
-    </div>
+        <div class="page-part">
+            <mt-dropdown-menus :isShowMenu="isShowMenu">
+                <div slot="menu" class="bh-ddm-two">
+                    <div class="bh-ddm-lv1-container">
+                        <div v-for=" item in menuDatas2" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @click="setSelected2(item)">
+                            {{item.text}}
+                        </div>
+                    </div>
+                    <div class="bh-ddm-lv2-container">
+                        <div v-for=" item in subMenuDatas2" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @click="setSubSelected2(item)">
+                            {{item.text}}
+                            <i class="bh-ddm-item-img" v-if="item.active"></i>
+                        </div>
+                    </div>
+                </div>
+            </mt-dropdown-menus>
+        </div>
+        <div class="page-part">
+            <mt-dropdown-menus :isShowMenu="isShowMenu">
+                <div slot="menu" class="bh-ddm-three">
+                    <div class="bh-ddm-lv1-container">
+                        <div v-for=" item in menuDatas3" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @click="setSelected3(item)">
+                            {{item.text}}
+                        </div>
+                    </div>
+                    <div class="bh-ddm-lv2-container">
+                        <div v-for=" item in subMenuDatas3" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @click="setSubSelected3(item)">
+                            {{item.text}}
+                        </div>
+                    </div>
+                    <div class="bh-ddm-lv3-container">
+                        <div v-for="item in grandMenuDatas3" class="bh-ddm-lv3-item" :class="{'bh-ddm-lv3-item-selected':item.active}" @click="setGrandSelected3(item)">
+                            {{item.text}}
+                            <i class="bh-ddm-item-img" v-if="item.active"></i>
+                        </div>
+                    </div>
+                </div>
+            </mt-dropdown-menus>
+        </div>
+        <div class="page-part">
+            <mt-dropdown-menus :isShowMenu="isShowMenu">
+                <div slot="menu" class="bh-ddm-filter" :style="{'height':bodyHeight}">
+                    <div style="padding:0 20px;">
+                        <div v-for="(item,index) in filterMenuDatas">
+                            <div class="bh-ddm-filter-text">
+                                {{item.text}}
+                            </div>
+                            <div v-for="(ele,inx) in item.children" class="bh-ddm-filter-tag" :class="{'bh-ddm-filter-tag-selected':ele.active}" @click="addFilterTags(ele,inx,item)">
+                            {{ele.text}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-ddm-filter-buttons">
+                        <div class="bh-ddm-filter-button" @click="resetFilter">
+                        重置
+                        </div>
+                        <div class="bh-ddm-filter-button" @click="sureFilter">
+                        确定
+                        </div>
+                    </div>
+                </div>
+            </mt-dropdown-menus>
+        </div>
+  </div>
 </template>
 <style>
-.index{
-    background:#ffffff;
+.bh-ddm-item {
+  text-align: left;
+  padding: 11px 16px;
+  border-bottom: solid 0.5px #eee;
 }
-.right_icon{
-    float: right;
-    height: 50px;
-    padding-right: 8px;
+.bh-ddm-item-img {
+  float: right;
+  width: 16px;
+  height: 16px;
+  position: relative;
 }
-.page_border{
-    /* padding: 4px; */
+.bh-ddm-item-img:after {
+  content: "\00a0";
+  display: inline-block;
+  border: 2px solid #38cdc1;
+  border-top-width: 0;
+  border-right-width: 0;
+  width: 12px;
+  height: 6px;
+  -webkit-transform: rotate(-50deg);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.bh-ddm-item-selected {
+  color: #38cdc1;
+}
+.bh-ddm-lv1-container {
+  float: left;
+  width: 30%;
+  background-color: #f4f4f4;
+  border-right: solid 0.5px rgba(0, 0, 0, 0.25);
+}
+.bh-ddm-two {
+  overflow: auto;
+  display: flex;
+}
+.bh-ddm-two .bh-ddm-lv2-container {
+  float: right;
+  width: 70%;
+}
+.bh-ddm-three {
+  overflow: auto;
+  display: flex;
+}
+.bh-ddm-three .bh-ddm-lv2-container {
+  float: left;
+  width: 30%;
+}
+.bh-ddm-three .bh-ddm-lv3-container {
+  float: right;
+  width: 40%;
+  border-left: solid 0.5px rgba(0, 0, 0, 0.1);
+}
+.bh-ddm-lv1-item {
+  padding: 11px 20px;
+}
+.bh-ddm-lv2-item {
+  padding: 11px 20px;
+}
+.bh-ddm-lv3-item {
+  padding: 11px 20px;
+}
+.bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
+  background-color: #fff;
+  border-top: solid 0.5px rgba(0, 0, 0, 0.25);
+  border-bottom: solid 0.5px rgba(0, 0, 0, 0.25);
+  border-right: solid 0.5px #fff;
+  width: calc(100% + 1px);
+}
+.bh-ddm-lv1-container .bh-ddm-lv1-item:first-child.bh-ddm-lv1-item-selected {
+  border-top: none;
+}
+.bh-ddm-lv1-container .bh-ddm-lv1-item:last-child.bh-ddm-lv1-item-selected {
+  border-bottom: none;
+}
+.bh-ddm-lv2-item-selected {
+  color: #38cdc1;
+}
+.bh-ddm-lv3-item-selected {
+  color: #38cdc1;
+}
+.bh-ddm-shadow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 9;
+  position: absolute;
+}
+.bh-ddm-filter {
+  position: relative;
+}
+.bh-ddm-filter-text {
+  padding: 15px 0 0px 0;
+  color: #92969c;
+}
+.bh-ddm-filter-tag {
+  display: inline-block;
+  width: 70px;
+  font-size: 16px;
+  padding: 4px 0;
+  text-align: center;
+  margin: 10px 10px 0 0;
+  border-radius: 4px;
+  border: solid 0.5px rgba(0, 0, 0, 0.25);
+  vertical-align: top;
+}
+.bh-ddm-filter-tag-selected {
+  background-color: #06c1ae;
+  color: #fff;
+  border-color: #fff;
+}
+.bh-ddm-filter-buttons {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  border-top: solid 0.5px rgba(0, 0, 0, 0.25);
+}
+.bh-ddm-filter-button {
+  width: 50%;
+  float: left;
+  padding: 10px 0;
+  text-align: center;
+}
+.bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
+  background-color: #06c1ae;
+  color: #fff;
 }
 </style>
 <script type="text/javascript">
+
     export default {
+        name: 'page-field',
         data(){
             return {
-                options:[{
-                    text:'国家',
-                    ddmId:'country'
+                isShowMenu:true,
+                menuDatas:[{
+                    text:'男',
+                    ddmId:'man'
                 },{
-                    text:'性别',
-                    ddmId:'sex'
-                },{
-                    text:'交通',
-                    ddmId:'traffic'
-                },{
-                    text:'筛选',
-                    ddmId:'filter'
+                    text:'女',
+                    ddmId:'woman'
                 }],
-                menuOptions:[],
-                // type:1,
-                // line:5,
-                // menuParent:{}
-            }
-        },
-        components: {
-
-        },
-        mounted(){
-            this.menuOptions = [{
-                    type:2,
-                    menuOptions:[{
-                        text:'中国',
-                        ddmId:'China',
-                        children:[{
-                            text:'江苏',
-                            ddmId:'js'
-                        },{
-                            text:'山东',
-                            ddmId:'sd'
-                        }]
-                    },{
-                        text:'美国',
-                        ddmId:'American',
-                        children:[{
-                            text:'纽约',
-                            ddmId:'ny'
-                        },{
-                            text:'旧金山啊',
-                            ddmId:'jjs'
-                        }]
-                    }]
+                menuDatas2:[{
+                    text:'中国',
+                    ddmId:'China'
                 },{
-                    type:1,
-                    line:10,
-                    menuOptions:[{
-                        text:'男',
-                        ddmId:'man'
-                    },{
-                        text:'女',
-                        ddmId:'woman'
-                    },{
-                        text:'男1',
-                        ddmId:'man1'
-                    },{
-                        text:'女1',
-                        ddmId:'woman1'
-                    },{
-                        text:'男2',
-                        ddmId:'man2'
-                    },{
-                        text:'女2',
-                        ddmId:'woman2'
-                    },{
-                        text:'男3',
-                        ddmId:'man3'
-                    },{
-                        text:'女3',
-                        ddmId:'woman3'
-                    },{
-                        text:'男4',
-                        ddmId:'man4'
-                    },{
-                        text:'女4',
-                        ddmId:'woman4'
-                    },{
-                        text:'男5',
-                        ddmId:'man5'
-                    },{
-                        text:'女5',
-                        ddmId:'woman5'
-                    }] 
+                    text:'美国',
+                    ddmId:'American'
+                }],
+                menuDatas3:[{
+                    text:'地铁',
+                    ddmId:'metro'
                 },{
-                  type:3,
-                  line:4,
-                  menuOptions:[{
-                        text:'地铁',
-                        ddmId:'metro',
-                        children:[{
-                            text:'一号线',
-                            ddmId:'firstLine',
-                            children:[{
-                                text:'南京南',
-                                ddmId:'njn'
-                            },{
-                                text:'河定桥',
-                                ddmId:'hdq'
-                            }]
-                        },{
-                            text:'二号线',
-                            ddmId:'secondLine',
-                            children:[{
-                                text:'仙林',
-                                ddmId:'xl'
-                            },{
-                                text:'油坊桥',
-                                ddmId:'yfq'
-                            }]
-                        }]
-                    },{
-                        text:'公交',
-                        ddmId:'bus',
-                        children:[{
-                            text:'08路',
-                            ddmId:'08',
-                            children:[{
-                                text:'万达',
-                                ddmId:'wd'
-                            },{
-                                text:'金智',
-                                ddmId:'wisedu'
-                            }]
-                        },{
-                            text:'09路',
-                            ddmId:'09',
-                            children:[{
-                                text:'河海',
-                                ddmId:'hh'
-                            },{
-                                text:'南理工',
-                                ddmId:'nlg'
-                            }]
-                        },{
-                            text:'09路',
-                            ddmId:'09',
-                            children:[{
-                                text:'河海',
-                                ddmId:'hh'
-                            },{
-                                text:'南理工',
-                                ddmId:'nlg'
-                            }]
-                        }]
-                    }] 
-                },{
-                    type:'filter',
-                    menuOptions:[{
+                    text:'公交',
+                    ddmId:'bus'
+                }],
+                subMenuDatas2:[],
+                
+                subMenuDatas3:[],
+                grandMenuDatas3:[],
+                filterMenuDatas:[{
                         text:'距离',
                         ddmId:'location',
                         children:[{
@@ -211,12 +268,124 @@
                             text:'6次',
                             ddmId:'6time'
                         }]
-                    }]
-                }];
+                    }],
+                bodyHeight:''
+            }
+        },
+        components: {
+
+        },
+        mounted(){
+            
         },
         methods:{
-            getSelectedMenu:function(param){
-                console.log(param);
+            setSelected:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.menuDatas.forEach(function(item) {
+                    that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+            },
+            setSelected2:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.menuDatas2.forEach(function(item) {
+                    that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+                that.subMenuDatas2 = [{
+                    text:'江苏',
+                    id:'js'
+                },{
+                    text:'山东',
+                    id:'sd'
+                }];
+                
+            },
+            setSubSelected2:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.subMenuDatas2.forEach(function(item) {
+                    that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+            },
+            setSelected3:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.menuDatas3.forEach(function(item) {
+                        that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+                that.subMenuDatas3 = [{
+                    text:'一号线',
+                    id:'yhx'
+                },{
+                    text:'二号线',
+                    id:'ehx'
+                }];
+                
+            },
+            setSubSelected3:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.subMenuDatas3.forEach(function(item) {
+                        that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+                that.grandMenuDatas3 = [{
+                    text:'南京南',
+                    id:'njn'
+                },{
+                    text:'河定桥',
+                    id:'hdq'
+                }];
+            },
+            setGrandSelected3:function(item){
+                var that = this;
+                that.$nextTick(function() {
+                    that.grandMenuDatas3.forEach(function(item) {
+                        that.$set(item, "active", false);
+                    });
+                    that.$set(item, "active", true);
+                });
+                
+            },
+            addFilterTags: function(node, index, parent) {
+                var that = this;
+                if (node.active) {
+                    that.$set(node, "active", false);
+                } else {
+                    that.$set(node, "active", true);
+                }
+            },
+            resetFilter: function() {
+                this.filterMenuDatas.forEach(function(item) {
+                    item.children.forEach(function(subItem) {
+                        subItem.active = false;
+                    });
+                });
+            },
+            sureFilter: function() {
+                var that = this;
+                var filterArray = [];
+                this.filterMenuDatas.forEach(function(item) {
+                    item.children.forEach(function(subItem) {
+                    if (subItem.active) {
+                        filterArray.push({
+                            node: subItem,
+                            parentNode: item
+                        });
+                    }
+                    });
+                });
+                console.log(filterArray);
             }
         }
     }

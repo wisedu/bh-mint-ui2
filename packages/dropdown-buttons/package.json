@@ -1,0 +1,12 @@
+{
+  "name": "mint-dropdown-buttons",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "xjb",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "dependencies": {
+  }
+}
