@@ -266,6 +266,11 @@
         "path": "/step",
         "name": "Step",
         "icon": "badge"
+      },
+      {
+        "path": "/dropdown-menus",
+        "name": "DropdownMenus",
+        "icon": "badge"
       }
     ]
   }

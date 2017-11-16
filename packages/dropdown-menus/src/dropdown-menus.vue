@@ -48,7 +48,7 @@
             </div>
             <!-- 筛选类型 -->
             <div v-if="type === 'filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
-              <div style="padding:0 20px;">
+              <div style="padding:0px 20px;">
                 <div v-for="(item,index) in menuOptions">
                     <div class="bh-ddm-filter-text">
                         {{item.text}}
@@ -75,6 +75,7 @@
 
 <script>
 export default {
+  name: 'mt-dropdown-menus',
   data() {
     return {
       itemWidth: "",
@@ -83,6 +84,7 @@ export default {
       grandSonOptions: [],
       grandSonParentOptions: "",
       maxHeight: "",
+      bodyHeight:"",
       isShowShadow: false,
       isShowMenu: false,
       type: 1,
@@ -108,24 +110,24 @@ export default {
   components: {},
   created() {
     this.maxHeight = this.line * 44 + "px";
-    this.bodyHeight = document.body.clientHeight + "px";
+    this.bodyHeight = (screen.height || document.body.scrollHeight) + "px";
     this.itemWidth = 100 / this.options.length + "%";
   },
   watch: {
     menuOptions: function(newData, oldData) {
       //切换变化时
       if (oldData.length != 0 && newData.length != 0) {
-        if (oldData[0].id != newData[0].id) {
+        if (oldData[0].ddmId != newData[0].ddmId) {
           if (!isNaN(this.type)) {
             if (
               this.menuOptions.length &&
-              this.menuOptions[0].id.indexOf("All") === -1
+              this.menuOptions[0].ddmId.indexOf("All") === -1
             ) {
               var totalItem = {
                 text: "全部" + this.menuParent.text,
-                id: this.menuParent.id + "All",
+                ddmId: this.menuParent.ddmId + "All",
                 originText: this.menuParent.text,
-                originId: this.menuParent.id
+                originddmId: this.menuParent.ddmId
               };
               this.menuOptions.unshift(totalItem);
             }
@@ -138,8 +140,8 @@ export default {
           var totalItem = {
             text: "全部" + this.menuParent.text,
             originText: this.menuParent.text,
-            originId: this.menuParent.id,
-            id: this.menuParent.id + "All"
+            originddmId: this.menuParent.ddmId,
+            ddmId: this.menuParent.ddmId + "All"
           };
           this.menuOptions.unshift(totalItem);
         }
@@ -154,14 +156,14 @@ export default {
       var that = this;
       this.$nextTick(function() {
         this.options.forEach(function(item) {
-          Vue.set(item, "active", false);
+          that.$set(item, "active", false);
         });
-        Vue.set(param, "active", true);
+        that.$set(param, "active", true);
       });
       this.menuOptions = this.menuOption[index].menuOptions;
       this.type = this.menuOption[index].type;
       this.line = this.menuOption[index].line || 10;
-      if (param.id != this.menuParent.id) {
+      if (param.ddmId != this.menuParent.ddmId) {
         this.menuParent = param;
         //初始化二级三级项数组
         this.subOptions = [];
@@ -184,13 +186,14 @@ export default {
       this.isShowShadow = true;
     },
     setSelected: function(param, index) {
+      var that = this;
       this.$nextTick(function() {
         this.menuOptions.forEach(function(item) {
-          Vue.set(item, "active", false);
+          that.$set(item, "active", false);
         });
-        Vue.set(param, "active", true);
+        that.$set(param, "active", true);
         if (this.type != 1) {
-          if (param.id.indexOf("All") > -1) {
+          if (param.ddmId.indexOf("All") > -1) {
             //清除二三级的选中信息
             if (this.subOptions.length > 0) {
               this.subOptions.forEach(function(ele) {
@@ -211,7 +214,7 @@ export default {
             var returnData = {
               node: {
                 text: param.originText,
-                id: param.originId
+                ddmId: param.originddmId
               }
             };
             this.postEventToParent(returnData);
@@ -221,15 +224,15 @@ export default {
             this.subParentOptions = param;
             //清除切换一级列表导致二级数据的变化，比如，选择某一级，点击了其二级项，再切换一级，再点击此二级的项，再返回之前的某一级，发现其二级保留了之前的状态
             this.subOptions.forEach(function(item) {
-              Vue.set(item, "active", false);
+              that.$set(item, "active", false);
             });
           }
         } else {
-          if (param.id.indexOf("All") > -1) {
+          if (param.ddmId.indexOf("All") > -1) {
             var returnData = {
               node: {
                 text: param.originText,
-                id: param.originId
+                ddmId: param.originddmId
               }
             };
           } else {
@@ -242,18 +245,19 @@ export default {
       });
     },
     setLv2Selected: function(param, index) {
+      var that = this;
       this.$nextTick(function() {
         this.subOptions.forEach(function(item) {
-          Vue.set(item, "active", false);
+          that.$set(item, "active", false);
         });
-        Vue.set(param, "active", true);
+        that.$set(param, "active", true);
         if (this.type != 2) {
           //设置三级列表数据来源
           this.grandSonOptions = param.children;
           this.grandSonParentOptions = param;
           //清除切换二级列表导致三级数据的变化
           this.grandSonOptions.forEach(function(item) {
-            Vue.set(item, "active", false);
+            that.$set(item, "active", false);
           });
         } else {
           var returnData = {
@@ -265,11 +269,12 @@ export default {
       });
     },
     setLv3Selected: function(param, index) {
+      var that = this;
       this.$nextTick(function() {
         this.grandSonOptions.forEach(function(item) {
-          Vue.set(item, "active", false);
+          that.$set(item, "active", false);
         });
-        Vue.set(param, "active", true);
+        that.$set(param, "active", true);
         var returnData = {
           node: param,
           parentNode: this.grandSonParentOptions,
@@ -297,17 +302,18 @@ export default {
           }
         });
       }
-      this.resultFilterData[this.menuParent.id] = data;
+      this.resultFilterData[this.menuParent.ddmId] = data;
       this.$emit("dropDownButtonMenu", this.resultFilterData);
       setTimeout(function() {
         that.cancelShadow();
       }, 200);
     },
     addFilterTags: function(node, index, parent) {
+      var that = this;
       if (node.active) {
-        Vue.set(node, "active", false);
+        that.$set(node, "active", false);
       } else {
-        Vue.set(node, "active", true);
+        that.$set(node, "active", true);
       }
     },
     resetFilter: function() {
@@ -340,8 +346,10 @@ export default {
   overflow: auto;
   padding: 10px 0;
   border-bottom: solid 0.5px #ddd;
+  border-top: solid 0.5px #ddd;
 }
 .bh-ddb-item {
+  box-sizing: border-box;
   float: left;
   border-right: solid 0.5px rgba(0, 0, 0, 0.25);
 }
@@ -395,8 +403,8 @@ export default {
 }
 .bh-ddm-item-img {
   float: right;
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   position: relative;
 }
 .bh-ddm-item-img:after {
@@ -405,11 +413,11 @@ export default {
   border: 2px solid #38cdc1;
   border-top-width: 0;
   border-right-width: 0;
-  width: 18px;
-  height: 8px;
+  width: 12px;
+  height: 6px;
   -webkit-transform: rotate(-50deg);
   position: absolute;
-  top: 6px;
+  top: 4px;
   left: 4px;
 }
 .bh-ddm-item-selected {
@@ -450,6 +458,7 @@ export default {
 }
 .bh-ddm-lv3-item {
   padding: 11px 20px;
+  box-sizing: border-box;
 }
 .bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
   background-color: #fff;

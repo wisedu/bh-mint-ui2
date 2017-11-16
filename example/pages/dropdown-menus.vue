@@ -1,0 +1,223 @@
+<template>
+    <div class="page_border">
+        <div style="padding-top:48px;">
+            <!-- <drop-down-buttons :options="options" @dropDownButtons="getSelectedButton"></drop-down-buttons>
+            <drop-down-menu  :menuParent="menuParent" :options="menuOptions" :type="type" :line="line" @dropDownMenu="getSelectedMenu"></drop-down-menu> -->
+            <mt-dropdown-menus :options="options" :menuOption="menuOptions" @dropDownButtonMenu="getSelectedMenu"></mt-dropdown-menus>
+        </div>
+        
+        <!-- 静态图片的写法请参照以下方式 -->
+        <h1 class="index">
+            首页
+        </h1>
+    </div>
+</template>
+<style>
+.index{
+    background:#ffffff;
+}
+.right_icon{
+    float: right;
+    height: 50px;
+    padding-right: 8px;
+}
+.page_border{
+    /* padding: 4px; */
+}
+</style>
+<script type="text/javascript">
+    export default {
+        data(){
+            return {
+                options:[{
+                    text:'国家',
+                    ddmId:'country'
+                },{
+                    text:'性别',
+                    ddmId:'sex'
+                },{
+                    text:'交通',
+                    ddmId:'traffic'
+                },{
+                    text:'筛选',
+                    ddmId:'filter'
+                }],
+                menuOptions:[],
+                // type:1,
+                // line:5,
+                // menuParent:{}
+            }
+        },
+        components: {
+
+        },
+        mounted(){
+            this.menuOptions = [{
+                    type:2,
+                    menuOptions:[{
+                        text:'中国',
+                        ddmId:'China',
+                        children:[{
+                            text:'江苏',
+                            ddmId:'js'
+                        },{
+                            text:'山东',
+                            ddmId:'sd'
+                        }]
+                    },{
+                        text:'美国',
+                        ddmId:'American',
+                        children:[{
+                            text:'纽约',
+                            ddmId:'ny'
+                        },{
+                            text:'旧金山啊',
+                            ddmId:'jjs'
+                        }]
+                    }]
+                },{
+                    type:1,
+                    line:10,
+                    menuOptions:[{
+                        text:'男',
+                        ddmId:'man'
+                    },{
+                        text:'女',
+                        ddmId:'woman'
+                    },{
+                        text:'男1',
+                        ddmId:'man1'
+                    },{
+                        text:'女1',
+                        ddmId:'woman1'
+                    },{
+                        text:'男2',
+                        ddmId:'man2'
+                    },{
+                        text:'女2',
+                        ddmId:'woman2'
+                    },{
+                        text:'男3',
+                        ddmId:'man3'
+                    },{
+                        text:'女3',
+                        ddmId:'woman3'
+                    },{
+                        text:'男4',
+                        ddmId:'man4'
+                    },{
+                        text:'女4',
+                        ddmId:'woman4'
+                    },{
+                        text:'男5',
+                        ddmId:'man5'
+                    },{
+                        text:'女5',
+                        ddmId:'woman5'
+                    }] 
+                },{
+                  type:3,
+                  line:4,
+                  menuOptions:[{
+                        text:'地铁',
+                        ddmId:'metro',
+                        children:[{
+                            text:'一号线',
+                            ddmId:'firstLine',
+                            children:[{
+                                text:'南京南',
+                                ddmId:'njn'
+                            },{
+                                text:'河定桥',
+                                ddmId:'hdq'
+                            }]
+                        },{
+                            text:'二号线',
+                            ddmId:'secondLine',
+                            children:[{
+                                text:'仙林',
+                                ddmId:'xl'
+                            },{
+                                text:'油坊桥',
+                                ddmId:'yfq'
+                            }]
+                        }]
+                    },{
+                        text:'公交',
+                        ddmId:'bus',
+                        children:[{
+                            text:'08路',
+                            ddmId:'08',
+                            children:[{
+                                text:'万达',
+                                ddmId:'wd'
+                            },{
+                                text:'金智',
+                                ddmId:'wisedu'
+                            }]
+                        },{
+                            text:'09路',
+                            ddmId:'09',
+                            children:[{
+                                text:'河海',
+                                ddmId:'hh'
+                            },{
+                                text:'南理工',
+                                ddmId:'nlg'
+                            }]
+                        },{
+                            text:'09路',
+                            ddmId:'09',
+                            children:[{
+                                text:'河海',
+                                ddmId:'hh'
+                            },{
+                                text:'南理工',
+                                ddmId:'nlg'
+                            }]
+                        }]
+                    }] 
+                },{
+                    type:'filter',
+                    menuOptions:[{
+                        text:'距离',
+                        ddmId:'location',
+                        children:[{
+                            text:'一千米',
+                            ddmId:'1km'
+                        },{
+                            text:'两千米',
+                            ddmId:'2km'
+                        }]
+                    },{
+                        text:'频率',
+                        ddmId:'pl',
+                        children:[{
+                            text:'1次',
+                            ddmId:'1time'
+                        },{
+                            text:'2次',
+                            ddmId:'2time'
+                        },{
+                            text:'3次',
+                            ddmId:'3time'
+                        },{
+                            text:'4次',
+                            ddmId:'4time'
+                        },{
+                            text:'5次',
+                            ddmId:'5time'
+                        },{
+                            text:'6次',
+                            ddmId:'6time'
+                        }]
+                    }]
+                }];
+        },
+        methods:{
+            getSelectedMenu:function(param){
+                console.log(param);
+            }
+        }
+    }
+</script>
