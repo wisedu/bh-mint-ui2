@@ -25,6 +25,21 @@
                 <p slot="left">09:30<br>2016-07-10</p>
             </mt-step>
         </mt-steps>
+
+        <mt-steps direction="vertical" description="步骤的描述" :padding-left="70">
+            <mt-step>
+                <h3>【城市】物流状态3</h3>
+            </mt-step>
+            <mt-step :status="status">
+                <h3>【城市】物流状态2</h3>
+            </mt-step>
+            <mt-step status="process">
+                <h3>【城市】物流状态1</h3>
+            </mt-step>
+            <mt-step status="finish">
+                <h3>快件已发货</h3>
+            </mt-step>
+        </mt-steps>
         <mt-button @click="changeStatus">第二步</mt-button>
     </div>
 </template>
