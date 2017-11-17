@@ -1,6 +1,6 @@
 <template>
-    <span class="mt-icon-box" :class="animateClass">
-        <i @click="handleClick" class="iconfont mt-icon-i" :style="computeStyle" :class="type">
+    <span class="mint-icon" :class="animateClass">
+        <i @click="handleClick" class="iconfont mint-icon-i" :style="computeStyle" :class="type">
         </i>
     </span>
 
@@ -79,11 +79,16 @@
   @component-namespace mint {
     @component icon {
       position: relative;
-      height: 1px;
       background: #ddd;
+        display: inline-block;
+        font-size: 16px;
     }
   }
-    .mt-icon-box,.mt-icon-i{
+    .mt-icon > i{
+        font-size: inherit;
+    }
+
+    .mint-icon-i{
         display: inline-block;
     }
 </style>
