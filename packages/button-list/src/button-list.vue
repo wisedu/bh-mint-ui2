@@ -3,7 +3,7 @@
     <h4 class="mint-button-list-title">{{label}}</h4>
     <div class="mint-button-list-button-container">
       <template v-for="item in options">
-        <mt-button class="mint-button-list-btn" @click="handleClick(item.id)" :key="item.id" plain size="small" :type="getType(item.id)" >{{item.name}}</mt-button>
+        <mt-button class="mint-button-list-btn" @click="handleClick(item.id)" :key="item.id" :plain="plain" size="normal" :type="getType(item.id)" >{{item.name}}</mt-button>
       </template>
     </div>
   </div>
@@ -33,7 +33,8 @@ export default {
     display: { type: String, default: '' },
     label: String,
     multiple: { type: Boolean, default: false },
-    options: { type: Array, default: [] }
+    options: { type: Array, default: [] },
+    plain:Boolean
   },
   computed: {
     currentValue: {

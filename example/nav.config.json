@@ -271,11 +271,6 @@
         "path": "/dropdown-menus",
         "name": "DropdownMenus",
         "icon": "badge"
-      },
-      {
-        "path": "/dropdown-buttons",
-        "name": "DropdownButtons",
-        "icon": "badge"
       }
     ]
   }

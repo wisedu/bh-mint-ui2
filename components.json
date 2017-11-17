@@ -64,6 +64,5 @@
   "layout-spacing": "./packages/layout-spacing/index.js",
   "form": "./packages/form/index.js",
   "validate-rules": "./packages/validate-rules/index.js",
-  "dropdown-menus":"./packages/dropdown-menus/index.js",
-  "dropdown-buttons":"./packages/dropdown-buttons/index.js"
+  "dropdown-menus":"./packages/dropdown-menus/index.js"
 }

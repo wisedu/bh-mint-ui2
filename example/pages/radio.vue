@@ -13,6 +13,17 @@
 
     <mt-radio
       class="page-part"
+      title="单选框列表"
+      v-model="value0"
+      :inline="true"
+      align="left"
+      :options="options0" />
+    <div>
+      <mt-cell title="选中的项">{{ value0 }}</mt-cell>
+    </div>
+
+    <mt-radio
+      class="page-part"
       title="第二个单选框列表"
       v-model="value2"
       :options="options2" />
@@ -35,6 +46,7 @@ export default {
 
   data() {
     return {
+      value0: '',
       value1: '',
       value2: '值A',
       value3: ''
@@ -42,6 +54,7 @@ export default {
   },
 
   created() {
+    this.options0 = ['选项A', '选项B', '选项C'];
     this.options1 = ['选项A', '选项B', '选项C'];
     this.options3 = ['选项A', '选项B', '选项C'];
     this.options2 = [

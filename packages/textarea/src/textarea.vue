@@ -4,6 +4,10 @@
     class="mint-field"
     :title="label"
     v-clickoutside="doCloseActive"
+    :titlePaddingTop="titlePaddingTop"
+    :titlePaddingRight="titlePaddingRight"
+    :titlePaddingBottom="titlePaddingBottom"
+    :titlePaddingLeft="titlePaddingLeft"
     :class="[{
       'is-textarea': true,
       'is-nolabel': !label
@@ -17,6 +21,7 @@
       :maxlength="maxlength"
       :disabled="disabled"
       :readonly="readonly"
+      :style="{'padding-top':areaPaddingTop,'padding-right':areaPaddingRight,'padding-bottom':areaPaddingBottom,'padding-left':areaPaddingLeft}"
       v-model="currentValue">
     </textarea>
     <span class="mint-field-state" v-if="state" :class="['is-' + state]">
@@ -185,7 +190,17 @@ export default {
      * @type textarea
       */
     value: {},
-    attr: Object
+    attr: Object,
+    //textarea 的padding设置
+    areaPaddingTop:String,
+    areaPaddingRight:String,
+    areaPaddingBottom:String,
+    areaPaddingLeft:String,
+    //title 的padding设置
+    titlePaddingTop:String,
+    titlePaddingRight:String,
+    titlePaddingBottom:String,
+    titlePaddingLeft:String,
   },
 
   components: { XCell },
@@ -268,6 +283,7 @@ export default {
         text-align:right;
         background-color:#fff;
         padding: 4px 16px;
+        color:#92969c;
       }
 
       @descendent core {

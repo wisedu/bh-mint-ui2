@@ -148,7 +148,7 @@
         position: relative;
         color: inherit;
         font-size: inherit;
-        margin-top: -0.7rem;
+        /* margin-top: -0.7rem; */
       }
     }
   }

@@ -5,7 +5,7 @@
       <slot name="left"></slot>
     </div>
     <div class="mint-cell-wrapper">
-      <div class="mint-cell-title">
+      <div class="mint-cell-title" :style="{'padding-top':titlePaddingTop,'padding-right':titlePaddingRight,'padding-bottom':titlePaddingBottom,'padding-left':titlePaddingLeft}">
         <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
@@ -132,13 +132,23 @@ export default {
        * @type input
        * @value
        */
-    value: {}
+    value: {},
+    titlePaddingTop:'',
+    titlePaddingRight:'',
+    titlePaddingBottom:'',
+    titlePaddingRight:''
   },
 
   computed: {
     href() {
       if (this.to && !this.added && this.$router) {
         const resolved = this.$router.match(this.to);
+        if (this.to === 'click') {
+          this.$nextTick(() => {
+            this.$el.addEventListener('click', this.handleClick);
+          });
+          return ''
+        }
         if (!resolved.matched.length) return this.to;
 
         this.$nextTick(() => {
@@ -147,14 +157,20 @@ export default {
         });
         return resolved.fullPath || resolved.path;
       }
+      
       return this.to;
     }
   },
 
   methods: {
     handleClick($event) {
+      console.log(this.href)
       $event.preventDefault();
-      this.$router.push(this.href);
+      if (this.to != 'click') {
+        this.$router.push(this.href);
+      }else {
+        this.$emit('cellClick',$event);
+      }
     }
   }
 };
@@ -213,7 +229,8 @@ export default {
       }
 
       @descendent wrapper {
-        background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
+        border-top:1px solid rgba(217, 217, 217, 0.5);
+        /* background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%); */
         background-size: 120% 1px;
         background-repeat: no-repeat;
         background-position: top left;

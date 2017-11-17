@@ -1,7 +1,7 @@
 <template>
   <div class="mint-radiolist" @change="$emit('change', currentValue)">
     <label class="mint-radiolist-title" v-text="title"></label>
-    <x-cell v-for="option in options">
+    <x-cell v-for="option in options" :class="{'mint-radiolist-inline':inline}">
       <label class="mint-radiolist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"
@@ -12,7 +12,7 @@
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
-          <span class="mint-radio-core"></span>
+          <span :class="{'mint-radio-core':!type,'mint-radio-hook':type}"></span>
         </span>
         <span class="mint-radio-label" v-text="option.label || option"></span>
       </label>
@@ -92,7 +92,13 @@ export default {
      * @type textarea
      * @valueType object
       */
-    value: String
+    value: String,
+    //radio类型,hook类型
+    type:{
+      type:String,
+      default:''
+    },
+    inline:Boolean
   },
 
   data() {
@@ -141,6 +147,18 @@ export default {
         padding: 0;
       }
 
+      @descendent inline {
+        display: inline-block !important;
+        & .mint-radio.is-right {
+          position: relative;
+          right: -8px;
+          top: -2px;
+        }
+        & .mint-cell-wrapper {
+          border-top: none;
+        }
+      }
+
       @descendent label {
         display: block;
         padding: 0 10px;
@@ -183,6 +201,30 @@ export default {
           background-color: $color-grey;
           border-color: #ccc;
         }
+
+        &:checked {
+          + .mint-radio-hook {
+
+            &::after {
+              content: "\00a0";
+              display: inline-block;
+              border: 2px solid #38cdc1;
+              border-top-width: 0;
+              border-right-width: 0;
+              width: 12px;
+              height: 6px;
+              -webkit-transform: rotate(-50deg);
+              position: absolute;
+              top: 4px;
+              left: -16px;  
+            }
+          }
+        }
+
+        &[disabled] + .mint-radio-hook {
+          background-color: $color-grey;
+          border-color: #ccc;
+        }
       }
 
       @descendent core {
@@ -202,6 +244,14 @@ export default {
           size: 8px;
           transition: transform .2s;
           transform: scale(0);
+        }
+      }
+      @descendent hook {
+        width: 16px;
+        height: 16px;
+        position: relative;
+        &::after {
+          
         }
       }
     }

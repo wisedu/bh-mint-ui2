@@ -132,7 +132,7 @@ export default {
         border: 0.5px solid $grey-lv5;
 
         .mintui-search {
-          font-size: 14px;
+          font-size: 13px;
           color: $color-grey;
         }
       }
@@ -146,6 +146,7 @@ export default {
         font-size: 14px;
         outline: 0;
         padding-left: 8px;
+        color: #bdc0c5;
       }
 
       @descendent placeholder {
