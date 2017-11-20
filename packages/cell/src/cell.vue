@@ -133,10 +133,10 @@ export default {
        * @value
        */
     value: {},
-    titlePaddingTop:'',
-    titlePaddingRight:'',
-    titlePaddingBottom:'',
-    titlePaddingRight:''
+    titlePaddingTop:String,
+    titlePaddingRight:String,
+    titlePaddingBottom:String,
+    titlePaddingLeft:String
   },
 
   computed: {

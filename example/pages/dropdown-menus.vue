@@ -2,7 +2,8 @@
     <div class="page-field">
         <h1 class="page-title">Dropdown-Menus</h1>
         <div class="page-part">
-            <mt-dropdown-menus :isShowMenu="isShowMenu" :options="options" @dropDownButtons="getSelectedButtons">
+            <mt-dropdown-menus :isShowMenu="isShowMenu" :options="options" @dropDownButtons="getSelectedButtons"> </mt-dropdown-menus>
+            <div v-if="isShowMenu" class="bh-ddm">
                 <mt-radio slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
                 </mt-radio>
                 <div slot="menu" v-if="type==='lv2'" class="bh-ddm-two">
@@ -44,96 +45,12 @@
                         </div>
                     </div>
                 </div>
-            </mt-dropdown-menus>
+            </div>
         </div>
   </div>
 </template>
 <style>
-.bh-radio-slot .mint-radiolist-title {
-  margin: 0;
-}
-.bh-ddm .mint-cell {
-  min-height: 42px;
-}
-.bh-ddm .mint-cell .mint-cell-wrapper {
-  padding: 0 16px;
-}
-.bh-ddm .mint-cell-allow-right {
-  display: none;
-}
-.bh-ddm-filter .mint-button--normal {
-    border-radius: 4px;
-    padding: 6px 24px;
-    margin: 4px 10px;
-    box-shadow: 0 0 3px #bdc0c5;
-}
-.bh-ddm-lv1-container {
-  float: left;
-  width: 30%;
-  background-color: #f4f4f4;
-  border-right: solid 0.5px rgba(0, 0, 0, 0.25);
-}
-.bh-ddm-two {
-  overflow: auto;
-  display: flex;
-}
-.bh-ddm-two .bh-ddm-lv2-container {
-  float: right;
-  width: 70%;
-}
-.bh-ddm-three {
-  overflow: auto;
-  display: flex;
-}
-.bh-ddm-three .bh-ddm-lv2-container {
-  float: left;
-  width: 30%;
-}
-.bh-ddm-three .bh-ddm-lv3-container {
-  float: right;
-  width: 40%;
-  border-left: solid 0.5px rgba(0, 0, 0, 0.1);
-}
 
-.bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
-  background-color: #fff;
-  border-top: solid 0.5px rgba(0, 0, 0, 0.25);
-  border-bottom: solid 0.5px rgba(0, 0, 0, 0.25);
-  border-right: solid 0.5px #fff;
-  width: calc(100% + 1px);
-}
-.bh-ddm-lv1-container .bh-ddm-lv1-item:first-child.bh-ddm-lv1-item-selected {
-  border-top: none;
-}
-.bh-ddm-lv1-container .bh-ddm-lv1-item:last-child.bh-ddm-lv1-item-selected {
-  border-bottom: none;
-}
-.bh-ddm-lv2-item-selected {
-  color: #38cdc1;
-}
-.bh-ddm-lv3-item-selected {
-  color: #38cdc1;
-}
-
-.bh-ddm-filter {
-  position: relative;
-}
-.bh-ddm-filter-buttons {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  border-top: solid 0.5px rgba(0, 0, 0, 0.25);
-}
-.bh-ddm-filter-button {
-  width: 50%;
-  float: left;
-  padding: 10px 0;
-  text-align: center;
-}
-.bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
-  background-color: #06c1ae;
-  color: #fff;
-}
 </style>
 <script type="text/javascript">
 export default {
@@ -230,7 +147,7 @@ export default {
         //   与上次一样不再重置数据
       } else {
         this.subMenuDatas = [];
-        this.grandMenuDatas=[];
+        this.grandMenuDatas = [];
         if (item.value === "sex") {
           this.menuDatas = [
             {
@@ -455,10 +372,10 @@ export default {
       that.resultFilterData[this.menuParent.value] = data;
     },
     resetFilter: function() {
-      this.multiValue = '';
+      this.multiValue = "";
     },
     sureFilter: function() {
-      console.log(multiValue);
+      console.log(this.multiValue);
     }
   }
 };
