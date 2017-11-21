@@ -2,7 +2,7 @@
     <div class="page-field">
         <h1 class="page-title">Dropdown-Menus</h1>
         <div class="page-part">
-            <mt-dropdown-menus :isShowMenu="isShowMenu" :options="options" @dropDownButtons="getSelectedButtons"> </mt-dropdown-menus>
+            <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel"> </mt-dropdown-menus>
             <div v-if="isShowMenu" class="bh-ddm">
                 <mt-radio slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
                 </mt-radio>
@@ -89,7 +89,8 @@ export default {
       filterMenuDatas: [],
       multiValue: "",
       multiValue_display: "",
-      resultFilterData: {},
+     // filterResult:{},
+      //resultFilterData: {},
       menuParent: {},
       sexValue: "",
       countryValue: "",
@@ -132,7 +133,7 @@ export default {
       that.options.forEach(function(ele) {
         if (ele.active) {
           ele.active = false;
-          ele.label = selectItem.label;
+          ele.label = selectItem.originLabel?selectItem.originLabel:selectItem.label;
         }
       });
     },
@@ -152,7 +153,9 @@ export default {
           this.menuDatas = [
             {
               label: "全部性别",
-              value: "sexAll"
+              value: "sexAll",
+              originLabel:'性别',
+              originValue:'sex'
             },
             {
               label: "男",
@@ -167,7 +170,9 @@ export default {
           this.menuDatas = [
             {
               label: "全部国家",
-              value: "countryAll"
+              value: "countryAll",
+              originLabel:'国家',
+              originValue:'country'
             },
             {
               label: "中国",
@@ -182,15 +187,13 @@ export default {
           this.menuDatas = [
             {
               label: "全部交通",
-              value: "trafficAll"
+              value: "trafficAll",
+              originLabel:'交通',
+              originValue:'traffic'
             },
             {
               label: "地铁",
               value: "metro"
-            },
-            {
-              label: "公交",
-              value: "bus"
             }
           ];
         } else if (item.value === "filter") {
@@ -233,22 +236,24 @@ export default {
         if (this.type != "lv1") {
           if (param.value.indexOf("All") > -1) {
             //清除二三级的选中信息
-            if (this.subMenuDatas.length > 0) {
-              that.subMenuDatas.forEach(function(ele) {
-                if (ele.active) {
-                  ele.active = false;
-                }
-              });
-            }
-            if (that.grandMenuDatas.length > 0) {
-              that.grandMenuDatas.forEach(function(ele) {
-                if (ele.active) {
-                  ele.active = false;
-                }
-              });
-            }
+            // if (this.subMenuDatas.length > 0) {
+            //   that.subMenuDatas.forEach(function(ele) {
+            //     if (ele.active) {
+            //       ele.active = false;
+            //     }
+            //   });
+            // }
+            // if (that.grandMenuDatas.length > 0) {
+            //   that.grandMenuDatas.forEach(function(ele) {
+            //     if (ele.active) {
+            //       ele.active = false;
+            //     }
+            //   });
+            // }
             that.subMenuDatas = [];
             that.grandMenuDatas = [];
+            that.countryValue = '';
+            that.trafficValue = '';
             var returnData = {
               node: {
                 label: param.originLabel,
@@ -291,17 +296,6 @@ export default {
                   value: "shx"
                 }
               ];
-            } else if (param.value === "bus") {
-              that.subMenuDatas = [
-                {
-                  label: "01路",
-                  value: "01l"
-                },
-                {
-                  label: "02路",
-                  value: "02l"
-                }
-              ];
             }
             that.subParent = param;
             //清除切换一级列表导致二级数据的变化，比如，选择某一级，点击了其二级项，再切换一级，再点击此二级的项，再返回之前的某一级，发现其二级保留了之前的状态
@@ -335,16 +329,29 @@ export default {
         that.$set(item, "active", true);
         if (this.type != "lv2") {
           //设置三级列表数据来源
-          this.grandMenuDatas = [
-            {
-              label: "南京南",
-              value: "njn"
-            },
-            {
-              label: "河定桥",
-              value: "hdq"
-            }
-          ];
+          if (item.value === 'yhx') {
+            this.grandMenuDatas = [
+              {
+                label: "南京南",
+                value: "njn"
+              },
+              {
+                label: "河定桥",
+                value: "hdq"
+              }
+            ];
+          }else if (item.value === 'shx'){
+            this.grandMenuDatas = [
+              {
+                label: "河海大学",
+                value: "hhdx"
+              },
+              {
+                label: "机场",
+                value: "jc"
+              }
+            ];
+          }
           this.grandParent = item;
           //清除切换二级列表导致三级数据的变化
           this.grandMenuDatas.forEach(function(item) {
@@ -369,13 +376,17 @@ export default {
           }
         });
       }
-      that.resultFilterData[this.menuParent.value] = data;
+      //that.resultFilterData[this.menuParent.value] = data;
+      this.isShowMenu = false;
     },
     resetFilter: function() {
       this.multiValue = "";
     },
     sureFilter: function() {
       console.log(this.multiValue);
+    },
+    cancel:function(){
+        this.isShowMenu = false;
     }
   }
 };

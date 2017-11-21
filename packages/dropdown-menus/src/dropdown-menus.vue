@@ -106,9 +106,15 @@
   float: right;
   width: 70%;
 }
+.bh-ddm-two .mint-cell-wrapper {
+  border-top: none;
+}
 .bh-ddm-three {
   overflow: auto;
   display: flex;
+}
+.bh-ddm-three .mint-cell-wrapper {
+  border-top: none;
 }
 .bh-ddm-three .bh-ddm-lv2-container {
   float: left;
@@ -134,10 +140,10 @@
   border-bottom: none;
 }
 .bh-ddm-lv2-item-selected {
-  color: #38cdc1;
+  color: #38cdc1 !important;
 }
 .bh-ddm-lv3-item-selected {
-  color: #38cdc1;
+  color: #38cdc1 !important;
 }
 
 .bh-ddm-filter {
@@ -190,7 +196,7 @@
     　　　　　　　　});
     　　　　　　　　that.$set(param,'active',true);
                    that.$set(param,'index',index);
-                  that.$emit('dropDownButtons',param);
+                  that.$emit('dropDown',param);
     　　　　　　});
             },
             cancelShadow: function() {
@@ -199,7 +205,8 @@
                   ele.active = false;
                 }
               });
-              this.isShowMenu = false;
+              //this.isShowMenu = false;
+              this.$emit('cancel');
             }
         }
     }
