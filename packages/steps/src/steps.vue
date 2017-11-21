@@ -84,7 +84,7 @@ export default {
 }
 
 .mint-steps .mint-icon {
-  font-size: 40px;
+  font-size: 23px;
   line-height: 1;
 }
 
