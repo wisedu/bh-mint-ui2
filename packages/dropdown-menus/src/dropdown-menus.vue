@@ -4,8 +4,8 @@
             <div v-for="(item,index) in options" class="bh-ddb-item" :class="{'bh-ddb-item-selected':item.active}" v-bind:style="{ width: itemWidth}" @click="setSelected(item,index)">
                 <label>
                     {{item.label}}
-                    <i class="bh-ddb-i" :class="{'bh-ddb-i-default':!item.active,'bh-ddb-i-selected':item.active,}"></i>
                 </label>
+                <i class="bh-ddb-i" :class="{'bh-ddb-i-default':!item.active,'bh-ddb-i-selected':item.active,}"></i>
             </div>
         </div>
         <!-- <div v-if="isShowMenu" class="bh-ddm">
@@ -24,26 +24,36 @@
 }
 .bh-ddb-item {
     float:left;
+    position: relative;
     box-sizing: border-box;
     border-right:solid 0.5px rgba(0,0,0,0.25);
+    text-align: center;
 }
 .bh-ddb .bh-ddb-item:last-child {
     border-right:none;
 }
 .bh-ddb-item label {
     position: relative;
+    /* left: 4%; */
     color:#999;
-    display: block;
-    width: 50px;
+    display: inline-block;
+    max-width: 70%;
+    /* width: 80%; */
     margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    text-align: center;
 }
 .bh-ddb-item.bh-ddb-item-selected label {
     color:#38CDC1 !important;
 }
 .bh-ddb-i {
-    position: absolute;
-    top: 8px;
-    right: -4px;
+    position: relative;
+    top: 0px;
+    left: 8px;
+    font-size: 0px;
 }
 .bh-ddb-i-default {
     width: 0;
@@ -58,6 +68,7 @@
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 6px solid #38CDC1;
+    top:-6px !important;
 }
 .bh-ddm {
   background-color: #fff;

@@ -65,20 +65,20 @@ export default {
           type: "lv1"
         },
         {
-          label: "国家",
+          label: "国家国家国",
           value: "country",
           type: "lv2"
         },
         {
-          label: "交通",
+          label: "交交通交通通",
           value: "traffic",
           type: "lv3"
         },
-        {
-          label: "筛选",
-          value: "filter",
-          type: "filter"
-        }
+        // {
+        //   label: "筛选",
+        //   value: "filter",
+        //   type: "filter"
+        // }
       ],
       type: "",
       menuDatas: [],
