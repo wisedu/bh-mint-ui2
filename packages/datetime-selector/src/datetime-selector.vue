@@ -12,7 +12,7 @@
     <div class="mint-field-other">
       <slot></slot>
     </div>
-    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" @confirm="handlePickedValue">
+    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" @confirm="handlePickedValue" :start-date="startDate" :end-date="endDate" :start-hour="startHour" :end-hour="endHour">
     </mt-datetime-picker>
   </x-cell>
 </template>
@@ -79,9 +79,6 @@ export default {
       },{
           "text": "时间",
           "value": "time"
-      },{
-          "text": "年月",
-          "value": "ym"
       }]
       */
     type: String,
@@ -165,7 +162,11 @@ export default {
      * @type textarea
       */
     value: {},
-    attr: Object
+    attr: Object,
+    startDate: Date,
+    endDate: Date,
+    startHour: Number,
+    endHour: Number
   },
 
   components: { XCell },
@@ -193,8 +194,8 @@ export default {
         case "date":
           this.currentValue = this.formatDate(val, "date");
           break;
-        case "ym":
-          this.currentValue = this.formatDate(val, "ym");
+        // case "ym":
+        //   this.currentValue = this.formatDate(val, "ym");
         default:
           this.currentValue = val;
       }
@@ -214,8 +215,8 @@ export default {
         result = this.$refs.picker.getYear(date) + "-" + month + "-" + day + " " + hour + ":" + min + ":00";
       } else if (type === "date") {
         result = this.$refs.picker.getYear(date) + "-" + month + "-" + day;
-      } else if (type === "ym") {
-        result = this.$refs.picker.getYear(date) + "-" + month;
+      // } else if (type === "ym") {
+      //   result = this.$refs.picker.getYear(date) + "-" + month;
       } else {
         
       }
