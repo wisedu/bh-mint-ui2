@@ -74,11 +74,11 @@ export default {
           value: "traffic",
           type: "lv3"
         },
-        // {
-        //   label: "筛选",
-        //   value: "filter",
-        //   type: "filter"
-        // }
+        {
+          label: "筛选",
+          value: "filter",
+          type: "filter"
+        }
       ],
       type: "",
       menuDatas: [],

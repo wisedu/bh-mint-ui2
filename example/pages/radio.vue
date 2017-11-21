@@ -6,7 +6,10 @@
       class="page-part"
       title="单选框列表"
       v-model="value1"
-      :options="options1" />
+      :options="options1"
+      :others="true" >
+      <x-textarea slot="textarea" rows=2 maxlength=100 v-model="textareaContent"></x-textarea>
+    </mt-radio>
     <div>
       <mt-cell title="选中的项">{{ value1 }}</mt-cell>
     </div>
@@ -17,7 +20,9 @@
       v-model="value0"
       :inline="true"
       align="left"
-      :options="options0" />
+      :options="options0"
+      >
+    </mt-radio>
     <div>
       <mt-cell title="选中的项">{{ value0 }}</mt-cell>
     </div>
@@ -41,6 +46,7 @@
 </template>
 
 <script>
+import XTextarea from 'bh-mint-ui2/packages/textarea/index.js';
 export default {
   name: 'page-radio',
 
@@ -49,7 +55,8 @@ export default {
       value0: '',
       value1: '',
       value2: '值A',
-      value3: ''
+      value3: '',
+      textareaContent:''
     };
   },
 
@@ -72,6 +79,9 @@ export default {
         value: '值B'
       }
     ];
+  },
+  components: {
+    XTextarea
   }
 };
 </script>

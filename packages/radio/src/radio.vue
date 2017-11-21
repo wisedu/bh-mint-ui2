@@ -17,6 +17,7 @@
         <span class="mint-radio-label" v-text="option.label || option"></span>
       </label>
     </x-cell>
+    <slot name="textarea"></slot>
   </div>
 </template>
 
@@ -98,7 +99,11 @@ export default {
       type:String,
       default:''
     },
-    inline:Boolean
+    inline:Boolean,
+    others:{
+      type:Boolean,
+      default:false
+    }
   },
 
   data() {
@@ -106,12 +111,22 @@ export default {
       currentValue: this.value
     };
   },
-
+  created(){
+    if(this.others){
+        if (this.options[0].label) {
+          this.options.push({
+            label:'其他',
+            value:'others'
+          })
+        }else {
+          this.options.push('其他');
+        }
+    }
+  },
   watch: {
     value(val) {
       this.currentValue = val;
     },
-
     currentValue(val) {
       this.$emit('input', val);
     }
