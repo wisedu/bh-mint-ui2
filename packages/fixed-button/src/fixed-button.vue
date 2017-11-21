@@ -33,7 +33,7 @@
       right: String,
       top: String,
       bottom: String,
-        contentMarginTop: String
+      contentMarginTop: String
     },
       computed: {
           computeStyle: function() {
@@ -148,7 +148,7 @@
         position: relative;
         color: inherit;
         font-size: inherit;
-        /* margin-top: -0.7rem; */
+        font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
       }
     }
   }
