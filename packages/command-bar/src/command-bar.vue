@@ -1,7 +1,7 @@
 <template>
   <div class="mint-command-bar">
     <div style="float:left">
-        <mt-button style="margin:4px" @click="showMoreAction">...</mt-button>
+        <mt-button style="margin:4px" v-if="moreButtons.length > 0" @click="showMoreAction">...</mt-button>
     </div>
     <div style="float:right">
         <mt-button v-for="item in buttons" :key="item.id" :type="item.type" class="flow-button">{{item.name}}</mt-button>
@@ -86,8 +86,10 @@ export default {
         text-overflow:ellipsis;
         white-space: nowrap;
       }
-      & :after {
+      &::after {
         clear: both;
+        content: "";
+        display: table;
       }
     }
   }

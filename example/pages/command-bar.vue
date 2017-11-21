@@ -1,7 +1,11 @@
 <template>
   <div class="page-button">
     <h1 class="page-title">CommandBar</h1>
+    全按钮
     <mt-command-bar :buttons="buttons" :moreButtons="moreButtons"></mt-command-bar>
+    
+    没有更多按钮
+    <mt-command-bar :buttons="buttons"></mt-command-bar>
   </div>
 </template>
 
