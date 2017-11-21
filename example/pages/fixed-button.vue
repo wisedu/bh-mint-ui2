@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-fixed-button :type="args.type" :size="args.size" :width="args.width" :height="args.height" contentMarginTop="10px">+</mt-fixed-button>
+    <mt-fixed-button :type="args.type" :size="args.size" :width="args.width" :height="args.height">+</mt-fixed-button>
   </div>
 </template>
 
