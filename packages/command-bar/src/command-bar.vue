@@ -32,14 +32,24 @@ export default {
      * @desc 主要按钮
      * @type textarea
       */
-    buttons: { type: Array, default: [] },
+    buttons: { 
+      type: Array, 
+      default: function () {
+        return []
+      }
+    },
     /**
      * @noteType prop
      * @field moreButtons
      * @desc 更多按钮
      * @type textarea
       */
-    moreButtons: { type: Array, default: [] }
+    moreButtons: { 
+      type: Array, 
+      default: function () {
+        return []
+      }
+    }
   },
   data: function(){
     return {

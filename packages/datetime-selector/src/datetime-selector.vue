@@ -2,16 +2,6 @@
   <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :class="[{
               'is-nolabel': !label
             }]">
-    <!-- <input
-              @change="$emit('change', currentValue)"
-              ref="input"
-              class="mint-field-core"
-              :placeholder="placeholder"
-              @focus="active = true"
-              :disabled="disabled"
-              :readonly="readonly"
-              :value="currentValue"
-              @input="handleInput"> -->
     <div class="mint-field-core" @click="handlePick()">{{showValue}}</div>
     <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue && active">
       <i class="mintui mintui-field-error"></i>
