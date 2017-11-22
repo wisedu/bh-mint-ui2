@@ -12,8 +12,9 @@
     <div class="mint-field-other">
       <slot></slot>
     </div>
-    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" @confirm="handlePickedValue" :start-date="startDate" :end-date="endDate" :start-hour="startHour" :end-hour="endHour">
-    </mt-datetime-picker>
+    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" 
+    @confirm="handlePickedValue" @cancel="handleCancel"
+     :start-date="startDate" :end-date="endDate" :start-hour="startHour" :end-hour="endHour"></mt-datetime-picker>
   </x-cell>
 </template>
 
@@ -199,6 +200,10 @@ export default {
         default:
           this.currentValue = val;
       }
+      this.$emit('confirm', this.currentValue);
+    },
+    handleCancel() {
+      this.$emit('cancel');
     },
     formatDate(date, type) {
       let month = String(this.$refs.picker.getMonth(date));

@@ -7,7 +7,7 @@
       <mt-datetime-selector label="时间" placeholder="限制时间选择区间" type="time" :start-hour="10" :end-hour="15"></mt-datetime-selector>
     </div>
     <div class="page-part">
-      <mt-datetime-selector label="日期" placeholder="请输入生日" type="date"></mt-datetime-selector>
+      <mt-datetime-selector label="日期" placeholder="请输入生日" type="date" @confirm="conf" @cancel="can"></mt-datetime-selector>
       <mt-datetime-selector label="时间" placeholder="请输入时间" type="time"></mt-datetime-selector>
     </div>
     <div class="page-part">
@@ -22,7 +22,16 @@
 </template>
 
 <script>
+import { Toast } from 'src/index';
 export default {
   name: 'page-field',
+  methods: {
+    conf(val){
+      Toast('提示信息' + val);
+    },
+    can(){
+      Toast('取消了');
+    }
+  }
 };
 </script>

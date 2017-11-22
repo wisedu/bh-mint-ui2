@@ -2,9 +2,12 @@
   <div class="page-select">
     <h1 class="page-title">TextSelect</h1>
     <div class="">
-      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="dicSlot" v-model="singleSelectValue" @selector-click="singleSelectClick">
+      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick">
       </mt-text-select>
       <p>{{singleSelectValue}}</p>
+
+      <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
+      <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :disabled="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
     </div>
   </div>
 </template>
@@ -38,57 +41,9 @@
 
   export default {
     methods: {
-      selectClick (item) {
-        this.value = item
-        if (window.location.hash.indexOf('smile-select') > -1) {
-          history.back()
-        }
-      },
-      handleDicSelectorClick () {
-        axios.get('/mock/userdata.json').then(resp => {
-          let respData = resp.data
-          if (respData.code == '0') {
-            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.asyncDicSlot = respData.data
-          }
-          console.log(resp)
-        })
-      },
       singleSelectClick () {
-        axios.get('/mock/userdata.json').then(resp => {
-          let respData = resp.data
-          if (respData.code == '0') {
-            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.singleSelectOptions = respData.datas.code.rows
-          }
-        })
-      },
-      multiSelectClick () {
-        axios.get('/mock/userdata.json').then(resp => {
-          let respData = resp.data
-          if (respData.code == '0') {
-            this.multiSelectOptions = respData.datas.code.rows
-          }
-        })
-      }
-    },
-
-    data() {
-      return {
-        singleSelectValue: '',
-        singleSelectOptions: [],
-
-        multiSelectValue: '',
-        multiSelectOptions: [],
-
-        value: '1984',
-        multiValue: [],
-        dicValue: [],
-        asynvDicValue: [],
-        year: '1984',
-        number: 0,
-        yearSlot: [ '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995' ],
-        dicSlot: [
+        //可以在点击时，做数据的异步加载，该案例中，数据是默认加载
+        this.singleSelectOptions = [
           { id: 1, name: '奔波儿灞' },
           { id: 2, name: '霸波尔奔' },
           { id: 3, name: '金角大王' },
@@ -99,14 +54,20 @@
           { id: 8, name: '黄袍怪' },
           { id: 9, name: '白骨精' },
           { id: 10, name: '小钻风' }
-        ],
-        asyncDicSlot: [],
-        numberSlot: [ 0, 1, 2, 3, 4, 5, 6 ],
-        addressCity: '北京'
+        ]
+        // axios.get('/mock/userdata.json').then(resp => {
+        //   let respData = resp.data
+        //   if (respData.code == '0') {
+        //     this.singleSelectOptions = respData.datas.code.rows
+        //   }
+        // })
       }
     },
-
-    mounted() {
+    data: function() {
+      return {
+        singleSelectValue: '',
+        singleSelectOptions: []
+      }
     }
   };
 </script>

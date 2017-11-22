@@ -79,13 +79,30 @@ export default {
      * @type textarea
      * @value
      */
-    options: { type: Array, required: true }
+    options: { type: Array, required: true },
+    disabled: Boolean,
+    readonly: Boolean,
+    attr: Object
   },
   data() {
     return {
       selectorShow: false,
       currentValue: ""
     };
+  },
+  watch: {
+    attr: {
+      immediate: true,
+      handler(attrs) {
+        this.$nextTick(() => {
+          const target = [this.$refs.input, this.$refs.textarea];
+          target.forEach(el => {
+            if (!el || !attrs) return;
+            Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));
+          });
+        });
+      }
+    }
   },
   computed: {
     cHeight () {
@@ -94,6 +111,7 @@ export default {
   },
   methods: {
     handleDisplayClick(e) {
+      if (this.disabled || this.readonly) return;
       this.$emit('selector-click', '')
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
