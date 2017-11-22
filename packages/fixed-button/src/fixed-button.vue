@@ -33,7 +33,14 @@
       right: String,
       top: String,
       bottom: String,
-      contentMarginTop: String
+      contentMargin: {
+        type:Object,
+        default:function() {
+          return {
+            top:'0px'
+          };
+        }
+      }
     },
       computed: {
           computeStyle: function() {
@@ -83,7 +90,7 @@
           },
           computeContentStyle: function() {
               let _style = '';
-              let contentMarginTop = this.contentMarginTop;
+              let contentMarginTop = this.contentMargin.top;
               if (contentMarginTop) {
                   _style += 'margin-top:' + contentMarginTop + ';';
               }

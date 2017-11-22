@@ -186,7 +186,7 @@
             }
         },
         props:{
-            options:Array,
+            options:{type:Array,default:[]},
             isShowMenu: {
                 type: Boolean,
                 default: false
