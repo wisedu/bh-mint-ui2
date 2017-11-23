@@ -4,10 +4,10 @@
     class="mint-field"
     :title="label"
     v-clickoutside="doCloseActive"
-    :titlePaddingTop="titlePaddingTop"
-    :titlePaddingRight="titlePaddingRight"
-    :titlePaddingBottom="titlePaddingBottom"
-    :titlePaddingLeft="titlePaddingLeft"
+    :titlePaddingTop="titlepaddingtop"
+    :titlePaddingRight="titlepaddingright"
+    :titlePaddingBottom="titlepaddingbottom"
+    :titlePaddingLeft="titlepaddingleft"
     :class="[{
       'is-textarea': true,
       'is-nolabel': !label
@@ -21,7 +21,7 @@
       :maxlength="maxlength"
       :disabled="disabled"
       :readonly="readonly"
-      :style="{'padding-top':areaPaddingTop,'padding-right':areaPaddingRight,'padding-bottom':areaPaddingBottom,'padding-left':areaPaddingLeft}"
+      :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
       v-model="currentValue">
     </textarea>
     <span class="mint-field-state" v-if="state" :class="['is-' + state]">
@@ -154,7 +154,7 @@ export default {
        ]
        */
     disabled: Boolean,
-    disableClear: Boolean,
+    disableclear: Boolean,
       /**
        * @noteType prop
        * @field state
@@ -192,15 +192,15 @@ export default {
     value: {},
     attr: Object,
     //textarea 的padding设置
-    areaPaddingTop:String,
-    areaPaddingRight:String,
-    areaPaddingBottom:String,
-    areaPaddingLeft:String,
+    areapaddingtop:String,
+    areapaddingright:String,
+    areapaddingbottom:String,
+    areapaddingleft:String,
     //title 的padding设置
-    titlePaddingTop:String,
-    titlePaddingRight:String,
-    titlePaddingBottom:String,
-    titlePaddingLeft:String,
+    titlepaddingtop:String,
+    titlepaddingright:String,
+    titlepaddingbottom:String,
+    titlepaddingleft:String
   },
 
   components: { XCell },

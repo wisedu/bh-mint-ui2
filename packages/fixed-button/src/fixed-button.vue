@@ -24,7 +24,7 @@
             default: 'primary'
         },
       size: String,
-      borderRadius: String,
+      borderradius: String,
       color: String,
       background: String,
       width: String,
@@ -33,14 +33,7 @@
       right: String,
       top: String,
       bottom: String,
-      contentMargin: {
-        type:Object,
-        default:function() {
-          return {
-            top:'0px'
-          };
-        }
-      }
+      contentmargintop: String
     },
       computed: {
           computeStyle: function() {
@@ -52,7 +45,7 @@
               let background = this.background;
               let width = this.width;
               let height = this.height;
-              let borderRadius = this.borderRadius;
+              let borderRadius = this.borderradius;
               let size = this.size;
               let _style = '';
               if (left) {
@@ -90,7 +83,7 @@
           },
           computeContentStyle: function() {
               let _style = '';
-              let contentMarginTop = this.contentMargin.top;
+              let contentMarginTop = this.contentmargintop;
               if (contentMarginTop) {
                   _style += 'margin-top:' + contentMarginTop + ';';
               }

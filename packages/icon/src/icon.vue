@@ -20,8 +20,8 @@
         methods: {
             handleClick(evt) {
                 this.$emit('click', evt);
-                if(this.changeColor){
-                    this.isAddbcColor = this.changeColor;
+                if(this.changecolor){
+                    this.isAddbcColor = this.changecolor;
                 }
                 if(this.animate){
                     this.animateClass = this.animate;
@@ -29,14 +29,14 @@
             }
         },
         props: {
-            fontSize: String,
+            fontsize: String,
             animate: String,
-            changeColor: String,
+            changecolor: String,
             type: String,
             color: String,
             /**
              * @type 图标样式
-             * @fontSize 图标大小
+             * @fontsize 图标大小
              * @changeColor 点击之后颜色
              * @animate css动画
              * @color 图标颜色
@@ -53,7 +53,7 @@
         computed: {
             computeStyle: function() {
                 let _style = '';
-                let fontSize = this.fontSize;
+                let fontSize = this.fontsize;
                 let padding = this.padding;
                 let color = this.color;
                 let isAddbcColor = this.isAddbcColor;
