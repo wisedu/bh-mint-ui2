@@ -2,47 +2,27 @@
   <div class="part">
     <div class="item">
       <div>normal</div>
-      <!--start
-      @name normal
-      -->
       <mt-hr></mt-hr>
-      <!--end-->
     </div>
 
     <div class="item">
       <div>weight 4px</div>
-      <!--start
-      @name height-4px
-      -->
       <mt-hr height="4px"></mt-hr>
-      <!--end-->
     </div>
 
     <div class="item">
       <div>primary</div>
-      <!--start
-      @name primary
-      -->
-      <mt-hr background="#06c1ae"></mt-hr>
-      <!--end-->
+      <mt-hr color="#06c1ae"></mt-hr>
     </div>
 
     <div class="item">
       <div>warning</div>
-      <!--start
-      @name warning
-      -->
-      <mt-hr background="#ffb200"></mt-hr>
-      <!--end-->
+      <mt-hr color="#ffb200"></mt-hr>
     </div>
 
     <div class="item">
       <div>danger</div>
-      <!--start
-      @name danger
-      -->
-      <mt-hr background="#ef4f4f"></mt-hr>
-      <!--end-->
+      <mt-hr color="#ef4f4f"></mt-hr>
     </div>
   </div>
 </template>

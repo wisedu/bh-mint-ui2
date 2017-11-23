@@ -20,7 +20,11 @@
             }
         },
         props: {
-            background: String,
+            type: {
+                type: String,
+                default: 'default'
+            },
+            color: String,
             margin: String,
             /**
              * @noteType prop
@@ -34,7 +38,7 @@
         computed: {
             computeStyle: function() {
                 let _style = '';
-                let background = this.background;
+                let background = this.color;
                 let height = this.height;
                 let margin = this.margin;
                 if (background) {
