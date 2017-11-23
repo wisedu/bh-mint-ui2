@@ -6,7 +6,7 @@
       </mt-text-select>
       <p>{{singleSelectValue}}</p>
 
-      <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
+      <mt-text-select label="只读的" placeholder="aaa" rows="5" maxlength="100" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
       <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :disabled="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
     </div>
   </div>
