@@ -181,7 +181,7 @@ export default {
 
       @descendent title {
         font-size: 12px;
-        margin: 8px;
+        margin: 8px 8px 8px 20px;
         display: block;
         color: $radio-title-color;
       }
