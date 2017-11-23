@@ -15,7 +15,7 @@
       <!--start
       @name height-4px
       -->
-      <mt-icon name="icon-pinglun" fontsize="30px"></mt-icon>
+      <mt-icon name="icon-pinglun" size="30px"></mt-icon>
       <!--end-->
     </div>
 

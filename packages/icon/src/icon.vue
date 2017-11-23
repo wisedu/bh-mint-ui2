@@ -29,7 +29,7 @@
             }
         },
         props: {
-            fontsize: String,
+            size: String,
             animate: String,
             changecolor: String,
             name: String,
@@ -53,7 +53,7 @@
         computed: {
             computeStyle: function() {
                 let _style = '';
-                let fontSize = this.fontsize;
+                let fontSize = this.size;
                 let padding = this.padding;
                 let color = this.color;
                 let isAddbcColor = this.isAddbcColor;
