@@ -1,6 +1,6 @@
 <template>
     <span class="mint-icon" :class="animateClass">
-        <i @click="handleClick" class="iconfont mint-icon-i" :style="computeStyle" :class="type">
+        <i @click="handleClick" class="iconfont mint-icon-i" :style="computeStyle" :class="name">
         </i>
     </span>
 
@@ -32,10 +32,10 @@
             fontsize: String,
             animate: String,
             changecolor: String,
-            type: String,
+            name: String,
             color: String,
             /**
-             * @type 图标样式
+             * @name 图标样式
              * @fontsize 图标大小
              * @changeColor 点击之后颜色
              * @animate css动画

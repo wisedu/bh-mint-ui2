@@ -6,7 +6,7 @@
       <!--start
       @name normal
       -->
-      <mt-icon  type="icon-pinglun"></mt-icon>
+      <mt-icon  name="icon-pinglun"></mt-icon>
       <!--end-->
     </div>
 
@@ -15,7 +15,7 @@
       <!--start
       @name height-4px
       -->
-      <mt-icon type="icon-pinglun" fontSize="30px"></mt-icon>
+      <mt-icon name="icon-pinglun" fontsize="30px"></mt-icon>
       <!--end-->
     </div>
 
@@ -24,7 +24,7 @@
       <!--start
       @name primary
       -->
-      <mt-icon type="icon-pinglun" padding="20px 20px 20px 20px"></mt-icon>
+      <mt-icon name="icon-pinglun" padding="20px 20px 20px 20px"></mt-icon>
       <!--end-->
     </div>
 
@@ -33,7 +33,7 @@
       <!--start
       @name warning
       -->
-      <mt-icon type="icon-pinglun" color="green"></mt-icon>
+      <mt-icon name="icon-pinglun" color="green"></mt-icon>
       <!--end-->
     </div>
 
@@ -42,7 +42,7 @@
       <!--start
       @name danger
       -->
-      <mt-icon type="icon-pinglun" @click="doSome"></mt-icon>
+      <mt-icon name="icon-pinglun" @click="doSome"></mt-icon>
       <!--end-->
     </div>
     <div class="item">
@@ -50,7 +50,7 @@
       <!--start
       @name danger
       -->
-      <mt-icon type="icon-pinglun" changeColor="red"></mt-icon>
+      <mt-icon name="icon-wifi" changecolor="red"></mt-icon>
       <!--end-->
     </div>
     <div class="item">
@@ -58,7 +58,7 @@
       <!--start
       @name danger
       -->
-      <mt-icon type="icon-pinglun" animate="animated shake"></mt-icon>
+      <mt-icon name="icon-pinglun" animate="animated shake"></mt-icon>
       <!--end-->
     </div>
   </div>
