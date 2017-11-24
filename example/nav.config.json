@@ -226,6 +226,11 @@
         "path": "/fixed-button",
         "name": "FixedButton",
         "icon": "navebar"
+      },
+      {
+        "path": "/subscript",
+        "name": "Subscript",
+        "icon": "navebar"
       }
     ]
   },
