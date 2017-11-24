@@ -115,7 +115,7 @@
         }
       },
       handleDicSelectorClick () {
-        axios.get('../assets/userdata.json').then(resp => {
+        axios.get('./mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
@@ -125,7 +125,7 @@
         })
       },
       singleSelectClick () {
-        axios.get('../assets/userdata.json').then(resp => {
+        axios.get('./mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
@@ -134,7 +134,7 @@
         })
       },
       multiSelectClick () {
-        axios.get('../assets/userdata.json').then(resp => {
+        axios.get('./mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
             this.multiSelectOptions = respData.datas.code.rows
