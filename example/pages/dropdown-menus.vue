@@ -6,7 +6,29 @@
             <div v-if="isShowMenu" class="bh-ddm">
                 <mt-radio slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
                 </mt-radio>
-                <div slot="menu" v-if="type==='lv2'" class="bh-ddm-two">
+                <mt-side-navbar slot="menu" v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
+                  <div slot="nav">
+                    <mt-tab-item id="4">全部国家</mt-tab-item>
+                    <mt-tab-item id="1">选项一</mt-tab-item>
+                    <mt-tab-item id="2">选项二</mt-tab-item>
+                    <mt-tab-item id="3">选项三</mt-tab-item>
+                  </div>
+                  <mt-tab-container v-model="lv2Selected" slot="content">
+                    <mt-tab-container-item id="4">
+                      <mt-cell :title="'国家'" :id="'countryAll'" is-link to="click" @cellClick="cellClick" />
+                    </mt-tab-container-item>
+                    <mt-tab-container-item id="1">
+                      <mt-cell v-for="n in 10" :title="'内容 ' + n" :id="n" is-link to="click" @cellClick="cellClick" />
+                    </mt-tab-container-item>
+                    <mt-tab-container-item id="2">
+                      <mt-cell v-for="n in 4" :title="'测试 ' + n" :aria-invalid="n" is-link to="click" @cellClick="cellClick"/>
+                    </mt-tab-container-item>
+                    <mt-tab-container-item id="3">
+                      <mt-cell v-for="n in 6" :title="'选项 ' + n" :id="n" is-link to="click" @cellClick="cellClick"/>
+                    </mt-tab-container-item>
+                  </mt-tab-container>
+                </mt-side-navbar>
+                <!-- <div slot="menu" v-if="type==='lv2'" class="bh-ddm-two">
                     <div class="bh-ddm-lv1-container">
                         <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
                         </mt-cell>
@@ -15,7 +37,7 @@
                         <mt-radio class="bh-radio-slot"  align="right" type="hook" :options="subMenuDatas" v-model="countryValue">
                         </mt-radio>
                     </div>
-                </div>
+                </div> -->
                 <div slot="menu" v-if="type==='lv3'" class="bh-ddm-three">
                     <div class="bh-ddm-lv1-container">
                         <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
@@ -89,11 +111,11 @@ export default {
       filterMenuDatas: [],
       multiValue: "",
       multiValue_display: "",
-     // filterResult:{},
-      //resultFilterData: {},
       menuParent: {},
       sexValue: "",
-      countryValue: "",
+      lv2Selected:'',
+      lv2SelectedId:'',
+      // countryValue: "",
       trafficValue: "",
       bodyHeight: ""
     };
@@ -105,13 +127,17 @@ export default {
       var that = this;
       that.changeSelectValus(newData, that.menuDatas);
     },
-    countryValue: function(newData, oldData) {
-      var that = this;
-      that.changeSelectValus(newData, that.subMenuDatas);
-    },
+    // countryValue: function(newData, oldData) {
+    //   var that = this;
+    //   that.changeSelectValus(newData, that.subMenuDatas);
+    // },
     trafficValue: function(newData, oldData) {
       var that = this;
       that.changeSelectValus(newData, that.grandMenuDatas);
+    },
+    lv2SelectedId:function(newData, oldData){
+      var that = this;
+      that.changeSelectValus(newData);
     }
   },
   created() {
@@ -122,14 +148,21 @@ export default {
       var that = this;
       var selectItem = {};
       this.isShowMenu = false;
-      arr.forEach(function(item) {
-        if (item.value === newData) {
-          that.$set(item, "active", true);
-          selectItem = item;
-        } else {
-          that.$set(item, "active", false);
-        }
-      });
+      if (arr) {
+        arr.forEach(function(item) {
+          if (item.value === newData) {
+            that.$set(item, "active", true);
+            selectItem = item;
+          } else {
+            that.$set(item, "active", false);
+          }
+        });
+      }else {
+        selectItem = {
+          label:newData.title,
+          value:newData.id
+        };
+      }
       that.options.forEach(function(ele) {
         if (ele.active) {
           ele.active = false;
@@ -166,24 +199,26 @@ export default {
               value: "woman"
             }
           ];
-        } else if (item.value === "country") {
-          this.menuDatas = [
-            {
-              label: "全部国家",
-              value: "countryAll",
-              originLabel:'国家',
-              originValue:'country'
-            },
-            {
-              label: "中国",
-              value: "China"
-            },
-            {
-              label: "美国",
-              value: "American"
-            }
-          ];
-        } else if (item.value === "traffic") {
+        } 
+        // else if (item.value === "country") {
+        //   this.menuDatas = [
+        //     {
+        //       label: "全部国家",
+        //       value: "countryAll",
+        //       originLabel:'国家',
+        //       originValue:'country'
+        //     },
+        //     {
+        //       label: "中国",
+        //       value: "China"
+        //     },
+        //     {
+        //       label: "美国",
+        //       value: "American"
+        //     }
+        //   ];
+        // } 
+        else if (item.value === "traffic") {
           this.menuDatas = [
             {
               label: "全部交通",
@@ -252,7 +287,7 @@ export default {
             // }
             that.subMenuDatas = [];
             that.grandMenuDatas = [];
-            that.countryValue = '';
+            // that.countryValue = '';
             that.trafficValue = '';
             var returnData = {
               node: {
@@ -263,29 +298,30 @@ export default {
             that.postEventToParent(returnData);
           } else {
             //设置二级列表数据来源
-            if (param.value === "China") {
-              that.subMenuDatas = [
-                {
-                  label: "江苏",
-                  value: "js"
-                },
-                {
-                  label: "山东",
-                  value: "sd"
-                }
-              ];
-            } else if (param.value === "American") {
-              that.subMenuDatas = [
-                {
-                  label: "纽约",
-                  value: "ny"
-                },
-                {
-                  label: "旧金山啊",
-                  value: "jjs"
-                }
-              ];
-            } else if (param.value === "metro") {
+            // if (param.value === "China") {
+            //   that.subMenuDatas = [
+            //     {
+            //       label: "江苏",
+            //       value: "js"
+            //     },
+            //     {
+            //       label: "山东",
+            //       value: "sd"
+            //     }
+            //   ];
+            // } else if (param.value === "American") {
+            //   that.subMenuDatas = [
+            //     {
+            //       label: "纽约",
+            //       value: "ny"
+            //     },
+            //     {
+            //       label: "旧金山啊",
+            //       value: "jjs"
+            //     }
+            //   ];
+            // } else 
+            if (param.value === "metro") {
               that.subMenuDatas = [
                 {
                   label: "一号线",
@@ -327,7 +363,7 @@ export default {
           that.$set(item, "active", false);
         });
         that.$set(item, "active", true);
-        if (this.type != "lv2") {
+        if (this.type == "lv3") {
           //设置三级列表数据来源
           if (item.value === 'yhx') {
             this.grandMenuDatas = [
@@ -376,7 +412,6 @@ export default {
           }
         });
       }
-      //that.resultFilterData[this.menuParent.value] = data;
       this.isShowMenu = false;
     },
     resetFilter: function() {
@@ -387,7 +422,17 @@ export default {
     },
     cancel:function(){
         this.isShowMenu = false;
+    },
+    cellClick:function(param,item){
+      console.log(param)
+      console.log(item)
+      this.lv2SelectedId = item;
     }
   }
 };
 </script>
+<style>
+.bh-ddm-sideNavbar.mint-side-navbar .navbar.is-fixed {
+  position: relative;
+}
+</style>
