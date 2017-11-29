@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-radiolist" @change="$emit('change', currentValue)">
+  <div class="mint-radiolist" :class="{'is-inline':inline}" @change="$emit('change', currentValue)">
     <label class="mint-radiolist-title" v-text="title"></label>
     <x-cell v-for="option in options" :class="{'mint-radiolist-inline':inline}">
       <label class="mint-radiolist-label" slot="title">
@@ -154,12 +154,30 @@ export default {
 
 <style lang="css">
   @import "../../../src/style/var.css";
-
+  
   @component-namespace mint {
     @component radiolist {
-
+      @when inline {
+        border-top: 1px solid rgba(217, 217, 217, 0.5);
+        .mint-cell-wrapper {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        .mint-radiolist-title {
+          margin:0;
+          display: inline-block;
+          min-height: 48px;
+          line-height:48px;
+          vertical-align: top;
+          padding-left: 20px;
+        }
+      }
+      
       .mint-cell {
         padding: 0;
+        & .mint-cell-wrapper {
+          padding: 0
+        }
       }
 
       @descendent inline {
@@ -271,4 +289,5 @@ export default {
       }
     }
   }
+  
 </style>

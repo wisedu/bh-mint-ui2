@@ -30,7 +30,10 @@
     <!--start
      @name title-value-link
      -->
-    <mt-cell title="标题文字" is-link value="带链接"></mt-cell>
+    <mt-cell title="标题文字" is-link value="带链接的">
+      <i slot="arrow" class="iconfont icon-keyboardarrowright" style="font-size:24px;color:#bdc0c5;"></i>
+      <!-- mint-cell-allow-right -->
+    </mt-cell>
     <!--end-->
 
     <!--start

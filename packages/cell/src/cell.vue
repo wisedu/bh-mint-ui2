@@ -4,8 +4,8 @@
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="mint-cell-wrapper">
-      <div class="mint-cell-title" :style="{'padding-top':titlePaddingTop,'padding-right':titlePaddingRight,'padding-bottom':titlePaddingBottom,'padding-left':titlePaddingLeft}">
+    <div class="mint-cell-wrapper" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright}">
+      <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
@@ -19,7 +19,8 @@
           <span v-text="value"></span>
         </slot>
       </div>
-      <i v-if="isLink" class="mint-cell-allow-right"></i>
+      <slot v-if="isLink" name="arrow"></slot>
+      <!-- <i v-if="isLink" class="mint-cell-allow-right"></i> -->
     </div>
     <div class="mint-cell-right">
       <slot name="right"></slot>
@@ -133,10 +134,23 @@ export default {
        * @value
        */
     value: {},
-    titlePaddingTop:String,
-    titlePaddingRight:String,
-    titlePaddingBottom:String,
-    titlePaddingLeft:String
+    id:'',
+    wrapperpaddingleft:{
+      type:String,
+      default:'20px'
+    },
+    wrapperpaddingright:{
+      type:String,
+      default:'20px'
+    },
+    titlewidth:{
+      type:String,
+      default:'20%'
+    },
+    titlepaddingtop:String,
+    titlepaddingright:String,
+    titlepaddingbottom:String,
+    titlepaddingleft:String
   },
 
   computed: {
@@ -169,7 +183,7 @@ export default {
       if (this.to != 'click') {
         this.$router.push(this.href);
       }else {
-        this.$emit('cellClick',$event);
+        this.$emit('cellClick',$event,this._props);
       }
     }
   }
@@ -242,7 +256,7 @@ export default {
         line-height: 1;
         min-height: inherit;
         overflow: hidden;
-        padding: 0 10px;
+        /* padding: 0 20px; */
         width: 100%;
       }
 
@@ -283,9 +297,9 @@ export default {
         color: $cell-value-color;
         display: flex;
         align-items: center;
-
+        margin-left: 8px;
         @when link {
-          margin-right: 24px;
+          /* margin-right: 8px; */
         }
       }
 

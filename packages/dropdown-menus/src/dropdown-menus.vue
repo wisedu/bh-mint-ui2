@@ -172,9 +172,12 @@
   padding: 10px 0;
   text-align: center;
 }
-.bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
+ .bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
   background-color: #06c1ae;
   color: #fff;
+}
+.bh-ddm-sideNavbar .mint-tab-item.is-selected {
+  border-color:#fff !important;
 }
 </style>
 <script>

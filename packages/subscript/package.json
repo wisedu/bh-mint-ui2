@@ -1,0 +1,12 @@
+{
+  "name": "mint-subscript",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "jbx",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "dependencies": {
+  }
+}
