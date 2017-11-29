@@ -3,7 +3,7 @@
     <h4 class="mint-button-list-title">{{label}}</h4>
     <div class="mint-button-list-button-container">
       <template v-for="item in options">
-        <mt-button class="mint-button-list-btn" @click="handleClick(item.id)" :key="item.id" :plain="plain" size="normal" :type="getType(item.id)" >{{item.name}}</mt-button>
+        <mt-button class="mint-button-list-btn" @click="handleClick(item.id, $event)" :key="item.id" :plain="plain" size="normal" :type="getType(item.id)" >{{item.name}}</mt-button>
       </template>
     </div>
   </div>
@@ -65,7 +65,6 @@ export default {
     }
   },
   methods: {
-    handleChange() {},
     getType(id) {
       if (this.multiple) {
         return this.currentValue.indexOf(id.toString()) > -1 ? 'primary' : 'default';
@@ -73,7 +72,7 @@ export default {
         return id === this.currentValue ? 'primary' : 'default';
       }
     },
-    handleClick(id) {
+    handleClick(id, evt) {
       if (this.multiple) {
         let index = this.currentValue.indexOf(id.toString());
         let currentValue = this.currentValue;
@@ -87,7 +86,7 @@ export default {
         if (this.currentValue === id) return;
         this.currentValue = id;
       }
-      this.$emit('change', this.currentValue);
+      this.$emit('change', this.currentValue, evt);
     }
   },
   components: { MtCell }

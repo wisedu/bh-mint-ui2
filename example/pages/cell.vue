@@ -47,7 +47,7 @@
     <!--start
      @name title-value-icon-custom-btn
      -->
-    <mt-cell title="标题文字">
+    <mt-cell title="标题文字" to="click" @cellClick="cellClick">
       <mt-button size="small" type="primary" icon="back">按钮</mt-button>
     </mt-cell>
     <!--end-->
@@ -65,3 +65,13 @@
     <!--end-->
   </div>
 </template>
+<script>
+export default {
+  methods:{
+    cellClick(p1, p2){
+      console.log(p1)
+      console.log(p2)
+    }
+  }
+}
+</script>
