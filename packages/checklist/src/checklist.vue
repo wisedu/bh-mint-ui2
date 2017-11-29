@@ -1,5 +1,5 @@
 <template>
-  <div @change="$emit('change', currentValue)" class="mint-checklist" :class="{ 'is-limit': max <= currentValue.length }">
+  <div @change="$emit('change', currentValue, $event)" class="mint-checklist" :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
     <x-cell v-for="option in options">
       <label class="mint-checklist-label" slot="title">

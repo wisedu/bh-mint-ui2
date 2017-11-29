@@ -4,9 +4,9 @@
         <mt-button style="margin:4px" v-if="moreButtons.length > 0" @click="showMoreAction">...</mt-button>
     </div>
     <div style="float:right">
-        <mt-button v-for="item in buttons" :key="item.id" :type="item.type" class="flow-button">{{item.name}}</mt-button>
+        <mt-button v-for="(item, index) in buttons" :key="item.id" :type="item.type" @click="clickHandler(item, index, $event)" class="flow-button">{{item.name}}</mt-button>
     </div>
-    <mt-actionsheet :actions="moreButtons" v-model="sheetVisible"></mt-actionsheet>
+    <mt-actionsheet :actions="moreButtons" @click="clickHandler" v-model="sheetVisible"></mt-actionsheet>
   </div>
 </template>
 
@@ -59,6 +59,9 @@ export default {
   methods: {
     showMoreAction: function() {
       this.sheetVisible = true;
+    },
+    clickHandler: function(item,index,evt) {
+      this.$emit('click', item, index, evt);
     }
   },
   components: { Actionsheet }
