@@ -15,7 +15,7 @@
           <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio>
         </template>
         <!-- multi-select 模板 -->
-        <template v-if="selectType === 'multi-select'">
+        <template  v-else-if="selectType === 'multi-select'">
           <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist>
           <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
         </template>
@@ -102,6 +102,8 @@ export default {
         } else if (this.selectType === 'multi-select') {
           if (this.value === '') return []
           return this.value.split(',')
+        } else {
+          return this.value
         }
       }, 
       set (val) {
@@ -109,6 +111,8 @@ export default {
           this.$emit('input', val.toString());
         } else if (this.selectType === 'multi-select') {
           this.$emit('input', val.join(','))
+        } else {
+          this.$emit('input', val)
         }
       }
     },
