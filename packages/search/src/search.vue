@@ -92,10 +92,10 @@ export default {
   },
 
   methods: {
-    handleCancel() {
+    handleCancel(evt) {
       this.visible = false;
       this.currentValue = '';
-      this.$emit('canceled');
+      this.$emit('canceled', evt);
     }
   }
 };

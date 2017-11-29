@@ -13,7 +13,7 @@
       'is-nolabel': !label
     }]">
     <textarea
-      @change="$emit('change', currentValue)"
+      @change="$emit('change', currentValue, $event)"
       ref="textarea"
       class="mint-field-core"
       :placeholder="placeholder"

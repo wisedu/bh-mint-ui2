@@ -8,7 +8,7 @@
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
-        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item)" :is-link="!!item.isParent"></mt-cell>
+        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
       </template>
       <template v-else-if="multiple" v-show="scope.options.length > 0">
         <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>
@@ -160,15 +160,15 @@ export default {
       activePids.splice(index, activePids.length)
       this.$set(this, 'activePids', activePids)
     },
-    handleSelectorClick(pid) {
-      this.$emit('selector-click', pid);
+    handleSelectorClick(pid, $event) {
+      this.$emit('selector-click', pid, $event);
     },
-    handleItemClick(item) {
+    handleItemClick(item, $event) {
       // 点击节点
       if (item.isParent) {
         // 是父节点则展开并进入下一级
         this.activePids.push(item.id);
-        this.$emit('selector-click', item.id);
+        this.$emit('selector-click', item.id, $event);
       } else {
         // 叶子节点
         if (this.multiple) {
@@ -186,22 +186,6 @@ export default {
           window.history.back()
         }
       }
-    },
-    handleClick(id) {
-      if (this.multiple) {
-        let index = this.currentValue.indexOf(id.toString());
-        let currentValue = this.currentValue;
-        if (index > -1) {
-          currentValue.splice(index, 1);
-        } else {
-          currentValue.push(id.toString());
-        }
-        this.currentValue = currentValue;
-      } else {
-        if (this.currentValue === id) return;
-        this.currentValue = id;
-      }
-      this.$emit('change', this.currentValue);
     },
     getDisplay (value) {
       if (this.multiple === true) {

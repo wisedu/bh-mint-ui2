@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-radiolist" :class="{'is-inline':inline}" @change="$emit('change', currentValue)">
+  <div class="mint-radiolist" :class="{'is-inline':inline}" @change="$emit('change', currentValue, $event)">
     <label class="mint-radiolist-title" v-text="title"></label>
     <x-cell v-for="option in options" :class="{'mint-radiolist-inline':inline}">
       <label class="mint-radiolist-label" slot="title">
