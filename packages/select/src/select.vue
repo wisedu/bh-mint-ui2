@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     handleDisplayClick(e) {
-      this.$emit('selector-click', '')
+      this.$emit('selector-click', '', e)
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },
@@ -153,8 +153,8 @@ export default {
         return item.id.toString() === this.value.toString()
       })[0].name
     },
-    handleClick_select(val) {
-      this.$emit('change', val)
+    handleClick_select(val, $event) {
+      this.$emit('change', val, $event)
       this.selectorShow = false
       history.back()
     },
@@ -169,8 +169,8 @@ export default {
       }
       return this.options.filter(item => this.currentValue.indexOf(item.id.toString()) > -1).map(item => item.name).join(',')
     },
-    handleClick_multiSelect (val) {
-      this.$emit('change', this.currentValue)
+    handleClick_multiSelect (val, $event) {
+      this.$emit('change', this.currentValue, $event)
     }
     /***** multi-select 专有方法 end *****/
   },

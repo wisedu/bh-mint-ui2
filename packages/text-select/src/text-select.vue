@@ -112,7 +112,7 @@ export default {
   methods: {
     handleDisplayClick(e) {
       if (this.disabled || this.readonly) return;
-      this.$emit('selector-click', '')
+      this.$emit('selector-click', e)
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },
@@ -126,7 +126,7 @@ export default {
     singleSelectDisplay () {
       if (this.value === '') return this.placeholder
       if (this.options.length === 0) {
-        this.$emit('selector-click', '')
+        this.$emit('selector-click', e)
         return ''
       }
       return this.currentValue;
