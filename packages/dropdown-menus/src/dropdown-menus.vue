@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bh-ddb">
-            <div v-for="(item,index) in options" class="bh-ddb-item" :class="{'bh-ddb-item-selected':item.active}" v-bind:style="{ width: itemWidth}" @click="setSelected(item,index)">
+            <div v-for="(item,index) in options" class="bh-ddb-item" :class="{'bh-ddb-item-selected':item.active}" v-bind:style="{ width: itemWidth}" @click="setSelected(item,index,$event)">
                 <label>
                     {{item.label}}
                 </label>
@@ -202,7 +202,7 @@
             this.itemWidth = (100 / this.options.length) + '%';
         },
         methods:{
-            setSelected:function(param,index){
+            setSelected:function(param,index,evt){
                 var that = this;
                 that.$nextTick(function () {
     　　　　　　　　that.options.forEach(function (item) {
@@ -210,17 +210,17 @@
     　　　　　　　　});
     　　　　　　　　that.$set(param,'active',true);
                    that.$set(param,'index',index);
-                  that.$emit('dropDown',param);
+                  that.$emit('dropDown',param,evt);
     　　　　　　});
             },
-            cancelShadow: function() {
+            cancelShadow: function(evt) {
               this.options.forEach(function(ele) {
                 if (ele.active) {
                   ele.active = false;
                 }
               });
               //this.isShowMenu = false;
-              this.$emit('cancel');
+              this.$emit('cancel', evt);
             }
         }
     }

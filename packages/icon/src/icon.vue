@@ -19,13 +19,13 @@
         name: 'mt-icon',
         methods: {
             handleClick(evt) {
-                this.$emit('click', evt);
                 if(this.changecolor){
                     this.isAddbcColor = this.changecolor;
                 }
                 if(this.animate){
                     this.animateClass = this.animate;
                 }
+                this.$emit('click', evt);
             }
         },
         props: {

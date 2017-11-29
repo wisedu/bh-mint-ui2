@@ -8,7 +8,7 @@
       'is-nolabel': !label
     }]">
     <textarea
-      @change="$emit('change', currentValue)"
+      @change="$emit('change', currentValue, $event)"
       ref="textarea"
       class="mint-field-core"
       :placeholder="placeholder"
@@ -19,7 +19,7 @@
       v-model="currentValue">
     </textarea>
     <input
-      @change="$emit('change', currentValue)"
+      @change="$emit('change', currentValue, $event)"
       ref="input"
       class="mint-field-core"
       :placeholder="placeholder"

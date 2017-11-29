@@ -1,6 +1,6 @@
 <template>
-  <div @click="handleClick" class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle">
-  </div>
+  <!-- <div @click="handleClick" class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div> -->
+  <div class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div>
 </template>
 <script>
     /**
@@ -15,9 +15,9 @@
     export default {
         name: 'mt-hr',
         methods: {
-            handleClick(evt) {
-                this.$emit('click', evt);
-            }
+            // handleClick(evt) {
+            //     this.$emit('click', evt);
+            // }
         },
         props: {
             type: {
