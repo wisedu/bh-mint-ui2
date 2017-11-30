@@ -18,7 +18,7 @@
       class="page-part"
       title="单选框列表"
       v-model="value0"
-      :inline="true"
+      :inline="false"
       align="left"
       :options="options0"
       >
