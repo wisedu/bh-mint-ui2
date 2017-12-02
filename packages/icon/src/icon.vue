@@ -79,9 +79,9 @@
   @component-namespace mint {
     @component icon {
       position: relative;
-      background: #ddd;
-        display: inline-block;
-        font-size: 16px;
+      /* background: #ddd; */
+      display: inline-block;
+      font-size: 16px;
     }
   }
     .mt-icon > i{

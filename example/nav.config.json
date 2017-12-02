@@ -248,16 +248,6 @@
         "icon": "switch"
       },
       {
-        "path": "/checklist",
-        "name": "Checklist",
-        "icon": "checklist"
-      },
-      {
-        "path": "/radio",
-        "name": "Radio",
-        "icon": "radio"
-      },
-      {
         "path": "/field",
         "name": "Field",
         "icon": "field"
@@ -276,6 +266,16 @@
         "path": "/dropdown-menus",
         "name": "DropdownMenus",
         "icon": "badge"
+      },
+      {
+        "path": "/checkbox",
+        "name": "Checkbox",
+        "icon": "checklist"
+      },
+      {
+        "path": "/radiobox",
+        "name": "radiobox",
+        "icon": "radio"
       }
     ]
   }
