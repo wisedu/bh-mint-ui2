@@ -6,7 +6,7 @@
         <h2>普通多选</h2>
         <mt-box-group v-model="value1">
             <mt-cell-group>
-                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2">
+                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value">
                     {{item.label}}
                 </mt-checkbox>
                 <mt-cell title="选中的项">{{ value1 }}</mt-cell>
@@ -19,7 +19,7 @@
         <h2>全部禁用</h2>
         <mt-box-group v-model="value2" :disabled="true">
             <mt-cell-group>
-                <mt-checkbox :name="item.value" v-for="item in options2">
+                <mt-checkbox :name="item.value" v-for="item in options2" :key="item.value">
                     {{item.label}}
                 </mt-checkbox>
             </mt-cell-group>
@@ -30,7 +30,7 @@
         <h2>右对齐</h2>
         <mt-box-group v-model="value1" align="right" :max="3">
             <mt-cell-group>
-                <mt-checkbox align="right" :name="item.value" v-for="item in options2">
+                <mt-checkbox align="right" :name="item.value" v-for="item in options2" :key="item.value">
                     {{item.label}}
                 </mt-checkbox>
             </mt-cell-group>

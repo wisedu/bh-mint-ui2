@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mt-cell v-for="option in options" @click.native="handleClick(option)">
+    <mt-cell v-for="option in options" :key="option" @click.native="handleClick(option)">
       <div class="mint-checklist-label" slot="title">
         <label @click.stop>
           <span  class="mint-checkbox" v-if="!option.isParent || parentSelectable">

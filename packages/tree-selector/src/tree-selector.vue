@@ -1,10 +1,10 @@
 <template>
   <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom">
-    <template scope="scope" slot="display">
+    <template slot-scope="scope" slot="display">
       {{scope.value === '' ? placeholder : getDisplay(scope.value)}}
       <!-- {{scope.value.join(',')}} -->
     </template>
-    <template scope="scope" slot="selector">
+    <template slot-scope="scope" slot="selector">
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
