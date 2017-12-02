@@ -4,7 +4,7 @@
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="mint-cell-wrapper" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright}">
+    <div class="mint-cell-wrapper" :class="{'mint-cell-no-top-line':isCell}" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright}">
       <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
@@ -173,6 +173,9 @@ export default {
       }
       
       return this.to;
+    },
+    isCell() {
+      return !!this.findParentByName('mt-cell');
     }
   },
 
@@ -185,6 +188,20 @@ export default {
       }else {
         this.$emit('cellClick',$event,this._props);
       }
+    },
+    findParentByName(name) {
+      if (!this.parentGroup) {
+        let parent = this.$parent;
+        while (parent) {
+          if (parent.$options.name === name) {
+            this.parentGroup = parent;
+            break;
+          }
+          parent = parent.$parent;
+        }
+      }
+
+      return this.parentGroup;
     }
   }
 };
@@ -316,6 +333,10 @@ export default {
         right: 0;
         top: 0;
         transform: translate3d(100%, 0, 0);
+      }
+
+      @descendent no-top-line{
+        border-top:none;
       }
 
       @descendent allow-right::after {
