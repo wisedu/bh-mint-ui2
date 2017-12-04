@@ -1,7 +1,7 @@
 <template>
   <div class="page-field">
     <div class="page-title">Field</div>
-    <div class="page-part">
+    <mt-cell-group>
       <!--start
       @name normal
       -->
@@ -55,18 +55,20 @@
       -->
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
       <!--end-->
-    </div>
+    </mt-cell-group>
+    <mt-hr height="15px" color="#e8e8e8"></mt-hr>
 
-    <div class="page-part">
+    <mt-cell-group>
       <!--start
       @name no-label-normal
       -->
       <mt-field placeholder="用户名"></mt-field>
       <!--end-->
       <mt-field placeholder="密码" type="password"></mt-field>
-    </div>
+    </mt-cell-group>
+    <mt-hr height="15px" color="#e8e8e8"></mt-hr>
 
-    <div class="page-part">
+    <mt-cell-group>
       <!--start
       @name normal-success
       -->
@@ -84,9 +86,10 @@
       -->
       <mt-field label="邮箱" placeholder="警告状态" state="warning"></mt-field>
       <!--end-->
-    </div>
+    </mt-cell-group>
+    <mt-hr height="15px" color="#e8e8e8"></mt-hr>
 
-    <div class="page-part">
+    <mt-cell-group>
 
       <!--start
       @name custom-image
@@ -95,7 +98,7 @@
         <mt-image src="../assets/100x100.png" height="48px" width="100px"></mt-image>
       </mt-field>
       <!--end-->
-    </div>
+    </mt-cell-group>
   </div>
 </template>
 

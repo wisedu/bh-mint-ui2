@@ -22,12 +22,12 @@ export default {
 <style lang="css">
 @import "../../../src/style/var.css";
 .mint-cell-group{
-    padding-left: 15px;
+    padding-left: 20px;
     background-color: #fff;
 }
 
 .mint-cell-group-title{
-  margin: 20px 0 7px 15px;
+  margin: 20px 0 7px 20px;
   font-size: 14px;
   color: $grey-lv3;
 }
@@ -60,7 +60,7 @@ export default {
         transform-origin: 0 0;
         pointer-events: none;
         box-sizing: border-box;
-        border: 0 solid $border-color;
+        border: 0 solid $grey-lv5;
     }
   }
 
@@ -81,7 +81,7 @@ export default {
   }
 
   &--top-bottom::after {
-    border-width: 1px 0;
+    border-width: 0.5px 0;
   }
 
   &--surround::after {

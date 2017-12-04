@@ -32,8 +32,3 @@ export default {
   }
 }
 </script>
-<style lang="css">
- .page-title {
-    margin-top: 40px;
-  }
-</style>

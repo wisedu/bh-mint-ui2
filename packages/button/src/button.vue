@@ -8,12 +8,11 @@
     }]"
     @click="handleClick"
     :disabled="disabled">
-    <span class="mint-button-icon" v-if="icon || $slots.icon">
+    <span :class="['mint-button-icon',size]" v-if="icon || $slots.icon">
       <slot name="icon">
         <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
       </slot>
-    </span>
-    <label class="mint-button-text"><slot></slot></label>
+    </span><label class="mint-button-text"><slot></slot></label>
   </button>
 </template>
 
@@ -182,11 +181,16 @@ export default {
       color: inherit;
       display: block;
       font-size: 18px;
-      height: 41px;
+      height: 44px;
       outline: 0;
       overflow: hidden;
       position: relative;
       text-align: center;
+
+      @descendent icon {
+        vertical-align: middle;
+        display: inline-block;
+      }
 
       &::after {
         background-color: #000;
@@ -196,12 +200,7 @@ export default {
       }
 
       &:not(.is-disabled):active::after {
-        opacity: .1;
-      }
-
-      @descendent icon {
-        vertical-align: middle;
-        display: inline-block;
+        opacity: 0.1;
       }
 
       @modifier default {
@@ -225,8 +224,13 @@ export default {
           border: 1px solid $button-primary-background-color;
           background-color: transparent;
           color: $button-primary-background-color;
+          &::after {
+            background-color: $button-primary-background-color;
+          }
         }
-
+      }
+      @modifier primary:not(.is-disabled):active{
+        opacity:0.6
       }
 
       @modifier warning {
@@ -237,7 +241,13 @@ export default {
           border: 1px solid $button-warning-background-color;
           background-color: transparent;
           color: $button-warning-background-color;
+          &::after {
+            background-color: $button-warning-background-color;
+          }
         }
+      }
+      @modifier warning:not(.is-disabled):active{
+        opacity:0.6
       }
 
       @modifier danger {
@@ -248,7 +258,13 @@ export default {
           border: 1px solid $button-danger-background-color;
           background-color: transparent;
           color: $button-danger-background-color;
+          &::after {
+            background-color: $button-danger-background-color;
+          }
         }
+      }
+      @modifier danger:not(.is-disabled):active{
+        opacity:0.6
       }
 
       @modifier large {
@@ -259,7 +275,7 @@ export default {
       @modifier normal {
         display: inline-block;
         font-size: 12px;
-        padding: 7px 10px;
+        padding: 0px 10px;
         height: 28px;
         border-radius: 14px;
       }
@@ -269,7 +285,6 @@ export default {
         font-size: 11px;
         padding: 0px 8px;
         height: 25px;
-        line-height: 25px;
         border-radius: 12px;
       }
 
@@ -277,5 +292,11 @@ export default {
         opacity: .3;
       }
     }
+  }
+  .small,.normal {
+    margin-right:5px;
+  }
+  .large {
+    margin-right:10px;
   }
 </style>

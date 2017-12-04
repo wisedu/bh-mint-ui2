@@ -1,6 +1,6 @@
 <template>
   <!-- <div @click="handleClick" class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div> -->
-  <div class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div>
+  <div class="mint-hr" :background="color" :height="height" :margin="margin" :style="computeStyle"></div>
 </template>
 <script>
     /**

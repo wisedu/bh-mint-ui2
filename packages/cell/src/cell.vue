@@ -137,11 +137,11 @@ export default {
     id:'',
     wrapperpaddingleft:{
       type:String,
-      default:'20px'
+      default:''
     },
     wrapperpaddingright:{
       type:String,
-      default:'20px'
+      default:'15px'
     },
     titlewidth:{
       type:String,
@@ -240,7 +240,7 @@ export default {
       background-color: $color-white;
       box-sizing: border-box;
       color: inherit;
-      min-height: 48px;
+      min-height: 50px;
       display: block;
       overflow: hidden;
       position: relative;
@@ -260,8 +260,7 @@ export default {
       }
 
       @descendent wrapper {
-        border-top:1px solid rgba(217, 217, 217, 0.5);
-        /* background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%); */
+        border-top:0.5px solid $grey-lv5;
         background-size: 120% 1px;
         background-repeat: no-repeat;
         background-position: top left;
@@ -273,7 +272,6 @@ export default {
         line-height: 1;
         min-height: inherit;
         overflow: hidden;
-        /* padding: 0 20px; */
         width: 100%;
       }
 

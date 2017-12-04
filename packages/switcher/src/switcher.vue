@@ -112,8 +112,8 @@ export default {
       @descendent core {
         display: inline-block;
         position: relative;
-        size: 52px 32px;
-        border: 1px solid $color-grey;
+        size: 50px 30px;
+        border: 1px solid $grey-lv6;
         border-radius: 16px;
         box-sizing: border-box;
         background: $color-grey;
@@ -126,13 +126,13 @@ export default {
         }
 
         &::after {
-          size: 30px;
+          size: 28px;
           background-color: $color-white;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+          box-shadow: 0 2px 7px rgba(0, 0, 0, .2);
         }
 
         &::before {
-          size: 50px 30px;
+          size: 48px 28px;
           background-color: #fdfdfd;
         }
       }

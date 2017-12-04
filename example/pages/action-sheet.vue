@@ -47,6 +47,10 @@
         console.log('opening album');
       },
 
+      empty() {
+        console.log('clear content');
+      },
+
       goBack() {
         history.go(-1);
       }
@@ -59,6 +63,10 @@
       }, {
         name: '从相册中选择',
         method: this.openAlbum
+      }, {
+        name: '清空已选图片',
+        className: 'bh-color-danger',
+        method: this.empty
       }];
       this.actions2 = [{
         name: '确定'
