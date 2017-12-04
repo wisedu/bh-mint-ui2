@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import merge from 'bh-mint-ui2/src/utils/merge';
 import PopupManager from 'bh-mint-ui2/src/utils/popup/popup-manager';
-if (Vue === undefined) Vue = window.Vue;
 
 let idSeed = 1;
 const transitions = [];

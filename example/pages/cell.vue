@@ -1,7 +1,7 @@
 <template>
   <div class="page-cell">
     <div class="page-title">Cell</div>
-    <mt-cell-group>
+    <mt-cell-group title="cell组的标题">
       <mt-cell title="标题文字"></mt-cell>
       <mt-cell title="标题文字" value="说明文字"></mt-cell>
       <mt-cell title="标题文字" icon="more" value="带 icon"></mt-cell>
@@ -32,3 +32,8 @@ export default {
   }
 }
 </script>
+<style lang="css">
+ .page-title {
+    margin-top: 40px;
+  }
+</style>

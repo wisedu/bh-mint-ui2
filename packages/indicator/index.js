@@ -1,5 +1,4 @@
 import Vue from 'vue';
-if (Vue === undefined) Vue = window.Vue;
 
 const Indicator = Vue.extend(require('./src/indicator.vue'));
 let instance;

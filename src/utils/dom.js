@@ -1,7 +1,6 @@
 /* istanbul ignore next */
 
 import Vue from 'vue';
-if (Vue === undefined) Vue = window.Vue;
 
 const isServer = Vue.prototype.$isServer;
 const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;

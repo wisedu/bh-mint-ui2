@@ -1,7 +1,9 @@
 <template>
-  <div class="mint-cell-group mint-hairline--top-bottom">
-    <label v-if="title.length > 0" class="mint-cell-group-title">{{title}}</label>
-    <slot></slot>
+  <div>
+    <div v-if="title.length > 0" class="mint-cell-group-title">{{title}}</div>
+    <div class="mint-cell-group mint-hairline--top-bottom">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -25,9 +27,16 @@ export default {
 }
 
 .mint-cell-group-title{
-  padding-left: 20px;
+  margin: 20px 0 7px 15px;
   font-size: 14px;
   color: $grey-lv3;
+}
+
+.mint-cell-group .mint-cell:first-child .mint-cell-wrapper{
+  border-top:none;
+}
+.mint-cell-group .mint-cell:last-child{
+  background: none;
 }
 
 .mint-hairline {
