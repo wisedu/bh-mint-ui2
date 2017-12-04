@@ -1,12 +1,19 @@
 <template>
   <div class="mint-cell-group mint-hairline--top-bottom">
+    <label v-if="title.length > 0" class="mint-cell-group-title">{{title}}</label>
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'mt-cell-group'
+  name: 'mt-cell-group',
+  props: {
+    title: {
+      type:String,
+      default: ""
+    }
+  }
 };
 </script>
 
@@ -15,6 +22,12 @@ export default {
 .mint-cell-group{
     padding-left: 15px;
     background-color: #fff;
+}
+
+.mint-cell-group-title{
+  padding-left: 20px;
+  font-size: 14px;
+  color: $grey-lv3;
 }
 
 .mint-hairline {
