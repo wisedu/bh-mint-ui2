@@ -19,7 +19,7 @@ export default {
   },
   computed:{
     isLimit(){
-      if (this.max !== undefined) {
+      if (this.max !== undefined && this.max !== -1) {
         if (this.max > this.value.length) {
           return false;
         } else {
