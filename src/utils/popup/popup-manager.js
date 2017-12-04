@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { addClass, removeClass } from 'bh-mint-ui2/src/utils/dom';
+if (Vue === undefined) Vue = window.Vue;
 
 let hasModal = false;
 

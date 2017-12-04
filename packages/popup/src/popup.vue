@@ -80,6 +80,7 @@
 <script type="text/babel">
   import Popup from 'bh-mint-ui2/src/utils/popup';
   import Vue from 'vue';
+  if (Vue === undefined) Vue = window.Vue;
   if (!Vue.prototype.$isServer) {
     require('bh-mint-ui2/src/style/popup.css');
   }

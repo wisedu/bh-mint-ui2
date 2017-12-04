@@ -1,5 +1,6 @@
 var exportObj = {};
 import Vue from 'vue';
+if (Vue === undefined) Vue = window.Vue;
 if (!Vue.prototype.$isServer) {
   var docStyle = document.documentElement.style;
   var engine;

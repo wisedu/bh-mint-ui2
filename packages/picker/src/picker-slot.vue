@@ -104,6 +104,7 @@
   import { once, addClass, removeClass } from 'bh-mint-ui2/src/utils/dom';
   import emitter from 'bh-mint-ui2/src/mixins/emitter';
   import Vue from 'vue';
+  if (Vue === undefined) Vue = window.Vue;
   if (!Vue.prototype.$isServer) {
     require('raf.js');
   }

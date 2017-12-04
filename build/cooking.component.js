@@ -8,7 +8,7 @@ cooking.set({
   dist: './lib/',
   clean: false,
   template: false,
-  minimize: false,
+  minimize: true,
   format: 'umd',
   extractCSS: '[name]/style.css',
   extends: ['vue2', 'saladcss', 'buble'],

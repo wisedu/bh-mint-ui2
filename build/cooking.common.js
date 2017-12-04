@@ -7,7 +7,7 @@ cooking.set({
   clean: false,
   template: false,
   format: 'umd',
-  minimize: false,
+  minimize: true,
   moduleName: 'MINT',
   extractCSS: 'style.css',
   extends: ['vue2', 'saladcss', 'buble'],

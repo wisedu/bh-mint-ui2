@@ -28,6 +28,7 @@ var defaults = {
 
 import Vue from 'vue';
 import msgboxVue from './message-box.vue';
+if (Vue === undefined) Vue = window.Vue;
 
 var merge = function(target) {
   for (var i = 1, j = arguments.length; i < j; i++) {

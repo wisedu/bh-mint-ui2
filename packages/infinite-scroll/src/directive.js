@@ -1,5 +1,6 @@
 import Vue from 'vue';
 const ctx = '@@InfiniteScroll';
+if (Vue === undefined) Vue = window.Vue;
 
 var throttle = function(fn, delay) {
   var now, lastExec, timer, context, args; //eslint-disable-line
