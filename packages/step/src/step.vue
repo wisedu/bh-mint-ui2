@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-step mint-hairline" :class="stepClass">
+  <div class="mint-step" :class="stepClass">
     <div class="mint-step__circle-container">
       <i class="mint-icon mint-icon-checked iconfont icon-wancheng" v-if="status === 'finish'"></i>
       <i class="mint-icon mint-icon-checked iconfont icon-weiwancheng" v-else-if="status === 'error'"></i>
