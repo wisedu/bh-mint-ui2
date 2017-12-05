@@ -12,8 +12,8 @@
     <div class="mint-field-other">
       <slot></slot>
     </div>
-    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" 
-    @confirm="handlePickedValue" @cancel="handleCancel"
+    <mt-datetime-picker ref="picker" :type="type" :value="currentValue" @change="handleChange"
+    @confirm="handlePickedValue" @cancel="handleCancel" :visibileColumnCount="visibileColumnCount"
      :min-date="minDate" :max-date="maxDate" :min-hour="minHour" :max-hour="maxHour"></mt-datetime-picker>
   </x-cell>
 </template>
@@ -167,7 +167,8 @@ export default {
     minDate: Date,
     maxDate: Date,
     minHour: Number,
-    maxHour: Number
+    maxHour: Number,
+    visibileColumnCount: Number
   },
 
   components: { XCell },
@@ -204,6 +205,9 @@ export default {
     },
     handleCancel() {
       this.$emit('cancel');
+    },
+    handleChange(picker) {
+      this.$emit('change', picker);
     },
     formatDate(date, type) {
       let month = String(this.$refs.picker.getMonth(date));
