@@ -14,7 +14,7 @@
     </div>
     <mt-datetime-picker ref="picker" :type="type" :value="currentValue" 
     @confirm="handlePickedValue" @cancel="handleCancel"
-     :start-date="startDate" :end-date="endDate" :start-hour="startHour" :end-hour="endHour"></mt-datetime-picker>
+     :min-date="minDate" :max-date="maxDate" :min-hour="minHour" :max-hour="maxHour"></mt-datetime-picker>
   </x-cell>
 </template>
 
@@ -164,10 +164,10 @@ export default {
       */
     value: {},
     attr: Object,
-    startDate: Date,
-    endDate: Date,
-    startHour: Number,
-    endHour: Number
+    minDate: Date,
+    maxDate: Date,
+    minHour: Number,
+    maxHour: Number
   },
 
   components: { XCell },

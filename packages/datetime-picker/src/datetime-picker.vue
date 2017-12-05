@@ -1,14 +1,12 @@
 <template>
   <mt-popup v-model="visible" position="bottom" class="mint-datetime">
     <mt-picker
-      :slots="dateSlots"
-      @change="onChange"
-      :visible-item-count="visibleItemCount"
-      class="mint-datetime-picker"
       ref="picker"
-      show-toolbar>
-      <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false;$emit('cancel')">{{ cancelText }}</span>
-      <span class="mint-datetime-action mint-datetime-confirm" @click="confirm">{{ confirmText }}</span>
+      showToolbar
+      :columns="columns"
+      :visibleItemCount="visibleItemCount"
+      :cancelText="cancelText" :confirmText="confirmText"
+      @change="onChange" @confirm="onConfirm" @cancel="visible = false;$emit('cancel')">
     </mt-picker>
   </mt-popup>
 </template>
@@ -19,31 +17,6 @@
   @component-namespace mint {
     @component datetime {
       width: 100%;
-
-      .picker-slot-wrapper, .picker-item {
-        backface-visibility: hidden;
-      }
-
-      .picker-toolbar {
-        border-bottom: solid 1px #eaeaea;
-      }
-
-      @descendent action {
-        display: inline-block;
-        width: 50%;
-        text-align: center;
-        line-height: 40px;
-        font-size: 16px;
-        color: $color-blue;
-      }
-
-      @descendent cancel {
-        float: left;
-      }
-
-      @descendent confirm {
-        float: right;
-      }
     }
   }
 </style>
@@ -56,227 +29,188 @@
     require('bh-mint-ui2/packages/popup/style.css');
   }
 
-  const FORMAT_MAP = {
-    Y: 'year',
-    M: 'month',
-    D: 'date',
-    H: 'hour',
-    m: 'minute'
-  };
-
-  /**
-   * @noteType component
-   * @name DatetimePicker
-   * @tagName mt-datetime-picker
-   * @desc 日期时间
-   * @wrapClassName mint-datetime-picker
-   * @html
-   * <mt-datetime-picker type="date" v-model="pickerValue"></mt-datetime-picker>
-   */
+  const isValidDate = date => Object.prototype.toString.call(date) === "[object Date]" && !isNaN(date.getTime());
   export default {
     name: 'mt-datetime-picker',
-
-    props: {
-      /**
-       * @noteType prop
-       * @field cancelText
-       * @desc 取消按钮文本
-       * @type input
-       * @value 取消
-       */
-      cancelText: {
-        type: String,
-        default: '取消'
-      },
-      /**
-       * @noteType prop
-       * @field confirmText
-       * @desc 确定按钮文本
-       * @type input
-       * @value 确定
-       */
-      confirmText: {
-        type: String,
-        default: '确定'
-      },
-      /**
-       * @noteType prop
-       * @field type
-       * @desc 组件的类型
-       * @type select
-       * @option
-      [{
-          "text": "日期时间",
-          "value": "datetime"
-        },{
-          "text": "日期",
-          "value": "date"
-        },{
-          "text": "时间",
-          "value": "time"
-        }]
-        */
-      type: {
-        type: String,
-        default: 'datetime'
-      },
-      /**
-       * @noteType prop
-       * @field startDate
-       * @desc 日期最小可选值
-       * @type input
-        */
-      startDate: {
-        type: Date,
-        default() {
-          return new Date(new Date().getFullYear() - 10, 0, 1);
-        }
-      },
-      /**
-       * @noteType prop
-       * @field endDate
-       * @desc 日期最大可选值
-       * @type input
-        */
-      endDate: {
-        type: Date,
-        default() {
-          return new Date(new Date().getFullYear() + 10, 11, 31);
-        }
-      },
-      /**
-       * @noteType prop
-       * @field startHour
-       * @desc 时间最小可选值
-       * @type input
-       * @valueType number
-        */
-      startHour: {
-        type: Number,
-        default: 0
-      },
-      /**
-       * @noteType prop
-       * @field endHour
-       * @desc 时间最大可选值
-       * @type input
-       * @valueType number
-        */
-      endHour: {
-        type: Number,
-        default: 23
-      },
-      /**
-       * @noteType prop
-       * @field yearFormat
-       * @desc 年份模板
-       * @type input
-        */
-      yearFormat: {
-        type: String,
-        default: '{value}'
-      },
-      /**
-       * @noteType prop
-       * @field monthFormat
-       * @desc 月份模板
-       * @type input
-        */
-      monthFormat: {
-        type: String,
-        default: '{value}'
-      },
-      /**
-       * @noteType prop
-       * @field monthFormat
-       * @desc 日期模板
-       * @type input
-        */
-      dateFormat: {
-        type: String,
-        default: '{value}'
-      },
-      /**
-       * @noteType prop
-       * @field hourFormat
-       * @desc 小时模板
-       * @type input
-        */
-      hourFormat: {
-        type: String,
-        default: '{value}'
-      },
-      /**
-       * @noteType prop
-       * @field minuteFormat
-       * @desc 分钟模板
-       * @type input
-        */
-      minuteFormat: {
-        type: String,
-        default: '{value}'
-      },
-      /**
-       * @noteType prop
-       * @field visibleItemCount
-       * @desc 可显示项数量
-       * @type input
-       * @valueType number
-        */
-      visibleItemCount: {
-        type: Number,
-        default: 7
-      },
-      /**
-       * @noteType prop
-       * @field value
-       * @desc 绑定值
-       * @type textarea
-        */
-      value: null
-    },
-
-    data() {
-      return {
-        visible: false,
-        startYear: null,
-        endYear: null,
-        startMonth: 1,
-        endMonth: 12,
-        startDay: 1,
-        endDay: 31,
-        currentValue: null,
-        selfTriggered: false,
-        dateSlots: [],
-        shortMonthDates: [],
-        longMonthDates: [],
-        febDates: [],
-        leapFebDates: []
-      };
-    },
-
     components: {
       'mt-picker': picker,
       'mt-popup': popup
     },
-
+    props: {
+      type: {
+        type: String,
+        default: 'datetime'
+      },
+      format: {
+        type: String,
+        default: 'YYYY.MM.DD HH时 mm分'
+      },
+      visibleItemCount: {
+        type: Number,
+        default: 5
+      },
+      minDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() - 10, 0, 1);
+        },
+        validator: isValidDate
+      },
+      maxDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() + 10, 11, 31);
+        },
+        validator: isValidDate
+      },
+      minHour: {
+        type: Number,
+        default: 0
+      },
+      maxHour: {
+        type: Number,
+        default: 23
+      },
+      value: {},
+      cancelText: {
+        type: String,
+        default: '取消'
+      },
+      confirmText: {
+        type: String,
+        default: '确定'
+      }
+    },
+    data() {
+      return {
+        innerValue: this.correctValue(this.value),
+        visible: false
+      };
+    },
+    watch: {
+      value(val) {
+        val = this.correctValue(val);
+        const isEqual = this.type === 'time' ? val === this.innerValue : val.valueOf() === this.innerValue.valueOf();
+        if (!isEqual) this.innerValue = val;
+      },
+      innerValue(val) {
+        this.updateColumnValue(val);
+        this.$emit('input', val);
+      }
+    },
+    computed: {
+      ranges() {
+        if (this.type === 'time') {
+          return [
+            [this.minHour, this.maxHour],
+            [0, 59]
+          ];
+        }
+        const { maxYear, maxDate, maxMonth, maxHour, maxMinute } = this.getBoundary('max', this.innerValue);
+        const { minYear, minDate, minMonth, minHour, minMinute } = this.getBoundary('min', this.innerValue);
+        const result = [
+          [minYear, maxYear],
+          [minMonth, maxMonth],
+          [minDate, maxDate],
+          [minHour, maxHour],
+          [minMinute, maxMinute]
+        ];
+        if (this.type === 'date') result.splice(3, 2);
+        return result;
+      },
+      columns() {
+        const results = this.ranges.map(range => {
+          const values = this.times(range[1] - range[0] + 1, index => {
+            const value = range[0] + index;
+            return value < 10 ? `0${value}` : `${value}`;
+          });
+          return {
+            values
+          };
+        });
+        return results;
+      }
+    },
     methods: {
       open() {
         this.visible = true;
       },
-
       close() {
         this.visible = false;
       },
-
-      isLeapYear(year) {
-        return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0);
+      correctValue(value) {
+        // validate value
+        const isDateType = this.type.indexOf('date') > -1;
+        if (isDateType && !isValidDate(value)) {
+          value = this.minDate;
+        } else if (!value) {
+          const { minHour } = this;
+          value = `${minHour > 10 ? minHour : '0' + minHour}:00`;
+        }
+        // time type
+        if (!isDateType) {
+          const [hour, minute] = value.split(':');
+          let correctedHour = Math.max(hour, this.minHour);
+          correctedHour = Math.min(correctedHour, this.maxHour);
+          return `${correctedHour}:${minute}`;
+        }
+        // date type
+        const { maxYear, maxDate, maxMonth, maxHour, maxMinute } = this.getBoundary('max', value);
+        const { minYear, minDate, minMonth, minHour, minMinute } = this.getBoundary('min', value);
+        const minDay = new Date(minYear, minMonth - 1, minDate, minHour, minMinute);
+        const maxDay = new Date(maxYear, maxMonth - 1, maxDate, maxHour, maxMinute);
+        value = Math.max(value, minDay);
+        value = Math.min(value, maxDay);
+        return new Date(value);
       },
-
-      isShortMonth(month) {
-        return [4, 6, 9, 11].indexOf(month) > -1;
+      times(n, iteratee) {
+        let index = -1;
+        const result = Array(n);
+        while (++index < n) {
+          result[index] = iteratee(index);
+        }
+        return result;
       },
-
+      getBoundary(type, value) {
+        const boundary = this[`${type}Date`];
+        const year = boundary.getFullYear();
+        let month = 1;
+        let date = 1;
+        let hour = 0;
+        let minute = 0;
+        if (type === 'max') {
+          month = 12;
+          date = this.getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
+          hour = 23;
+          minute = 59;
+        }
+        if (value.getFullYear() === year) {
+          month = boundary.getMonth() + 1;
+          if (value.getMonth() + 1 === month) {
+            date = boundary.getDate();
+            if (value.getDate() === date) {
+              hour = boundary.getHours();
+              if (value.getHours() === hour) {
+                minute = boundary.getMinutes();
+              }
+            }
+          }
+        }
+        return {
+          [`${type}Year`]: year,
+          [`${type}Month`]: month,
+          [`${type}Date`]: date,
+          [`${type}Hour`]: hour,
+          [`${type}Minute`]: minute
+        };
+      },
+      getTrueValue(formattedValue) {
+        if (!formattedValue) return;
+        while (isNaN(parseInt(formattedValue, 10))) {
+          formattedValue = formattedValue.slice(1);
+        }
+        return parseInt(formattedValue, 10);
+      },
       getMonthEndDay(year, month) {
         if (this.isShortMonth(month)) {
           return 30;
@@ -286,263 +220,73 @@
           return 31;
         }
       },
-
-      getTrueValue(formattedValue) {
-        if (!formattedValue) return;
-        while (isNaN(parseInt(formattedValue, 10))) {
-          formattedValue = formattedValue.slice(1);
-        }
-        return parseInt(formattedValue, 10);
+      isLeapYear(year) {
+        return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0);
       },
-
-      getValue(values) {
+      isShortMonth(month) {
+        return [4, 6, 9, 11].indexOf(month) > -1;
+      },
+      onConfirm() {
+        this.$emit('confirm', this.innerValue);
+      },
+      onChange(picker) {
+        const values = picker.getValues();
         let value;
         if (this.type === 'time') {
-          value = values.map(value => ('0' + this.getTrueValue(value)).slice(-2)).join(':');
+          value = values.join(':');
         } else {
-          let year = this.getTrueValue(values[0]);
-          let month = this.getTrueValue(values[1]);
+          const year = this.getTrueValue(values[0]);
+          const month = this.getTrueValue(values[1]);
+          const maxDate = this.getMonthEndDay(year, month);
           let date = this.getTrueValue(values[2]);
-          let maxDate = this.getMonthEndDay(year, month);
-          if (date > maxDate) {
-            this.selfTriggered = true;
-            date = 1;
+          date = date > maxDate ? maxDate : date;
+          let hour = 0;
+          let minute = 0;
+          if (this.type === 'datetime') {
+            hour = this.getTrueValue(values[3]);
+            minute = this.getTrueValue(values[4]);
           }
-          let hour = this.typeStr.indexOf('H') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('H')]) : 0;
-          let minute = this.typeStr.indexOf('m') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('m')]) : 0;
           value = new Date(year, month - 1, date, hour, minute);
         }
-        return value;
+        value = this.correctValue(value);
+        this.innerValue = value;
+        this.$emit('change', picker);
       },
-
-      onChange(picker) {
-        let values = picker.$children.filter(child => child.currentValue !== undefined).map(child => child.currentValue);
-        if (this.selfTriggered) {
-          this.selfTriggered = false;
-          return;
-        }
-        this.currentValue = this.getValue(values);
-        this.handleValueChange();
-      },
-
-      fillValues(type, start, end) {
-        let values = [];
-        for (let i = start; i <= end; i++) {
-          if (i < 10) {
-            values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', ('0' + i).slice(-2)));
-          } else {
-            values.push(this[`${FORMAT_MAP[type]}Format`].replace('{value}', i));
-          }
-        }
-        return values;
-      },
-
-      pushSlots(slots, type, start, end) {
-        slots.push({
-          flex: 1,
-          values: this.fillValues(type, start, end)
-        });
-      },
-
-      generateSlots() {
-        let dateSlots = [];
-        const INTERVAL_MAP = {
-          Y: this.rims.year,
-          M: this.rims.month,
-          D: this.rims.date,
-          H: this.rims.hour,
-          m: this.rims.min
-        };
-        let typesArr = this.typeStr.split('');
-        typesArr.forEach(type => {
-          if (INTERVAL_MAP[type]) {
-            this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]));
-          }
-        });
-        if (this.typeStr === 'Hm') {
-          dateSlots.splice(1, 0, {
-            divider: true,
-            content: ':'
-          });
-        }
-        this.dateSlots = dateSlots;
-        this.handleExceededValue();
-      },
-
-      handleExceededValue() {
+      updateColumnValue(value) {
         let values = [];
         if (this.type === 'time') {
-          const currentValue = this.currentValue.split(':');
+          const currentValue = value.split(':');
           values = [
-            this.hourFormat.replace('{value}', currentValue[0]),
-            this.minuteFormat.replace('{value}', currentValue[1])
+            currentValue[0],
+            currentValue[1]
           ];
         } else {
           values = [
-            this.yearFormat.replace('{value}', this.getYear(this.currentValue)),
-            this.monthFormat.replace('{value}', ('0' + this.getMonth(this.currentValue)).slice(-2)),
-            this.dateFormat.replace('{value}', ('0' + this.getDate(this.currentValue)).slice(-2))
+            `${value.getFullYear()}`,
+            `0${value.getMonth() + 1}`.slice(-2),
+            `0${value.getDate()}`.slice(-2)
           ];
           if (this.type === 'datetime') {
             values.push(
-              this.hourFormat.replace('{value}', ('0' + this.getHour(this.currentValue)).slice(-2)),
-              this.minuteFormat.replace('{value}', ('0' + this.getMinute(this.currentValue)).slice(-2))
+              `0${value.getHours()}`.slice(-2),
+              `0${value.getMinutes()}`.slice(-2)
             );
           }
         }
-        this.dateSlots.filter(child => child.values !== undefined)
-          .map(slot => slot.values).forEach((slotValues, index) => {
-            if (slotValues.indexOf(values[index]) === -1) {
-              values[index] = slotValues[0];
-            }
-          });
         this.$nextTick(() => {
-          this.setSlotsByValues(values);
+          this.setColumnByValues(values);
         });
       },
-
-      setSlotsByValues(values) {
-        const setSlotValue = this.$refs.picker.setSlotValue;
-        if (this.type === 'time') {
-          setSlotValue(0, values[0]);
-          setSlotValue(1, values[1]);
+      setColumnByValues(values) {
+        if (!this.$refs.picker) {
+          return;
         }
-        if (this.type !== 'time') {
-          setSlotValue(0, values[0]);
-          setSlotValue(1, values[1]);
-          setSlotValue(2, values[2]);
-          if (this.type === 'datetime') {
-            setSlotValue(3, values[3]);
-            setSlotValue(4, values[4]);
-          }
-        }
-        [].forEach.call(this.$refs.picker.$children, child => child.doOnValueChange());
-      },
-
-      rimDetect(result, rim) {
-        let position = rim === 'start' ? 0 : 1;
-        let rimDate = rim === 'start' ? this.startDate : this.endDate;
-        if (this.getYear(this.currentValue) === rimDate.getFullYear()) {
-          result.month[position] = rimDate.getMonth() + 1;
-          if (this.getMonth(this.currentValue) === rimDate.getMonth() + 1) {
-            result.date[position] = rimDate.getDate();
-            if (this.getDate(this.currentValue) === rimDate.getDate()) {
-              result.hour[position] = rimDate.getHours();
-              if (this.getHour(this.currentValue) === rimDate.getHours()) {
-                result.min[position] = rimDate.getMinutes();
-              }
-            }
-          }
-        }
-      },
-
-      isDateString(str) {
-        return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str);
-      },
-
-      getYear(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear();
-      },
-
-      getMonth(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[1] : value.getMonth() + 1;
-      },
-
-      getDate(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[2] : value.getDate();
-      },
-
-      getHour(value) {
-        if (this.isDateString(value)) {
-          const str = value.split(' ')[1] || '00:00:00';
-          return str.split(':')[0];
-        }
-        return value.getHours();
-      },
-
-      getMinute(value) {
-        if (this.isDateString(value)) {
-          const str = value.split(' ')[1] || '00:00:00';
-          return str.split(':')[1];
-        }
-        return value.getMinutes();
-      },
-
-      confirm() {
-        this.visible = false;
-        this.$emit('confirm', this.currentValue);
-      },
-
-      handleValueChange() {
-        this.$emit('input', this.currentValue);
+        this.$refs.picker.setValues(values);
       }
     },
-
-    computed: {
-      rims() {
-        if (!this.currentValue) return { year: [], month: [], date: [], hour: [], min: [] };
-        let result;
-        if (this.type === 'time') {
-          result = {
-            hour: [this.startHour, this.endHour],
-            min: [0, 59]
-          };
-          return result;
-        }
-        result = {
-          year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
-          month: [1, 12],
-          date: [1, this.getMonthEndDay(this.getYear(this.currentValue), this.getMonth(this.currentValue))],
-          hour: [0, 23],
-          min: [0, 59]
-        };
-        this.rimDetect(result, 'start');
-        this.rimDetect(result, 'end');
-        return result;
-      },
-
-      typeStr() {
-        if (this.type === 'time') {
-          return 'Hm';
-        } else if (this.type === 'date') {
-          return 'YMD';
-        } else {
-          return 'YMDHm';
-        }
-      }
-    },
-
-    watch: {
-      value(val) {
-        this.currentValue = val;
-      },
-
-      rims() {
-        this.generateSlots();
-      }
-    },
-
     mounted() {
-      this.currentValue = this.value;
-      if (!this.value) {
-        if (this.type.indexOf('date') > -1) {
-          this.currentValue = this.startDate;
-        } else {
-          this.currentValue = `${ ('0' + this.startHour).slice(-2) }:00`;
-        }
-      }
-      this.generateSlots();
+      this.updateColumnValue(this.innerValue);
     }
   };
-/**
- * @noteType external
- * @content
- {
-   "mock": {
-      "type": "datetime"
-   },
-   "xtype": [ "date-full" ],
-   "bindField": "v-model"
- }
- */
+
 </script>
