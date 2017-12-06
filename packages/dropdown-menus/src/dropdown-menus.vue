@@ -19,8 +19,9 @@
 .bh-ddb {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: solid 0.5px #ddd;
-    border-top: solid 0.5px #ddd;
+    border-bottom: solid 0.5px #grey-lv4;
+    border-top: solid 0.5px #grey-lv4;
+    background-color: #color-white;
 }
 .bh-ddb-item {
     float:left;

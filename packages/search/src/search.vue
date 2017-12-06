@@ -108,7 +108,7 @@ export default {
     @component search {
       height: 100%;
       height: 44px;
-      border-bottom: 0.5px solid $grey-lv5;
+      border-bottom: 0.5px solid $grey-lv4;
       overflow: hidden;
     }
 
