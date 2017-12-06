@@ -1,5 +1,4 @@
 <template>
-<div>
   <x-cell
     class="mint-field"
     :title="label"
@@ -30,9 +29,8 @@
     <div class="mint-field-other">
       <slot></slot>
     </div>
+    <div slot="newline" class="mint-field-count mint-cell-newline">{{showLimt}}</div>
   </x-cell>
-  <div class="mint-field-count">{{showLimt}}</div>
-</div>
 </template>
 
 <script>
@@ -259,8 +257,6 @@ export default {
 
   @component-namespace mint {
     @component field {
-      display: flex;
-      align-items: inherit;
       .mint-cell-title {
         padding: 10px 0;
       }
@@ -282,7 +278,7 @@ export default {
       @descendent count {
         text-align:right;
         background-color:#fff;
-        padding: 4px 16px;
+        padding: 0 16px;
         color:#92969c;
       }
 

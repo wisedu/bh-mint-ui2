@@ -1,7 +1,7 @@
 <template>
-  <div class="page-textarea">
+  <div>
     <div class="page-title">textarea</div>
-    <div class="page-part">
+    <mt-cell-group>
       <mt-textarea label="有标题" placeholder="全宽度" rows=3 maxlength=100></mt-textarea>
       <mt-textarea placeholder="全宽度" rows=3 maxlength=100 ></mt-textarea>
       <mt-textarea label="success" placeholder="success" rows=3 maxlength=50 state="success"></mt-textarea>
@@ -11,13 +11,13 @@
       <mt-textarea placeholder="同时出现" rows=3 maxlength=20 state="error">
         <mt-icon type="icon-wifi"></mt-icon>
       </mt-textarea>
-    </div>
+    </mt-cell-group>
 
-    <div class="page-part">
+    <mt-cell-group>
       <mt-textarea label="验证码" placeholder="输入验证码">
         <img src="../assets/100x100.png" height="48px" width="100px">
       </mt-textarea>
-    </div>
+    </mt-cell-group>
   </div>
 </template>
 

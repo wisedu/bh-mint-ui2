@@ -1,15 +1,15 @@
 <template>
   <div class="page-navbar">
     <div class="page-title">Navbar</div>
-    <mt-navbar class="page-part" v-model="selected">
+    <mt-navbar v-model="selected">
       <mt-tab-item id="1">选项一</mt-tab-item>
       <mt-tab-item id="2">选项二</mt-tab-item>
       <mt-tab-item id="3">选项三</mt-tab-item>
     </mt-navbar>
 
-    <div>
-      <mt-cell class="page-part" title="当前选中">{{ selected }}</mt-cell>
-    </div>
+    <mt-cell-group>
+      <mt-cell title="当前选中">{{ selected }}</mt-cell>
+    </mt-cell-group>
 
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">

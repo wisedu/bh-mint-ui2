@@ -25,6 +25,7 @@
     <div class="mint-cell-right">
       <slot name="right"></slot>
     </div>
+    <slot name="newline"></slot>
   </a>
 </template>
 
@@ -306,13 +307,14 @@ export default {
       @descendent title {
         flex: 1;
         min-width: 68px;
+        margin-right: 8px;
       }
 
       @descendent value {
         color: $cell-value-color;
         display: flex;
         align-items: center;
-        margin-left: 8px;
+        
         @when link {
           /* margin-right: 8px; */
         }
@@ -331,6 +333,10 @@ export default {
         right: 0;
         top: 0;
         transform: translate3d(100%, 0, 0);
+      }
+
+      @descendent newline {
+        margin-bottom: 14px;
       }
 
       @descendent no-top-line{

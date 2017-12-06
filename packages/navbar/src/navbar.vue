@@ -75,6 +75,8 @@ export default {
       background-color: $color-white;
       display: flex;
       text-align: center;
+      border-top: 0.5px solid $grey-lv5;
+      border-bottom: 0.5px solid $grey-lv5;
 
       @when fixed {
         position: fixed 0 0 * 0;

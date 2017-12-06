@@ -64,7 +64,7 @@
     @component hr {
       position: relative;
       height: 1px;
-      background: #ddd;
+      background: $grey-lv5;
     }
   }
 
