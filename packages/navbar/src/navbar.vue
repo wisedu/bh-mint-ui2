@@ -90,9 +90,13 @@ export default {
         }
 
         &.is-selected {
-          border-bottom: 3px solid $color-green;
-          color: $color-green;
+          border-bottom: 3px solid $theme-lv1;
+          color: $theme-lv1;
           /* margin-bottom: -3px; */
+
+          .mint-tab-item-label{
+            color: $theme-lv1;
+          }
         }
       }
     }

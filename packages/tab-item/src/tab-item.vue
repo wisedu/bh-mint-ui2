@@ -88,7 +88,7 @@ export default {
       }
 
       @descendent label {
-        color: inherit;
+        color: $grey-lv3;
         font-size: $tab-item-font-size;
         line-height: 1;
       }
