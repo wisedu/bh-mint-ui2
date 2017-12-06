@@ -15,7 +15,9 @@
         <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow"></div>
     </div>
 </template>
-<style>
+<style lang="css">
+  @import "../../../src/style/var.css";
+  
 .bh-ddb {
     overflow: auto;
     padding: 10px 0;
