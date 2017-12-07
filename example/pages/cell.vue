@@ -20,6 +20,10 @@
       <mt-cell title="标题" label="描述信息" is-link></mt-cell>
       <mt-cell title="原生跳转" label="跳转到 https://bh-mint-ui2.github.io" is-link to="https://bh-mint-ui2.github.io"></mt-cell>
     </mt-cell-group>
+    <br><br>
+    <mt-cell-group title="cell组的标题">
+      <mt-cell title="标题文字"></mt-cell>
+    </mt-cell-group>
   </div>
 </template>
 <script>

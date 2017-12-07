@@ -38,6 +38,7 @@
         right: auto;
         bottom: 0;
         left: 50%;
+        width: 100%;
         transform: translate3d(-50%, 0, 0);
       }
 

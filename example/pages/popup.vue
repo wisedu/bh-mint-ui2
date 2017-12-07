@@ -20,7 +20,17 @@
       <mt-button @click.native="popupVisible3 = false" size="large" type="primary">关闭 popup</mt-button>
     </mt-popup>
     <mt-popup v-model="popupVisible4" position="bottom" class="mint-popup-4">
-      <mt-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="5" :show-toolbar="false"></mt-picker>
+      <div style="height:244px;background-color:#e8e8e8;">
+        <div style="padding:12px 20px;background-color:#fff;font-size:17px">
+          <span style="float:left;">申请陈述：</span>
+          <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
+          <div style="clear: both;display:table;margin-bottom:5px"></div>
+        </div>
+        <mt-cell-group style="margin-bottom:4px">
+          <mt-textarea maxlength=100 rows=4 placeholder="请输入"></mt-textarea>
+        </mt-cell-group>
+        <mt-button size="large">取消</mt-button>
+      </div>
     </mt-popup>
   </div>
 </template>
