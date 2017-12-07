@@ -193,6 +193,11 @@
         "icon": "navebar"
       },
       {
+        "path": "/fixed-container",
+        "name": "FixedContainer",
+        "icon": "navebar"
+      },
+      {
         "path": "/layout-container-multiple",
         "name": "LayoutContainerMultiple",
         "icon": "navebar"
