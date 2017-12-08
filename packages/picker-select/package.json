@@ -6,7 +6,7 @@
   "author": "elemefe",
   "homepage": "https://github.com/ElemeFE/bh-mint-ui2",
   "license": "MIT",
-  "repository": "https://github.com/ElemeFE/bh-mint-ui2/tree/master/components/mint-field",
+  "repository": "https://github.com/ElemeFE/bh-mint-ui2/tree/master/components/mint-pick-select",
   "dependencies": {
   }
 }

@@ -88,8 +88,8 @@
         "icon": "picker"
       },
       {
-        "path": "/text-picker-select",
-        "name": "TextPickerSelect",
+        "path": "/picker-select",
+        "name": "PickerSelect",
         "icon": "picker"
       },
       {

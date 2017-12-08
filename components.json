@@ -34,7 +34,7 @@
   "picker": "./packages/picker/index.js",
   "select": "./packages/select/index.js",
   "text-select": "./packages/text-select/index.js",
-  "text-picker-select": "./packages/text-picker-select/index.js",
+  "picker-select": "./packages/picker-select/index.js",
   "datetime-selector": "./packages/datetime-selector/index.js",
   "infinite-calendar": "./packages/infinite-calendar/index.js",
   "tree-selector": "./packages/tree-selector/index.js",

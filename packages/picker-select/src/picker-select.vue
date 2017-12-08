@@ -7,7 +7,7 @@
       </div>
     </mt-cell>
     <mt-popup v-model="popupVisible" position="bottom">
-      <mt-picker :columns="dateSlots" @change="onChange" :visible-item-count="1" :show-toolbar="true"></mt-picker>
+      <mt-picker :columns="options" @change="onChange" :visible-item-count="1" :show-toolbar="true"></mt-picker>
     </mt-popup>
   </div>
 </template>
@@ -19,7 +19,7 @@
 
 /**
  * @noteType component
- * @name TextPickerSelect
+ * @name MintPickerSelect
  * @tagName mt-picker-select
  * @desc 文本域(带选项)
  * @wrapClassName mint-picker-select
@@ -79,7 +79,6 @@ export default {
     return {
       selectorShow: false,
       currentValue: "",
-      dateSlots: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
       popupVisible: false
     };
   },
