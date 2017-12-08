@@ -51,6 +51,7 @@
 </style>
 
 <script type="text/babel">
+import { Toast } from 'src/index';
 export default {
   data() {
     return {

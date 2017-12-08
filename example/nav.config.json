@@ -88,6 +88,11 @@
         "icon": "picker"
       },
       {
+        "path": "/text-picker-select",
+        "name": "TextPickerSelect",
+        "icon": "picker"
+      },
+      {
         "path": "/datetime-selector",
         "name": "DatetimeSelector",
         "icon": "time"

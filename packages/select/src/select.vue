@@ -1,5 +1,5 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick">
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink>
     <div class="select-value" >
       <!-- select 模板 -->
       <template v-if="selectType === 'select'">{{singleSelectDisplay()}}</template>

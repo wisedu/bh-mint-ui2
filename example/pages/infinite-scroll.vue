@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="page-infinite">
     <h1 class="page-title">Infinite Scroll</h1>
     <p class="page-infinite-desc">当即将滚动至列表底部时, 自动加载更多数据</p>

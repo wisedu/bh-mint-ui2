@@ -1,8 +1,8 @@
 <template>
-  <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :class="[{
+  <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :disabledcolor="readonly||disabled" :wrapperpaddingright="state!=='default'?'15px':'20px'" :class="[{
               'is-nolabel': !label
             }]">
-    <div class="mint-field-core" @click="handlePick()">{{showValue}}</div>
+    <div class="mint-field-core" :class="{'mint-field-placeholder':placeholder===showValue}" @click="handlePick()">{{showValue}}</div>
     <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue && active">
       <i class="mintui mintui-field-error"></i>
     </div>
@@ -208,22 +208,23 @@ export default {
     },
     handleChange(picker) {
       this.$emit('change', picker);
+      this.$emit('cancel');
     },
     formatDate(date, type) {
-      let month = String(this.$refs.picker.getMonth(date));
+      let month = String(date.getMonth()+1);
       if (month.length === 1)month = "0" + month;
-      let day = String(this.$refs.picker.getDate(date));
+      let day = String(date.getDate());
       if (day.length === 1)day = "0" + day;
-      let hour = String(this.$refs.picker.getHour(date));
+      let hour = String(date.getHours());
       if (hour.length === 1)hour = "0" + hour;
-      let min = String(this.$refs.picker.getMinute(date));
+      let min = String(date.getMinutes());
       if (min.length === 1)min = "0" + min;
 
       let result = "";
       if (type === "datetime") {
-        result = this.$refs.picker.getYear(date) + "-" + month + "-" + day + " " + hour + ":" + min + ":00";
+        result = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min + ":00";
       } else if (type === "date") {
-        result = this.$refs.picker.getYear(date) + "-" + month + "-" + day;
+        result = date.getFullYear() + "-" + month + "-" + day;
       // } else if (type === "ym") {
       //   result = this.$refs.picker.getYear(date) + "-" + month;
       } else {
@@ -321,6 +322,10 @@ export default {
       line-height: 1.6;
       font-size: inherit;
       width: 100%;
+    }
+
+    @descendent placeholder {
+      color:$grey-lv3;
     }
 
     @descendent clear {

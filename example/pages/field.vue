@@ -72,6 +72,7 @@
       <!--start
       @name normal-success
       -->
+      <mt-field label="邮箱" placeholder="成功状态" value="禁用的内容" disabled state="success"></mt-field>
       <mt-field label="邮箱" placeholder="成功状态" value="只读的内容" readonly state="success"></mt-field>
       <!--end-->
 

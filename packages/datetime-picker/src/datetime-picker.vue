@@ -227,7 +227,9 @@
         return [4, 6, 9, 11].indexOf(month) > -1;
       },
       onConfirm() {
+        this.visible = false;
         this.$emit('confirm', this.innerValue);
+        this.$emit('cancel');
       },
       onChange(picker) {
         const values = picker.getValues();

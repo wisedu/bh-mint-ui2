@@ -3,7 +3,7 @@
     <div class="page-title page-part">Checkbox</div>
 
     <div>
-        <h2>普通多选</h2>
+        <h2 class="mint-box-group-title">普通多选</h2>
         <mt-box-group v-model="value1">
             <mt-cell-group>
                 <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value">
@@ -16,7 +16,7 @@
 
 
     <div>
-        <h2>全部禁用</h2>
+        <h2 class="mint-box-group-title">全部禁用</h2>
         <mt-box-group v-model="value2" :disabled="true">
             <mt-cell-group>
                 <mt-checkbox :name="item.value" v-for="item in options2" :key="item.value">
@@ -27,7 +27,7 @@
     </div>
 
     <div>
-        <h2>右对齐,最多选3个</h2>
+        <h2 class="mint-box-group-title">右对齐,最多选3个</h2>
         <mt-box-group v-model="value1" align="right" :max="3">
             <mt-cell-group>
                 <mt-checkbox align="right" :name="item.value" v-for="item in options2" :key="item.value">
@@ -38,7 +38,7 @@
     </div>
 
     <div>
-        <h2>组合的多选</h2>
+        <h2 class="mint-box-group-title">组合的多选</h2>
         <mt-box-group v-model="value2">
             <mt-cell-group>
                 <mt-checkbox ref="cb" :name="item" v-for="item in options1" :key="item">
@@ -104,7 +104,9 @@ export default {
 </script>
 
 <style lang="css">
-  .page-checklist .page-part {
-    margin-top: 40px;
+  .mint-box-group-title {
+    margin: 10px 0 0 20px;
+    font-size: 14px;
+    color: #92969c;
   }
 </style>

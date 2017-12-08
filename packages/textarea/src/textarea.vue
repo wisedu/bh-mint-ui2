@@ -278,7 +278,7 @@ export default {
       @descendent count {
         text-align:right;
         background-color:#fff;
-        padding: 0 16px;
+        padding: 0 15px;
         color:#92969c;
       }
 

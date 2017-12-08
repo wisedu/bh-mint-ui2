@@ -5,7 +5,7 @@
         <input v-model="currentValue" type="checkbox" class="mint-checkbox-new-input" :disabled="isDisabled"/>
         <span class="mint-checkbox-new-core"></span>
       </span>
-      <span class="mint-checkbox-new-label">
+      <span class="mint-checkbox-new-label" :class='{"disabled":isDisabled}'>
         <slot></slot>
       </span>
       <slot name="newline" :checked="isChecked" :disabled="isDisabled"></slot>
@@ -126,6 +126,7 @@ export default {
     @descendent label {
       vertical-align: middle;
       margin-left: 6px;
+      color:$grey-lv1;
     }
 
     @descendent input {
@@ -170,5 +171,8 @@ export default {
       }
     }
   }
+}
+.disabled{
+    color:$grey-lv2;
 }
 </style>

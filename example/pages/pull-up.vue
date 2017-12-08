@@ -91,7 +91,8 @@
           } else {
             this.allLoaded = true;
           }
-          this.$refs.loadmore.onBottomLoaded();
+          //this.$refs.loadmore.onBottomLoaded();
+            //console.log(this.$refs.loadmore);
         }, 1500);
       }
     },

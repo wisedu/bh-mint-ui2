@@ -3,6 +3,8 @@
     class="mint-field"
     :title="label"
     v-clickoutside="doCloseActive"
+    :wrapperpaddingright="state!=='default'?'15px':'20px'"
+    :disabledcolor="readonly||disabled"
     :class="[{
       'is-textarea': type === 'textarea',
       'is-nolabel': !label
@@ -35,7 +37,7 @@
       @click="handleClear"
       class="mint-field-clear"
       v-if="!disableClear"
-      v-show="currentValue && type !== 'textarea' && active">
+      v-show="currentValue && type !== 'textarea' && active &&!readonly" >
       <i class="mintui mintui-field-error"></i>
     </div>
     <span class="mint-field-state" v-if="state" :class="['is-' + state]">

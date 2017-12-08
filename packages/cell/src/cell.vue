@@ -1,10 +1,10 @@
 <template>
-  <a class="mint-cell" :href="href">
+  <a class="mint-cell" :href="href" :class="{'mint-cell-disabled-color':disabledcolor}">
     <span class="mint-cell-mask" v-if="isLink"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="mint-cell-wrapper" :class="{'mint-cell-no-top-line':isCell}" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright}">
+    <div class="mint-cell-wrapper" :class="{'mint-cell-no-top-line':isCell}" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
       <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
@@ -19,8 +19,11 @@
           <span v-text="value"></span>
         </slot>
       </div>
-      <slot v-if="isLink" name="arrow"></slot>
-      <!-- <i v-if="isLink" class="mint-cell-allow-right"></i> -->
+      <slot v-if="isLink||arrowdefined" name="arrowdefined">
+        <i class="icon iconfont icon-keyboardarrowright" v-if="!arrowdefined"></i>
+      </slot>
+      <!-- <slot name="arrowdefined"></slot>
+      <i v-if="isLink" class="mint-cell-allow-right"></i> -->
     </div>
     <div class="mint-cell-right">
       <slot name="right"></slot>
@@ -43,6 +46,8 @@
  * @param {string} [title] - 标题
  * @param {string} [label] - 备注信息
  * @param {boolean} [is-link=false] - 可点击的链接
+ * @param {boolean} [arrowdefined=false] - 不使用自定义图标slot，默认不使用自定义
+ * @param {boolean} [disabledcolor=false] - 标题启用readonly或disabled样式，默认不启用
  * @param {string} [value] - 右侧显示文字
  * @param {slot} - 同 value, 会覆盖 value 属性
  * @param {slot} [title] - 同 title, 会覆盖 title 属性
@@ -134,6 +139,8 @@ export default {
        * @type input
        * @value
        */
+    arrowdefined: Boolean,
+    disabledcolor: Boolean,
     value: {},
     id:'',
     wrapperpaddingleft:{
@@ -142,7 +149,7 @@ export default {
     },
     wrapperpaddingright:{
       type:String,
-      default:'15px'
+      default:''
     },
     titlewidth:{
       type:String,
@@ -177,12 +184,14 @@ export default {
     },
     isCell() {
       return !!this.findParentByName('mt-cell');
+    },
+    wrapperpaddingrightdefined() {
+      return this.arrowdefined||this.isLink?"15px":"20px";
     }
   },
 
   methods: {
     handleClick($event) {
-      console.log(this.href)
       $event.preventDefault();
       if (this.to != 'click') {
         this.$router.push(this.href);
@@ -258,6 +267,11 @@ export default {
         background-size: 100% 1px;
         background-repeat: no-repeat;
         background-position: bottom;
+      }
+      @descendent disabled {
+        @descendent color {
+          color: $grey-lv3;
+        }
       }
 
       @descendent wrapper {
@@ -353,5 +367,9 @@ export default {
         transform: translateY(-50%) rotate(45deg);
       }
     }
+  }
+  .icon{
+    color:$grey-lv3;
+    font-size: 24px;
   }
 </style>

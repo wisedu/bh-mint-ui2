@@ -1,18 +1,20 @@
 <template>
   <div class="page-select">
-    <h1 class="page-title">Select 快捷语法糖</h1>
-    <div class="">
+    <div class="page-title">Select</div>
+
+    <h1 class="page-item-title">Select 快捷语法糖</h1>
+    <mt-cell-group>
       <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick">
       </mt-select>
       <p>{{singleSelectValue}}</p>
-    </div>
+    </mt-cell-group>
 
-    <h1 class="page-title">Multi Select 快捷语法糖</h1>
-    <div class="">
+    <h1 class="page-item-title">Multi Select 快捷语法糖</h1>
+    <mt-cell-group>
       <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" select-type="multi-select" @selector-click="multiSelectClick">
       </mt-select>
       <p>{{multiSelectValue}}</p>
-    </div>
+    </mt-cell-group>
     <!-- <div class="">
       <mt-select label="单选" :options="yearSlot" :value.sync="value">
         <template scope="scope" slot="display">
@@ -81,12 +83,12 @@
 
 <style lang="postcss">
   body {
-    background: #ddd;
+    background: #fff;
     padding: 0;
   }
   @component-namespace page {
     @component select {
-      padding-top: 50px;
+      padding-top: 0px;
       @descendent wrapper {
         background-color: #fff;
       }
@@ -97,6 +99,21 @@
 
       .mint-button {
         margin-top: 15px;
+      }
+    }
+    @component title {
+      font-size: 20px;
+      margin: 0 auto;
+      padding:20px 0;
+      text-align: center;
+      display: block;
+      line-height: 1; 
+    }
+    @component item {
+      @descendent title {
+        text-align: center;
+        color: #666;
+        margin-bottom: 5px;
       }
     }
   }

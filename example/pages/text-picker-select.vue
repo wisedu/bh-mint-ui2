@@ -1,13 +1,12 @@
 <template>
   <div class="page-select">
-    <h1 class="page-select-title">TextSelect</h1>
+    <h1 class="page-select-title">TextPickerSelect</h1>
     <mt-cell-group>
-      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick">
-      </mt-text-select>
-      <p>{{singleSelectValue}}</p>
+      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick">
+      </mt-picker-select>
 
-      <mt-text-select label="只读的" placeholder="aaa" rows="5" maxlength="100" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
-      <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :disabled="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
+      <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-picker-select>
+      <mt-picker-select label="禁用的" placeholder="请选择" rows="5" maxlength="100" disabled :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-picker-select>
     </mt-cell-group>
   </div>
 </template>
