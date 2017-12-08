@@ -144,7 +144,7 @@ export default {
 </script>
 <style lang="css">
   @import "../../../src/style/var.css";
-
+  @import "../../../src/style/hairline.css";
   .mint-picker {
     overflow: hidden;
     user-select: none;
