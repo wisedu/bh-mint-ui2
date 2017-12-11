@@ -90,6 +90,7 @@ export default {
     title: String,
     label: String,
     isLink: Boolean,
+    check:Boolean,
     value: {}
   },
 
@@ -98,7 +99,18 @@ export default {
       start: { x: 0, y: 0 }
     };
   },
-
+  watch:{
+    'check':function(newds,oldds){
+      //console.log('newds:'+newds)
+      if (newds) {
+        this.offsetLeft = this.leftWidth;
+        this.swipeLeaveTransition(-1);
+      }else {
+        this.offsetLeft = this.rightWidth;
+        this.swipeLeaveTransition(1);
+      }
+    }
+  },
   mounted() {
     this.wrap = this.$refs.cell.$el.querySelector('.mint-cell-wrapper');
     this.leftElm = this.$refs.left;
@@ -141,6 +153,7 @@ export default {
 
     swipeLeaveTransition(direction) {
       setTimeout(() => {
+        console.log('direction:'+direction+',offsetLeft:'+this.offsetLeft+',this.leftWidth:'+this.leftWidth)
         this.swipeLeave = true;
 
         // left
@@ -150,6 +163,7 @@ export default {
           return;
         // right
         } else if (direction < 0 && this.offsetLeft > this.leftWidth * 0.4) {
+          console.log('direction:right')
           this.swipeMove(this.leftWidth);
           this.resetSwipeStatus();
           return;
