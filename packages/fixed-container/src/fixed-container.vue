@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    name: 'mt-fixed-button',
+    name: 'mt-fixed-container',
       methods: {
           handleClick(evt) {
               this.$emit('click', evt);
