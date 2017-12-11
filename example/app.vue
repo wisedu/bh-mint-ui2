@@ -34,7 +34,7 @@
 </style>
 
 <script type="text/babel">
-  import 'src/assets/font/iconfont.css';
+  // import 'src/assets/font/iconfont.css';
 
   export default {
     computed: {

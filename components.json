@@ -1,5 +1,4 @@
 {
-  "font": "./src/assets/font/iconfont.css",
   "header": "./packages/header/index.js",
   "button": "./packages/button/index.js",
   "button-list": "./packages/button-list/index.js",
