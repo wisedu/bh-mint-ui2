@@ -1,6 +1,5 @@
 <template>
   <x-cell
-    v-clickoutside:touchstart="swipeMove"
     @click.native="swipeMove()"
     @touchstart.native="startDrag"
     @touchmove.native="onDrag"
@@ -21,7 +20,7 @@
         class="mint-cell-swipe-button"
         v-for="btn in right"
         :style="btn.style"
-        @click.prevent.stop="btn.handler && btn.handler(), swipeMove()"
+        @click.prevent.stop="btn.handler && btn.handler($event)"
         v-html="btn.content"></a>
     </div>
     <div
@@ -32,7 +31,7 @@
         class="mint-cell-swipe-button"
         v-for="btn in left"
         :style="btn.style"
-        @click.prevent.stop="btn.handler && btn.handler(), swipeMove()"
+        @click.prevent.stop="btn.handler && btn.handler($event)"
         v-html="btn.content"></a>
     </div>
     <slot></slot>

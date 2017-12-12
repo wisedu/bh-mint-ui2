@@ -4,8 +4,8 @@
         <div class="page-part">
             <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel"> </mt-dropdown-menus>
             <div v-if="isShowMenu" class="bh-ddm">
-                <mt-radio slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
-                </mt-radio>
+                <mt-radiobox slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
+                </mt-radiobox>
                 <mt-side-navbar slot="menu" v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
                   <div slot="nav">
                     <mt-tab-item id="4">全部国家</mt-tab-item>
@@ -34,8 +34,8 @@
                         </mt-cell>
                     </div>
                     <div class="bh-ddm-lv2-container">
-                        <mt-radio class="bh-radio-slot"  align="right" type="hook" :options="subMenuDatas" v-model="countryValue">
-                        </mt-radio>
+                        <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="subMenuDatas" v-model="countryValue">
+                        </mt-radiobox>
                     </div>
                 </div> -->
                 <div slot="menu" v-if="type==='lv3'" class="bh-ddm-three">
@@ -48,8 +48,8 @@
                         </mt-cell>
                     </div>
                     <div class="bh-ddm-lv3-container">
-                        <mt-radio class="bh-radio-slot"  align="right" type="hook" :options="grandMenuDatas" v-model="trafficValue">
-                        </mt-radio>
+                        <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="grandMenuDatas" v-model="trafficValue">
+                        </mt-radiobox>
                     </div>
                 </div>
                 <div slot="menu" v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
