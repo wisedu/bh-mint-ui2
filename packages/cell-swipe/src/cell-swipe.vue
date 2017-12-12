@@ -31,7 +31,7 @@
         class="mint-cell-swipe-button"
         v-for="btn in left"
         :style="btn.style"
-        @click.prevent.stop="btn.handler && btn.handler($event)"
+        @click.stop="btn.handler && btn.handler($event)"
         v-html="btn.content"></div>
     </div>
     <slot></slot>
