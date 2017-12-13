@@ -218,7 +218,7 @@ export default {
         left: 0;
         width: 100%;
         z-index: 1;
-        position: absolute;
+        position: absolute!important;
         pointer-events: none;
         transform: translateY(-50%);
       }
