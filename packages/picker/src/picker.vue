@@ -60,6 +60,9 @@ export default {
   },
   created() {
     this.initColumns();
+    this.$nextTick(()=>{
+      this.onChange(0);
+    });
   },
   watch: {
     columns() {
