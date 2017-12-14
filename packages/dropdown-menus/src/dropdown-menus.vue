@@ -202,7 +202,9 @@
             
         },
         created() {
-            this.itemWidth = (100 / this.options.length) + '%';
+            if(this.options.length){
+              this.itemWidth = (100 / this.options.length) + '%';
+            }
         },
         methods:{
             setSelected:function(param,index,evt){

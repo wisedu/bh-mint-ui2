@@ -171,7 +171,8 @@ export default {
 
     @component search-list {
       overflow: auto;
-      padding-top: 44px;
+      /* padding-top: 44px; */
+      margin-top:44px; /* 与下拉菜单配合使用时存在，下拉菜单被遮住的问题。2017-12-14 需求来源张毅学工 。修改人徐佳宾 */
       position: absolute 0 0 0 0;
     }
   }

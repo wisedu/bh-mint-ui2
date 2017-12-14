@@ -4,8 +4,14 @@
         <div class="page-part">
             <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel"> </mt-dropdown-menus>
             <div v-if="isShowMenu" class="bh-ddm">
-                <mt-radiobox slot="menu" class="bh-radio-slot" v-if="type==='lv1'" align="right" type="hook" :options="menuDatas" v-model="sexValue">
-                </mt-radiobox>
+                <mt-box-group v-model="sexValue" align="right" slot="menu" v-if="type==='lv1'">
+                  <mt-cell-group>
+                      <mt-radiobox align="right" :name="item.value" :disabled="item.disabled" type="hook" v-for="item in menuDatas" :key="item.value">
+                          {{item.label}}
+                      </mt-radiobox>
+                      <!-- <mt-cell title="选中的项">{{ value4 }}</mt-cell> -->
+                  </mt-cell-group>
+              </mt-box-group>
                 <mt-side-navbar slot="menu" v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
                   <div slot="nav">
                     <mt-tab-item id="4">全部国家</mt-tab-item>

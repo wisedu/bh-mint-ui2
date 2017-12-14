@@ -21,7 +21,9 @@
         v-for="btn in right"
         :style="btn.style"
         @click.prevent.stop="btn.handler && btn.handler($event)"
-        v-html="btn.content"></div>
+        >
+        <slot name="rightHtml"></slot>
+        </div>
     </div>
     <div
       slot="left"
@@ -32,7 +34,9 @@
         v-for="btn in left"
         :style="btn.style"
         @click.stop="btn.handler && btn.handler($event)"
-        v-html="btn.content"></div>
+        >
+          <slot name="leftHtml"></slot> 
+        </div>
     </div>
     <slot></slot>
     <span
