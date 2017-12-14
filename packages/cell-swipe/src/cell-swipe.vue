@@ -22,7 +22,7 @@
         :style="btn.style"
         @click.prevent.stop="btn.handler && btn.handler($event)"
         >
-        <slot name="rightHtml"></slot>
+        <slot name="right"></slot>
         </div>
     </div>
     <div
@@ -35,7 +35,7 @@
         :style="btn.style"
         @click.stop="btn.handler && btn.handler($event)"
         >
-          <slot name="leftHtml"></slot> 
+          <slot name="left"></slot> 
         </div>
     </div>
     <slot></slot>
