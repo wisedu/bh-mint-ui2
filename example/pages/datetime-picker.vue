@@ -63,7 +63,7 @@
         minDate: new Date(),
         maxDate: new Date(2019, 10, 1),
         currentDate1: new Date(2018, 0, 1),
-        currentDate2: null,
+        currentDate2: "2017-12-31",
         currentDate3: null
       };
     },

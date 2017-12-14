@@ -142,7 +142,19 @@
         // validate value
         const isDateType = this.type.indexOf('date') > -1;
         if (isDateType && !isValidDate(value)) {
-          value = this.minDate;
+          //qiyu 2017-12-14 对字符串日期类型进行解析
+          let invaild = true;
+          if (typeof value === "string") {
+            let datepart = value.split("-");
+            if (datepart.length === 3) {
+              value = new Date(datepart[0], Number(datepart[1]) - 1, datepart[2]);
+              invaild = false;
+            }
+          } 
+          
+          if (invaild === true) {
+            value = this.minDate;
+          }
         } else if (!value) {
           const { minHour } = this;
           value = `${minHour > 10 ? minHour : '0' + minHour}:00`;
