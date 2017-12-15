@@ -243,7 +243,7 @@
         this.$emit('confirm', this.innerValue);
         this.$emit('cancel');
       },
-      onChange(picker) {
+      onChange(picker, org_value, index) {
         const values = picker.getValues();
         let value;
         if (this.type === 'time') {
@@ -264,7 +264,7 @@
         }
         value = this.correctValue(value);
         this.innerValue = value;
-        this.$emit('change', picker);
+        this.$emit('change', value, picker);
       },
       updateColumnValue(value) {
         let values = [];

@@ -206,8 +206,8 @@ export default {
     handleCancel() {
       this.$emit('cancel');
     },
-    handleChange(picker) {
-      this.$emit('change', picker);
+    handleChange(value, picker) {
+      this.$emit('change', value, picker);
       this.$emit('cancel');
     },
     formatDate(date, type) {
