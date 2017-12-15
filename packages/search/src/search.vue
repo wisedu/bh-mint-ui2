@@ -1,31 +1,34 @@
 <template>
-  <div class="mint-search">
-    <div class="mint-searchbar">
-      <div class="mint-searchbar-inner">
-        <i class="mintui mintui-search"></i>
-        <input
-        ref="input"
-        @click="visible = true"
-        type="search"
-        v-model="currentValue"
-        :placeholder="placeholder"
-        class="mint-searchbar-core">
+  <form onsubmit="" action="#">
+    <div class="mint-search">
+      <div class="mint-searchbar">
+        <div class="mint-searchbar-inner">
+          <i class="mintui mintui-search"></i>
+          <input
+          ref="input"
+          @click="visible = true"
+          type="search"
+          v-model="currentValue"
+          :placeholder="placeholder"
+          @keypress.enter.prevent="onSearch"
+          class="mint-searchbar-core">
+        </div>
+        <a
+          class="mint-searchbar-cancel"
+          @click="handleCancel"
+          v-show="visible"
+          v-text="cancelText">
+        </a>
       </div>
-      <a
-        class="mint-searchbar-cancel"
-        @click="handleCancel"
-        v-show="visible"
-        v-text="cancelText">
-      </a>
-    </div>
-    <div class="mint-search-list" v-show="show || currentValue">
-      <div class="mint-search-list-warp">
-        <slot>
-          <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
-        </slot>
+      <div class="mint-search-list" v-show="show || currentValue">
+        <div class="mint-search-list-warp">
+          <slot>
+            <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
+          </slot>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -92,6 +95,11 @@ export default {
   },
 
   methods: {
+    onSearch(e) {
+      e.preventDefault();
+      this.$emit('search', this.value);
+      return false;
+    },
     handleCancel(evt) {
       this.visible = false;
       this.currentValue = '';
@@ -128,7 +136,6 @@ export default {
         display: flex;
         flex: 1;
         height: 29px;
-        padding: 4px 6px;
         border: 0.5px solid $grey-lv5;
 
         .mintui-search {
@@ -147,6 +154,8 @@ export default {
         outline: 0;
         padding-left: 8px;
         color: #bdc0c5;
+        padding: 4px 6px;
+        background-color: transparent; 
       }
 
       @descendent placeholder {

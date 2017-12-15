@@ -153,7 +153,7 @@
           } 
           
           if (invaild === true) {
-            value = this.minDate;
+            value = new Date();
           }
         } else if (!value) {
           const { minHour } = this;
