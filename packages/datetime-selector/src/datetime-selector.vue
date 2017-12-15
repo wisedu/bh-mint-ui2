@@ -188,7 +188,7 @@ export default {
       this.active = true;
       this.$refs.picker.open();
     },
-    handlePickedValue(val) {
+    handlePickedValue(val, index, picker) {
       switch (this.type) {
         case "datetime":
           this.currentValue = this.formatDate(val, "datetime");
@@ -201,7 +201,7 @@ export default {
         default:
           this.currentValue = val;
       }
-      this.$emit('confirm', this.currentValue);
+      this.$emit('confirm', this.currentValue, index, picker);
     },
     handleCancel() {
       this.$emit('cancel');

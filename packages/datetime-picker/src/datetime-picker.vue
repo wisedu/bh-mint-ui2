@@ -238,9 +238,9 @@
       isShortMonth(month) {
         return [4, 6, 9, 11].indexOf(month) > -1;
       },
-      onConfirm() {
+      onConfirm(val, index, picker) {
         this.visible = false;
-        this.$emit('confirm', this.innerValue);
+        this.$emit('confirm', this.innerValue, picker);
         this.$emit('cancel');
       },
       onChange(picker, org_value, index) {

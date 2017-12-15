@@ -77,9 +77,9 @@ export default {
     },
     emit(event) {
       if (this.isSimpleColumn) {
-        this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0));
+        this.$emit(event, this.getColumnValue(0), this.getColumnIndex(0), this);
       } else {
-        this.$emit(event, this.getValues(), this.getIndexes());
+        this.$emit(event, this.getValues(), this.getIndexes(), this);
       }
     },
     onChange(columnIndex) {
