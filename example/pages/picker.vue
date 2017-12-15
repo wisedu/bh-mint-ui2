@@ -24,7 +24,7 @@
     <!-- defaultIndex 参数变化 -->
     <div class="page-picker-wrapper">
       <h2>{{title4}}</h2>
-      <mt-picker :columns="columns" @change="onChange2" />
+      <mt-picker :columns="columns" @change="onChange2" showToolbar @confirm="onConfirm" @cancel="onCancel"/>
     </div>
   </div>
 </template>
@@ -96,11 +96,13 @@ export default {
     onChange2(picker, values) {
       picker.setColumnValues(1, this.column3[values[0]]);
     },
-    onConfirm(value, index) {
-      Toast(this.toastContent, value, index);
+    onConfirm(index,value) {
+      console.log(index,value);
+      //Toast(index,value);
     },
-    onCancel() {
-      Toast(this.cancel);
+    onCancel(value) {
+      console.log(value);
+      //Toast(this.cancel);
     }
   }
 };

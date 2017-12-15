@@ -7,7 +7,7 @@
       </div>
     </mt-cell>
     <mt-popup v-model="popupVisible" position="bottom">
-      <mt-picker :columns="options" @change="onChange" :visible-item-count="1" :show-toolbar="true"></mt-picker>
+      <mt-picker :columns="options" @change="onChange" :visible-item-count="1" :show-toolbar="true" @confirm="onConfirm" @cancel="onCancel"></mt-picker>
     </mt-popup>
   </div>
 </template>
@@ -92,10 +92,17 @@ export default {
         this.$emit('selector-click', e)
         return ''
       }
-      return this.currentValue;
+      return this.value;
     },
     onChange() {
       //
+    },
+    onConfirm(value,index) {
+      this.value=value;
+      this.popupVisible=false;
+    },
+    onCancel(value) {
+      this.popupVisible=false;
     }
   }
 };

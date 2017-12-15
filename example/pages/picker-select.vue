@@ -2,11 +2,11 @@
   <div class="page-select">
     <h1 class="page-select-title">PickerSelect</h1>
     <mt-cell-group>
-      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue">
+      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions">
       </mt-picker-select>
 
-      <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions" v-model="singleSelectValue"></mt-picker-select>
-      <mt-picker-select label="禁用的" placeholder="请选择" rows="5" maxlength="100" disabled :options="singleSelectOptions" v-model="singleSelectValue"></mt-picker-select>
+      <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions"></mt-picker-select>
+      <mt-picker-select label="禁用的" placeholder="请选择" rows="5" maxlength="100" disabled :options="singleSelectOptions"></mt-picker-select>
     </mt-cell-group>
   </div>
 </template>
@@ -51,18 +51,17 @@
     },
     data: function() {
       return {
-        singleSelectValue: '',
-        singleSelectOptions: [
-          { id: 1, name: '奔波儿灞' },
-          { id: 2, name: '霸波尔奔' },
-          { id: 3, name: '金角大王' },
-          { id: 4, name: '银角大王' },
-          { id: 5, name: '虎力大仙' },
-          { id: 6, name: '鹿力大仙' },
-          { id: 7, name: '羊力大仙' },
-          { id: 8, name: '黄袍怪' },
-          { id: 9, name: '白骨精' },
-          { id: 10, name: '小钻风' }
+        singleSelectOptions: [          
+          '奔波儿灞',
+          '霸波尔奔',
+          '金角大王',
+          '银角大王',
+          '虎力大仙',
+          '鹿力大仙',
+          '羊力大仙',
+          '黄袍怪',
+          '白骨精',
+          '小钻风'
         ]
       }
     }
