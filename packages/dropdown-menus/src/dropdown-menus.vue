@@ -202,11 +202,17 @@
         components:{
             
         },
-        created() {
-            if(this.options.length){
-              this.itemWidth = (100 / this.options.length) + '%';
+        watch:{
+          options:function(n){
+            if(n.length){
+              this.itemWidth = (100 / n.length) + '%';
+            }else {
+              console.log('按钮组长度为0')
             }
-            this.shadowHeight = document.body.clientHeight + 'px';
+          }
+        },
+        created() {
+            this.shadowHeight = document.documentElement.clientHeight + 'px';
         },
         methods:{
             setSelected:function(param,index,evt){
