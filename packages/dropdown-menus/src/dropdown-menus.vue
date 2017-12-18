@@ -12,7 +12,7 @@
             <slot name="menu"></slot>
         </div> -->
         <!-- 遮罩层 -->
-        <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow"></div>
+        <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow" :style="{height:shadowHeight}"></div>
     </div>
 </template>
 <style lang="css">
@@ -83,7 +83,7 @@
 }
 .bh-ddm-shadow {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 9;
   position: absolute;
@@ -188,7 +188,8 @@
         name: 'mt-dropdown-menus',
         data () {
             return {
-                itemWidth:''
+                itemWidth:'',
+                shadowHeight:''
             }
         },
         props:{
@@ -205,6 +206,7 @@
             if(this.options.length){
               this.itemWidth = (100 / this.options.length) + '%';
             }
+            this.shadowHeight = document.body.clientHeight + 'px';
         },
         methods:{
             setSelected:function(param,index,evt){
