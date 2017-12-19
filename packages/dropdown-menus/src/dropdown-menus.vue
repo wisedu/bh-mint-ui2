@@ -137,9 +137,11 @@
 .bh-ddm-three .bh-ddm-lv3-container {
   float: right;
   width: 40%;
-  border-left: solid 0.5px rgba(0, 0, 0, 0.1);
+  border-left: solid 0.5px rgba(0, 0, 0, 0.25);
 }
-
+.bh-ddm-lv1-item {
+  border-right:solid 1px #ddd;
+}
 .bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
   background-color: #fff;
   border-top: solid 0.5px rgba(0, 0, 0, 0.25);
@@ -212,7 +214,10 @@
           }
         },
         created() {
-            this.shadowHeight = document.documentElement.clientHeight + 'px';
+          if (this.options.length>0) {
+            this.itemWidth = (100 / this.options.length) + '%';
+          }
+          this.shadowHeight = document.documentElement.clientHeight + 'px';
         },
         methods:{
             setSelected:function(param,index,evt){
