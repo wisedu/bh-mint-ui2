@@ -1,8 +1,8 @@
 <template>
   <span
     class="mint-badge"
-    :style="{ backgroundColor: color }"
-    :class="['is-' + type, 'is-size-' + size]">
+    :style="[{'background-color': color,'color':fontColor,'font-size':fontSize,'padding':padding,'border-radius':radius,'border-color':bColor}]"
+    :class="[type?'mt-color-white mt-bg-'+type:type, 'is-size-' + size]">
     <slot></slot>
   </span>
 </template>
@@ -42,6 +42,11 @@ export default {
      * @value 30
      */
   props: {
+    fontColor: String,
+    fontSize: String,
+    padding: String,
+    radius: String,
+    bColor: String,
     /**
      * @noteType prop
      * @field color
@@ -113,29 +118,12 @@ export default {
  */
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component badge {
-      color: $color-white;
       text-align: center;
       display: inline-block;
-
-      @when success {
-        background-color: $success-color;
-      }
-
-      @when primary {
-        background-color: $color-blue;
-      }
-
-      @when error {
-        background-color: $error-color;
-      }
-
-      @when warning {
-        background-color: $warning-color;
-      }
+      border: 1px solid transparent;
 
       @when size-normal {
         border-radius: 12px;
@@ -144,8 +132,8 @@ export default {
       }
 
       @when size-small {
-        border-radius: 8px;
-        font-size: 12px;
+        border-radius: 9px;
+        font-size: 11px;
         padding: 2px 6px;
       }
 
@@ -157,13 +145,4 @@ export default {
     }
   }
 
-  /**
- * @noteType external
- * @content
- {
-   "mock": {
-      
-   }
- }
- */
 </style>

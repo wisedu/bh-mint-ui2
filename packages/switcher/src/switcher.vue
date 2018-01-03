@@ -1,5 +1,5 @@
 <template>
-  <mt-cell :title="label">
+  <mt-cell :title="label" :wrapperpaddingleft="wrapperpaddingleft">
       <mt-switch v-model="currentValue" @change="handleChange"></mt-switch>
   </mt-cell>
 </template>
@@ -52,7 +52,11 @@ export default {
      * @desc 标题
      * @type input
      */
-    label: String
+    label: String,
+    wrapperpaddingleft:{
+      type:String,
+      default:"20px"
+    }
   },
   computed: {
     currentValue: {
@@ -86,75 +90,3 @@ export default {
  }
  */
 </script>
-
-<style lang="css">
-  @import "../../../src/style/var.css";
-
-  @component-namespace mint {
-    @component switch {
-      display: flex;
-      align-items: center;
-      position: relative;
-
-      * {
-        pointer-events: none;
-      }
-
-      @descendent label {
-        margin-left: 10px;
-        display: inline-block;
-
-        &:empty {
-          margin-left: 0;
-        }
-      }
-
-      @descendent core {
-        display: inline-block;
-        position: relative;
-        size: 50px 30px;
-        border: 1px solid $grey-lv6;
-        border-radius: 16px;
-        box-sizing: border-box;
-        background: $color-grey;
-
-        &::after, &::before {
-          content: " ";
-          position: absolute 0 * * 0;
-          transition:transform .3s;
-          border-radius: 15px;
-        }
-
-        &::after {
-          size: 28px;
-          background-color: $color-white;
-          box-shadow: 0 2px 7px rgba(0, 0, 0, .2);
-        }
-
-        &::before {
-          size: 48px 28px;
-          background-color: #fdfdfd;
-        }
-      }
-
-      @descendent input {
-        display: none;
-
-        &:checked {
-          + .mint-switch-core {
-            border-color: $color-green;
-            background-color: $color-green;
-
-            &::before {
-              transform: scale(0);
-            }
-
-            &::after {
-              transform: translateX(20px);
-            }
-          }
-        }
-      }
-    }
-  }
-</style>

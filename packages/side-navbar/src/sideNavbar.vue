@@ -1,7 +1,7 @@
 <template>
   <div class="mint-side-navbar">
     <div class="side-nav" v-bind:style="{width:width}">
-      <div class="navbar" :class="{ 'is-fixed': fixed }" v-bind:style="{width:width,top:top}">
+      <div class="navbar mt-bg-lv1" :class="{ 'is-fixed': fixed }" v-bind:style="{width:width,top:top}">
         <slot name="nav"></slot>
       </div>
     </div>
@@ -49,7 +49,7 @@ export default {
     value: {},
     width: {
       type: String,
-      default: '120px'
+      default: '108px'
     },
     top: {
       type: String,
@@ -70,36 +70,28 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component side-navbar {
       display: flex;
       .navbar{
-        background-color: $grey-lv5;
         display: block;
         @when fixed {
           position: fixed;
           bottom: 0;
-          z-index: $z-index-normal;
+          z-index: 1;
         }
 
         .mint-tab-item {
           display: flex;
+          justify-content:center;
           align-items: center;
-          padding: 8px ;
-          font-size: 15px;
-          box-shadow: inset 0px -1px 1px -1px $color-white;
-          border-left: 3px solid $grey-lv5;
-
+          padding: 0px ;
+          height: 44px;
+          font-size: 14px;
+          box-shadow: inset 0px -1px 1px -1px #FFFFFF;
           .mint-tab-item-icon {
-            margin-right: 5px;
-          }
-
-          &.is-selected {
-            border-left: 3px solid $color-green;
-            color: $color-green;
-            background-color: $color-white;
+            margin: 0 5px 0 0;
           }
         }
       }

@@ -1,30 +1,24 @@
 <template>
-  <div class="page-picker">
-    <h1 class="page-title">Picker</h1>
+  <div class="page-picker" style="margin-top:45px;">
     <div class="page-picker-wrapper">
-      <h2>基础使用方法</h2>
-      <mt-picker :columns="column1" @change="onChange1" />
+      <mt-picker :columns="column1" @change="onChange1" confirmText="反馈"  showToolbar />
     </div>
 
     <div class="page-picker-wrapper">
-      <h2>{{title2}}</h2>
-      <mt-picker :columns="column2" />
+      <mt-picker :columns="column2" :title="title2" showToolbar/>
     </div>
-
+    <div style="padding:10px" @click="changeData">点我切换数据</div>
     <div class="page-picker-wrapper">
-      <h2>{{title3}}</h2>
       <mt-picker
-        showToolbar
-        :title="area"
         :columns="column1"
         @cancel="onCancel"
-        @confirm="onConfirm" />
+        @confirm="onConfirm" 
+        :title="title3" showToolbar/>
     </div>
     
     <!-- defaultIndex 参数变化 -->
     <div class="page-picker-wrapper">
-      <h2>{{title4}}</h2>
-      <mt-picker :columns="columns" @change="onChange2" showToolbar @confirm="onConfirm" @cancel="onCancel"/>
+      <mt-picker :columns="columns" @change="onChange2" :title="title4" showToolbar @confirm="onConfirm" @cancel="onCancel"/>
     </div>
   </div>
 </template>
@@ -32,9 +26,8 @@
 <style>
   @component-namespace page {
     @component picker {
-      padding: 0 10px 20px;
+      padding: 0 0 20px;
       @descendent wrapper {
-        background-color: #fff;
         text-align: center;
         margin-bottom: 24px;
       }
@@ -52,6 +45,7 @@
 
 <script type="text/babel">
 import { Toast } from 'src/index';
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -91,7 +85,7 @@ export default {
   },
   methods: {
     onChange1(picker, value, index) {
-      Toast(this.toastContent, value, index);
+      console.log(value, index);
     },
     onChange2(picker, values) {
       picker.setColumnValues(1, this.column3[values[0]]);
@@ -103,6 +97,14 @@ export default {
     onCancel(value) {
       console.log(value);
       //Toast(this.cancel);
+    },
+    changeData(){
+      axios.get('./mock/picker.json').then(resp => {
+        let respData = resp.data
+        if (respData.code == '0') {
+          this.column1=respData.data;
+        }
+      })
     }
   }
 };

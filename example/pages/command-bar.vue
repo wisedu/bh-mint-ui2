@@ -1,10 +1,9 @@
 <template>
-  <div class="page-button">
-    <h1 class="page-title">CommandBar</h1>
-    全按钮
+  <div class="page-CommandBar" style="margin-top:45px;overflow:hidden;">
+    <div style="margin:10px">全按钮</div>
     <mt-command-bar :buttons="buttons" :moreButtons="moreButtons"></mt-command-bar>
     
-    没有更多按钮
+    <div style="margin:10px">没有更多按钮</div>
     <mt-command-bar :buttons="buttons"></mt-command-bar>
   </div>
 </template>
@@ -29,18 +28,3 @@ export default {
 };
 </script>
 
-<style lang="css">
-  @component-namespace page {
-    @component button {
-      padding: 0 15px 15px;
-
-      @descendent group {
-        margin-bottom: 15px;
-
-        & > * {
-          margin-bottom: 15px;
-        }
-      }
-    }
-  }
-</style>

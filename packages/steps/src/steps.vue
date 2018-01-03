@@ -1,6 +1,6 @@
 <template>
-  <div :class="['mint-steps', `mint-steps--${direction}`]" :style="{'padding-left': direction === 'vertical' ? (paddingLeft + 'px') : '0'}">
-    <div class="mint-steps__status" v-if="title || description">
+  <div :class="['mint-steps','mt-bg-white', `mint-steps--${direction}`]">
+    <div class="mint-steps__status mt-bColor-grey-lv5" v-if="title || description">
       <div class="mint-steps__icon" v-if="iconClass || $slots.icon">
         <slot name="icon">
           <mt-icon :class="iconClass"></mt-icon>
@@ -8,16 +8,15 @@
       </div>
       <div class="mint-steps__message">
         <div class="mint-steps__message-wrapper">
-          <div class="mint-steps__title" v-text="title"></div>
-          <div class="mint-steps__desc" v-text="description"></div>
+          <div class="mint-steps__title mt-color-grey" v-text="title"></div>
+          <div class="mint-steps__desc mt-color-grey-lv3" v-text="description"></div>
         </div>
       </div>
       <slot name="message-extra">
       </slot>
     </div>
-    <div class="mint-steps__items" :class="{
-        'mint-steps__items--alone': !title && !description
-      }">
+    <div class="mint-steps__items" :class="[{'mint-steps__items--alone': !title && !description}]" 
+         :style="{'padding-left': direction === 'vertical' ? (paddingLeft + 'px') : '0'}">
       <slot></slot>
     </div>
   </div>
@@ -50,21 +49,16 @@ export default {
 };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
 .mint-steps {
   overflow: hidden;
-  background-color: #fff;
-}
-
-.mint-steps--horizontal {
-  padding: 0 10px;
+  padding-left: 20px;
 }
 
 .mint-steps--horizontal .mint-steps__items {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  margin: 0 0 10px;
+  margin: 16px 10px 10px 0;
   overflow: hidden;
   position: relative;
   padding-bottom: 32px;
@@ -74,8 +68,9 @@ export default {
   padding-top: 10px;
 }
 
-.mint-steps--vertical {
-  padding: 0 0 0 150px;
+.mint-steps__status{
+  border-bottom-width:0.5px;
+  border-bottom-style: solid;
 }
 
 .mint-steps__icon {
@@ -90,8 +85,7 @@ export default {
 
 .mint-steps__message {
   display: table;
-  height: 40px;
-  margin: 15px 0;
+  height: 49px;
 }
 
 .mint-steps__message .mint-steps__message-wrapper {
@@ -100,14 +94,12 @@ export default {
 }
 
 .mint-steps__title {
-  font-size: 14px;
-  color: #333;
+  font-size: 17px;
 }
 
 .mint-steps__desc {
   font-size: 12px;
   line-height: 1.5;
-  color: #999;
   max-height: 18px;
   overflow: hidden;
   text-overflow: ellipsis;

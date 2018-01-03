@@ -1,23 +1,21 @@
 <template>
-  <div style="margin-top: 60px;">
-    <div>带背景色</div>
+  <div style="margin-top:45px;">
+    <div style="margin-left:10px">默认背景色gray</div>
     <!--start
       @name gray
       -->
-    <mt-layout-container background="gray"></mt-layout-container>
+    <mt-layout-container background="gray" padding="30px" margin="10px">margin (10px)+padding(30px)</mt-layout-container>
 
-    <mt-layout-container background="gray" class="layout-container">
+    <mt-layout-container background="#52C7CA" class="layout-container" margin="10px">
+      Hello World!!!
       <mt-subscript label="成功" fontsize="12px" background="red" width="90px" height="16px" rotate="45"></mt-subscript>
     </mt-layout-container>
     <!--end-->
-
-    <div style="margin-top: 20px;">
-      <!--普通的-->
-      <mt-layout-container>
-        <mt-button type="primary">按钮</mt-button>
-        <mt-button type="primary">按钮222</mt-button>
-      </mt-layout-container>
-    </div>
+    <!--普通的-->
+    <mt-layout-container margin="10px">
+      <mt-button type="primary">按钮1</mt-button>
+      <mt-button type="primary">按钮2</mt-button>
+    </mt-layout-container>
   </div>
 </template>
 
@@ -28,11 +26,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  .mint-layout-container{
-    height: 24px;
-  }
   .layout-container{
-    margin-top: 16px;
     position: relative;
     overflow: hidden;
     height: 70px;

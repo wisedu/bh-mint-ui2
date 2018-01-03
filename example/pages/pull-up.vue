@@ -1,6 +1,5 @@
 <template>
   <div class="page-loadmore">
-    <h1 class="page-title">Pull up</h1>
     <p class="page-loadmore-desc">在列表底部, 按住 - 上拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore-desc">此例请使用手机查看</p>
     <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
@@ -91,8 +90,7 @@
           } else {
             this.allLoaded = true;
           }
-          //this.$refs.loadmore.onBottomLoaded();
-            //console.log(this.$refs.loadmore);
+          this.$refs.loadmore.onBottomLoaded();
         }, 1500);
       }
     },

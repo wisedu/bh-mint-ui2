@@ -1,8 +1,6 @@
 <template>
   <div class="page-subscript">
-    <div class="page-title">subscript</div>
-
-    <div class="page-part">
+    <div class="page-subscript-part">
       <div class="page-subscript-container">
         <mt-subscript label="成功" fontsize="12px" background="red" width="90px" height="16px" rotate="45"></mt-subscript>
       </div>
@@ -19,6 +17,10 @@ export default {
 </script>
 
 <style lang="css">
+  .page-subscript{
+    margin-top: 45px;
+    overflow: hidden;
+  }
   .page-subscript-container {
     width: 200px;
     height:70px;

@@ -3,7 +3,7 @@
     <label class="mint-radiobox-row" slot="title">
       <span :class="{'is-right': align === 'right'}" class="mint-radiobox">
         <input :value="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"/>
-        <span class="mint-radiobox-core"></span>
+        <span class="mint-radiobox-core" :class="['mint-radiobox-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===name?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
       </span>
       <span class="mint-radiobox-label" @click="handleLabelClick">
         <slot></slot>
@@ -18,11 +18,21 @@ import XCell from 'bh-mint-ui2/packages/cell/index.js';
 
 export default {
   name: 'mt-radiobox',
+  data() {
+    return {
+      radioClass:''
+    }
+  },
   props: {
+    iconpattern:Boolean,
     value: {},
     disabled: Boolean,
     align: String,
-    name: [String, Number]
+    name: [String, Number],
+    iconpattern:{
+      type:String,
+      default:"circle"
+    }
   },
   components: { XCell },
 
@@ -31,10 +41,10 @@ export default {
     isGroup() {
       return !!this.findParentByName('mt-box-group');
     },
-
     currentValue: {
       get() {
-        return this.isGroup && this.parentGroup ? this.parentGroup.value : this.value;
+        let currentValue=this.isGroup && this.parentGroup ? this.parentGroup.value : this.value;
+        return currentValue;
       },
       set(val) {
         if (this.isGroup && this.parentGroup) {
@@ -54,9 +64,9 @@ export default {
     }
   },
 
+
   methods: {
     handleLabelClick() {
-      // debugger;
       if (!this.isDisabled) {
         this.currentValue = !this.currentValue;
       }
@@ -81,21 +91,23 @@ export default {
   }
 };
 </script>
-<style>
-@import "../../../src/style/var.css";
-  @import "../../../src/style/var.css";
-  
+<style> 
   @component-namespace mint {
     @component radiobox-row {
       display: block;
       padding: 10px 0;
       text-align: left;
+
+      & .mint-cell-newline {
+        margin-bottom: 6px;
+      }
     }
 
 
     @component radiobox {
       @when right {
         float: right;
+        margin-top: -3px;
       }
 
       @descendent label {
@@ -107,72 +119,50 @@ export default {
         display: none;
 
         &:checked {
-          + .mint-radiobox-core {
-            background-color: $color-green;
-            border-color: $color-green;
-
+          + .mint-radiobox-core-hook {
             &::after {
-              background-color: $color-white;
+              transform: rotate(45deg) scale(1);
+            }
+          }
+        }
+        &:checked {
+          + .mint-radiobox-core-circle {
+            &::after {
               transform: scale(1);
             }
           }
         }
-
-        &[disabled] + .mint-radiobox-core {
-          background-color: $color-grey;
-          border-color: #ccc;
-        }
-
-        &:checked {
-          + .mint-radiobox-hook {
-
-            &::after {
-              content: "\00a0";
-              display: inline-block;
-              border: 2px solid #38cdc1;
-              border-top-width: 0;
-              border-right-width: 0;
-              width: 12px;
-              height: 6px;
-              -webkit-transform: rotate(-50deg);
-              position: absolute;
-              top: 4px;
-              left: -16px;  
-            }
+      }
+      @descendent core {
+        display: inline-block;
+        border-radius: 100%;
+        border-width: 1px;
+        border-style: solid;
+        position: relative;
+        size: 23px;
+        vertical-align: middle;
+        @descendent hook {
+          &::after {
+            border-width: 2px;
+            border-style: solid;
+            border-left: 0;
+            border-top: 0;
+            content: " ";
+            position: absolute 2px * * 7px;
+            size: 6px 12px;
+            transform: rotate(45deg) scale(0);
+            transition: transform .2s;
           }
         }
-
-        &[disabled] + .mint-radiobox-hook {
-          background-color: $color-grey;
-          border-color: #ccc;
-        }
-      }
-
-      @descendent core {
-        box-sizing: border-box;
-        display: inline-block;
-        background-color: $color-white;
-        border-radius: 100%;
-        border: 1px solid #ccc;
-        position: relative;
-        size: 20px;
-        vertical-align: middle;
-
-        &::after {
-          content: " ";
-          border-radius: 100%;
-          position: absolute 5px * * 5px;
-          size: 8px;
-          transition: transform .2s;
-          transform: scale(0);
-        }
-      }
-      @descendent hook {
-        width: 16px;
-        height: 16px;
-        position: relative;
-        &::after {
-          
+        @descendent circle {
+          &::after {
+            content: " ";
+            border-radius: 100%;
+            position: absolute 6px * * 6px;
+            size: 9px;
+            transition: transform .2s;
+            transform: scale(0);
+          }
         }
       }
     }

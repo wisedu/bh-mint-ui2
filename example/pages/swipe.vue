@@ -1,6 +1,5 @@
 <template>
   <div class="page-swipe">
-    <h1 class="page-title">Swipe</h1>
     <p class="page-swipe-desc">基础用法</p>
     <mt-swipe :auto="4000">
       <mt-swipe-item class="slide1">1</mt-swipe-item>
@@ -39,14 +38,14 @@
 <style>
   @component-namespace page {
     @component swipe {
+      margin-top: 60px;
       @descendent desc {
         text-align: center;
-        color: #666;
+        color: #1E2329;
         margin-bottom: 5px;
       }
       .mint-swipe {
         height: 200px;
-        color: #fff;
         font-size: 30px;
         text-align: center;
         margin-bottom: 20px;
@@ -57,17 +56,17 @@
       }
 
       .slide1 {
-        background-color: #0089dc;
+        background-color: #D8D8D8;
         color: #fff;
       }
 
       .slide2 {
-        background-color: #ffd705;
+        background-color: #D8D8D8;
         color: #000;
       }
 
       .slide3 {
-        background-color: #ff2d4b;
+        background-color: #D8D8D8;
         color: #fff;
       }
     }

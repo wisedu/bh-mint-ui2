@@ -38,10 +38,10 @@
       class="mint-field-clear"
       v-if="!disableClear"
       v-show="currentValue && type !== 'textarea' && active &&!readonly" >
-      <i class="mintui mintui-field-error"></i>
+      <i class="iconfont icon-weiwancheng"></i>
     </div>
-    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mintui-field-' + state]"></i>
+    <span class="mint-field-state" v-if="state" :class="iconColor">
+      <i class="iconfont" :class="['icon-' + iconstate]"></i>
     </span>
     <div class="mint-field-other">
       <slot></slot>
@@ -100,142 +100,26 @@ export default {
   },
 
   props: {
-      /**
-       * @noteType prop
-       * @field type
-       * @desc 输入类型
-       * @type select
-       * @option
-       [
-       {
-         "text": "文本",
-         "value": ""
-       },
-       {
-         "text": "密码",
-         "value": "password"
-       },
-       {
-         "text": "日期",
-         "value": "date"
-       },
-       {
-         "text": "数字",
-         "value": "number"
-       },
-       {
-         "text": "文本域",
-         "value": "textarea"
-       },
-       {
-         "text": "邮箱",
-         "value": "email"
-       },
-       {
-         "text": "链接",
-         "value": "url"
-       },
-       {
-         "text": "电话",
-         "value": "tel"
-       }
-       ]
-       */
     type: {
       type: String,
       default: 'text'
     },
     rows: String,
-      /**
-       * @noteType prop
-       * @field label
-       * @desc 内容
-       * @type input
-       * @value 输入框
-       */
     label: String,
-      /**
-       * @noteType prop
-       * @field placeholder
-       * @desc placeholder
-       * @type input
-       * @value
-       */
     placeholder: String,
-      /**
-       * @noteType prop
-       * @field readonly
-       * @desc 是否只读
-       * @valueType boolean
-       * @type radio
-       * @value false
-       * @option
-       [
-       {
-           "text": "否",
-           "value": false
-       },
-       {
-           "text": "是",
-           "value": true
-       }
-       ]
-       */
     readonly: Boolean,
-      /**
-       * @noteType prop
-       * @field disabled
-       * @desc 是否禁用
-       * @valueType boolean
-       * @type radio
-       * @value false
-       * @option
-       [{
-           "text": "否",
-           "value": false
-       },{
-           "text": "是",
-           "value": true
-       }]
-       */
     disabled: Boolean,
     disableClear: Boolean,
-      /**
-       * @noteType prop
-       * @field state
-       * @desc 校验样式
-       * @type select
-       * @option
-       [
-       {
-         "text": "默认",
-         "value": ""
-       },{
-         "text": "成功",
-         "value": "success"
-       },{
-         "text": "失败",
-         "value": "error"
-       },{
-         "text": "警告",
-         "value": "warning"
-       }]
-       */
     state: {
       type: String,
-      default: 'default'
+      default: ''
     },
-    /**
-     * @noteType prop
-     * @field value
-     * @desc 默认值
-     * @type textarea
-      */
     value: {},
     attr: Object
   },
 
   components: { XCell },
+
 
   methods: {
     doCloseActive() {
@@ -251,7 +135,30 @@ export default {
       this.currentValue = '';
     }
   },
-
+  computed:{
+    iconstate:function(){
+      let iconstate="default";
+      switch(this.state){
+        case "success":iconstate="wancheng";break;
+        case "warning":iconstate="yuqiweiwancheng";break;
+        case "error":iconstate="weiwancheng";break;
+        default:
+          break;
+      }
+      return iconstate;
+    },
+    iconColor:function(){
+      let iconColor="default";
+      switch(this.state){
+        case "success":iconColor="mt-color-primary";break;
+        case "warning":iconColor="mt-color-warning";break;
+        case "error":iconColor="mt-color-danger";break;
+        default:
+          break;
+      }
+      return iconColor;
+    }
+  },
   watch: {
     value(val) {
       this.currentValue = val;
@@ -275,18 +182,9 @@ export default {
     }
   }
 };
-/**
- * @noteType external
- * @content
- {
-   "xtype": [ "text", "textarea" ],
-   "bindField": "v-model"
- }
- */
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component field {
@@ -311,7 +209,6 @@ export default {
 
       .mint-cell-value {
         flex: 1;
-        color: inherit;
         display: flex;
       }
 
@@ -331,27 +228,10 @@ export default {
       }
 
       @descendent state {
-        color: inherit;
         margin-left: 20px;
 
-        .mintui {
+        .iconfont {
           font-size: 20px;
-        }
-
-        @when error {
-          color: $error-color;
-        }
-
-        @when warning {
-          color: $warning-color;
-        }
-
-        @when success {
-          color: $success-color;
-        }
-
-        @when default {
-          margin-left: 0;
         }
       }
 

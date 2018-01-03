@@ -1,6 +1,6 @@
 <template>
   <!-- <div @click="handleClick" class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div> -->
-  <div class="mint-hr" :background="color" :height="height" :margin="margin" :style="computeStyle"></div>
+  <div class="mint-hr" :style="computeStyle"></div>
 </template>
 <script>
     /**
@@ -24,7 +24,10 @@
                 type: String,
                 default: 'default'
             },
-            color: String,
+            color: {
+                type:String,
+                default:'#1E2329'
+            },
             margin: String,
             /**
              * @noteType prop
@@ -59,12 +62,10 @@
     };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component hr {
       position: relative;
       height: 1px;
-      background: $grey-lv5;
     }
   }
 

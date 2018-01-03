@@ -1,9 +1,10 @@
 <template>
   <a class="mint-tab-item"
     @click="$parent.$emit('input', id)"
-    :class="{ 'is-selected': $parent.value === id }">
-    <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
-    <div class="mint-tab-item-label"><slot></slot></div>
+    :class="itemClassObject">
+    <div class="mint-tab-item-icon"><slot name="icon"><i slot="icon" class="iconfont" :class="[$parent.value === id?'mt-color-theme':'mt-color-grey-lv3','icon-'+icontype]" v-if="icontype"></i></slot></div>
+    <div class="mint-tab-item-label" :class="[$parent.value === id?'mt-color-theme':labelClassObject]"><slot></slot></div>
+    <slot name="badge"></slot>
   </a>
 </template>
 
@@ -37,6 +38,11 @@
  */
 export default {
   name: 'mt-tab-item',
+  data: function(){
+    return {
+      itemwidth:''
+    }
+  },
 
     /**
      * @noteType prop
@@ -45,7 +51,51 @@ export default {
      * @type input
      * @value
      */
-  props: ['id']
+  props: {
+    id:String,
+    icontype:String,
+    componentname:{
+      type:String,
+      default:"tab"
+    }
+  },
+  computed:{
+    labelClassObject: function() {
+      let _class='';
+      switch(this.componentname){
+        case 'tab': _class="mt-color-grey-lv3";break;
+        case 'navbar': _class="mt-color-grey-lv2";break;
+        case 'sidenavbar': _class="mt-color-grey";break;
+        default:
+          _class="mt-color-grey-lv3";break;
+      }
+      return _class;
+    },
+    itemClassObject: function() {
+      let _class='';
+      if(this.$parent.value === this.id){
+        _class += 'is-selected ';
+        _class += this.componentname === 'navbar'?'mt-bColor-theme ':'';
+        _class += this.componentname === 'sidenavbar'?'mt-bg-lv3':'';
+      }
+      return _class;
+    }
+  },
+  mounted() {
+    this.navbarWidth();
+  },
+  methods: {
+    navbarWidth: function() {
+      this.$nextTick(function(){
+        if(this.componentname === 'navbar'){
+          let len = this.$parent.$el.querySelectorAll('.mint-tab-item').length;
+          let width = this.$parent.$el.offsetWidth
+          len=len>5?5.5:len;
+          this.$el.style.minWidth = width/len+"px";
+        }
+      });
+    }
+  }
 };
 
 /**
@@ -64,33 +114,38 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
-
   @component-namespace mint {
     @component tab-item {
+      position: relative;
       display: block;
-      padding: 7px 0;
+      padding: 5px 0 3px 0;
       flex: 1;
+      font-size: 10px;
       text-decoration: none;
 
       @descendent icon {
-        size: 24px;
-        margin: 0 auto 5px;
+        size: 26px;
+        margin: 0 auto 3px;
 
         &:empty {
           display: none;
         }
 
-        & > * {
+        & > *:not(.mint-badge) {
           display: block;
           size: 100%;
+          font-size: 26px;
         }
       }
 
       @descendent label {
-        color: $grey-lv3;
-        font-size: $tab-item-font-size;
         line-height: 1;
+      }
+
+      & > span{
+        position: absolute;
+        top: 0;
+        right: 0;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="page-cell">
-    <div class="page-title">Cell</div>
+    <mt-cell title="单一cell组件使用" wrapperpaddingleft="20px" is-link></mt-cell>
     <mt-cell-group title="cell组的标题">
       <mt-cell title="标题文字"></mt-cell>
       <mt-cell title="标题文字" value="说明文字"></mt-cell>
@@ -20,10 +20,6 @@
       <mt-cell title="标题" label="描述信息" is-link></mt-cell>
       <mt-cell title="原生跳转" label="跳转到 https://bh-mint-ui2.github.io" is-link to="https://bh-mint-ui2.github.io"></mt-cell>
     </mt-cell-group>
-    <br><br>
-    <mt-cell-group title="cell组的标题">
-      <mt-cell title="标题文字"></mt-cell>
-    </mt-cell-group>
   </div>
 </template>
 <script>
@@ -36,3 +32,8 @@ export default {
   }
 }
 </script>
+<style>
+  .page-cell{
+    margin-top: 45px;
+  }
+</style>

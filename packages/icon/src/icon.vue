@@ -20,10 +20,15 @@
         methods: {
             handleClick(evt) {
                 if(this.changecolor){
-                    this.isAddbcColor = this.changecolor;
+                    this.isAddbcColor=this.isAddbcColor?'':this.changecolor;
                 }
                 if(this.animate){
                     this.animateClass = this.animate;
+                    let that=this;
+                    let tmier=setInterval(function(){
+                      that.animateClass='';
+                      clearInterval(tmier);
+                    },1000);
                 }
                 this.$emit('click', evt);
             }
@@ -75,13 +80,10 @@
     };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component icon {
       position: relative;
-      /* background: #ddd; */
       display: inline-block;
-      font-size: 16px;
     }
   }
     .mt-icon > i{

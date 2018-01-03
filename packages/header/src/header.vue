@@ -1,9 +1,14 @@
 <template>
   <header
-    class="mint-header"
-    :class="{ 'is-fixed': fixed }">
+    class="mint-header mt-bColor-grey-lv5"
+    :class="[backgroundColor,color,{ 'is-fixed': fixed }]"
+    :style="{'font-size':fontSize,'height':height}">
     <div class="mint-header-button is-left">
-      <slot name="left"></slot>
+      <slot name="left">
+        <router-link :to="to" v-if="router">
+          <span class="mint-header-button-left"><i class="iconfont icon-keyboardarrowleft"></i>{{leftIcontext}}</span>
+        </router-link>
+      </slot>
     </div>
     <h1 class="mint-header-title" v-text="title"></h1>
     <div class="mint-header-button is-right">
@@ -17,6 +22,13 @@
  * mt-header
  * @module components/header
  * @desc 顶部导航
+ * @param {boolean} [router] - 是否启动路由
+ * @param {String} [to] - 该属性只有在启动自动路由时有效，设定左图标的路由地址
+ * @param {String} [leftIcontext] - 该属性只有在启动自动路由时有效，设定左图标的关联文本
+ * @param {String} [backgroundColor] - 设定header的背颜色
+ * @param {String} [color] - 设定header的文本字体颜色
+ * @param {String} [fontSize] - 设定header的文本字体大小
+ * @param {String} [height] - 设定header的高度
  * @param {boolean} [fixed=false] - 固定顶部
  * @param {string} [title] - 标题
  * @param {slot} [left] - 显示在左侧区域
@@ -32,6 +44,31 @@ export default {
   name: 'mt-header',
 
   props: {
+    router:Boolean,
+    to:{
+      type:String,
+      default:"/"
+    },
+    leftIcontext:{
+      type:String,
+      default:""
+    },
+    backgroundColor:{
+      type:String,
+      default:"mt-bg-lv2"
+    },
+    color:{
+      type:String,
+      default:"mt-color-grey"
+    },
+    fontSize:{
+      type:String,
+      default:"18px"
+    },
+    height:{
+      type:String,
+      default:"44px"
+    },
     fixed: Boolean,
     title: String
   }
@@ -39,36 +76,19 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component header {
       align-items: center;
-      background-color: $color-green;
       box-sizing: border-box;
-      color: $font-color-grey;
       display: flex;
-      font-size: 18px;
-      height: $header-height;
       line-height: 1;
       padding: 0 10px;
       position: relative;
       text-align: center;
       white-space: nowrap;
-      border-bottom: 1px solid $header-bottom-line;
-      .mint-button {
-        background-color: transparent;
-        border: 0;
-        box-shadow: none;
-        color: inherit;
-        display: inline-block;
-        padding: 0;
-        font-size: inherit;
-
-        &::after {
-          content: none;
-        }
-      }
+      border-bottom-width: 0.5px;
+      border-bottom-style: solid;
 
       @descendent button {
         flex: .5;
@@ -84,6 +104,11 @@ export default {
         @when right {
           text-align: right;
         }
+
+        @descendent left{
+          font-size: 16px;
+          line-height: 18px;
+        }
       }
 
       @descendent title {
@@ -95,7 +120,7 @@ export default {
 
       @when fixed {
         position: fixed 0 0 * 0;
-        z-index: $z-index-normal;
+        z-index: 999;
       }
     }
   }

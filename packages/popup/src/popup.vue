@@ -1,6 +1,6 @@
 <template>
   <transition :name="currentTransition">
-    <div v-show="currentValue" class="mint-popup" :class="[position ? 'mint-popup-' + position : '']">
+    <div v-show="currentValue" class="mint-popup mt-bg-white" :class="[position ? 'mint-popup-' + position : '']">
       <slot></slot>
     </div>
   </transition>
@@ -10,7 +10,6 @@
   @component-namespace mint {
     @component popup {
       position: fixed;
-      background: #fff;
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);

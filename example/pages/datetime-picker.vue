@@ -1,6 +1,5 @@
 <template>
   <div class="page-datetime">
-    <h1 class="page-title">Datetime Picker</h1>
     <div class="page-datetime-wrapper">
       <mt-button @click.native="open('picker1')" size="large">点击弹出 DateTime Picker</mt-button>
       <mt-button @click.native="open('picker2')" size="large">点击弹出 Date Picker</mt-button>
@@ -39,6 +38,8 @@
 <style>
   @component-namespace page {
     @component datetime {
+      margin-top: 45px;
+
       @descendent wrapper {
         padding: 0 20px;
         position: absolute 50% * * *;

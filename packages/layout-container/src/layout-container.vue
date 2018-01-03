@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-layout-container" :background="background" :margin="margin" :padding="padding" :style="computeStyle">
+  <div @click="handleClick" class="mint-layout-container" :style="computeStyle">
     <slot></slot>
   </div>
 </template>
@@ -58,7 +58,6 @@
     };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component layout-container {
         position: relative;

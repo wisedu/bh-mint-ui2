@@ -11,6 +11,7 @@
     :to="to"
     :is-link="isLink"
     ref="cell"
+    :wrapperpaddingleft="wrapperpaddingleft"
     :value="value">
     <div
       slot="right"
@@ -22,6 +23,7 @@
         :style="btn.style"
         @click.prevent.stop="btn.handler && btn.handler($event)"
         >
+        {{btn.content}}
         <slot name="right"></slot>
         </div>
     </div>
@@ -93,6 +95,7 @@ export default {
     title: String,
     label: String,
     isLink: Boolean,
+    wrapperpaddingleft:String,
     check:Boolean,
     value: {}
   },
@@ -104,7 +107,6 @@ export default {
   },
   watch:{
     'check':function(newds,oldds){
-      //console.log('newds:'+newds)
       if (newds) {
         this.offsetLeft = this.leftWidth;
         this.swipeLeaveTransition(-1);
@@ -113,6 +115,7 @@ export default {
         this.swipeLeaveTransition(1);
       }
     }
+
   },
   mounted() {
     this.wrap = this.$refs.cell.$el.querySelector('.mint-cell-wrapper');
@@ -244,7 +247,6 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component cell-swipe {

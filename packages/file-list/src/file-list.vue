@@ -1,7 +1,9 @@
 <template>
   <div class="mint-file-list">
-    <h4 class="mint-file-list-title" v-if="label !== ''">{{label}}</h4>
-    <mt-cell v-for="item in fileList" :key="item.id" :title="item.name" is-link></mt-cell>
+    <h4 class="mint-file-list-title mt-color-grey-lv3" v-if="label !== ''">{{label}}</h4>
+    <mt-cell-group>
+      <mt-cell v-for="item in fileList" :key="item.id" :title="item.name" is-link></mt-cell>
+    </mt-cell-group>
   </div>
 </template>
 <script>
@@ -89,8 +91,7 @@ export default {
  */
 </script>
 
-<style lang="postcss">
-  @import "../../../src/style/var.css";
+<style>
 
   @component-namespace mint {
     @component file-list {
@@ -104,6 +105,5 @@ export default {
   .mint-file-list-title {
     font-size: 14px;
     padding: 0 12px;
-    color: $grey-lv3;
   }
 </style>

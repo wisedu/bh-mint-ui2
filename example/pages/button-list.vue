@@ -1,13 +1,12 @@
 <template>
-  <div class="page-button">
-    <h1 class="page-title">ButtonList</h1>
-    
-    <div class="page-button-group">
+  <div class="page-buttonList">
+    <div class="page-buttonList-item">
       <mt-button-list label="单选按钮组" :options="options" v-model="value" :display.sync="value_display"></mt-button-list>
       <p>value: {{value}}</p>
       <p>display: {{value_display}}</p>
     </div>
-    <div class="page-button-group">
+    <mt-layout-spacing></mt-layout-spacing>
+    <div class="page-buttonList-item">
       <mt-button-list label="多选按钮组" :multiple="true" :options="options" v-model="multiValue" :display.sync="multiValue_display"></mt-button-list>
       <p>value: {{multiValue}}</p>
       <p>display: {{multiValue_display}}</p>
@@ -38,14 +37,12 @@ export default {
 
 <style lang="css">
   @component-namespace page {
-    @component button {
-      padding: 0 15px 15px;
+    @component buttonList {
+      margin-top: 45px;
 
-      @descendent group {
-        margin-bottom: 15px;
-
-        & > * {
-          margin-bottom: 15px;
+      @descendent item {
+        & p{
+          margin: 10px;
         }
       }
     }

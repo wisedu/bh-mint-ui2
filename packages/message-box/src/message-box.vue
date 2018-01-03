@@ -1,20 +1,20 @@
 <template>
   <div class="mint-msgbox-wrapper">
     <transition name="msgbox-bounce">
-      <div class="mint-msgbox" v-show="value">
+      <div class="mint-msgbox mt-bg-white" v-show="value">
         <div class="mint-msgbox-header" v-if="title !== ''">
-          <div class="mint-msgbox-title">{{ title }}</div>
+          <div class="mint-msgbox-title mt-color-grey">{{ title }}</div>
         </div>
-        <div class="mint-msgbox-content" v-if="message !== ''">
-          <div class="mint-msgbox-message" v-html="message"></div>
-          <div class="mint-msgbox-input" v-show="showInput">
-            <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input">
-            <div class="mint-msgbox-errormsg" :style="{ visibility: !!editorErrorMessage ? 'visible' : 'hidden' }">{{ editorErrorMessage }}</div>
+        <div class="mint-msgbox-content">
+          <div class="mint-msgbox-message mt-color-grey-lv3" v-html="message" v-if="message"></div>
+          <div class="mint-msgbox-input" v-if="showInput">
+            <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input" class="mt-bg-white mt-bColor-grey-lv4 ">
+            <div class="mint-msgbox-errormsg mt-color-red" v-if="editorErrorMessage">{{ editorErrorMessage }}</div>
           </div>
         </div>
         <div class="mint-msgbox-btns">
-          <button class="bh-mint-btn bh-mint-btn-cancel" v-show="showCancelButton" @click="handleAction('cancel')">{{ cancelButtonText }}</button>
-          <button class="bh-mint-btn bh-mint-btn-confirm" v-show="showConfirmButton" @click="handleAction('confirm')">{{ confirmButtonText }}</button>
+          <button class="mint-msgbox-btn mint-msgbox-cancel mt-btn-default" v-show="showCancelButton" @click="handleAction('cancel')">{{ cancelButtonText }}</button>
+          <button class="mint-msgbox-btn mint-msgbox-confirm mt-btn-primary" v-show="showConfirmButton" @click="handleAction('confirm')">{{ confirmButtonText }}</button>
         </div>
       </div>
     </transition>
@@ -22,55 +22,44 @@
 </template>
 
 <style>
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component msgbox {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
-      background-color: #fff;
-      width: 85%;
-      border-radius: 3px;
+      width: 280px;
+      max-height: 760px;
+      padding: 18px 16px 16px 16px;
+      border-radius: 6px;
       font-size: 16px;
       -webkit-user-select: none;
       overflow: hidden;
       backface-visibility: hidden;
       transition: .2s;
 
-      @descendent header {
-        padding: 15px 0 0;
-      }
-
       @descendent content {
-        padding: 10px 20px 15px;
-        /*border-bottom: 1px solid #ddd;*/
-        min-height: 36px;
         position: relative;
+        overflow: hidden;
       }
 
       @descendent input {
-        padding-top: 15px;
+        padding-top: 18px;
+        padding-bottom: 6px;
         & input {
-          border: 1px solid #bdc0c5;
+          border-width: 0.5px;
+          border-style: solid;
           border-radius: 5px;
-          padding: 4px 5px;
+          padding: 0 0 0 12px;
+          line-height: 42px;
           width: 100%;
           font-size: 17px;
-          color: #bdc0c5;
           appearance: none;
           outline: none;
-        }
-        & input.invalid {
-          border-color: #ff4949;
-          &:focus {
-            border-color: #ff4949;
-          }
         }
       }
 
       @descendent errormsg {
-        color: red;
         font-size: 12px;
         min-height: 18px;
         margin-top: 2px;
@@ -78,18 +67,19 @@
 
       @descendent title {
         text-align: center;
-        padding-left: 0;
-        margin-bottom: 0;
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
+        overflow: hidden;
+        font-size: 18px;
+        max-height: 48px;
       }
 
       @descendent message {
-        color: #999;
-        margin: 0;
+        width: 100%;
+        overflow-y: auto;
+        max-height: 144px;
+        font-size: 15px;
+        line-height: 24px;
+        margin-top: 10px;
         text-align: center;
-        line-height: 36px;
       }
 
       @descendent btns {
@@ -99,68 +89,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 60px;
+        height: 40px;
+        margin-top:18px;
         line-height: 40px;
-        & .bh-mint-btn {
-          appearance: none;
-          border-radius: 5px;
-          border: 0;
-          box-sizing: border-box;
-          display: block;
-          font-size: 18px;
-          height: 41px;
-          flex: 0 1 auto;
-          outline: 0;
-          overflow: hidden;
-          position: relative;
-          text-align: center;
-        }
-        & .bh-mint-btn-cancel {
-          width: 90%;
-          margin: 0 6px;
-          color: $button-default-color;
-          background-color: $button-default-background-color;
-          box-shadow: $button-default-box-shadow;
-        }
-        & .bh-mint-btn-confirm {
-          width: 90%;
-          margin: 0 6px;
-          color: $button-primary-color;
-          background-color: $button-primary-background-color;
-        }
       }
 
       @descendent btn {
-        line-height: 35px;
-        display: block;
-        background-color: #fff;
-        flex: 1;
-        margin: 0;
+        appearance: none;
+        border-radius: 5px;
         border: 0;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:active {
-          background-color: #fff;
-        }
+        box-sizing: border-box;
+        display: block;
+        font-size: 18px;
+        height: 40px;
+        flex: 0 1 auto;
+        outline: 0;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+      }
+      @descendent btn:not(:last-child){
+        margin-right: 12px;
       }
 
       @descendent cancel {
-        width: 50%;
-        border-right: 1px solid #ddd;
-        &:active {
-          color: #000;
-        }
+        width: 100%;
       }
 
       @descendent confirm {
-        color: #26a2ff;
-        width: 50%;
-        &:active {
-         color: #26a2ff;
-        }
+        width: 100%;
       }
     }
   }
@@ -262,7 +219,7 @@
           var inputPattern = this.inputPattern;
           if (inputPattern && !inputPattern.test(this.inputValue || '')) {
             this.editorErrorMessage = this.inputErrorMessage || '输入的数据不合法!';
-            this.$refs.input.classList.add('invalid');
+            this.$refs.input.classList.add('mt-bColor-danger');
             return false;
           }
           var inputValidator = this.inputValidator;
@@ -270,7 +227,7 @@
             var validateResult = inputValidator(this.inputValue);
             if (validateResult === false) {
               this.editorErrorMessage = this.inputErrorMessage || '输入的数据不合法!';
-              this.$refs.input.classList.add('invalid');
+              this.$refs.input.classList.add('mt-bColor-danger');
               return false;
             }
             if (typeof validateResult === 'string') {
@@ -280,7 +237,7 @@
           }
         }
         this.editorErrorMessage = '';
-        this.$refs.input.classList.remove('invalid');
+        this.$refs.input.classList.remove('mt-bColor-danger');
         return true;
       },
 

@@ -155,7 +155,6 @@ export default {
  */
 </script>
 <style scoped>
-@import "../../../src/style/var.css";
 .slide-enter-active, .slide-leave-active {
   transition: transform .25s
 }

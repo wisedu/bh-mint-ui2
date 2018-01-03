@@ -1,6 +1,5 @@
 <template>
   <div class="page-loadmore">
-    <h1 class="page-title">Pull down</h1>
     <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore-desc">此例请使用手机查看</p>
     <p class="page-loadmore-desc">translate : {{ translate }}</p>
@@ -26,6 +25,7 @@
 <style>
   @component-namespace page {
     @component loadmore {
+      margin-top: 60px;
       width: 100%;
       overflow-x: hidden;
 

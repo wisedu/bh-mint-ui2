@@ -1,12 +1,10 @@
 <template>
-  <div class="page-checklist">
-    <div class="page-title page-part">Checkbox</div>
-
+  <div class="page-checklist" style="margin-top:45px;overflow:hidden">
     <div>
         <h2 class="mint-box-group-title">普通多选</h2>
         <mt-box-group v-model="value1">
             <mt-cell-group>
-                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value">
+                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value" iconpattern="hook">
                     {{item.label}}
                 </mt-checkbox>
                 <mt-cell title="选中的项">{{ value1 }}</mt-cell>
@@ -17,10 +15,10 @@
 
     <div>
         <h2 class="mint-box-group-title">全部禁用</h2>
-        <mt-box-group v-model="value2" :disabled="true">
+        <mt-box-group v-model="value3" :disabled="true">
             <mt-cell-group>
-                <mt-checkbox :name="item.value" v-for="item in options2" :key="item.value">
-                    {{item.label}}
+                <mt-checkbox :name="item" v-for="item in options3" :key="item">
+                    {{item}}
                 </mt-checkbox>
             </mt-cell-group>
         </mt-box-group>
@@ -30,7 +28,7 @@
         <h2 class="mint-box-group-title">右对齐,最多选3个</h2>
         <mt-box-group v-model="value1" align="right" :max="3">
             <mt-cell-group>
-                <mt-checkbox align="right" :name="item.value" v-for="item in options2" :key="item.value">
+                <mt-checkbox align="right" :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled">
                     {{item.label}}
                 </mt-checkbox>
             </mt-cell-group>
@@ -41,7 +39,7 @@
         <h2 class="mint-box-group-title">组合的多选</h2>
         <mt-box-group v-model="value2">
             <mt-cell-group>
-                <mt-checkbox ref="cb" :name="item" v-for="item in options1" :key="item">
+                <mt-checkbox ref="cb" :name="item" v-for="item in options4" :key="item">
                     {{item}}
                     <div slot="newline" slot-scope="scope" style="margin-top:10px" v-if="scope.checked">
                         <mt-textarea maxlength="50"></mt-textarea>
@@ -63,9 +61,9 @@ export default {
       options2: [],
       options3: [],
       options4: [],
-      value1: ["选中禁用的值"],
+      value1: ['选中禁用的值'],
       value2: ['选项A'],
-      value3: ['选项A'],
+      value3: ['选项A','选项C'],
       value4: []
     };
   },
@@ -97,6 +95,10 @@ export default {
       {
         label: '选项B',
         value: '值B'
+      },
+      {
+        label: '选项C',
+        value: '值C'
       }
     ];
   }

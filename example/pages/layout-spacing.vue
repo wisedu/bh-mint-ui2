@@ -1,15 +1,15 @@
 <template>
-  <div style="margin-top: 60px;">
-    <div style="margin-top: 20px;">
-      <div>普通的</div>
+  <div class="layout-spacing">
+    <div style="padding-top: 10px;">
+      <div>默认15px高，白色（#FFFFFF）背景</div>
       <!--start
       @name normal
       -->
-      <mt-layout-spacing></mt-layout-spacing>
+      <mt-layout-spacing border="0.5px solid #52C7CA" :borderside="borderside"></mt-layout-spacing>
       <!--end-->
     </div>
 
-    <div style="margin-top: 20px;">
+    <div style="padding-top: 10px;">
       <div>自定义背景色</div>
       <!--start
       @name background
@@ -23,9 +23,17 @@
 
 <script>
 export default {
-    name: 'page-layout-spacing'
+    name: 'page-layout-spacing',
+    data: function(){
+      return {
+        borderside:['top','bottom']
+      }
+    }
 };
 </script>
 
 <style lang="css" scoped>
+  .layout-spacing {
+    margin-top: 45px;
+  }
 </style>

@@ -2,21 +2,25 @@
   <div class="mt-range" :class="{ 'mt-range--disabled': disabled }">
     <slot name="start"></slot>
     <div class="mt-range-content" ref="content">
-      <div class="mt-range-runway" :style="{ 'border-top-width': barHeight + 'px' }"></div>
-      <div class="mt-range-progress" :style="{ width: progress + '%', height: barHeight + 'px' }"></div>
-      <div class="mt-range-thumb" ref="thumb" :style="{ left: progress + '%' }"></div>
+      <div class="mt-range-runway mt-bColor-grey-lv4" :style="{ 'border-top-width': barHeight + 'px' }"></div>
+      <div class="mt-range-progress mt-bg-primary" :style="{ width: progress + '%', height: barHeight + 'px' }"></div>
+      <div class="mt-range-thumb mt-bg-lv3 mt-boxShadow-range-thumb" ref="thumb" :style="{ left: progress + '%' }"></div>
     </div>
     <slot name="end"></slot>
   </div>
 </template>
 
 <style>
+  .mint-cell-value .mt-range>div:only-child{
+    margin-right: 20px;
+  }
   @component-namespace mt {
     @component range {
       position: relative;
       display: flex;
       height: 30px;
       line-height: 30px;
+      padding-right: 15px;
 
       & > * {
         display: flex;
@@ -30,11 +34,18 @@
       & *[slot=end] {
         margin-left: 5px;
       }
+      
+      &>div:first-child{
+        margin-right: 9px;
+      }
+      &>div:only-child{
+        margin-right: 59px;
+      }
 
       @descendent content {
         position: relative;
         flex: 1;
-        margin-right: 30px;
+        margin-right: 39px;
       }
 
       @descendent runway {
@@ -42,30 +53,28 @@
         top: 50%;
         transform: translateY(-50%);
         left: 0;
-        right: -30px;
-        border-top-color: #a9acb1;
+        right: -28px;
         border-top-style: solid;
+        border-radius: 8px;
       }
 
       @descendent thumb {
-        background-color: #fff;
         position: absolute;
         left: 0;
         top: 0;
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         border-radius: 100%;
         cursor: move;
-        box-shadow: 0 1px 3px rgba(0,0,0,.4);
       }
 
       @descendent progress {
         position: absolute;
         display: block;
-        background-color: #26a2ff;
         top: 50%;
         transform: translateY(-50%);
         width: 0;
+        border-radius: 8px;
       }
 
       @modifier disabled {
@@ -166,7 +175,7 @@
        */
       barHeight: {
         type: Number,
-        default: 1
+        default: 2
       }
     },
 

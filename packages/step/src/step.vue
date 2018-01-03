@@ -1,25 +1,24 @@
 <template>
   <div class="mint-step" :class="stepClass">
-    <div class="mint-step__circle-container">
-      <i class="mint-icon mint-icon-checked iconfont icon-wancheng" v-if="status === 'finish'"></i>
-      <i class="mint-icon mint-icon-checked iconfont icon-weiwancheng" v-else-if="status === 'error'"></i>
-      <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi" v-else-if="status === 'process'"></i>
-      <i class="mint-step__circle" v-else></i>
+    <div class="mint-step__circle-container mt-bg-lv3">
+      <i class="mint-icon mint-icon-checked iconfont icon-wancheng mt-color-primary" v-if="status === 'finish'"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-weiwancheng mt-color-danger" v-else-if="status === 'error'"></i>
+      <i class="mint-icon mint-icon-checked iconfont icon-jijiangdaoqi mt-color-warning" v-else-if="status === 'process'"></i>
+      <i class="mint-step__circle mt-bg-grey-lv5" v-else></i>
     </div>
-    <div class="mint-step__time">
+    <div class="mint-step__time mt-color-grey-lv4">
       <slot name="left"></slot>
     </div>
     <div class="mint-step__title">
       <slot></slot>
     </div>
-    <div class="mint-step__line"></div>
+    <div class="mint-step__line mt-bg-grey-lv6"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: "mt-step",
-  //finish/process/
   props: {
     status: String
   },
@@ -34,14 +33,14 @@ export default {
     stepClass() {
       const status = this.status;
       const statusClass = status ? "mint-step--" + status : "";
+      const stepClass = status==='finish'?"mt-color-grey-lv4":"mt-color-grey";
       const directionClass = `mint-step--${this.$parent.direction}`;
-      return [directionClass, statusClass];
+      return [directionClass, statusClass,stepClass];
     }
   }
 };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
 
 .mint-step {
   -webkit-box-flex: 1;
@@ -49,7 +48,6 @@ export default {
   flex: 1;
   font-size: 14px;
   position: relative;
-  color: #999;
 }
 
 .mint-step--horizontal {
@@ -89,7 +87,6 @@ export default {
   left: -6px;
   height: 23px;
   padding: 0 8px;
-  background-color: #fff;
   z-index: 1;
 }
 
@@ -107,21 +104,9 @@ export default {
   top: 34px;
   width: 100%;
   height: 1px;
-  background-color: #e5e5e5;
 }
 
-.mint-step--finish {
-  color: #333;
-}
 
-.mint-step--finish .mint-step__circle,
-.mint-step--finish .mint-step__line {
-  background-color: $success-color;
-}
-
-.mint-step--process {
-  color: #333;
-}
 
 .mint-step--horizontal.mint-step--process .mint-step__circle-container,
 .mint-step--horizontal.mint-step--error .mint-step__circle-container,
@@ -131,22 +116,16 @@ export default {
 
 .mint-step--process .mint-icon {
   font-size: 23px;
-  color: $warning-color;
-  background-color: white;
   line-height: 23px;
 }
 
 .mint-step--finish .mint-icon {
   font-size: 23px;
-  color: $success-color;
-  background-color: white;
   line-height: 23px;
 }
 
 .mint-step--error .mint-icon {
   font-size: 23px;
-  color: $error-color;
-  background-color: white;
   line-height: 23px;
 }
 
@@ -154,7 +133,6 @@ export default {
   display: block;
   width: 9px;
   height: 9px;
-  background-color: #888;
   border-radius: 50%;
 }
 
@@ -177,16 +155,6 @@ export default {
   border-bottom-width: 1px;
 }
 
-.mint-step--vertical:first-child::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 20px;
-  background-color: #fff;
-  top: 0;
-  left: -14px;
-  z-index: 1;
-}
 
 .mint-step--vertical .mint-step__circle-container > i {
   position: absolute;
@@ -211,7 +179,6 @@ export default {
   left: -26px;
   width: 1px;
   height: 100%;
-  background-color: #e5e5e5;
 }
 .mint-step--vertical:first-child .mint-step__line{
   top: 16px;

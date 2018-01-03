@@ -68,7 +68,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#ccc'
+      default: '#D6D6D6'
     }
   }
 };

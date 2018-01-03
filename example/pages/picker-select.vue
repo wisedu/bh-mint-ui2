@@ -1,37 +1,15 @@
 <template>
-  <div class="page-select">
-    <h1 class="page-select-title">PickerSelect</h1>
+  <div style="margin-top:45px;"> 
     <mt-cell-group>
-      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions">
+      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue">
       </mt-picker-select>
 
-      <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions"></mt-picker-select>
+      <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions" v-model="singleSelectValue1"></mt-picker-select>
       <mt-picker-select label="禁用的" placeholder="请选择" rows="5" maxlength="100" disabled :options="singleSelectOptions"></mt-picker-select>
     </mt-cell-group>
   </div>
 </template>
 
-<style>
-  body {
-    background: #ddd;
-    padding: 0;
-  }
-  @component-namespace page {
-    @component select {
-      @descendent title {
-        font-size: 20px;
-        margin: 0 auto;
-        padding: 20px 0;
-        text-align: center;
-        display: block;
-        line-height: 1;
-      }
-      .mint-button {
-        margin-top: 15px;
-      }
-    }
-  }
-</style>
 
 <script type="text/babel">
   /* eslint-disable */
@@ -62,7 +40,9 @@
           '黄袍怪',
           '白骨精',
           '小钻风'
-        ]
+        ],
+        singleSelectValue:'',
+        singleSelectValue1:'鹿力大仙'
       }
     }
   };

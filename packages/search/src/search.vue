@@ -1,9 +1,9 @@
 <template>
   <form onsubmit="" action="#">
-    <div class="mint-search">
-      <div class="mint-searchbar">
-        <div class="mint-searchbar-inner">
-          <i class="mintui mintui-search"></i>
+    <div class="mint-search mt-bColor-grey-lv5">
+      <div class="mint-searchbar mt-bg-lv1">
+        <div class="mint-searchbar-inner mt-bColor-grey-lv5 mt-bg-lv3">
+          <i class="iconfont icon-search mt-color-grey-lv4"></i>
           <input
           ref="input"
           @click="visible = true"
@@ -11,19 +11,27 @@
           v-model="currentValue"
           :placeholder="placeholder"
           @keypress.enter.prevent="onSearch"
-          class="mint-searchbar-core">
+          class="mint-searchbar-core mt-color-grey mt-bg-transparent">
+        </div>
+        <div
+          @click="handleClear"
+          class="mint-searchbar-clear mt-color-grey"
+          v-show="currentValue" >
+          <i class="iconfont icon-weiwancheng"></i>
         </div>
         <a
-          class="mint-searchbar-cancel"
+          class="mint-searchbar-cancel mt-color-theme"
           @click="handleCancel"
           v-show="visible"
           v-text="cancelText">
         </a>
       </div>
-      <div class="mint-search-list" v-show="show || currentValue">
+      <div class="mint-search-list" v-show="show || currentValue" :style="{'margin-top':margintop}">
         <div class="mint-search-list-warp">
           <slot>
-            <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
+            <mt-cell-group>
+              <x-cell v-for="(item, index) in result" :key="index" :title="item" wrapperpaddingleft="15px"></x-cell>
+            </mt-cell-group>
           </slot>
         </div>
       </div>
@@ -81,6 +89,10 @@ export default {
     value: String,
     autofocus: Boolean,
     show: Boolean,
+    margintop:{
+      type:String,
+      default:"43px"
+    },
     cancelText: {
       default: '取消'
     },
@@ -104,44 +116,51 @@ export default {
       this.visible = false;
       this.currentValue = '';
       this.$emit('canceled', evt);
+    },
+    handleClear() {
+      this.currentValue = '';
     }
   }
 };
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
-
   @component-namespace mint {
     @component search {
       height: 100%;
       height: 44px;
-      border-bottom: 0.5px solid $grey-lv4;
+      border-bottom-width: 0.5px;
+      border-bottom-style: solid;
       overflow: hidden;
     }
 
     @component searchbar {
       position: relative;
       align-items: center;
-      background-color: $bg-lv1;
       box-sizing: border-box;
       display: flex;
-      padding: 8px 10px;
+      padding: 7px 10px;
       z-index: 1;
 
       @descendent inner {
+        position: relative;
         align-items: center;
-        background-color: $color-white;
         border-radius: 5px;
         display: flex;
         flex: 1;
         height: 29px;
-        border: 0.5px solid $grey-lv5;
-
-        .mintui-search {
-          font-size: 13px;
-          color: $color-grey;
+        border-width: 0.5px;
+        border-style: solid;
+        .icon-search {
+          margin:4px 0 0 7px;
         }
+      }
+
+      @descendent clear{
+        position: absolute;
+        top:14px;
+        right: 67px;
+        opacity: 0.2;
       }
 
       @descendent core {
@@ -152,10 +171,7 @@ export default {
         height: 100%;
         font-size: 14px;
         outline: 0;
-        padding-left: 8px;
-        color: #bdc0c5;
-        padding: 4px 6px;
-        background-color: transparent; 
+        padding-left: 7px;
       }
 
       @descendent placeholder {
@@ -171,8 +187,7 @@ export default {
         }
       }
       @descendent cancel {
-        color: $theme-lv1;
-        margin-left: 10px;
+        margin: 0 5px 0 15px;
         text-decoration: none;
         font-size: 15px;
       }
@@ -181,7 +196,7 @@ export default {
     @component search-list {
       overflow: auto;
       /* padding-top: 44px; */
-      margin-top:44px; /* 与下拉菜单配合使用时存在，下拉菜单被遮住的问题。2017-12-14 需求来源张毅学工 。修改人徐佳宾 */
+      /* margin-top:44px;  与下拉菜单配合使用时存在，下拉菜单被遮住的问题。2017-12-14 需求来源张毅学工 。修改人徐佳宾 */
       position: absolute 0 0 0 0;
     }
   }

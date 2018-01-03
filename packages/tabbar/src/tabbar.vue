@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-tabbar" :class="{
+  <div class="mint-tabbar mt-bg-lv3 mt-bColor-grey-lv6" :class="{
       'is-fixed': fixed
     }">
     <slot></slot>
@@ -40,28 +40,22 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component tabbar {
-      background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
+      border-top-width: 0.5px;
+      border-top-style: solid;
       background-size: 100% 1px;
       background-repeat: no-repeat;
       background-position: top left;
       position: relative;
-      background-color: $tabbar-background-color;
       display: flex;
       position: absolute * 0 0 0;
       text-align: center;
 
       @when fixed {
         position: fixed * 0 0 0;
-        z-index: $z-index-normal;
-      }
-
-      > .mint-tab-item.is-selected {
-        background-color: $tabbar-tab-item-selected-background-color;
-        color: $tabbar-tab-item-selected-color;
+        z-index: 1;
       }
     }
   }

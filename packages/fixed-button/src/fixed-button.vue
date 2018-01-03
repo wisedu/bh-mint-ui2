@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-fixed-button" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type]" :style="computeStyle">
+  <div @click="handleClick" class="mint-fixed-button mt-color-white" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type,'mt-bg-'+type]" :style="computeStyle">
     <div class="mint-fixed-button--content" :style="computeContentStyle">
       <slot></slot>
     </div>
@@ -94,13 +94,11 @@
 </script>
 
 <style>
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component fixed-button {
       position: fixed;
       border-radius: 50%;
-      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -126,22 +124,6 @@
       @modifier bottom-right {
         bottom: 1.5rem;
         right: 1.5rem;
-      }
-
-      @modifier primary {
-        background-color: $button-primary-background-color;
-      }
-
-      @modifier warning {
-        background-color: $button-warning-background-color;
-      }
-
-      @modifier danger {
-        background-color: $button-danger-background-color;
-      }
-
-      @modifier grey {
-        background-color: #d9d9d9;
       }
 
       @modifier content {

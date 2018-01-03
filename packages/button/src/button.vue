@@ -2,7 +2,7 @@
   <button
     :type="nativeType"
     class="mint-button"
-    :class="['mint-button--' + type, 'mint-button--' + size, {
+    :class="['mt-btn-' + type, 'mint-button--' + size, {
       'is-disabled': disabled,
       'is-plain': plain
     }]"
@@ -10,7 +10,7 @@
     :disabled="disabled">
     <span :class="['mint-button-icon',size]" v-if="icon || $slots.icon">
       <slot name="icon">
-        <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
+        <i v-if="icon" class="iconfont" :class="'icon-' + icon" :style="{'font-size':iconSize,'color':iconColor}"></i>
       </slot>
     </span><label class="mint-button-text"><slot></slot></label>
   </button>
@@ -70,6 +70,8 @@ export default {
        ]
        */
     icon: String,
+    iconSize:String,
+    iconColor:String,
     disabled: Boolean,
     nativeType: String,
     plain: Boolean,
@@ -170,7 +172,6 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component button {
@@ -178,7 +179,6 @@ export default {
       border-radius: 5px;
       border: 0;
       box-sizing: border-box;
-      color: inherit;
       display: block;
       font-size: 18px;
       height: 44px;
@@ -191,82 +191,20 @@ export default {
         vertical-align: middle;
         display: inline-block;
       }
-
-      &::after {
-        background-color: #000;
-        content: " ";
-        opacity: 0;
-        position: absolute 0 0 0 0;
+      @when plain {
+        border-width: 1px;
+        border-style: solid;
+        box-shadow: none;
       }
-
-      &:not(.is-disabled):active::after {
+      @when plain:not(.is-disabled):active:after{
+        content: " ";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
         opacity: 0.1;
       }
-
-      @modifier default {
-        color: $button-default-color;
-        background-color: $button-default-background-color;
-        box-shadow: $button-default-box-shadow;
-
-        @when plain {
-          border: 1px solid $button-default-plain-color;
-          background-color: transparent;
-          box-shadow: none;
-          color: $button-default-plain-color;
-        }
-      }
-
-      @modifier primary {
-        color: $button-primary-color;
-        background-color: $button-primary-background-color;
-
-        @when plain {
-          border: 1px solid $button-primary-background-color;
-          background-color: transparent;
-          color: $button-primary-background-color;
-          &::after {
-            background-color: $button-primary-background-color;
-          }
-        }
-      }
-      @modifier primary:not(.is-disabled):active{
-        opacity:0.6
-      }
-
-      @modifier warning {
-        color: $button-warning-color;
-        background-color: $button-warning-background-color;
-
-        @when plain {
-          border: 1px solid $button-warning-background-color;
-          background-color: transparent;
-          color: $button-warning-background-color;
-          &::after {
-            background-color: $button-warning-background-color;
-          }
-        }
-      }
-      @modifier warning:not(.is-disabled):active{
-        opacity:0.6
-      }
-
-      @modifier danger {
-        color: $button-danger-color;
-        background-color: $button-danger-background-color;
-
-        @when plain {
-          border: 1px solid $button-danger-background-color;
-          background-color: transparent;
-          color: $button-danger-background-color;
-          &::after {
-            background-color: $button-danger-background-color;
-          }
-        }
-      }
-      @modifier danger:not(.is-disabled):active{
-        opacity:0.6
-      }
-
       @modifier large {
         display: block;
         width: 100%;

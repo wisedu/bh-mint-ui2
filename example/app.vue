@@ -1,8 +1,10 @@
 <template>
   <div>
-    <router-link class="page-back" v-if="visible" :to="'/'">
-      <i class="mintui mintui-back"></i>
-    </router-link>
+    <mt-header :title="routeName" backgroundColor="mt-bg-theme" color="mt-color-white" v-if="visible" fixed>
+        <router-link to="/" slot="left">
+          <span class="iconfont icon-keyboardarrowleft"></span>
+        </router-link>
+      </mt-header>
     <router-view></router-view>
   </div>
 </template>
@@ -31,15 +33,24 @@
       line-height: 40px;
     }
   }
+  .page-title {
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: center;
+    display: block;
+    line-height: 1;
+  }
 </style>
 
 <script type="text/babel">
-  // import 'src/assets/font/iconfont.css';
-
   export default {
     computed: {
       visible() {
         return ['/', '/header', '/search'].indexOf(this.$route.path) < 0;
+      },
+      routeName() {
+        return this.$route.name;
       }
     },
     mounted() {

@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-layout-spacing" :background="background" :height="height" :style="computeStyle">
+  <div @click="handleClick" class="mint-layout-spacing" :style="computeStyle">
   </div>
 </template>
 <script>
@@ -20,7 +20,10 @@
             }
         },
         props: {
-            background: String,
+            background: {
+                type:String,
+                default:"#FFFFFF"
+            },
             /**
              * @noteType prop
              * @field height
@@ -28,13 +31,24 @@
              * @type input
              * @value
              */
-            height: String
+            height: {
+                type:String,
+                default:"15px"
+            },
+            border: String,
+            borderside: {
+                type:Array,
+                default: function(){
+                    return []
+                }
+            }
         },
         computed: {
             computeStyle: function() {
                 let _style = '';
                 let background = this.background;
                 let height = this.height;
+                let border = this.border;
                 if (background) {
                     _style += `background: ${background};`;
                 }
@@ -43,17 +57,26 @@
                     _style += `height: ${height};`;
                 }
 
+                if (border) {
+                    if(!this.borderside.length){
+                        _style += `border: ${border};`;
+                    }else{
+                        _style = this.borderside.indexOf('top')>-1?_style + `border-top: ${border};`:_style ;
+                        _style = this.borderside.indexOf('right')>-1?_style + `border-right: ${border};`:_style ;
+                        _style = this.borderside.indexOf('bottom')>-1?_style + `border-bottom: ${border};`:_style ;
+                        _style = this.borderside.indexOf('left')>-1?_style + `border-left: ${border};`:_style ;
+                    }
+                }
+
                 return _style;
             }
         }
     };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component layout-spacing {
       position: relative;
-      height: 16px;
     }
   }
 

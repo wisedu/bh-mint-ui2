@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mint-subscript"
+    class="mint-subscript mt-color-white"
     :style="computeStyle">
     {{label}}
   </div>
@@ -60,11 +60,8 @@ export default {
 
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
-
   @component-namespace mint {
     @component subscript {
-      color: $color-white;
       text-align: center;
       display: inline-block;
 

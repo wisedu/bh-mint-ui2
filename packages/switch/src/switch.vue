@@ -1,7 +1,7 @@
 <template>
   <label class="mint-switch">
     <input class="mint-switch-input" :disabled="disabled" @change="$emit('change', currentValue, $event)" type="checkbox" v-model="currentValue">
-    <span class="mint-switch-core"></span>
+    <span class="mint-switch-core mt-bg-before-white mt-bg-after-white" :class="[currentValue?'mt-bColor-theme-lv2 mt-bg-theme-lv2':'mt-bColor-grey-lv6 mt-bg-lv3']"></span>
     <div class="mint-switch-label"><slot></slot></div>
   </label>
 </template>
@@ -41,7 +41,6 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component switch {
@@ -66,10 +65,10 @@ export default {
         display: inline-block;
         position: relative;
         size: 50px 30px;
-        border: 1px solid $color-grey;
+        border-width: 1px;
+        border-style: solid;
         border-radius: 16px;
         box-sizing: border-box;
-        background: $color-grey;
 
         &::after, &::before {
           content: " ";
@@ -80,13 +79,11 @@ export default {
 
         &::after {
           size: 28px;
-          background-color: $color-white;
           box-shadow: 0 2px 7px rgba(0, 0, 0, .2);
         }
 
         &::before {
           size: 48px 28px;
-          background-color: #fdfdfd;
         }
       }
 
@@ -95,9 +92,6 @@ export default {
 
         &:checked {
           + .mint-switch-core {
-            border-color: $color-green;
-            background-color: $color-green;
-
             &::before {
               transform: scale(0);
             }

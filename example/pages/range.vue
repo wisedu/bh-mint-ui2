@@ -1,33 +1,45 @@
 <template>
   <div class="page-range">
-    <h1 class="page-title">Range</h1>
-    <p class="page-range-header">基本功能</p>
-    <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
-      <mt-range v-model="item.value">
-        <div slot="start" v-if="item.start">{{ item.start }}</div>
-        <div slot="end" v-if="item.end">{{ item.end }}</div>
-      </mt-range>
-    </mt-cell>
-    <p class="page-range-header">自定义</p>
-    <mt-cell v-for="item in cells2" :title="item.title" :label="'value:' + item.value">
-      <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
-        <div slot="start" v-if="item.start">{{ item.start }}</div>
-        <div slot="end" v-if="item.end">{{ item.end }}</div>
-      </mt-range>
-    </mt-cell>
-    <p class="page-range-header">场景举例</p>
-    <mt-cell v-for="item in cells3" :title="item.title" :label="'value:' + item.value">
-      <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
-        <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
-        <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>
-      </mt-range>
-    </mt-cell>
+    <mt-cell-group title="基本功能">
+      <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
+        <mt-range v-model="item.value">
+          <div slot="start" v-if="item.start">{{ item.start }}</div>
+          <div slot="end" v-if="item.end">{{ item.end }}</div>
+        </mt-range>
+      </mt-cell>
+      <br/>
+      <div  v-for="item in cells1">
+        <p>当前值：{{item.value}}</p>
+        <mt-range v-model="item.value">
+          <div slot="start" v-if="item.start">{{ item.start }}</div>
+          <div slot="end" v-if="item.end">{{ item.end }}</div>
+        </mt-range>
+        <br/>
+      </div>
+    </mt-cell-group>
+    <mt-cell-group title="自定义">
+      <mt-cell v-for="item in cells2" :title="item.title" :label="'value:' + item.value">
+        <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
+          <div slot="start" v-if="item.start">{{ item.start }}</div>
+          <div slot="end" v-if="item.end">{{ item.end }}</div>
+        </mt-range>
+      </mt-cell>
+    </mt-cell-group>
+    <mt-cell-group title="场景举例">
+      <mt-cell v-for="item in cells3" :title="item.title" :label="'value:' + item.value">
+        <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
+          <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
+          <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>
+        </mt-range>
+      </mt-cell>
+    </mt-cell-group>
   </div>
 </template>
 
 <style>
   @component-namespace page {
     @component range {
+      margin-top: 45px;
       .mt-range {
         width: 100%;
       }

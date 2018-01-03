@@ -1,20 +1,19 @@
 <template>
-  <div class="page-badge">
-    <div class="page-title">Badge</div>
+  <div class="page-badge" style="margin-top:45px">
 
     <div class="page-badge-container">
       <!--**************small*************-->
-      <div class="page-part">
+      <div class="page-badge-part">
         <!--start
         @name small-primary
         -->
-        <mt-badge type="primary" size="small">30</mt-badge>
+        <mt-badge type="primary" size="small">8</mt-badge>
         <!--end-->
 
         <!--start
-        @name small-error
+        @name small-danger
         -->
-        <mt-badge type="error" size="small">30</mt-badge>
+        <mt-badge type="danger" size="small">30</mt-badge>
         <!--end-->
 
         <!--start
@@ -32,7 +31,7 @@
         <!--start
         @name small-custom
         -->
-        <mt-badge size="small" color="#888">自定义颜色</mt-badge>
+        <mt-badge size="small" color="#888" fontColor="red" fontSize="18px">自定义颜色</mt-badge>
         <!--end-->
       </div>
 
@@ -40,7 +39,7 @@
 
 
       <!--**************normal*************-->
-      <div class="page-part">
+      <div class="page-badge-part">
         <!--start
         @name normal-primary
         -->
@@ -48,15 +47,15 @@
         <!--end-->
 
         <!--start
-        @name normal-error
+        @name normal-danger
         -->
-        <mt-badge type="error" size="normal">30</mt-badge>
+        <mt-badge type="danger" size="normal">new</mt-badge>
         <!--end-->
 
         <!--start
         @name normal-success
         -->
-        <mt-badge type="success" size="normal">30</mt-badge>
+        <mt-badge type="success" size="normal">100</mt-badge>
         <!--end-->
 
         <!--start
@@ -76,7 +75,7 @@
 
 
       <!--**************normal*************-->
-      <div class="page-part">
+      <div class="page-badge-part">
         <!--start
         @name large-primary
         -->
@@ -84,9 +83,9 @@
         <!--end-->
 
         <!--start
-        @name large-error
+        @name large-danger
         -->
-        <mt-badge type="error" size="large">30</mt-badge>
+        <mt-badge type="danger" size="large">30</mt-badge>
         <!--end-->
 
         <!--start
@@ -107,15 +106,22 @@
         <mt-badge size="large" color="#888">自定义颜色</mt-badge>
         <!--end-->
       </div>
-
     </div>
-
-    <div class="page-part">
-      <mt-cell title="徽章">
-        <span style="margin-right: 5px;">未读消息</span>
-        <mt-badge type="error" size="small">10</mt-badge>
-      </mt-cell>
-    </div>
+    <mt-cell-group>
+        <mt-cell title="徽章">
+            <span style="margin-right: 5px;">未读消息</span>
+            <mt-badge type="danger" size="small">10</mt-badge>
+        </mt-cell>
+        <mt-cell title="红点标识">
+            <mt-badge size="normal" padding="3px" color="red"></mt-badge>
+        </mt-cell>
+        <mt-cell title="'卷'">
+            <mt-badge size="normal" padding="3px" color="#FFB950" radius="2px">卷</mt-badge>
+        </mt-cell>
+        <mt-cell title="自动缴费">
+            <mt-badge padding="4px" color="#FFF" fontColor="#FFB950" bColor="#FFB950" radius="2px">自动缴费</mt-badge>
+        </mt-cell> 
+    </mt-cell-group>
   </div>
 </template>
 
@@ -128,5 +134,8 @@ export default {
 <style lang="css">
   .page-badge-container {
     padding: 0 10px;
+  }
+  .page-badge-part{
+    height: 44px
   }
 </style>

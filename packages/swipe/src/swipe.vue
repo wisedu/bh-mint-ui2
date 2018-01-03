@@ -34,13 +34,7 @@
         size: 8px 8px;
         display: inline-block;
         border-radius: 100%;
-        background: #000;
-        opacity: 0.2;
         margin: 0 3px;
-
-        @when active {
-          background: #fff;
-        }
       }
     }
   }
@@ -54,7 +48,7 @@
     <div class="mint-swipe-indicators" v-show="showIndicators">
       <div class="mint-swipe-indicator"
         v-for="(page, $index) in pages"
-        :class="{ 'is-active': $index === index }"></div>
+        :class="{ 'mt-bg-theme-lv2': $index === index ,'mt-bg-grey-lv4': $index !== index}"></div>
     </div>
   </div>
 </template>

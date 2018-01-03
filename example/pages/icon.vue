@@ -1,6 +1,6 @@
 <template>
-  <div class="part">
-
+  <div class="icon">
+    <div class="page-title bg-theme color-theme">Icon</div>
     <div class="item">
       <div class="title">normal</div>
       <!--start
@@ -61,6 +61,8 @@
       <mt-icon name="icon-pinglun" animate="animated shake"></mt-icon>
       <!--end-->
     </div>
+
+    <p class="link"><a class="mt-bg-link" href="http://res.wisedu.com/fe_components/iconfont_mobile/demo_fontclass.html" target="_blank">点击查看所有字体图标</a></p>
   </div>
 </template>
 <script>
@@ -84,5 +86,10 @@ export default {
   .item{
     margin-top: 12px;
     text-align: center;
+  }
+  .link{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
   }
 </style>

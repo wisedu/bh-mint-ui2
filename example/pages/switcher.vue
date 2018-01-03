@@ -1,8 +1,7 @@
 <template>
   <div class="page-switch">
-    <div class="page-title">Switcher</div>
-    <div class="page-part page-switch-padding">
-      <mt-switcher label="标题" v-model="value1" @change="handleChange">
+    <div>
+      <mt-switcher label="标题" v-model="value1" @change="handleChange" wrapperpaddingleft="10px">
       </mt-switcher>
       {{value1}}
     </div>
@@ -33,9 +32,7 @@ export default {
 <style lang="css">
   @component-namespace page {
     @component switch {
-      @descendent padding {
-        padding: 0 10px;
-      }
+      margin-top: 60px;
     }
   }
 </style>

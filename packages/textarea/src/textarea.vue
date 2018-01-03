@@ -1,12 +1,13 @@
 <template>
   <x-cell
-    class="mint-field"
+    class="mint-textarea"
     :title="label"
     v-clickoutside="doCloseActive"
     :titlePaddingTop="titlepaddingtop"
     :titlePaddingRight="titlepaddingright"
     :titlePaddingBottom="titlepaddingbottom"
     :titlePaddingLeft="titlepaddingleft"
+    :wrapperpaddingleft="wrapperpaddingleft"
     :class="[{
       'is-textarea': true,
       'is-nolabel': !label
@@ -14,7 +15,7 @@
     <textarea
       @change="$emit('change', currentValue, $event)"
       ref="textarea"
-      class="mint-field-core"
+      class="mint-textarea-core"
       :placeholder="placeholder"
       :rows="rows"
       :maxlength="maxlength"
@@ -23,13 +24,13 @@
       :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
       v-model="currentValue">
     </textarea>
-    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mintui-field-' + state]"></i>
+    <span class="mint-textarea-state" v-if="state" :class="['is-' + state]">
+      <i class="mintui" :class="['mt-color-' + state]"></i>
     </span>
-    <div class="mint-field-other">
+    <div class="mint-textarea-other">
       <slot></slot>
     </div>
-    <div slot="newline" class="mint-field-count mint-cell-newline">{{showLimt}}</div>
+    <div slot="newline" class="mint-textarea-count mint-cell-newline mt-color-grey-lv3 mt-bg-lv3" v-if="limitCount"><span class="mt-color-grey">{{count}}</span>/{{limitCount}}</div>
   </x-cell>
 </template>
 
@@ -51,7 +52,7 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} [placeholder] - placeholder
  * @param {string} [disabled] - disabled
  * @param {string} [readonly] - readonly
- * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
+ * @param {string} [state] - 表单校验状态样式，接受 danger, warning, success
  *
  * @example
  * <mt-textarea v-model="value" label="自我介绍" placeholder="自我介绍" rows="4"></mt-textarea>
@@ -82,6 +83,7 @@ export default {
   },
 
   props: {
+    wrapperpaddingleft:String,
     /**
        * @noteType prop
        * @field rows
@@ -208,9 +210,13 @@ export default {
       this.active = false;
     }
   },
-  computed: {
-    showLimt: function(){
-      return this.count + "/" + this.maxlength;
+  computed:{
+    limitCount(){
+      let n=Number(this.maxlength);
+      if(isNaN(n)){
+        return ""
+      }
+      return n;
     }
   },
   watch: {
@@ -253,15 +259,14 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
-    @component field {
+    @component textarea {
       .mint-cell-title {
         padding: 10px 0;
       }
       .mint-cell-value {
-        padding: 5px 0;
+        padding-top: 5px;
       }
 
       .mint-cell-title {
@@ -275,11 +280,13 @@ export default {
         display: flex;
       }
 
+      .mint-cell-wrapper{
+        border-bottom: none;
+      }
+
       @descendent count {
         text-align:right;
-        background-color:#fff;
-        padding: 0 15px;
-        color:#92969c;
+        padding: 8px 20px 0 0;
       }
 
       @descendent core {
@@ -298,27 +305,10 @@ export default {
       }
 
       @descendent state {
-        color: inherit;
         margin-left: 20px;
 
         .mintui {
           font-size: 20px;
-        }
-
-        @when error {
-          color: $error-color;
-        }
-
-        @when warning {
-          color: $warning-color;
-        }
-
-        @when success {
-          color: $success-color;
-        }
-
-        @when default {
-          margin-left: 0;
         }
       }
 

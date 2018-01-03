@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-navbar" :class="{ 'is-fixed': fixed }">
+  <div class="mint-navbar mt-bg-lv3 mt-bColor-grey-lv4" :class="{ 'is-fixed': fixed }">
     <slot></slot>
   </div>
 </template>
@@ -40,10 +40,9 @@
  */
 export default {
   name: 'mt-navbar',
-
   props: {
     fixed: Boolean,
-    value: {}
+    value: {},
   }
 };
 
@@ -68,37 +67,31 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
-
   @component-namespace mint {
     @component navbar {
-      background-color: $color-white;
       display: flex;
       text-align: center;
-      border-top: 0.5px solid $grey-lv5;
-      border-bottom: 0.5px solid $grey-lv5;
+      border-bottom-width: 0.5px;
+      border-bottom-style: solid;
+      width: 100%;
+      overflow-x: scroll;
 
       @when fixed {
         position: fixed 0 0 * 0;
-        z-index: $z-index-normal;
+        z-index: 1;
       }
 
       .mint-tab-item {
-        padding: 17px 0;
-        font-size: 15px;
+        padding: 14px 0 13px;
+        font-size: 14px;
 
         &:last-child {
           border-right: 0;
         }
 
         &.is-selected {
-          border-bottom: 3px solid $theme-lv1;
-          color: $theme-lv1;
-          /* margin-bottom: -3px; */
-
-          .mint-tab-item-label{
-            color: $theme-lv1;
-          }
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
         }
       }
     }

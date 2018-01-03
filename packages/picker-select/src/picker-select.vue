@@ -1,7 +1,7 @@
 <template>
   <div>
-    <mt-cell :title="label" @click.native="popupVisible = true" arrowdefined :disabledcolor="disabled||readonly">
-      <i slot="arrowdefined" class="icon iconfont icon-keyboardarrowright"></i>
+    <mt-cell :title="label" @click.native="popupVisible = (disabled||readonly)?false:true" arrowdefined :disabledcolor="disabled||readonly">
+      <i slot="arrowdefined" class="iconfont icon-keyboardarrowright mt-color-grey-lv3"></i>
       <div class="select-value">
         <template>{{singleSelectDisplay()}}</template>
       </div>
@@ -30,30 +30,6 @@ export default {
   name: 'mt-picker-select',
   props: {
     value: { default: '' },
-    // url: { type: String, default: '' },
-    /**
-       * @noteType prop
-       * @field rows
-       * @desc 行数
-       * @type input
-       * @value 4
-       */
-    rows: String,
-    /**
-       * @noteType prop
-       * @field rows
-       * @desc 行数
-       * @type input
-       * @value 100
-       */
-    maxlength: String,
-    /**
-     * @noteType prop
-     * @field label
-     * @desc 标题
-     * @type input
-     * @value 标题
-     */
     label: { type: String, required: true },
     /**
      * @noteType prop
@@ -72,18 +48,12 @@ export default {
      */
     options: { type: Array, required: true },
     disabled: Boolean,
-    readonly: Boolean,
-    attr: Object
+    readonly: Boolean
   },
   data() {
     return {
-      selectorShow: false,
-      currentValue: "",
       popupVisible: false
     };
-  },
-  watch: {
-    //
   },
   methods: {
     singleSelectDisplay () {
@@ -98,7 +68,7 @@ export default {
       //
     },
     onConfirm(value,index) {
-      this.value=value;
+      this.$emit('input', value);
       this.popupVisible=false;
     },
     onCancel(value) {
@@ -108,36 +78,3 @@ export default {
 };
 
 </script>
-<style scoped>
-@import "../../../src/style/var.css";
-.slide-enter-active, .slide-leave-active {
-  transition: transform .25s
-}
-.slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
-  transform: translateX(100%);
-}
-.select-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: $bg-lv2;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  overflow: auto;
-}
-
-.select-picker {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-.select-value{
-  color:$grey-lv3;
-}
-
-</style>
-
-

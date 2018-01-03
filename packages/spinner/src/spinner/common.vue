@@ -2,11 +2,11 @@
   export default {
     computed: {
       spinnerColor() {
-        return this.color || this.$parent.color || '#ccc';
+        return this.color || this.$parent.color;
       },
 
       spinnerSize() {
-        return (this.size || this.$parent.size || 28) + 'px';
+        return (this.size || this.$parent.size) + 'px';
       }
     },
 

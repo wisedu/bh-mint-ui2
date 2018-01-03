@@ -1,25 +1,36 @@
 <template>
-  <div class="page-navbar">
-    <div class="page-title">Navbar</div>
+  <div class="page-navbar" style="margin-top:45px">
     <mt-navbar v-model="selected">
-      <mt-tab-item id="1">选项一</mt-tab-item>
-      <mt-tab-item id="2">选项二</mt-tab-item>
-      <mt-tab-item id="3">选项三</mt-tab-item>
+      <mt-tab-item id="1" componentname="navbar">
+        选项一
+        <mt-badge size="normal" padding="3px" color="red" slot="badge"></mt-badge>
+      </mt-tab-item>
+      <mt-tab-item id="2" componentname="navbar">选项二</mt-tab-item>
+      <mt-tab-item id="3" componentname="navbar">选项三</mt-tab-item>
+      <mt-tab-item id="4" componentname="navbar">选项四</mt-tab-item>
+      <mt-tab-item id="5" componentname="navbar">选项五</mt-tab-item>
+      <mt-tab-item id="6" componentname="navbar">选项六</mt-tab-item>
     </mt-navbar>
 
-    <mt-cell-group>
-      <mt-cell title="当前选中">{{ selected }}</mt-cell>
-    </mt-cell-group>
+    <div style="margin:15px 0;">
+      <mt-cell title="当前选中"  wrapperpaddingleft="20px">{{ selected }}</mt-cell>
+    </div>
 
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
-        <mt-cell v-for="n in 10" :title="'内容 ' + n" />
+        <mt-cell-group>
+          <mt-cell v-for="n in 10" :title="'内容 ' + n" wrapperpaddingleft="20px"/>
+        </mt-cell-group>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
-        <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+        <mt-cell-group>
+          <mt-cell v-for="n in 4" :title="'测试 ' + n" wrapperpaddingleft="20px"/>
+        </mt-cell-group>
       </mt-tab-container-item>
       <mt-tab-container-item id="3">
-        <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+        <mt-cell-group>
+          <mt-cell v-for="n in 6" :title="'选项 ' + n" wrapperpaddingleft="20px"/>
+        </mt-cell-group>
       </mt-tab-container-item>
     </mt-tab-container>
   </div>

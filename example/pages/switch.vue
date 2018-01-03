@@ -1,6 +1,5 @@
 <template>
   <div class="page-switch">
-    <div class="page-title">Switch</div>
     <div class="page-switch-btn">
       <mt-switch v-model="value1" @change="handleChange">
         <label v-text="value1"></label>
@@ -47,9 +46,7 @@ export default {
 <style lang="css">
   @component-namespace page {
     @component switch {
-      @descendent padding {
-        padding: 0 10px;
-      }
+      margin-top: 60px;
       @descendent btn {
         padding:0 0 15px 20px;
       }

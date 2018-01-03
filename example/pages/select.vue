@@ -1,6 +1,5 @@
 <template>
   <div class="page-select">
-    <div class="page-title">Select</div>
 
     <h1 class="page-item-title">Select 快捷语法糖</h1>
     <mt-cell-group>
@@ -82,13 +81,9 @@
 </template>
 
 <style lang="postcss">
-  body {
-    background: #fff;
-    padding: 0;
-  }
   @component-namespace page {
     @component select {
-      padding-top: 0px;
+      padding-top: 45px;
       @descendent wrapper {
         background-color: #fff;
       }
@@ -146,7 +141,8 @@
           let respData = resp.data
           if (respData.code == '0') {
             // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.singleSelectOptions = respData.datas.code.rows
+            this.singleSelectOptions = respData.datas.code.rows;
+            //this.singleSelectOptions = this.singleSelectOptions.slice(10);
           }
         })
       },

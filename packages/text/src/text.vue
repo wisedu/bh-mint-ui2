@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-text" :class="['mint-text--' + type]" :style="computeStyle">
+  <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'mt-color-grey']" :style="computeStyle">
     <slot></slot>
   </div>
 </template>
@@ -68,7 +68,7 @@ export default {
        */
       type: {
         type: String,
-        default: 'default'
+        default: ''
       },
       /**
        * @noteType prop
@@ -85,6 +85,7 @@ export default {
             let color = this.color;
             if (size) {
                 _style += `font-size: ${size};`;
+                _style += `line-height:1;`;
             }
 
             if (color) {
@@ -113,27 +114,9 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
-
   @component-namespace mint {
     @component text {
       position: relative;
-
-      @modifier primary {
-        color: $button-primary-background-color;
-      }
-
-      @modifier warning {
-        color: $button-warning-background-color;
-      }
-
-      @modifier danger {
-        color: $button-danger-background-color;
-      }
-
-      @modifier grey {
-        color: #d9d9d9;
-      }
     }
   }
 </style>

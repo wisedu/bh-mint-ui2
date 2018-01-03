@@ -1,10 +1,10 @@
 <template>
-  <div class="mint-picker">
-    <div class="mint-picker__toolbar mint-hairline--top-bottom" v-if="showToolbar">
+  <div class="mint-picker mt-bg-lv3">
+    <div class="mint-picker__toolbar mt-bColor-grey-lv6" v-if="showToolbar">
       <slot>
-        <div class="mint-picker__cancel" @click="emit('cancel')">{{ cancelText }}</div>
-        <div class="mint-picker__confirm" @click="emit('confirm')">{{ confirmText }}</div>
-        <div class="mint-picker__title" v-if="title" v-text="title" />
+        <div class="mint-picker__cancel mt-color-theme" @click="emit('cancel')">{{ cancelText }}</div>
+        <div class="mint-picker__confirm  mt-color-theme" @click="emit('confirm')">{{ confirmText }}</div>
+        <div class="mint-picker__title  mt-color-grey" v-if="title" v-text="title" />
       </slot>
     </div>
     <div class="mint-picker__columns">
@@ -146,26 +146,26 @@ export default {
 };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @import "../../../src/style/hairline.css";
   .mint-picker {
     overflow: hidden;
     user-select: none;
-    background-color: $color-white;
 
     &__toolbar {
-      height: 40px;
-      line-height: 40px;
+      height: 44px;
+      line-height: 44px;
       overflow: hidden;
+      border-bottom-width: 0.5px;
+      border-bottom-style: solid;
     }
 
     &__cancel,
     &__confirm {
-      color: $success-color;
       padding: 0 15px;
+      font-size: 17px;
 
       &:active {
-        background-color: $color-green;
+        opacity:0.6;
       }
     }
 
@@ -178,6 +178,7 @@ export default {
     }
 
     &__title {
+      font-size: 18px;
       text-align: center;
       overflow: hidden;
       white-space: nowrap;
@@ -202,14 +203,9 @@ export default {
 
       li {
         padding: 0 10px;
-        color: $grey-lv1;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-      }
-
-      li&--selected {
-        color: $theme-lv1;
       }
 
       li&--disabled {

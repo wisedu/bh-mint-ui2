@@ -1,25 +1,15 @@
 <template>
-  <div>
-    <!-- <div class="page-select">
-      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptions"></mt-tree-selector> -->
-    <!-- </div> -->
-    <div class="page-select">
+  <div style="margin-top:45px;">
+    <mt-cell-group>
       <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
-    </div>
-    <div class="page-select">
       <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap"></mt-tree-selector>
-    </div>
+    </mt-cell-group>
   </div>
 </template>
 
 <style>
-  body {
-    background: #ddd;
-    padding: 0;
-  }
   @component-namespace page {
     @component select {
-      padding-top: 50px;
       @descendent wrapper {
         background-color: #fff;
       }

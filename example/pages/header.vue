@@ -1,40 +1,36 @@
 <template>
   <div>
-    <mt-header fixed title="固定在顶部"></mt-header>
+    <mt-header fixed title="默认标题+固定置顶" router leftIcontext="返回">
+      <span class="iconfont icon-gengduo" slot="right"></span>
+    </mt-header>
     <div class="page-header-main">
-      <div class="page-title">Header</div>
-      <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
+      <mt-header title="背景色" backgroundColor="mt-bg-theme">
         <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
+          <span class="iconfont icon-keyboardarrowleft"></span>
         </router-link>
-        <mt-button icon="more" slot="right"></mt-button>
+      </mt-header>
+      <mt-header title="多个按钮" backgroundColor="mt-bg-warning">
+        <router-link to="/" slot="left">
+          <span><i class="iconfont icon-keyboardarrowleft"></i>返回</span>
+        </router-link>
+        <span @click="handleClose" slot="left" class="iconfont icon-close">关闭</span>
+        <span class="iconfont icon-zhuantui" slot="right" @click="alert"></span>
       </mt-header>
 
-      <mt-header title="多个按钮">
+      <mt-header title="左侧仅文字" backgroundColor="mt-bg-danger">
         <router-link to="/" slot="left">
-          <mt-button icon="back">返回</mt-button>
-        </router-link>
-        <mt-button @click="handleClose">关闭</mt-button>
-        <mt-button icon="more" slot="right"></mt-button>
-      </mt-header>
-
-      <mt-header title="左侧仅文字">
-        <router-link to="/" slot="left">
-            <mt-button>返回</mt-button>
+            <span>返回</span>
           </router-link>
       </mt-header>
 
-      <mt-header title="右侧仅文字">
+      <mt-header title="字体16px,高度50px" fontSize="16px" height="50px" backgroundColor="mt-bg-purple">
         <router-link to="/" slot="right">
-          <mt-button>分享</mt-button>
+          <span>分享</span>
         </router-link>
       </mt-header>
 
-      <mt-header title="仅图标">
-        <router-link to="/" slot="left">
-          <mt-button icon="back"></mt-button>
-        </router-link>
-        <mt-button slot="right" icon="more"></mt-button>
+      <mt-header title="返回跳转" backgroundColor="mt-bg-primary" to="/cell" router leftIcontext="To Cell组件">
+        <span class="iconfont icon-touxiang" slot="right"></span>
       </mt-header>
     </div>
 
@@ -54,6 +50,9 @@ export default {
   methods: {
     handleClose() {
       alert('close this page');
+    },
+    alert() {
+      alert('分享');
     }
   }
 };
@@ -63,7 +62,7 @@ export default {
   @component-namespace page {
     @component header {
       @descendent main {
-        margin-top: 50px;
+        margin-top: 60px;
         min-height: 120vh;
 
         > * {
@@ -71,5 +70,8 @@ export default {
         }
       }
     }
+  }
+  .mt-btn-default:not(.is-disabled):active {
+    background-color: transparent;
   }
 </style>

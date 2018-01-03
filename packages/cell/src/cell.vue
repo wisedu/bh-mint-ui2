@@ -1,29 +1,27 @@
 <template>
-  <a class="mint-cell" :href="href" :class="{'mint-cell-disabled-color':disabledcolor}">
-    <span class="mint-cell-mask" v-if="isLink"></span>
+  <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" :href="href" :style="{'min-height':cellheight}">
+    <span class="mint-cell-mask mt-bg-after-grey-lv6" v-if="isLink"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="mint-cell-wrapper" :class="{'mint-cell-no-top-line':isCell}" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
+    <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
       <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
         <slot name="title">
-          <span class="mint-cell-text" v-html="title"></span>
-          <span v-if="label" class="mint-cell-label" v-html="label"></span>
+          <span class="mint-cell-text" :class="[disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" v-html="title"></span>
+          <span v-if="label" class="mint-cell-label mt-color-grey-lv3" v-html="label"></span>
         </slot>
       </div>
-      <div class="mint-cell-value" :class="{ 'is-link' : isLink }">
+      <div class="mint-cell-value" :class="[{'is-link' : isLink },disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue">
         <slot>
           <span v-text="value"></span>
         </slot>
       </div>
       <slot v-if="isLink||arrowdefined" name="arrowdefined">
-        <i class="icon iconfont icon-keyboardarrowright" v-if="!arrowdefined"></i>
+        <i class="mint-cell-icon mt-color-grey-lv3 iconfont icon-keyboardarrowright" v-if="!arrowdefined"></i>
       </slot>
-      <!-- <slot name="arrowdefined"></slot>
-      <i v-if="isLink" class="mint-cell-allow-right"></i> -->
     </div>
     <div class="mint-cell-right">
       <slot name="right"></slot>
@@ -33,9 +31,7 @@
 </template>
 
 <script>
-// if (process.env.NODE_ENV === 'component') {
-  // require('bh-mint-ui2/packages/font/style.css');
-// }
+
 
 /**
  * mt-cell
@@ -73,6 +69,10 @@ export default {
   name: 'mt-cell',
 
   props: {
+    cellheight:{
+      type:String,
+      default:'50px'
+    },
     to: [String, Object],
       /**
        * @noteType prop
@@ -183,7 +183,10 @@ export default {
       return this.to;
     },
     isCell() {
-      return !!this.findParentByName('mt-cell');
+      return false;
+    },
+    isGroupCell() {
+      return !!this.findParentByName('mt-cell-group');
     },
     wrapperpaddingrightdefined() {
       return this.arrowdefined||this.isLink?"15px":"20px";
@@ -213,6 +216,15 @@ export default {
 
       return this.parentGroup;
     }
+  },
+
+  created:function(){
+    this.$nextTick(function(){
+      let targetDom=this.$refs.cellValue;
+      if(targetDom.firstChild.nodeName === "TEXTAREA"){
+        targetDom.parentNode.style.alignItems="normal"
+      }
+    })
   }
 };
 
@@ -243,14 +255,11 @@ export default {
 </script>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component cell {
-      background-color: $color-white;
       box-sizing: border-box;
       color: inherit;
-      min-height: 50px;
       display: block;
       overflow: hidden;
       position: relative;
@@ -261,28 +270,27 @@ export default {
           background-origin: border-box;
         }
       }
-
+/*
       &:last-child {
-        background-image: linear-gradient(0deg, $color-grey, $color-grey 50%, transparent 50%);
+        border-bottom-width: 0.5px;
+        border-bottom-style: solid;
         background-size: 100% 1px;
         background-repeat: no-repeat;
         background-position: bottom;
-      }
-      @descendent disabled {
-        @descendent color {
-          color: $grey-lv3;
-        }
-      }
+      }*/
 
       @descendent wrapper {
-        border-top:0.5px solid $grey-lv5;
+        border-top-width: 0.5px;
+        border-top-style: solid;
+        border-bottom-width: 0.5px;
+        border-bottom-style: solid;
         background-size: 120% 1px;
         background-repeat: no-repeat;
         background-position: top left;
         background-origin: content-box;
-        align-items: center;
         box-sizing: border-box;
         display: flex;
+        align-items: center;
         font-size: 16px;
         line-height: 1;
         min-height: inherit;
@@ -292,7 +300,6 @@ export default {
 
       @descendent mask {
         &::after {
-          background-color: #000;
           content: " ";
           opacity: 0;
           position: absolute 0;
@@ -308,10 +315,9 @@ export default {
       }
 
       @descendent label {
-        color: #888;
         display: block;
         font-size: 12px;
-        margin-top: 6px;
+        margin-top: 7px;
       }
 
       img {
@@ -325,12 +331,11 @@ export default {
       }
 
       @descendent value {
-        color: $cell-value-color;
         display: flex;
         align-items: center;
         
         @when link {
-          /* margin-right: 8px; */
+          margin-right: 1px;
         }
       }
 
@@ -350,26 +355,20 @@ export default {
       }
 
       @descendent newline {
-        margin-bottom: 14px;
+        margin-bottom: 16px;
       }
 
       @descendent no-top-line{
         border-top:none;
       }
 
-      @descendent allow-right::after {
-        border: solid 2px $border-color;
-        border-bottom-width: 0;
-        border-left-width: 0;
-        content: " ";
-        position: absolute 50% 20px * *;
-        size: 5px;
-        transform: translateY(-50%) rotate(45deg);
+      @descendent no-bottom-line{
+        border-bottom: none;
+      }
+
+      @descendent icon{
+        font-size: 20px;
       }
     }
-  }
-  .icon{
-    color:$grey-lv3;
-    font-size: 24px;
   }
 </style>

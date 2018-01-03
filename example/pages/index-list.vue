@@ -1,11 +1,12 @@
 <template>
   <div class="page-indexlist">
-    <h1 class="page-title">Index List</h1>
     <p class="page-indexlist-desc">此例请使用手机查看</p>
     <div class="page-indexlist-wrapper">
       <mt-index-list>
         <mt-index-section v-for="item in alphabet" :index="item.initial">
-          <mt-cell v-for="cell in item.cells" :title="cell"></mt-cell>
+          <mt-cell-group grouppaddingleft="16px">
+            <mt-cell v-for="cell in item.cells" :title="cell" cellheight='44px'></mt-cell>
+          </mt-cell-group>
         </mt-index-section>
       </mt-index-list>
     </div>
@@ -15,6 +16,8 @@
 <style>
   @component-namespace page {
     @component indexlist {
+      margin-top: 45px;
+
       @descendent desc {
         text-align: center;
         color: #666;

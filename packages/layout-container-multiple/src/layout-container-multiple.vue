@@ -8,7 +8,7 @@
         name: 'mt-layout-container-multiple',
         methods: {
             handleClick(evt) {
-                this.$emit('click', evt);
+                this.$emit('click',evt);
             }
         },
         props: {
@@ -17,7 +17,6 @@
 
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component layout-container-multiple {
         position: relative;

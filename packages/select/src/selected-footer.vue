@@ -12,7 +12,7 @@
         <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm" href="javascript:void(0)">确定</a>
       </div>
       <div class="mint-selected-footer-list">
-        <mt-checklist v-model="currentValue" :options="listData" ></mt-checklist>
+        <!-- <mt-checklist v-model="currentValue" :options="listData" ></mt-checklist> -->
       </div>
     </div>
   </div>  

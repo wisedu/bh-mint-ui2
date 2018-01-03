@@ -1,6 +1,6 @@
 <template>
   <li class="mint-indexsection">
-    <p class="mint-indexsection-index">{{ index }}</p>
+    <p class="mint-indexsection-index mt-bg-lv2">{{ index }}</p>
     <ul>
       <slot></slot>
     </ul>
@@ -15,8 +15,7 @@
       
       @descendent index {
         margin: 0;
-        padding: 10px;
-        background-color: #fafafa;
+        padding: 6px 20px;
 
         & + ul {
           padding: 0;

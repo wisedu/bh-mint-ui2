@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h4 class="mint-button-list-title">{{label}}</h4>
-    <div class="mint-button-list-button-container">
+    <h4 class="mint-button-list-title mt-color-grey-lv3">{{label}}</h4>
+    <div class="mint-button-list-button-container mt-bg-lv3">
       <template v-for="item in options">
         <mt-button class="mint-button-list-btn" @click="handleClick(item.id, $event)" :key="item.id" :plain="plain" size="normal" :type="getType(item.id)" >{{item.name}}</mt-button>
       </template>
@@ -93,8 +93,7 @@ export default {
 };
 </script>
 
-<style lang="postcss">
-  @import "../../../src/style/var.css";
+<style lang="css">
 
   @component-namespace mint {
     @component button-list {
@@ -107,11 +106,9 @@ export default {
   .mint-button-list-title {
     font-size: 14px;
     padding: 0 12px;
-    color: $grey-lv3;
   }
 
   .mint-button-list-button-container {
-    background: $bg-lv3;
     padding: 8px;
   }
 </style>

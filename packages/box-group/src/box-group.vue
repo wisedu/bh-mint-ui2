@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-box-group" :class="{ 'is-limit': isLimit}">
+  <div class="mint-box-group" :class="{ 'is-limit': isLimit}" ref="mtBoxGroup">
     <slot></slot>
   </div>
 </template>
@@ -33,7 +33,6 @@ export default {
 };
 </script>
 <style lang="css">
-  @import "../../../src/style/var.css";
   @component-namespace mint {
     @component box-group {
 
@@ -42,8 +41,8 @@ export default {
           display: none;
         }
         .mint-checkbox-new-input:not(:checked) + .mint-checkbox-new-core{
-          background-color: $color-grey;
-          border-color: $color-grey;
+          background-color: #EFEFEF;
+          border-color: #EFEFEF;
         }
       }
     }

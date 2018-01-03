@@ -1,11 +1,10 @@
 <template>
   <div class="page-popup">
-    <h1 class="page-title">Popup</h1>
     <div class="page-popup-wrapper">
-      <mt-button @click.native="popupVisible1 = true" size="large" ref="button">中部弹出 popup</mt-button>
-      <mt-button @click.native="popupVisible2 = true" size="large">上侧弹出 popup</mt-button>
-      <mt-button @click.native="popupVisible3 = true" size="large">右侧弹出 popup</mt-button>
-      <mt-button @click.native="popupVisible4 = true" size="large">下侧弹出 popup</mt-button>
+      <mt-button @click.native="popupVisible1 = true" size="large" ref="button" type="default" plain>中部弹出 popup</mt-button>
+      <mt-button @click.native="popupVisible2 = true" size="large" type="primary" plain>上侧弹出 popup</mt-button>
+      <mt-button @click.native="popupVisible3 = true" size="large" type="warning" plain>右侧弹出 popup</mt-button>
+      <mt-button @click.native="popupVisible4 = true" size="large" type="danger" plain>下侧弹出 popup</mt-button>
     </div>
     <mt-popup v-model="popupVisible1" popup-transition="popup-fade" class="mint-popup-1" :style="{ top: buttonBottom + 10 + 'px' }">
       <h1>popup</h1>
@@ -29,7 +28,7 @@
         <mt-cell-group style="margin-bottom:4px">
           <mt-textarea maxlength=100 rows=4 placeholder="请输入"></mt-textarea>
         </mt-cell-group>
-        <mt-button size="large">取消</mt-button>
+        <mt-button size="large" @click.native="popupVisible4=false">取消</mt-button>
       </div>
     </mt-popup>
   </div>

@@ -4,18 +4,17 @@
       <slot></slot>
     </ul>
     
-    <div class="mint-indexlist-nav" @touchstart="handleTouchStart" ref="nav">
+    <div class="mint-indexlist-nav mt-color-blue mt-bg-lv3" @touchstart="handleTouchStart" ref="nav">
       <ul class="mint-indexlist-navlist">
         <li class="mint-indexlist-navitem" v-for="section in sections">{{ section.index }}</li>
       </ul>
     </div>
     
-    <div class="mint-indexlist-indicator" v-if="showIndicator" v-show="moving">{{ currentIndicator }}</div>
+    <div class="mint-indexlist-indicator mt-color-white mt-bg-grey" v-if="showIndicator" v-show="moving">{{ currentIndicator }}</div>
   </div>
 </template>
 
 <style lang="css">
-  @import "../../../src/style/var.css";
 
   @component-namespace mint {
     @component indexlist {
@@ -35,8 +34,6 @@
         bottom: 0;
         right: 0;
         margin: 0;
-        background-color: #fff;
-        border-left: solid 1px #ddd;
         text-align: center;
         max-height: 100%;
         display: flex;
@@ -54,7 +51,7 @@
       }
       
       @descendent navitem {
-        padding: 2px 6px;
+        padding: 1px 2px;
         font-size: 12px;
         user-select: none;
         -webkit-touch-callout: none;
@@ -68,9 +65,7 @@
         transform: translate(-50%, -50%);
         text-align: center;
         line-height: 50px;
-        background-color: rgba(0, 0, 0, .7);
         border-radius: 5px;
-        color: #fff;
         font-size: 22px;
       }
     }

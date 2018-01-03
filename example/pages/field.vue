@@ -1,6 +1,5 @@
 <template>
-  <div class="page-field">
-    <div class="page-title">Field</div>
+  <div class="page-field" style="margin-top:60px">
     <mt-cell-group>
       <!--start
       @name normal
@@ -72,7 +71,7 @@
       <!--start
       @name normal-success
       -->
-      <mt-field label="邮箱" placeholder="成功状态" value="禁用的内容" disabled state="success"></mt-field>
+      <mt-field label="邮箱" placeholder="成功状态" value="禁用的内容" disabled state="default"></mt-field>
       <mt-field label="邮箱" placeholder="成功状态" value="只读的内容" readonly state="success"></mt-field>
       <!--end-->
 
@@ -96,7 +95,7 @@
       @name custom-image
       -->
       <mt-field label="验证码" placeholder="输入验证码">
-        <mt-image src="../assets/100x100.png" height="48px" width="100px"></mt-image>
+        <mt-image src="/example/assets/100x100.png" height="48px" width="100px"></mt-image>
       </mt-field>
       <!--end-->
     </mt-cell-group>

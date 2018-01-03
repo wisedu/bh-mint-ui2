@@ -1,6 +1,6 @@
 <template>
   <div class="mint-picker-column" :class="className">
-    <div class="mint-picker-column__frame mint-hairline--top-bottom" :style="frameStyle" />
+    <div class="mint-picker-column__frame mint-hairline--top-bottom mt-bColor-after-grey-lv6" :style="frameStyle" />
     <ul
       :style="wrapperStyle"
       @touchstart="onTouchStart"
@@ -11,10 +11,11 @@
       <li
         v-for="(option, index) in options" 
         v-text="getOptionText(option)"
-        :class="{
-          'mint-picker-column--disabled': isDisabled(option),
-          'mint-picker-column--selected': index === currentIndex
-        }"
+        :class="[
+          {'mint-picker-column--disabled': isDisabled(option)},
+          {'mint-picker-column--selected': index === currentIndex},
+          index === currentIndex?'mt-color-theme':'mt-color-grey'
+        ]"
         @click="setIndex(index)"
       />
     </ul>

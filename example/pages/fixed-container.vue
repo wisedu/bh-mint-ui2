@@ -1,14 +1,13 @@
 <template>
-  <div style="margin-top: 60px;">
-    <mt-fixed-button position="top">
-      <mt-button>按钮1</mt-button>
-      <mt-button>按钮2</mt-button>
-    </mt-fixed-button>
-
-    <mt-fixed-button>
+  <div class="fixed-container" style="padding-top:60px;position:relative">
+    <mt-fixed-container bottom="20px" left="20px">
       <mt-button>按钮3</mt-button>
       <mt-button>按钮4</mt-button>
-    </mt-fixed-button>
+    </mt-fixed-container>
+    <mt-fixed-container position="top" top="100px" right="20px" left="inherit">
+      <mt-button>按钮3</mt-button>
+      <mt-button>按钮4</mt-button>
+    </mt-fixed-container>
   </div>
 </template>
 

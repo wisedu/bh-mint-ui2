@@ -1,5 +1,5 @@
 <template>
-  <div class="part">
+  <div class="hr" style="margin-top:60px">
     <div class="item">
       <div>normal</div>
       <mt-hr></mt-hr>
@@ -7,22 +7,22 @@
 
     <div class="item">
       <div>weight 4px</div>
-      <mt-hr height="4px"></mt-hr>
+      <mt-hr height="4px" margin="10px 0"></mt-hr>
     </div>
 
     <div class="item">
       <div>primary</div>
-      <mt-hr color="#06c1ae"></mt-hr>
+      <mt-hr color="#52C7CA" margin="10px 0"></mt-hr>
     </div>
 
     <div class="item">
       <div>warning</div>
-      <mt-hr color="#ffb200"></mt-hr>
+      <mt-hr color="#FFB950" margin="10px 0"></mt-hr>
     </div>
 
     <div class="item">
       <div>danger</div>
-      <mt-hr color="#ef4f4f"></mt-hr>
+      <mt-hr color="#F26666" margin="10px 0"></mt-hr>
     </div>
   </div>
 </template>
@@ -34,10 +34,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-  .part{
-    margin-top: 60px;
+  .hr{
+    margin-top: 45px;
+    padding:0 20px;
   }
-
   .item{
     margin-top: 12px;
   }

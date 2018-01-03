@@ -1,7 +1,11 @@
 <template>
   <div class="page-search">
-    <mt-search autofocus v-model="value" :result="filterResult"></mt-search>
-    123
+    <mt-header title="Search" backgroundColor="bg-theme color-theme">
+        <router-link to="/" slot="left">
+          <span class="iconfont icon-keyboardarrowleft"></span>
+        </router-link>
+      </mt-header>
+    <mt-search autofocus v-model="value" :result="filterResult" margintop="87px"></mt-search>
   </div>
 </template>
 

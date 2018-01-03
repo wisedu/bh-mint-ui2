@@ -9,14 +9,21 @@
       <slot v-else  name="display" :options="options" :value="value"></slot>
     </div>
     <transition name="slide">
-      <div class="select-container" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
+      <div class="select-container mt-bg-lv2" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <!-- select 模板 -->
         <template v-if="selectType === 'select'">
-          <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio>
+          <!-- <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio> -->
+          <mt-box-group v-model="currentValue">
+            <mt-cell-group>
+              <mt-radiobox :name="item.value" v-for="item in getOptions_select(options)" :key="item.value">
+                {{item.label}}
+              </mt-radiobox>
+            </mt-cell-group>
+          </mt-box-group>
         </template>
         <!-- multi-select 模板 -->
         <template  v-else-if="selectType === 'multi-select'">
-          <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist>
+          <!-- <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist> -->
           <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
         </template>
         <!-- 自定义 -->
@@ -123,7 +130,7 @@ export default {
   },
   methods: {
     handleDisplayClick(e) {
-      this.$emit('selector-click', '', e)
+      this.$emit('selector-click', 'single', e)
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },
@@ -151,7 +158,7 @@ export default {
       return this.options.filter(item => {
         if (!item || item.id === null) return false
         return item.id.toString() === this.value.toString()
-      })[0].name
+      })[0].name;
     },
     handleClick_select(val, $event) {
       this.$emit('change', val, $event)
@@ -196,7 +203,6 @@ export default {
  */
 </script>
 <style>
-@import "../../../src/style/var.css";
 .slide-enter-active, .slide-leave-active {
   transition: transform .25s
 }
@@ -207,11 +213,9 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: $bg-lv2;
   left: 0;
   top: 0;
-  z-index: 999;
+  z-index: 998;
   overflow: auto;
 }
 

@@ -6,7 +6,7 @@
     <title>BH Mint UI 2</title>
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1469597443_9221172.css">
     <link rel="stylesheet" href="//res.wisedu.com/fe_components/iconfont_mobile/iconfont.css">
-    <!-- <link rel="stylesheet" href="../src/assets/font/iconfont.css"> -->
+    <link rel="stylesheet" href="../src/style/skin.css">
     <link rel="stylesheet" href="//res.wisedu.com/bower_components/animate.css/animate.min.css">
   </head>
   <body>

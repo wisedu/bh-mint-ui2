@@ -1,7 +1,6 @@
 <template>
-  <div class="page-field">
-    <div class="page-title">Field</div>
-    <div class="page-part">
+  <div class="page-field" style="margin-top:45px;">
+    <div>
       <!-- <mt-field label="用户名" placeholder="请输入用户名" :attr="{ maxlength: 10 }"></mt-field> -->
       <mt-file-list :file-list="fileList" label="这里是传进来的标题"></mt-file-list>
     </div>
