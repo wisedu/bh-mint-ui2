@@ -2,12 +2,12 @@
   <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :disabledcolor="readonly||disabled" :wrapperpaddingright="state!=='default'?'15px':'20px'" :class="[{
               'is-nolabel': !label
             }]">
-    <div class="mint-field-core" :class="{'mint-field-placeholder':placeholder===showValue}" @click="handlePick()">{{showValue}}</div>
+    <div class="mint-field-core" :class="[{'mt-color-grey-lv3':placeholder===showValue},{'mt-color-danger':state==='error'},{'mt-color-warning':state==='warning'}]" @click="handlePick()">{{showValue}}</div>
     <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue && active">
       <i class="mintui mintui-field-error"></i>
     </div>
-    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mintui-field-' + state]"></i>
+    <span class="mint-field-state" v-if="state" :class="iconColor">
+      <i class="iconfont" :class="['icon-' + iconstate]"></i>
     </span>
     <div class="mint-field-other">
       <slot></slot>
@@ -243,6 +243,28 @@ export default {
           return this.currentValue;
         }
       }
+    },
+    iconstate:function(){
+      let iconstate="default";
+      switch(this.state){
+        case "success":iconstate="wancheng";break;
+        case "warning":iconstate="yuqiweiwancheng";break;
+        case "error":iconstate="weiwancheng";break;
+        default:
+          break;
+      }
+      return iconstate;
+    },
+    iconColor:function(){
+      let iconColor="default";
+      switch(this.state){
+        case "success":iconColor="mt-color-primary";break;
+        case "warning":iconColor="mt-color-warning";break;
+        case "error":iconColor="mt-color-danger";break;
+        default:
+          break;
+      }
+      return iconColor;
     }
   },
 
@@ -284,7 +306,6 @@ export default {
 </script>
 
 <style lang="css">
-@import "../../../src/style/var.css";
 
 @component-namespace mint {
   @component field {
@@ -309,7 +330,6 @@ export default {
 
     .mint-cell-value {
       flex: 1;
-      color: inherit;
       display: flex;
     }
 
@@ -324,37 +344,17 @@ export default {
       width: 100%;
     }
 
-    @descendent placeholder {
-      color:$grey-lv3;
-    }
 
     @descendent clear {
       opacity: .2;
     }
 
     @descendent state {
-      color: inherit;
       margin-left: 20px;
 
-      .mintui {
-        font-size: 20px;
-      }
-
-      @when error {
-        color: $error-color;
-      }
-
-      @when warning {
-        color: $warning-color;
-      }
-
-      @when success {
-        color: $success-color;
-      }
-
-      @when default {
-        margin-left: 0;
-      }
+      .iconfont {
+          font-size: 20px;
+        }
     }
 
     @descendent other {

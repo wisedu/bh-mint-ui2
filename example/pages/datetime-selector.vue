@@ -1,17 +1,15 @@
 <template>
-  <div class="page-field" style="padding-top:45px;">
+  <div class="page-datetime-selector" style="padding-top:45px;">
+    <mt-button @click="handlerClear">清空</mt-button>
     <mt-cell-group>
       <mt-datetime-selector label="日期时间" placeholder="请输入发生时间" type="datetime" value="2017-08-02 09:01:01"></mt-datetime-selector>
       <mt-datetime-selector label="日期时间" placeholder="限制日期选择区间" type="datetime" v-model="current" :min-date="new Date()" :max-date="new Date()"></mt-datetime-selector>
       <mt-datetime-selector label="时间" placeholder="限制时间选择区间" type="time" :min-hour="10" :max-hour="15" ></mt-datetime-selector>
     </mt-cell-group>
-    <mt-button @click="handlerClear">清空</mt-button>
-    <mt-hr height="10px"></mt-hr>
     <mt-cell-group>
       <mt-datetime-selector label="日期" placeholder="请输入生日" type="date"></mt-datetime-selector>
       <mt-datetime-selector label="时间" placeholder="请输入时间" type="time"></mt-datetime-selector>
     </mt-cell-group>
-    <mt-hr height="10px"></mt-hr>
     <mt-cell-group>
       <mt-datetime-selector label="日期" placeholder="只读" type="date" readonly></mt-datetime-selector>
       <mt-datetime-selector label="日期" placeholder="禁用" type="date" disabled></mt-datetime-selector>
@@ -36,3 +34,11 @@ export default {
   }
 }
 </script>
+<style type="text/css">
+  .page-datetime-selector{
+    padding-top: 45px;
+  }
+  .page-datetime-selector>div{
+    margin-bottom: 20px;
+  }
+</style>
