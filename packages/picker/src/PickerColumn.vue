@@ -9,19 +9,32 @@
       @touchcancel="onTouchEnd"
     >
       <li
-        v-for="(option, index) in options" 
-        v-text="getOptionText(option)"
+        v-for="(option, index) in options"
+        class="mt-picker-column-item"
         :class="[
           {'mint-picker-column--disabled': isDisabled(option)},
           {'mint-picker-column--selected': index === currentIndex},
           index === currentIndex?'mt-color-theme':'mt-color-grey'
         ]"
         @click="setIndex(index)"
-      />
+        :style="frameStyle">
+          <div>
+            <span v-text="getOptionText(option)" :style="frameStyle"></span>
+          </div>
+        </li>
     </ul>
   </div>
 </template>
 
+<style>
+  .mt-picker-column-item div{
+    display: inline-block;
+  }
+  .mt-picker-column-item div span{
+    display: table-cell;
+    vertical-align: middle;
+  }
+</style>
 <script>
 const DEFAULT_DURATION = 200;
 const range = (num, arr) => Math.min(Math.max(num, arr[0]), arr[1]);
@@ -84,10 +97,10 @@ export default {
     },
     wrapperStyle() {
       const { itemHeight, visibileColumnCount } = this;
+      //lineHeight: itemHeight + 'px',
       return {
         transition: `${this.duration}ms`,
         transform: `translate3d(0, ${this.offset}px, 0)`,
-        lineHeight: itemHeight + 'px',
         height: itemHeight * visibileColumnCount + 'px',
         paddingTop: itemHeight * (visibileColumnCount - 1) / 2 + 'px'
       };

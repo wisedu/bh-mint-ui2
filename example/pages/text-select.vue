@@ -1,7 +1,7 @@
 <template>
-  <div class="page-select" style="margin-top:44px;">
+  <div style="margin-top:44px;">
     <mt-cell-group>
-      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick">
+      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick" :headerheight="44">
       </mt-text-select>
       <p>{{singleSelectValue}}</p>
 

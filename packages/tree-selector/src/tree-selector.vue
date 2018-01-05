@@ -8,7 +8,9 @@
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
-        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
+        <mt-cell-group>
+          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
+        </mt-cell-group>
       </template>
       <template v-else-if="multiple" v-show="scope.options.length > 0">
         <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>

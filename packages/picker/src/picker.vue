@@ -216,10 +216,10 @@ export default {
         top: 50%;
         left: 0;
         width: 100%;
-        z-index: 1;
+        z-index: 2002;
         position: absolute!important;
         pointer-events: none;
-        transform: translateY(-50%);
+        transform: translate3d(0,-50%,0);
       }
     }
   }

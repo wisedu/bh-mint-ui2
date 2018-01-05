@@ -1,14 +1,14 @@
 <template>
   <div class="page-swipe">
     <p class="page-swipe-desc">基础用法</p>
-    <mt-swipe :auto="4000">
-      <mt-swipe-item class="slide1">1</mt-swipe-item>
-      <mt-swipe-item class="slide2">2</mt-swipe-item>
-      <mt-swipe-item class="slide3">3</mt-swipe-item>
+    <mt-swipe  class="swipe">
+      <mt-swipe-item class="slide1"><img src="../assets/1.jpg"/></mt-swipe-item>
+      <mt-swipe-item class="slide2"><img src="../assets/2.jpg"/></mt-swipe-item>
+      <mt-swipe-item class="slide3"><img src="../assets/3.jpg"/></mt-swipe-item>
     </mt-swipe>
 
     <p class="page-swipe-desc">隐藏 indicators</p>
-    <mt-swipe :show-indicators="false">
+    <mt-swipe :show-indicators="false" :auto="0">
       <mt-swipe-item class="slide1">1</mt-swipe-item>
       <mt-swipe-item class="slide2">2</mt-swipe-item>
       <mt-swipe-item class="slide3">3</mt-swipe-item>
@@ -16,9 +16,9 @@
 
     <p class="page-swipe-desc">取消自动播放</p>
     <mt-swipe :auto="0">
-      <mt-swipe-item class="slide1">1</mt-swipe-item>
-      <mt-swipe-item class="slide2">2</mt-swipe-item>
-      <mt-swipe-item class="slide3">3</mt-swipe-item>
+      <mt-swipe-item class="slide1 swipe"><img src="../assets/1.jpg"/></mt-swipe-item>
+      <mt-swipe-item class="slide2 swipe"><img src="../assets/2.jpg"/></mt-swipe-item>
+      <mt-swipe-item class="slide3 swipe"><img src="../assets/3.jpg"/></mt-swipe-item>
     </mt-swipe>
 
     <p class="page-swipe-desc">设置默认显示页</p>
@@ -68,6 +68,12 @@
       .slide3 {
         background-color: #D8D8D8;
         color: #fff;
+      }
+
+      .swipe img{
+        display: block;
+        height: 100%;
+        width: 100%;
       }
     }
   }

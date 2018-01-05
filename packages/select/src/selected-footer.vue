@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-selected-footer">
+  <div class="mint-selected-footer mt-bg-lv3 mt-bColor-grey-lv5">
     <div v-show="!isShowDetail" class="mint-selected-footer-bar">
       <mt-button class="mint-selected-footer-detail" :disabled="value.length === 0" size="large" @click="isShowDetail = true">查看已选({{value.length}})</mt-button>
       <mt-button class="mint-selected-footer-confirm" size="large" type="primary" @click="handleConfirm">确定</mt-button>
@@ -9,7 +9,7 @@
       <div class="mint-selected-footer-list-header">
         <a href="javascript:void(0)" @click="handleCancel">取消</a>
         <span>已选({{value.length}})</span>
-        <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm" href="javascript:void(0)">确定</a>
+        <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm mt-color-theme" href="javascript:void(0)">确定</a>
       </div>
       <div class="mint-selected-footer-list">
         <!-- <mt-checklist v-model="currentValue" :options="listData" ></mt-checklist> -->
@@ -74,9 +74,9 @@ export default {
 .mint-selected-footer {
   position: fixed;
   width: 100%;
-  border-top: 1px solid $grey-lv5;
-  background: $bg-lv2;
-  padding: 8px 12px;
+  border-top-width: 0.5px;
+  border-top-style: solid;
+  padding: 7px 8px;
   left: 0;
   bottom: 0;
 }
@@ -86,6 +86,7 @@ export default {
   width: 100%;
 }
 .mint-selected-footer .mint-button {
+  height: 34px;
   margin-top: 0;
   width: auto;
 }
@@ -95,7 +96,7 @@ export default {
 }
 .mint-selected-footer .mint-selected-footer-detail {
   flex-grow: 1;
-  margin-right: 12px;
+  margin-right: 8px;
 }
 .mint-selected-footer-list-container {
   position: fixed;
@@ -116,9 +117,6 @@ export default {
 .mint-selected-footer-list-header a {
   flex-grow: 0;
   padding: 0 12px;
-}
-.mint-selected-footer-list-confirm {
-  color: $color-green;
 }
 .mint-selected-footer-list-header span {
   flex-grow: 1;

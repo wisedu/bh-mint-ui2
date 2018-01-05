@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <mt-cell-group>
     <mt-cell v-for="option in options" :key="option.id" @click.native="handleClick(option)">
       <div class="mint-checklist-label" slot="title">
         <label @click.stop>
@@ -12,7 +12,7 @@
       </div>
       <i v-if="option.isParent" class="mint-cell-allow-right"></i>
     </mt-cell>
-  </div>  
+  </mt-cell-group>
 </template>
 <script>
 export default {

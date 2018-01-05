@@ -5,7 +5,7 @@
     </div>
 
     <div class="page-picker-wrapper">
-      <mt-picker :columns="column2" :title="title2" showToolbar/>
+      <mt-picker :columns="column2" :title="title2" showToolbar @confirm="onConfirm" @cancel="onCancel"/>
     </div>
     <div style="padding:10px" @click="changeData">点我切换数据</div>
     <div class="page-picker-wrapper">
@@ -55,11 +55,11 @@ export default {
       title3: '展示顶部栏',
       title4: '多列联动',
       column1: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
-      column2: [
-        { text: '杭州', disabled: true },
-        { text: '宁波' },
-        { text: '温州' }
-      ],
+      column2:[{
+        values:[{text:'杭州',disabled:true}, '宁波', '温州', '嘉兴', '湖州'],
+        className:'className',
+        defaultIndex: 2
+      }],
       column3: {
         浙江: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
         福建: ['福州', '厦门', '莆田', '三明', '泉州']

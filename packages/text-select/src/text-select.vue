@@ -1,14 +1,12 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink>
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :disabledcolor="readonly||disabled" wrapperpaddingleft="15px">
     <div class="select-value">
       <template>{{singleSelectDisplay()}}</template>
     </div>
     <transition name="slide">
-      <div class="select-container" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
+      <div class="select-container mt-bg-lv1" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <template>
-          <div style="padding:8px 12px;">
-            <mt-text type="primary">{{label}}</mt-text>
-          </div>
+          <div class="select-container-title mt-color-primary">{{label}}</div>
           <mt-textarea :placeholder="placeholder" v-model="currentValue" :rows="rows" :maxlength="maxlength"></mt-textarea>
           <div style="padding:8px">
             <div style="margin:4px 8px;display:inline-block" v-for="opt in options">
@@ -38,6 +36,10 @@
 export default {
   name: 'mt-text-select',
   props: {
+    headerheight:{
+      type:Number,
+      default:0
+    },
     value: { default: '' },
     // url: { type: String, default: '' },
     /**
@@ -165,12 +167,15 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
-  background: $bg-lv2;
   left: 0;
   top: 0;
   z-index: 999;
   overflow: auto;
+}
+
+.select-container-title {
+  padding:8px 0 7px 15px;
+  font-size: 14px;
 }
 
 .select-picker {
