@@ -1,15 +1,17 @@
 <template>
-  <x-cell >
-    <label class="mint-checkbox-new-row" slot="title">
-      <span :class="{'is-right': align === 'right'}" class="mint-checkbox-new">
-        <input v-model="currentValue" type="checkbox" class="mint-checkbox-new-input" :disabled="isDisabled"/>
-        <span class="mint-checkbox-new-core" :class="['mint-checkbox-new-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
-      </span>
-      <span class="mint-checkbox-new-label" :class="[isDisabled?'mt-color-grey-lv3':'mt-color-grey']">
-        <slot></slot>
-      </span>
-      <slot name="newline" :checked="isChecked" :disabled="isDisabled"></slot>
-    </label>
+  <x-cell>
+    <div class="mint-checkbox-new-row" slot="title">
+      <label style="width:100%;display: block;">
+        <span :class="{'is-right': align === 'right'}" class="mint-checkbox-new">
+          <input v-model="currentValue" type="checkbox" class="mint-checkbox-new-input" :disabled="isDisabled"/>
+          <span class="mint-checkbox-new-core" :class="['mint-checkbox-new-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
+        </span>
+        <span class="mint-checkbox-new-label" :class="[isDisabled?'mt-color-grey-lv3':'mt-color-grey']">
+          <slot></slot>
+        </span>
+      </label>
+      <slot name="newline" :checked="isChecked" :disabled="isDisabled" ></slot>
+    </div>
   </x-cell>
 </template>
 
@@ -30,11 +32,12 @@ export default {
   },
   components: { XCell },
 
-  watch: {
-    value(val) {
-      this.$emit('change', val);
-    }
-  },
+  // watch: {
+  //   value(val) {
+  //     debugger;
+  //     this.$emit('change', val);
+  //   }
+  // },
 
   computed: {
     // whether is in mint-checkbox-group
@@ -49,7 +52,6 @@ export default {
 
     currentValue: {
       get() {
-        console.log(this);
         return this.isGroup && this.parentGroup ? this.parentGroup.value.indexOf(this.name) !== -1 : this.value;
       },
 
@@ -98,8 +100,9 @@ export default {
 
   methods: {
     // onClickLabel() {
+    //   console.log(1)
     //   if (!this.isDisabled) {
-    //     this.currentValue = !this.currentValue;
+    //     //this.currentValue = !this.currentValue;
     //   }
     // },
     findParentByName(name) {
