@@ -200,7 +200,9 @@ export default {
     titlepaddingtop:String,
     titlepaddingright:String,
     titlepaddingbottom:String,
-    titlepaddingleft:String
+    titlepaddingleft:String,
+    //简单校验长度，不区分中文
+    easycheck:true
   },
 
   components: { XCell },
@@ -225,7 +227,20 @@ export default {
     },
 
     currentValue(val) {
-      this.count = val.length;
+      if (this.easycheck) {
+        this.count = val.length;
+      } else {
+        let reg = /[^\x00-\xff]/ig;
+        let count = 0;
+        val.split('').forEach(function(code){
+          if (code.match(reg) !== null) {
+            count += 3;
+          } else {
+            count ++;
+          }
+        });
+        this.count = count;
+      }
       this.$emit('input', val);
     },
 
