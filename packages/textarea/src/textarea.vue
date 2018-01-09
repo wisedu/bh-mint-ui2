@@ -24,8 +24,8 @@
       :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
       v-model="currentValue">
     </textarea>
-    <span class="mint-textarea-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mt-color-' + state]"></i>
+    <span class="mint-textarea-state" v-if="state!=='default'" :class="iconColor">
+      <i class="iconfont" :class="['icon-' + iconstate]"></i>
     </span>
     <div class="mint-textarea-other">
       <slot></slot>
@@ -219,6 +219,28 @@ export default {
         return ""
       }
       return n;
+    },
+    iconstate:function(){
+      let iconstate="default";
+      switch(this.state){
+        case "success":iconstate="wancheng";break;
+        case "warning":iconstate="yuqiweiwancheng";break;
+        case "danger":iconstate="weiwancheng";break;
+        default:
+          break;
+      }
+      return iconstate;
+    },
+    iconColor:function(){
+      let iconColor="default";
+      switch(this.state){
+        case "success":iconColor="mt-color-primary";break;
+        case "warning":iconColor="mt-color-warning";break;
+        case "danger":iconColor="mt-color-danger";break;
+        default:
+          break;
+      }
+      return iconColor;
     }
   },
   watch: {
@@ -320,9 +342,8 @@ export default {
       }
 
       @descendent state {
-        margin-left: 20px;
 
-        .mintui {
+        .iconfont {
           font-size: 20px;
         }
       }

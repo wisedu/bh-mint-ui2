@@ -10,11 +10,11 @@
 
     <h1 class="page-item-title">Multi Select 快捷语法糖</h1>
     <mt-cell-group>
-      <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" select-type="multi-select" @selector-click="multiSelectClick">
+      <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" select-type="multi-select" @selector-click="multiSelectClick" iconpattern="hook">
       </mt-select>
       <p>{{multiSelectValue}}</p>
     </mt-cell-group>
-    <!-- <div class="">
+<!--     <div class="">
       <mt-select label="单选" :options="yearSlot" :value.sync="value">
         <template scope="scope" slot="display">
           {{scope.value}}
@@ -25,7 +25,7 @@
       </mt-select>
     </div> -->
 
-    <!-- <h1 class="page-title">Multi Select</h1>
+<!--     <h1 class="page-title">Multi Select</h1>
     <div class="">
       <mt-select label="多选" :options="yearSlot" :value.sync="multiValue">
         <template scope="scope" slot="display">
@@ -35,9 +35,9 @@
           <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item" @click.native.stop="multiValue.push(item)"></mt-cell>
         </template>
       </mt-select>
-    </div>
+    </div> -->
 
-    <h1 class="page-title">字典 Select</h1>
+    <!--<h1 class="page-title">字典 Select</h1>
     <div class="">
       <mt-select label="字典多选" :options="dicSlot" :value.sync="dicValue">
         <template scope="scope" slot="display">
@@ -127,32 +127,237 @@
         }
       },
       handleDicSelectorClick () {
-        axios.get('./mock/userdata.json').then(resp => {
+        axios.get('/mock/userdata.json').then(resp => {
           let respData = resp.data
           if (respData.code == '0') {
-            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
+            this.$set(this.asyncDicSlot[0], 'values', respData.data)
             this.asyncDicSlot = respData.data
           }
-          console.log(resp)
-        })
+        });
       },
       singleSelectClick () {
-        axios.get('./mock/userdata.json').then(resp => {
-          let respData = resp.data
-          if (respData.code == '0') {
-            // this.$set(this.asyncDicSlot[0], 'values', respData.data)
-            this.singleSelectOptions = respData.datas.code.rows;
-            //this.singleSelectOptions = this.singleSelectOptions.slice(10);
-          }
-        })
+        // axios.get('/mock/userdata.json').then(resp => {
+        //   let respData = resp.data
+        //   if (respData.code == '0') {
+        //     // this.$set(this.asyncDicSlot[0], 'values', respData.data)
+        //     this.singleSelectOptions = respData.datas.code.rows;
+        //     //this.singleSelectOptions = this.singleSelectOptions.slice(10);
+        //   }
+        // })
+        this.singleSelectOptions = [
+            {
+              "czz": null,
+              "name": "安昌珍",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001001",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安成守",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001002",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安春光",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001004",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安冬梅",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001005",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安粉玉",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001007",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安丰存",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001008",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安丰军",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001009",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安福林",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001011",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安国峰",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001013",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安国山",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001014",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }
+          ]
       },
       multiSelectClick () {
-        axios.get('./mock/userdata.json').then(resp => {
-          let respData = resp.data
-          if (respData.code == '0') {
-            this.multiSelectOptions = respData.datas.code.rows
-          }
-        })
+        // axios.get('/mock/userdata.json').then(resp => {
+        //   let respData = resp.data
+        //   if (respData.code == '0') {
+        //     this.multiSelectOptions = respData.datas.code.rows
+        //   }
+        // })
+        this.multiSelectOptions = [
+            {
+              "czz": null,
+              "name": "安昌珍",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001001",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安成守",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001002",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安春光",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001004",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安冬梅",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001005",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安粉玉",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001007",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安丰存",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001008",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安丰军",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001009",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安福林",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001011",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安国峰",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001013",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }, {
+              "czz": null,
+              "name": "安国山",
+              "sfytb": null,
+              "czrq": null,
+              "id": "0000001014",
+              "title": null,
+              "sort_num": null,
+              "tblx": null,
+              "tbrq": null
+            }
+          ]
       }
     },
 

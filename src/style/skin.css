@@ -603,3 +603,14 @@
 .mt-boxShadow-range-thumb {
   box-shadow: 0 3px 8px 0 rgba(85, 198, 201, 0.15), 0 1px 1px 0 rgba(85, 199, 202, 0.15), 0 3px 1px 0 rgba(85, 199, 202, 0.15);
 }
+.mt-bg-primary-opacity1 {
+  background-color: rgba(82, 199, 202, 0.1);
+}
+/*三角border-color*/
+.mt-bColor-after-triangle-right:after {
+  border-color: transparent transparent transparent #BDC0C5;
+}
+/*遮罩*/
+.mt-bg-mask {
+  background: rgba(0, 0, 0, 0.5);
+}

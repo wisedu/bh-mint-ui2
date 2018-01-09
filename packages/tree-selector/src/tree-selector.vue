@@ -9,13 +9,14 @@
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
         <mt-cell-group>
-          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
+          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1}" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
         </mt-cell-group>
       </template>
+
       <template v-else-if="multiple" v-show="scope.options.length > 0">
-        <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue"></tree-checkbox-list>
+        <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue" :iconpattern="iconpattern"></tree-checkbox-list>
       </template>
-      <selected-footer v-if="multiple" :options="footerOptions" v-model="currentValue" @confirm-click="handleConfirmClick"></selected-footer>
+      <selected-footer v-if="multiple" :options="footerOptions" v-model="currentValue" @confirm-click="handleConfirmClick" :iconpattern="iconpattern"></selected-footer>
     </template>
   </mt-select>
 </template>
@@ -67,7 +68,7 @@ export default {
      * @field multiple
      * @desc 是否多选
      * @type select
-     * @option 
+     * @option
       [
         {
           "text": "单选",
@@ -88,7 +89,11 @@ export default {
      * @type textarea
      * @value []
      */
-    options: { type: Array, default() { return []; } }
+    options: { type: Array, default() { return []; } },
+    iconpattern: {
+      type: String,
+      default: "hook"
+    }
   },
   data() {
     return {

@@ -13,7 +13,8 @@
       :maxHour="maxHour"
       :minDate="minDate"
       :maxDate="maxDate"
-      @confirm="handleChange">
+      @confirm="handleChange"
+      @cancel="cancel">
     </mt-datetime-picker>
     <mt-datetime-picker
       ref="picker2"
@@ -22,7 +23,8 @@
       :maxHour="maxHour"
       :minDate="minDate"
       v-model="currentDate2"
-      @confirm="handleChange">
+      @confirm="handleChange"
+      @cancel="cancel">
     </mt-datetime-picker>
     <mt-datetime-picker
       ref="picker3"
@@ -30,7 +32,8 @@
       :maxHour="maxHour"
       :minDate="minDate"
       v-model="currentDate3"
-      @confirm="handleChange">
+      @confirm="handleChange"
+      @cancel="cancel">
     </mt-datetime-picker>
   </div>
 </template>
@@ -79,7 +82,15 @@
           message: '已选择 ' + value.toString(),
           position: 'bottom'
         });
+      },
+
+      cancel(){
+        Toast({
+          message: '取消',
+          position: 'bottom'
+        });
       }
+
     }
   };
 </script>

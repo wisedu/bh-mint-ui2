@@ -4,15 +4,21 @@
       <mt-button class="mint-selected-footer-detail" :disabled="value.length === 0" size="large" @click="isShowDetail = true">查看已选({{value.length}})</mt-button>
       <mt-button class="mint-selected-footer-confirm" size="large" type="primary" @click="handleConfirm">确定</mt-button>
     </div>
-    <div v-show="isShowDetail" class="mint-selected-footer-list-mask"></div>
-    <div v-show="isShowDetail" class="mint-selected-footer-list-container">
-      <div class="mint-selected-footer-list-header">
-        <a href="javascript:void(0)" @click="handleCancel">取消</a>
-        <span>已选({{value.length}})</span>
+    <div v-show="isShowDetail" class="mint-selected-footer-list-mask mt-bg-mask"></div>
+    <div v-show="isShowDetail" class="mint-selected-footer-list-container mt-bg-lv2">
+      <div class="mint-selected-footer-list-header mt-bg-lv3">
+        <a href="javascript:void(0)" @click="handleCancel"><i class="iconfont icon-close"></i></a>
+        <span class="mt-color-grey">已选({{value.length}})</span>
         <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm mt-color-theme" href="javascript:void(0)">确定</a>
       </div>
-      <div class="mint-selected-footer-list">
-        <!-- <mt-checklist v-model="currentValue" :options="listData" ></mt-checklist> -->
+      <div class="mint-selected-footer-list"  :style="{'max-height': listHeight + 'px'}">
+        <mt-box-group v-model="currentValue">
+          <mt-cell-group>
+              <mt-checkbox :name="item.value" v-for="item in listData" :key="item.value" :iconpattern="iconpattern" :align="align">
+                  {{item.label}}
+              </mt-checkbox>
+          </mt-cell-group>
+        </mt-box-group>
       </div>
     </div>
   </div>  
@@ -21,7 +27,9 @@
 export default {
   props: {
     options: {required: true, type: Array},
-    value: {required: true, type: Array}
+    value: {required: true, type: Array},
+    iconpattern: String,
+    align: String
   },
   data() {
     return {
@@ -47,6 +55,10 @@ export default {
           value: item.id
         };
       });
+    },
+    listHeight () {
+
+      return document.documentElement.clientHeight*0.8-44
     }
   },
   methods: {
@@ -70,7 +82,6 @@ export default {
 };
 </script>
 <style>
-@import "../../../src/style/var.css";
 .mint-selected-footer {
   position: fixed;
   width: 100%;
@@ -79,6 +90,7 @@ export default {
   padding: 7px 8px;
   left: 0;
   bottom: 0;
+  z-index: 999;
 }
 
 .mint-selected-footer-bar {
@@ -103,20 +115,25 @@ export default {
   width: 100%;
   left: 0;
   bottom: 0;
-  background: $bg-lv2;
   min-height: 50%;
   max-height: 80%;
+  z-index: 1000;
 }
 .mint-selected-footer-list-header {
   display: flex;
   text-align: center;
-  border-top: 1px solid $grey-lv5;
-  border-bottom: 1px solid $grey-lv5;
-  padding: 12px 0;
+  padding: 13px 0;
+  font-size: 18px;
 }
 .mint-selected-footer-list-header a {
   flex-grow: 0;
-  padding: 0 12px;
+  height: 18px;
+  padding: 0 14px;
+}
+.mint-selected-footer-list-header .iconfont{
+  font-size:30px;
+  display:inline-block;
+  margin-top:-4px;
 }
 .mint-selected-footer-list-header span {
   flex-grow: 1;
@@ -130,7 +147,6 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.4);
 }
 .mint-selected-footer-list {
   overflow: auto;

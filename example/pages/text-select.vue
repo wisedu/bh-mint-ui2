@@ -1,12 +1,11 @@
 <template>
   <div style="margin-top:44px;">
     <mt-cell-group>
-      <mt-text-select label="抄送人员" placeholder="aaa" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick" :headerheight="44">
+      <mt-text-select label="抄送人员" rows="5" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick" :headerheight="44">
       </mt-text-select>
       <p>{{singleSelectValue}}</p>
-
-      <mt-text-select label="只读的" placeholder="aaa" rows="5" maxlength="100" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
-      <mt-text-select label="禁用的" placeholder="aaa" rows="5" maxlength="100" :disabled="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
+      <mt-text-select label="只读的" placeholder="aaa" rows="5" :readonly="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
+      <mt-text-select label="禁用的" rows="5" :disabled="true" :options="singleSelectOptions" v-model="singleSelectValue" @selector-click="singleSelectClick"></mt-text-select>
     </mt-cell-group>
   </div>
 </template>

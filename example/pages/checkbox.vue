@@ -26,7 +26,7 @@
 
     <div>
         <h2 class="mint-box-group-title">右对齐,最多选3个</h2>
-        <mt-box-group v-model="value1" align="right" :max="3">
+        <mt-box-group v-model="value1" :max="3">
             <mt-cell-group>
                 <mt-checkbox align="right" :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled">
                     {{item.label}}

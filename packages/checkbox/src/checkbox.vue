@@ -34,7 +34,6 @@ export default {
 
   // watch: {
   //   value(val) {
-  //     debugger;
   //     this.$emit('change', val);
   //   }
   // },
@@ -99,12 +98,6 @@ export default {
   },
 
   methods: {
-    // onClickLabel() {
-    //   console.log(1)
-    //   if (!this.isDisabled) {
-    //     //this.currentValue = !this.currentValue;
-    //   }
-    // },
     findParentByName(name) {
       if (!this.parentGroup) {
         let parent = this.$parent;

@@ -12,10 +12,9 @@
       <div class="select-container mt-bg-lv2" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <!-- select 模板 -->
         <template v-if="selectType === 'select'">
-          <!-- <mt-radio v-model="currentValue" :options="getOptions_select(options)" @change="handleClick_select"></mt-radio> -->
           <mt-box-group v-model="currentValue">
             <mt-cell-group>
-              <mt-radiobox :name="item.value" v-for="item in getOptions_select(options)" :key="item.value">
+              <mt-radiobox :name="item.value" v-for="item in getOptions_select(options)" :key="item.value" @click="handleClick_select" :iconpattern="iconpattern">
                 {{item.label}}
               </mt-radiobox>
             </mt-cell-group>
@@ -23,8 +22,14 @@
         </template>
         <!-- multi-select 模板 -->
         <template  v-else-if="selectType === 'multi-select'">
-          <!-- <mt-checklist v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '58px'}" :options="getOptions_select(options)" @change="handleClick_multiSelect"></mt-checklist> -->
-          <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false"></selected-footer>
+          <mt-box-group v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '49px'}">
+            <mt-cell-group>
+                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in getOptions_select(options)" :key="item.value" :iconpattern="iconpattern" :align="align">
+                    {{item.label}}
+                </mt-checkbox>
+            </mt-cell-group>
+          </mt-box-group>
+          <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false" :iconpattern="iconpattern" :align="align"></selected-footer>
         </template>
         <!-- 自定义 -->
         <slot v-else name="selector" :options="options" :value="value"></slot>
@@ -93,7 +98,9 @@ export default {
         }
       ]
      */
-    selectType: { type: String, default: 'select' }
+    selectType: { type: String, default: 'select' },
+    iconpattern: { type: String, default: 'circle' },
+    align: String
   },
   data() {
     return {
@@ -161,9 +168,8 @@ export default {
       })[0].name;
     },
     handleClick_select(val, $event) {
-      this.$emit('change', val, $event)
+      this.$emit('change', val, $event);
       this.selectorShow = false
-      history.back()
     },
     /***** select 专有方法 end *****/
 
@@ -226,6 +232,13 @@ export default {
   width: 100%;
 }
 
+.select-value{
+  max-width: 192px;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 </style>
 
 

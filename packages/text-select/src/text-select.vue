@@ -1,17 +1,19 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :disabledcolor="readonly||disabled" wrapperpaddingleft="15px">
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :disabledcolor="readonly||disabled">
     <div class="select-value">
       <template>{{singleSelectDisplay()}}</template>
     </div>
     <transition name="slide">
       <div class="select-container mt-bg-lv1" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <template>
-          <div class="select-container-title mt-color-primary">{{label}}</div>
-          <mt-textarea :placeholder="placeholder" v-model="currentValue" :rows="rows" :maxlength="maxlength"></mt-textarea>
-          <div style="padding:8px">
-            <div style="margin:4px 8px;display:inline-block" v-for="opt in options">
-              <mt-button size="normal" @click="selectOption(opt.name)">{{opt.name}}</mt-button>
+          <div class="select-container-title mt-color-grey-lv3">{{label+"："}}</div>
+          <mt-textarea :placeholder="placeholder" v-model="currentValue" :rows="rows"  wrapperpaddingleft="15px" :readonly="true"></mt-textarea>
+          <div class="select-container-buttons">
+            <div class="select-container-button" :class="[opt.active?'mt-bColor-primary mt-color-primary mt-bg-primary-opacity1':'mt-bColor-grey-lv4 mt-color-grey-lv2 mt-bg-lv3']"  v-for="opt in options" @click="selectOption(opt)">{{opt.name}}
             </div>
+          </div>
+          <div class="select-container-confirm">
+            <mt-button size="large" type="primary" @click.native="selectorShow=false">确定</mt-button>
           </div>
         </template>
       </div>
@@ -36,10 +38,6 @@
 export default {
   name: 'mt-text-select',
   props: {
-    headerheight:{
-      type:Number,
-      default:0
-    },
     value: { default: '' },
     // url: { type: String, default: '' },
     /**
@@ -121,12 +119,39 @@ export default {
     historyChange(e) {
       this.selectorShow = false;
     },
-    selectOption(content){
-      this.currentValue += " " + content;
+    selectOption(opt){
+      if(opt.active){
+        opt.active = false;
+        let currentValueArray = this.currentValue.split('，');
+        let _index = currentValueArray.indexOf(opt.name);
+        currentValueArray.splice(_index,1);
+        if(currentValueArray.length){
+          this.currentValue = currentValueArray.join("，");
+        }else{
+          this.currentValue = "";
+        }
+      }else{
+        opt.active = true;
+        this.currentValue += this.currentValue?"，" + opt.name:opt.name;
+      }
       this.$emit('input', this.currentValue);
     },
     singleSelectDisplay () {
-      if (this.value === '') return this.placeholder
+      if (this.value === ''){
+        this.options.forEach(function(value){
+          value.active=false;
+        });
+        return this.placeholder
+      }else{
+        let valueArray = this.value.split('，');
+        for(let i=0;i<valueArray.length;i++){
+          for(let j=0;j<this.options.length;j++){
+            if(valueArray[i]===this.options[j].name){
+              this.options[j].active=true;
+            }
+          }
+        }
+      }
       if (this.options.length === 0) {
         this.$emit('selector-click', e)
         return ''
@@ -163,6 +188,7 @@ export default {
 .slide-enter, .slide-leave-to /* .slide-leave-active in below version 2.1.8 */ {
   transform: translateX(100%);
 }
+
 .select-container {
   position: fixed;
   width: 100%;
@@ -176,6 +202,25 @@ export default {
 .select-container-title {
   padding:8px 0 7px 15px;
   font-size: 14px;
+}
+
+.select-container-buttons{
+  padding: 12px 8px;
+}
+
+.select-container-button{
+  display: inline-block;
+  margin: 6px;
+  border-width: 0.5px;
+  border-style: solid;
+  padding: 8px 14px;
+  font-size: 12px;
+  border-radius: 14px;
+
+}
+
+.select-container-confirm{
+  padding: 0 15px;
 }
 
 .select-picker {

@@ -1,6 +1,6 @@
 <template>
-  <div class="mint-bread">
-    <span v-for="item in data" :key="item.id" :class="{active: activeId === item.id}" @click="handleClick(item.id)">{{item.name}} </span>
+  <div class="mint-bread mt-bg-lv3">
+    <span v-for="item in data" :key="item.id" :class="[activeId === item.id?'active mt-color-theme mt-bColor-theme':'mt-color-grey-lv2 mt-bColor-after-triangle-right']" @click="handleClick(item.id)">{{item.name}} </span>
   </div>  
 </template>
 <script>
@@ -17,9 +17,7 @@ export default {
 };
 </script>
 <style>
-@import "../../../src/style/var.css";
 .mint-bread {
-  background: #fff;
   white-space: nowrap;
   font-size: 0;
   width: 100%;
@@ -29,13 +27,12 @@ export default {
   line-height: 42px;
   display: inline-block;
   position: relative;
-  font-size: 16px;
-  padding: 0 16px;
-  color: $grey-lv2;
+  font-size: 14px;
+  padding: 0 28px;
 
   &.active {
-    color: $theme-lv1;
-    border-bottom: 2px solid $theme-lv1;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
   }
 
   &:after {
@@ -48,8 +45,6 @@ export default {
     top: 17px;
     border-style: solid;
     border-width: 4px;
-    border-color: transparent transparent transparent $grey-lv2;
-
   }
 
 }
