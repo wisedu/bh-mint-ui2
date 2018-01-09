@@ -74,11 +74,13 @@ Usage
 
 ## SKIN
 
+```
 <!-- 引入换肤 -->
 <link rel="stylesheet" href="//res.wisedu.com/fe_components/skins/mint2.0/skin.css">
 
 ## CDN
 
+```
 <!-- 引入样式 -->
 <link rel="stylesheet" href="https://res.wisedu.com/fe_components/mobile/MINT/style.min.css">
 <!-- 引入组件库 -->
