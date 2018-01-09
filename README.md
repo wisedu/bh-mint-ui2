@@ -77,6 +77,7 @@ Usage
 ```
 <!-- 引入换肤 -->
 <link rel="stylesheet" href="//res.wisedu.com/fe_components/skins/mint2.0/skin.css">
+```
 
 ## CDN
 
@@ -86,6 +87,7 @@ Usage
 <!-- 引入组件库 -->
 <script src="https://res.wisedu.com/bower_components/vue2/vue.min.js"></script>
 <script src="https://res.wisedu.com/fe_components/mobile/MINT/index.js"></script>
+```
 
 ## Development
 
