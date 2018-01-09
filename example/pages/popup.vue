@@ -6,7 +6,7 @@
       <mt-button @click.native="popupVisible3 = true" size="large" type="warning" plain>右侧弹出 popup</mt-button>
       <mt-button @click.native="popupVisible4 = true" size="large" type="danger" plain>下侧弹出 popup</mt-button>
     </div>
-    <mt-popup v-model="popupVisible1" popup-transition="popup-fade" class="mint-popup-1" :style="{ top: buttonBottom + 10 + 'px' }">
+    <mt-popup v-model="popupVisible1" popup-transition="popup-fade" class="mint-popup-1" :style="{ top: buttonBottom + 10 + 'px' }" @maskCallback="cancel">
       <h1>popup</h1>
       <p>/ ˈpɑpˌʌp /</p>
       <p>n. 弹出式; [棒]内野飞球; 自动起跳式装置</p>
@@ -154,6 +154,9 @@
         }
         this.dateStart = values[0];
         this.dateEnd = values[1];
+      },
+      cancel(){
+        console.log(" mask hide!")
       }
     },
 

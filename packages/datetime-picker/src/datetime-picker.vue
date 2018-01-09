@@ -1,12 +1,12 @@
 <template>
-  <mt-popup v-model="visible" position="bottom" class="mint-datetime">
+  <mt-popup v-model="visible" position="bottom" class="mint-datetime" @maskCallback="maskCallback">
     <mt-picker
       ref="picker"
       showToolbar
       :columns="columns"
       :visibleItemCount="visibleItemCount"
       :cancelText="cancelText" :confirmText="confirmText"
-      @change="onChange" @confirm="onConfirm" @cancel="visible = false;$emit('cancel')">
+      @change="onChange" @confirm="onConfirm" @cancel="visible = false;maskFunAvailable=false; $emit('cancel')">
     </mt-picker>
   </mt-popup>
 </template>
@@ -78,12 +78,17 @@
       confirmText: {
         type: String,
         default: '确定'
+      },
+      maskFun:{
+        type: Boolean,
+        default: false
       }
     },
     data() {
       return {
         innerValue: this.correctValue(this.value),
-        visible: false
+        visible: false,
+        maskFunAvailable: false,
       };
     },
     watch: {
@@ -131,7 +136,11 @@
       }
     },
     methods: {
+      maskCallback() {
+        if(this.maskFun&&this.maskFunAvailable) this.$emit('maskCallback','mask');
+      },
       open() {
+        this.maskFunAvailable = true;
         this.visible = true;
       },
       close() {
@@ -239,8 +248,8 @@
       },
       onConfirm(val, index, picker) {
         this.visible = false;
+        this.maskFunAvailable = false;
         this.$emit('confirm', this.innerValue, picker);
-        this.$emit('cancel');
       },
       onChange(picker, org_value, index) {
         const values = picker.getValues();

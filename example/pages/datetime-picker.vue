@@ -7,6 +7,8 @@
     </div>
     <mt-datetime-picker
       ref="picker1"
+      :maskFun="true"
+      @maskCallback="cancel"
       v-model="currentDate1"
       type="datetime"
       :minHour="minHour"
@@ -84,7 +86,8 @@
         });
       },
 
-      cancel(){
+      cancel(val){
+        console.log(val);
         Toast({
           message: '取消',
           position: 'bottom'

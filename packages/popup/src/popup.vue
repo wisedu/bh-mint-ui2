@@ -126,6 +126,7 @@
 
     watch: {
       currentValue(val) {
+        if(!val) this.$emit("maskCallback");
         this.$emit('input', val);
       },
 
@@ -133,7 +134,6 @@
         this.currentValue = val;
       }
     },
-
     beforeMount() {
       if (this.popupTransition !== 'popup-fade') {
         this.currentTransition = `popup-slide-${ this.position }`;
