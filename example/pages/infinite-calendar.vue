@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 class="page-title bg-theme color-theme">Infinite Calendar</h1>
     <infinite-calendar :current-date="currentDate" :today="today" :end-date="endDate" 
        :start-date="startDate" mode="rangeTo" :callback="setTime"></infinite-calendar>
   </div>

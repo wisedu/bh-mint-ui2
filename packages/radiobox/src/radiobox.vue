@@ -5,7 +5,7 @@
         <input :value="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"/>
         <span class="mint-radiobox-core" :class="['mint-radiobox-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===name?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
       </span>
-      <span class="mint-radiobox-label" @click.stop="handleLabelClick">
+      <span class="mint-radiobox-label">
         <slot></slot>
       </span>
       <slot name="newline" :disabled="isDisabled" :checked="currentValue === name"></slot>
@@ -24,7 +24,6 @@ export default {
     }
   },
   props: {
-    iconpattern:Boolean,
     value: {},
     disabled: Boolean,
     align: String,
@@ -66,13 +65,15 @@ export default {
 
 
   methods: {
-    handleLabelClick() {
-      if (!this.isDisabled) {
-        this.currentValue = !this.currentValue;
-      }
-    },
+    // handleLabelClick() {
+    //   if (!this.isDisabled) {
+    //     this.currentValue = !this.currentValue;
+    //   }
+    // },
     handleRadioClick() {
-      this.$emit('click');
+      if(!this.currentValue){
+        this.$emit('click');
+      }
     },
     findParentByName(name) {
       if (!this.parentGroup) {

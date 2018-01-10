@@ -26,7 +26,7 @@
             },
             color: {
                 type:String,
-                default:'#1E2329'
+                default:'#E8E8E8'
             },
             margin: String,
             /**
@@ -42,7 +42,15 @@
             computeStyle: function() {
                 let _style = '';
                 let background = this.color;
-                let height = this.height;
+                let height = '';
+                if(this.height){
+                    height = this.height.replace(/(^\s*)|(\s*$)/g, "");
+                    if(height.slice(-2) !== "px"){
+                        height = '';
+                    }else{
+                        height = Number(height.slice(0,-2))*2+'px';
+                    }
+                }
                 let margin = this.margin;
                 if (background) {
                     _style += `background: ${background};`;
@@ -66,6 +74,8 @@
     @component hr {
       position: relative;
       height: 1px;
+      -webkit-transform: scaleY(.5);
+      transform:scaleY(.5);
     }
   }
 

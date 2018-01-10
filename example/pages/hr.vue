@@ -12,17 +12,17 @@
 
     <div class="item">
       <div>primary</div>
-      <mt-hr color="#52C7CA" margin="10px 0"></mt-hr>
+      <mt-hr color="#52C7CA"></mt-hr>
     </div>
 
     <div class="item">
       <div>warning</div>
-      <mt-hr color="#FFB950" margin="10px 0"></mt-hr>
+      <mt-hr color="#FFB950"></mt-hr>
     </div>
 
     <div class="item">
       <div>danger</div>
-      <mt-hr color="#F26666" margin="10px 0"></mt-hr>
+      <mt-hr color="#F26666"></mt-hr>
     </div>
   </div>
 </template>

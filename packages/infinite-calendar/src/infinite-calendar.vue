@@ -1,23 +1,23 @@
 <template>
-    <div class=calendar>
+    <div class="calendar mt-bg-lv3">
         <div class=calendar-header>
-            <div class=calendar-title>
+            <div class="calendar-title mt-bg-lv3">
                 <div class="control" style="float:left" @click="prevYear">&lt;</div> 
-                <div class="control">2017年</div> 
+                <div class="control mt-color-grey-lv2">2017年</div> 
                 <div class="control" style="float:right" @click="nextYear">&gt;</div>
             </div>
-            <div class=week-number>
-                <span v-for='item in weekList' v-text=item :key='item'></span>
+            <div class="week-number mt-bColor-grey-lv5 mt-color-grey-lv3 mt-bg-lv3">
+                <span v-for='item in weekList' v-text="item" :key="item"></span>
             </div>
         </div>
-        <div style="margin-top:82px">
-            <div class=calendar-wrapper v-for='item in calendar' :key='item'>
-                <h3 v-text="item.year + '年' + item.month + '月'" class="top-high"></h3>
+        <div style="margin-top:69px">
+            <div class="calendar-wrapper mt-color-grey" v-for='(item,index) in calendar' :key='index'>
+                <h3 v-text="item.year + '年' + item.month + '月'" class="top-high mt-bg-lv2"></h3>
                 <ul class=each-month>
-                    <li class=each-day track-by=$index v-for='day in item.dayList' @click='chooseDate(day, item.month, item.year)' :key='day'>
-                        <div :class="[addClassName(day.day, item.month, item.year), {'trip-time': day.selected}]"> {{ showDate(day.day, item.month, item.year) }} </div>
-                        <span class=jia v-if='setFestival(day.day, item.month, item.year) !== 0'>假</span>
-                        <span class=recent v-text='setTip(day.day, item.month, item.year)'></span>
+                    <li class=each-day v-for='(day,index) in item.dayList' @click='chooseDate(day, item.month, item.year)' :key='index'>
+                        <div :class="[addClassName(day.day, item.month, item.year), {'trip-time mt-color-white mt-bg-primary': day.selected}]"> {{ showDate(day.day, item.month, item.year) }} </div>
+                        <span class="jia" :class="[day.selected?'mt-color-white':'mt-color-primary']" v-if='setFestival(day.day, item.month, item.year) !== 0'>假</span>
+                        <!-- <span class="recent mt-color-primary" v-text='setTip(day.day, item.month, item.year)'></span> -->
                     </li>
                 </ul>
             </div>
@@ -25,162 +25,166 @@
     </div>
 </template>
 <style scoped>
-.calendar {
-    width: 100%;
-    min-height: 100%;
-    background: #fff
-}
+    .calendar {
+        position: relative;
+        width: 100%;
+        min-height: 100%;
+    }
 
-.calendar .calendar-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 101
-}
+    .calendar .calendar-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999
+    }
 
-.calendar .calendar-header .calendar-title {
-    height: 48px;
-    line-height: 48px;
-    background: #fff;
-    text-align: center;
-}
+    .calendar .calendar-header .calendar-title {
+        padding: 15px 0;
+        text-align: center;
+    }
 
-.calendar .calendar-header .calendar-title .control{
-    display: inline;
-    font-size: 16px;
-    padding: 0 16px;
-}
+    .calendar .calendar-header .calendar-title .control{
+        display: inline-block;
+        font-size: 14px;
+        line-height: 100%;
+        padding: 0 16px;
+    }
 
-.calendar .calendar-header .calendar-title.html-title {
-    height: auto;
-    line-height: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px
-}
+    .calendar .calendar-header .calendar-title.html-title {
+        height: auto;
+        line-height: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px
+    }
 
-.calendar .calendar-header .week-number {
-    color: #ccc;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    background-color: #fff;
-    padding: 0 1%
-}
+    .calendar .calendar-header .week-number {
+        border-top-width: 0.5px;
+        border-bottom-width: 0.5px;
+        border-top-style: solid;
+        border-bottom-style: solid;
+    }
 
-.calendar .calendar-header .week-number span {
-    display: inline-block;
-    text-align: center;
-    height: 33px;
-    line-height: 33px;
-    width: 14.2857143%
-}
+    .calendar .calendar-header .week-number span {
+        display: inline-block;
+        text-align: center;
+        font-size: 20px;
+        -webkit-transform: scale(.5);
+        transform:scale(.5);
+        line-height: 100%;
+        padding:1px 0; 
+        width: 14.2857143%
+    }
 
-.calendar .calendar-header .week-number span:first-child,
-.calendar .calendar-header .week-number span:last-child {
-    color: #06C0AE
-}
+/*    .calendar .calendar-header .week-number span:first-child,
+    .calendar .calendar-header .week-number span:last-child {
+        color: #06C0AE
+    }*/
 
-.calendar .calendar-wrapper {
-    position: relative;
-    color: #000
-}
+    .calendar .calendar-wrapper {
+        position: relative;
+    }
 
-.calendar .calendar-wrapper h3 {
-    position: sticky;
-    position: -webkit-sticky;
-    z-index: 11;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 30px;
-    height: 30px;
-    background: #F4F4F4
-}
+    .calendar .calendar-wrapper h3 {
+        position: sticky;
+        position: -webkit-sticky;
+        z-index: 11;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 34px;
+        height: 34px;
+    }
 
-.calendar .calendar-wrapper .each-month {
-    display: inline-block;
-    width: 98%;
-    margin-left: 1%;
-    padding-bottom: 10px;
-    font-size: 0
-}
+    .calendar .calendar-wrapper .each-month {
+        display: inline-block;
+        width: 98%;
+        margin-left: 1%;
+        padding-bottom: 10px;
+        font-size: 0
+    }
 
-.calendar .calendar-wrapper .each-month .each-day {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    width: 14.2857143%;
-    font-size: 16px;
-    height: 50px;
-    line-height: 50px
-}
+    .calendar .calendar-wrapper .each-month .each-day {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 14.2857143%;
+        font-size: 14px;
+        height: 50px;
+        line-height: 50px
+    }
 
-.calendar .calendar-wrapper .each-month .each-day div {
-    display: inline-block;
-    height: 28px;
-    width: 28px;
-    line-height: 28px
-}
+    .calendar .calendar-wrapper .each-month .each-day div {
+        display: inline-block;
+        height: 36px;
+        width: 36px;
+        line-height: 32px
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .disabled {
-    color: #ccc!important
-}
+    .calendar .calendar-wrapper .each-month .each-day .disabled{
+        color: #BDC0C5!important
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .today {
-    background: #e7e7e7;
-    border-radius: 5px
-}
+    .calendar .calendar-wrapper .each-month .each-day .disabled+span{
+        color: #BDC0C5!important
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .trip-time {
-    background: #06C0AE;
-    color: #fff!important;
-    border-radius: 5px
-}
 
-.calendar .calendar-wrapper .each-month .each-day .weekend {
-    color: #06C0AE
-}
+    .calendar .calendar-wrapper .each-month .each-day .today{
+        border-width: 1px;
+        border-style: solid;
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .jia,
-.calendar .calendar-wrapper .each-month .each-day .recent {
-    position: absolute;
-    line-height: 12px;
-    color: #06C0AE
-}
+/*    .calendar .calendar-wrapper .each-month .each-day .trip-time {
+        border-radius: 5px
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .jia {
-    font-size: 10px;
-    top: 6px;
-    right: 0;
-    height: 12px
-}
+    .calendar .calendar-wrapper .each-month .each-day .weekend {
+        color: #06C0AE
+    }*/
 
-.calendar .calendar-wrapper .each-month .each-day .recent {
-    font-size: 11px;
-    width: 100%;
-    text-align: center;
-    bottom: -2px;
-    left: 0
-}
+    .calendar .calendar-wrapper .each-month .each-day .jia,
+    .calendar .calendar-wrapper .each-month .each-day .recent {
+        position: absolute;
+        line-height: 12px;
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .red {
-    color: #ff3600
-}
+    .calendar .calendar-wrapper .each-month .each-day .jia {
+        font-size: 16px;
+        top: 32px;
+        right:22px;
+        height: 16px;
+        -webkit-transform: scale(.5);
+        transform:scale(.5);
 
-.calendar .calendar-wrapper .each-month .each-day .festival {
-    font-size: 12px
-}
+    }
 
-.calendar .calendar-wrapper .each-month .each-day .holiday {
-    color: #06C0AE
-}
+    .calendar .calendar-wrapper .each-month .each-day .recent {
+        font-size: 11px;
+        width: 100%;
+        text-align: center;
+        bottom: -2px;
+        left: 0
+    }
 
-.calendar .calendar-wrapper .top-high {
-    top: 82px
-}
+/*    .calendar .calendar-wrapper .each-month .each-day .red {
+        color: #ff3600
+    }*/
+
+    .calendar .calendar-wrapper .each-month .each-day .festival {
+        font-size: 12px
+    }
+
+/*    .calendar .calendar-wrapper .each-month .each-day .holiday {
+        color: #06C0AE
+    }*/
+
+    .calendar .calendar-wrapper .top-high {
+        top: 69px
+    }
 
 </style>
 <script>
@@ -366,9 +370,13 @@ export default {
                 var classes = [];
                 var holiday = this.festival[year + '-' + month + '-' + day];
                 d.getDay() !== 0 && d.getDay() !== 6 || classes.push('weekend');
-                1 * d < 1 * this._today || (this.mode === 'rangeTo' && 1 * d < 1 * this._currentDate || 1 * d > 1 * this._endDate) ? classes.push('disabled') : 1 * d === 1 * this._today && classes.push('today');
+                if(1 * d < 1 * this._today || (this.mode === 'rangeTo' && 1 * d < 1 * this._currentDate || 1 * d > 1 * this._endDate)){
+                    classes.push('disabled mt-color-grey-lv4');
+                }else{
+                    1 * d === 1 * this._today && classes.push('today mt-bColor-primary');
+                }
                 if (holiday) {
-                    holiday === '假' ? classes.push('holiday') : classes.push('festival holiday');
+                    holiday === '假' ? classes.push('holiday') : classes.push('festival holiday mt-color-primary');
                 }
                 return classes.join(' ');
             }
@@ -391,7 +399,7 @@ export default {
                 return expires;
             }
         },
-        chooseDate: function(day, month, year) {
+        chooseDate: function(day, month, year,index) {
             if (day.day) {
                 var in_date = new Date(year + '/' + month + '/' + day.day);
                 var parts = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];

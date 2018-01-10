@@ -29,7 +29,7 @@
                 </mt-checkbox>
             </mt-cell-group>
           </mt-box-group>
-          <selected-footer :options="options" v-model="currentValue" @confirm-click="selectorShow = false" :iconpattern="iconpattern" :align="align"></selected-footer>
+          <selected-footer :options="options" v-model="currentValue" @confirm-click="confirm_multiSelect" :iconpattern="iconpattern" :align="align"></selected-footer>
         </template>
         <!-- 自定义 -->
         <slot v-else name="selector" :options="options" :value="value"></slot>
@@ -123,6 +123,7 @@ export default {
       set (val) {
         if (this.selectType === 'select') {
           this.$emit('input', val.toString());
+          history.back();
         } else if (this.selectType === 'multi-select') {
           this.$emit('input', val.join(','))
         } else {
@@ -184,6 +185,10 @@ export default {
     },
     handleClick_multiSelect (val, $event) {
       this.$emit('change', this.currentValue, $event)
+    },
+    confirm_multiSelect (){
+      this.selectorShow = false;
+      history.back();
     }
     /***** multi-select 专有方法 end *****/
   },
