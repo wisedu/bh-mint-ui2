@@ -213,6 +213,8 @@
               this.$nextTick(function(){
                 this.shadowTop = this.$refs.menu.offsetTop+"px";
               })
+            }else{
+              document.body.style.overflow = "auto";
             }
           }
         },
@@ -247,7 +249,6 @@
               this.borderActive=false;
               //this.isShowMenu = false;
               this.$emit('cancel', evt);
-              document.body.style.overflow = "auto";
             }
         }
     }
