@@ -249,9 +249,8 @@ export default {
     },
 
     currentValue(val) {
-      if (this.easycheck) {
-        this.count = val.length;
-      } else {
+      debugger;
+      if (this.easycheck === false) {
         let reg = /[^\x00-\xff]/ig;
         let count = 0;
         val.split('').forEach(function(code){
@@ -262,6 +261,8 @@ export default {
           }
         });
         this.count = count;
+      } else {
+        this.count = val.length;
       }
       this.$emit('input', val);
     },
