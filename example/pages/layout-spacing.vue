@@ -1,7 +1,7 @@
 <template>
   <div class="layout-spacing">
     <div style="padding-top: 10px;">
-      <div>默认15px高，白色（#FFFFFF）背景</div>
+      <div>默认15px高</div>
       <!--start
       @name normal
       -->

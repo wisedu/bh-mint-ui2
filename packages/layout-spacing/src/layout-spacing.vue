@@ -22,7 +22,7 @@
         props: {
             background: {
                 type:String,
-                default:"#FFFFFF"
+                default:""
             },
             /**
              * @noteType prop

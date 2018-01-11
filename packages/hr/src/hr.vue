@@ -1,6 +1,5 @@
 <template>
-  <!-- <div @click="handleClick" class="mint-hr" :background="background" :height="height" :margin="margin" :style="computeStyle"></div> -->
-  <div class="mint-hr" :style="computeStyle"></div>
+  <div class="mint-hr" :style="computeStyle" @click="handleClick"></div>
 </template>
 <script>
     /**
@@ -15,16 +14,16 @@
     export default {
         name: 'mt-hr',
         methods: {
-            // handleClick(evt) {
-            //     this.$emit('click', evt);
-            // }
+            handleClick(evt) {
+                this.$emit('click', evt);
+            }
         },
         props: {
             type: {
                 type: String,
                 default: 'default'
             },
-            color: {
+            background: {
                 type:String,
                 default:'#E8E8E8'
             },
@@ -41,7 +40,7 @@
         computed: {
             computeStyle: function() {
                 let _style = '';
-                let background = this.color;
+                let background = this.background;
                 let height = '';
                 if(this.height){
                     height = this.height.replace(/(^\s*)|(\s*$)/g, "");

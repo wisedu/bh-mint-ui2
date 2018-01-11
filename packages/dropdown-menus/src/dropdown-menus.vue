@@ -5,11 +5,11 @@
                 <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active,}"></i>
             </div>
         </div>
-        <!-- <div v-if="isShowMenu" class="bh-ddm">
+        <div v-if="isShowMenu" class="bh-ddm" ref="menu">
             <slot name="menu"></slot>
-        </div> -->
+        </div>
         <!-- 遮罩层 -->
-        <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow"></div>
+        <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow"  :style="{top:shadowTop}"></div>
     </div>
 </template>
 <style lang="css">
@@ -73,15 +73,20 @@
       top:-4px !important;
   }
   .bh-ddm {
+    position: relative;
+    z-index: 2000;
     background-color: #fff;
     border-bottom: solid 1px #eee;
   }
   .bh-ddm-shadow {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
-    z-index: 9;
-    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
   }
   .bh-ddm .mint-hairline--top-bottom::after{
     border-top-width: 0;
@@ -183,7 +188,8 @@
         name: 'mt-dropdown-menus',
         data () {
             return {
-              itemWidth:''
+              itemWidth:'',
+              shadowTop:''
             }
         },
         props:{
@@ -193,6 +199,24 @@
                 default: false
             }
         },
+
+        watch:{
+          options:function(n){
+            if(n.length){
+              this.itemWidth = (100 / n.length) + '%';
+            }else {
+              console.log('按钮组长度为0')
+            }
+          },
+          isShowMenu: function(n){
+            if(n){
+              this.$nextTick(function(){
+                this.shadowTop = this.$refs.menu.offsetTop+"px";
+              })
+            }
+          }
+        },
+
         components:{
             
         },
@@ -205,13 +229,14 @@
             setSelected:function(param,index,evt){
                 var that = this;
                 that.$nextTick(function () {
-                  that.options.forEach(function (item) {
-                  that.$set(item,'active',false);
+                    that.options.forEach(function (item) {
+                    that.$set(item,'active',false);
+                  });
+                  that.$set(param,'active',true);
+                  that.$set(param,'index',index);
+                  that.$emit('dropDown',param,evt);
                 });
-                that.$set(param,'active',true);
-                that.$set(param,'index',index);
-                that.$emit('dropDown',param,evt);
-              });
+                document.body.style.overflow = "hidden";
             },
             cancelShadow: function(evt) {
               this.options.forEach(function(ele) {
@@ -222,6 +247,7 @@
               this.borderActive=false;
               //this.isShowMenu = false;
               this.$emit('cancel', evt);
+              document.body.style.overflow = "auto";
             }
         }
     }

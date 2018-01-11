@@ -1,15 +1,15 @@
 <template>
     <div class="page-field" style="margin-top:45px">
-      <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel"> </mt-dropdown-menus>
-      <div v-if="isShowMenu" class="bh-ddm">
-          <mt-box-group v-model="sexValue" align="right" slot="menu" v-if="type==='lv1'">
+      <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu"> </mt-dropdown-menus>
+      <div v-if="isShowMenu" class="bh-ddm" slot="menu">
+          <mt-box-group v-model="sexValue" align="right" v-if="type==='lv1'">
             <mt-cell-group>
                 <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="item in menuDatas" :key="item.value" iconpattern="hook">
                     {{item.label}}
                 </mt-radiobox>
             </mt-cell-group>
           </mt-box-group>
-          <mt-side-navbar slot="menu" v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
+          <mt-side-navbar  v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
             <div slot="nav">
               <mt-tab-item id="4" componentname="sidenavbar">全部国家</mt-tab-item>
               <mt-tab-item id="1" componentname="sidenavbar">选项一</mt-tab-item>
@@ -39,7 +39,7 @@
               </mt-tab-container-item>
             </mt-tab-container>
           </mt-side-navbar>
-          <!-- <div slot="menu" v-if="type==='lv2'" class="bh-ddm-two">
+          <!-- <div  v-if="type==='lv2'" class="bh-ddm-two">
               <div class="bh-ddm-lv1-container">
                   <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
                   </mt-cell>
@@ -49,7 +49,7 @@
                   </mt-radiobox>
               </div>
           </div> -->
-          <div slot="menu" v-if="type==='lv3'" class="bh-ddm-three">
+          <div v-if="type==='lv3'" class="bh-ddm-three">
               <div class="bh-ddm-lv1-container">
                   <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
                   </mt-cell>
@@ -63,7 +63,7 @@
                   </mt-radiobox>
               </div>
           </div>
-          <div slot="menu" v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
+          <div v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
               <div style="padding:0 20px;">
                   <mt-button-list label="频率" :multiple="true" :plain="false" :options="filterMenuDatas" v-model="multiValue" :display.sync="multiValue_display"></mt-button-list>
                   <p>value: {{multiValue}}</p>
@@ -443,6 +443,6 @@ export default {
 </script>
 <style>
 .bh-ddm-sideNavbar.mint-side-navbar .navbar.is-fixed {
-/*  position: relative;*/
+  position: relative;
 }
 </style>
