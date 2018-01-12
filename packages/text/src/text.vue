@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'mt-color-grey']" :style="computeStyle">
+  <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'']" :style="computeStyle">
     <slot></slot>
   </div>
 </template>

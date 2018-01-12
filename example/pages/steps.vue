@@ -1,6 +1,6 @@
 <template>
     <div class="page-steps" style="margin-top:45px;">
-        <mt-steps direction="horizontal" description="" title="物流进度">
+        <mt-steps direction="horizontal" description="步骤的描述" title="物流进度">
             <mt-step status="finish">买家下单</mt-step>
             <mt-step :status="status">商家接单</mt-step>
             <mt-step status="process">买家提货</mt-step>

@@ -2,7 +2,7 @@
   <div class="mint-file-list">
     <h4 class="mint-file-list-title mt-color-grey-lv3" v-if="label !== ''">{{label}}</h4>
     <mt-cell-group>
-      <mt-cell v-for="item in fileList" :key="item.id" :title="item.name" is-link></mt-cell>
+      <mt-cell v-for="item in fileList" :key="item.id" :title="item.name" is-link ></mt-cell>
     </mt-cell-group>
   </div>
 </template>

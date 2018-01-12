@@ -13,7 +13,7 @@
         <!--start
         @name small-danger
         -->
-        <mt-badge type="danger" size="small">30</mt-badge>
+        <mt-badge type="danger" size="small">10</mt-badge>
         <!--end-->
 
         <!--start
@@ -25,13 +25,13 @@
         <!--start
         @name small-warning
         -->
-        <mt-badge type="warning" size="small">30</mt-badge>
+        <mt-badge type="warning" size="small">100</mt-badge>
         <!--end-->
 
         <!--start
         @name small-custom
         -->
-        <mt-badge size="small" color="#888" fontColor="red" fontSize="18px">自定义颜色</mt-badge>
+        <mt-badge size="small" color="#888">自定义颜色</mt-badge>
         <!--end-->
       </div>
 
@@ -43,25 +43,25 @@
         <!--start
         @name normal-primary
         -->
-        <mt-badge type="primary" size="normal">30</mt-badge>
+        <mt-badge type="primary" size="normal">8</mt-badge>
         <!--end-->
 
         <!--start
         @name normal-danger
         -->
-        <mt-badge type="danger" size="normal">new</mt-badge>
+        <mt-badge type="danger" size="normal">10</mt-badge>
         <!--end-->
 
         <!--start
         @name normal-success
         -->
-        <mt-badge type="success" size="normal">100</mt-badge>
+        <mt-badge type="success" size="normal">30</mt-badge>
         <!--end-->
 
         <!--start
         @name normal-warning
         -->
-        <mt-badge type="warning" size="normal">30</mt-badge>
+        <mt-badge type="warning" size="normal">100</mt-badge>
         <!--end-->
 
         <!--start
@@ -79,13 +79,13 @@
         <!--start
         @name large-primary
         -->
-        <mt-badge type="primary" size="large">30</mt-badge>
+        <mt-badge type="primary" size="large">8</mt-badge>
         <!--end-->
 
         <!--start
         @name large-danger
         -->
-        <mt-badge type="danger" size="large">30</mt-badge>
+        <mt-badge type="danger" size="large">10</mt-badge>
         <!--end-->
 
         <!--start
@@ -97,7 +97,7 @@
         <!--start
         @name large-warning
         -->
-        <mt-badge type="warning" size="large">30</mt-badge>
+        <mt-badge type="warning" size="large">100</mt-badge>
         <!--end-->
 
         <!--start

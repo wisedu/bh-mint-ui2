@@ -24,7 +24,7 @@
       <!--start
       @name primary
       -->
-      <mt-icon name="icon-pinglun" padding="20px 20px 20px 20px"></mt-icon>
+      <mt-icon name="icon-pinglun" padding="20px"></mt-icon>
       <!--end-->
     </div>
 
@@ -33,7 +33,7 @@
       <!--start
       @name warning
       -->
-      <mt-icon name="icon-pinglun" color="green"></mt-icon>
+      <mt-icon name="icon-pinglun" color="red"></mt-icon>
       <!--end-->
     </div>
 
@@ -46,7 +46,7 @@
       <!--end-->
     </div>
     <div class="item">
-      <div class="title">click-colorChange</div>
+      <div class="title">click-colorchange</div>
       <!--start
       @name danger
       -->

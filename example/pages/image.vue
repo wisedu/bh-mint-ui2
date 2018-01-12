@@ -4,19 +4,24 @@
     <!--start
       @name fixed-width-height
       -->
-    <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/no_search_result2.png" width="200px" height="200px"></mt-image>
+    <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/no_search_result2.png" width="200px" height="200px" :watermark="true"></mt-image>
     <!--end-->
     <div class="page-image-title">图片100%自适应</div>
     <!--start
       @name normal
       -->
-    <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png"></mt-image>
+    <mt-image src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" @click="handleClick"></mt-image>
     <!--end-->
   </div>
 </template>
 <script>
 export default {
-  name: 'button'
+  name: 'button',
+  methods: {
+      handleClick(e) {
+        console.log("你点击我了")
+      }
+  }
 };
 </script>
 <style>

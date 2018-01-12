@@ -14,11 +14,11 @@
      */
 export default {
   name: 'mt-image',
-    methods: {
-        handleClick(evt) {
-            this.$emit('click', evt);
-        }
-    },
+  methods: {
+      handleClick(evt) {
+          this.$emit('click', evt);
+      }
+  },
   props: {
       /**
        * @noteType prop
@@ -87,7 +87,7 @@ export default {
             let height = this.height;
             let top = this.top;
             let left = this.left;
-            let watermark = this.watermark;
+            // let watermark = this.watermark;
             let _style = '';
             if (width) {
                 _style += 'width:' + width + ';';
@@ -95,9 +95,9 @@ export default {
             if (height) {
                 _style += 'height:' + height + ';';
             }
-            if (watermark === true || watermark === 'true') {
-                _style += 'position: fixed;';
-            }
+            // if (watermark === true || watermark === 'true') {
+            //     _style += 'position: fixed;';
+            // }
             if (top) {
                 _style += 'top:' + top + ';';
             }
