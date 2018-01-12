@@ -5,11 +5,11 @@
                 <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active,}"></i>
             </div>
         </div>
-        <div v-if="isShowMenu" class="bh-ddm" ref="menu">
+        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'max-height':maxHeight}">
             <slot name="menu"></slot>
         </div>
         <!-- 遮罩层 -->
-        <div v-if="isShowMenu" class="bh-ddm-shadow" @click="cancelShadow"  :style="{top:shadowTop}"></div>
+        <div v-if="isShowMenu" class="bh-ddm-shadow mt-bg-mask" @click="cancelShadow"  :style="{top:shadowTop}"></div>
     </div>
 </template>
 <style lang="css">
@@ -73,14 +73,13 @@
       top:-4px !important;
   }
   .bh-ddm {
-    position: relative;
+    position: absolute;
+    width: 100%;
     z-index: 2000;
-    background-color: #fff;
-    border-bottom: solid 1px #eee;
+    overflow: auto;
   }
   .bh-ddm-shadow {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1999;
     position: fixed;
     top:0;
@@ -100,88 +99,6 @@
   .bh-ddm .mint-cell-allow-right {
     display: none;
   }
-  .bh-ddm-filter .mint-button--normal {
-    border-radius: 4px;
-    padding: 6px 24px;
-    margin: 4px 10px;
-    box-shadow: 0 0 3px #bdc0c5;
-  }
-  .bh-ddm-lv1-container {
-    float: left;
-    width: 30%;
-    background-color: #f4f4f4;
-    border-right: solid 0.5px rgba(0, 0, 0, 0.25);
-  }
-  .bh-ddm-two {
-    overflow: auto;
-    display: flex;
-  }
-  .bh-ddm-two .bh-ddm-lv2-container {
-    float: right;
-    width: 70%;
-  }
-  .bh-ddm-two .mint-cell-wrapper {
-    border-top: none;
-  }
-  .bh-ddm-three {
-    overflow: auto;
-    display: flex;
-  }
-  .bh-ddm-three .mint-cell-wrapper {
-    border-top: none;
-  }
-  .bh-ddm-three .bh-ddm-lv2-container {
-    float: left;
-    width: 30%;
-  }
-  .bh-ddm-three .bh-ddm-lv3-container {
-    float: right;
-    width: 40%;
-    border-left: solid 0.5px rgba(0, 0, 0, 0.1);
-  }
-
-  .bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
-    background-color: #fff;
-    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
-    border-bottom: solid 0.5px rgba(0, 0, 0, 0.25);
-    border-right: solid 0.5px #fff;
-    width: calc(100% + 1px);
-  }
-  .bh-ddm-lv1-container .bh-ddm-lv1-item:first-child.bh-ddm-lv1-item-selected {
-    border-top: none;
-  }
-  .bh-ddm-lv1-container .bh-ddm-lv1-item:last-child.bh-ddm-lv1-item-selected {
-    border-bottom: none;
-  }
-  .bh-ddm-lv2-item-selected {
-    color: #38cdc1 !important;
-  }
-  .bh-ddm-lv3-item-selected {
-    color: #38cdc1 !important;
-  }
-
-  .bh-ddm-filter {
-    position: relative;
-  }
-  .bh-ddm-filter-buttons {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
-  }
-  .bh-ddm-filter-button {
-    width: 50%;
-    float: left;
-    padding: 10px 0;
-    text-align: center;
-  }
-   .bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
-    background-color: #06c1ae;
-    color: #fff;
-  }
-  .bh-ddm-sideNavbar .mint-tab-item.is-selected {
-    border-color:#fff !important;
-  }
 </style>
 <script>
     export default {
@@ -189,7 +106,8 @@
         data () {
             return {
               itemWidth:'',
-              shadowTop:''
+              shadowTop:'',
+              maxHeight:''
             }
         },
         props:{
@@ -211,7 +129,16 @@
           isShowMenu: function(n){
             if(n){
               this.$nextTick(function(){
-                this.shadowTop = this.$refs.menu.offsetTop+"px";
+                let elem = this.$refs.content;
+                let obj = {
+                  "top":elem.offsetTop
+                };
+                while(elem != document.body){
+                  elem = elem.offsetParent ;
+                  obj.top += elem.offsetTop ;
+                }
+                this.shadowTop = obj.top+"px";
+                this.maxHeight = window.screen.height -obj.top+"px";
               })
             }else{
               document.body.style.overflow = "auto";
@@ -250,6 +177,9 @@
               //this.isShowMenu = false;
               this.$emit('cancel', evt);
             }
+        },
+        beforeDestroy:function(){
+          document.body.style.overflow = "auto";
         }
     }
 </script>

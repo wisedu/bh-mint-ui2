@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top:44px;">
+  <div style="margin-top:44px;position:relative">
     <div class="nav">
       <mt-button size="small" @click.native.prevent="active = 'tab-container1'" type="primary">tab 1</mt-button>
       <mt-button size="small" @click.native.prevent="active = 'tab-container2'" type="warning">tab 2</mt-button>

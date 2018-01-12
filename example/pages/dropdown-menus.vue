@@ -1,84 +1,93 @@
 <template>
-    <div class="page-field" style="margin-top:45px">
-      <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu"> </mt-dropdown-menus>
-      <div v-if="isShowMenu" class="bh-ddm" slot="menu">
-          <mt-box-group v-model="sexValue" align="right" v-if="type==='lv1'">
+    <div class="page-field">
+      <div style="height:45px;width:100%;"></div>
+        <div style="position:relative">
+            <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu">
+              <div v-if="isShowMenu" slot="menu">
+                  <mt-box-group v-model="sexValue" align="right" v-if="type==='lv1'">
+                    <mt-cell-group>
+                        <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="item in menuDatas" :key="item.value" iconpattern="hook">
+                            {{item.label}}
+                        </mt-radiobox>
+                    </mt-cell-group>
+                  </mt-box-group>
+                  <mt-side-navbar  v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
+                    <div slot="nav">
+                      <mt-tab-item id="4" componentname="sidenavbar">全部国家</mt-tab-item>
+                      <mt-tab-item id="1" componentname="sidenavbar">选项一</mt-tab-item>
+                      <mt-tab-item id="2" componentname="sidenavbar">选项二</mt-tab-item>
+                      <mt-tab-item id="3" componentname="sidenavbar">选项三</mt-tab-item>
+                    </div>
+                    <mt-tab-container v-model="lv2Selected" slot="content">
+                      <mt-tab-container-item id="4">
+                        <mt-cell-group>
+                          <mt-cell :title="'国家'" :id="'countryAll'" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                        </mt-cell-group>
+                      </mt-tab-container-item>
+                      <mt-tab-container-item id="1">
+                        <mt-cell-group>
+                          <mt-cell v-for="n in 50" :title="'内容 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                        </mt-cell-group>
+                      </mt-tab-container-item>
+                      <mt-tab-container-item id="2">
+                        <mt-cell-group>
+                          <mt-cell v-for="n in 4" :title="'测试 ' + n" :aria-invalid="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                        </mt-cell-group>
+                      </mt-tab-container-item>
+                      <mt-tab-container-item id="3">
+                        <mt-cell-group>
+                          <mt-cell v-for="n in 6" :title="'选项 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                        </mt-cell-group>
+                      </mt-tab-container-item>
+                    </mt-tab-container>
+                  </mt-side-navbar>
+                  <!-- <div  v-if="type==='lv2'" class="bh-ddm-two">
+                      <div class="bh-ddm-lv1-container">
+                          <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
+                          </mt-cell>
+                      </div>
+                      <div class="bh-ddm-lv2-container">
+                          <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="subMenuDatas" v-model="countryValue">
+                          </mt-radiobox>
+                      </div>
+                  </div> -->
+                  <div v-if="type==='lv3'" class="bh-ddm-three">
+                      <div class="bh-ddm-lv1-container">
+                        <mt-cell-group>
+                          <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
+                          </mt-cell>
+                        </mt-cell-group>
+                      </div>
+                      <div class="bh-ddm-lv2-container">
+                          <mt-cell v-for=" item in subMenuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @cellClick="setSubSelected(item)">
+                          </mt-cell>
+                      </div>
+                      <div class="bh-ddm-lv3-container">
+                          <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="grandMenuDatas" v-model="trafficValue">
+                          </mt-radiobox>
+                      </div>
+                  </div>
+                  <div v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
+                      <div style="padding:0 20px;">
+                          <mt-button-list label="频率" :multiple="true" :plain="false" :options="filterMenuDatas" v-model="multiValue" :display.sync="multiValue_display"></mt-button-list>
+                          <p>value: {{multiValue}}</p>
+                          <p>display: {{multiValue_display}}</p>
+                      </div>
+                      <div class="bh-ddm-filter-buttons">
+                          <div class="bh-ddm-filter-button" @click="resetFilter">
+                          重置
+                          </div>
+                          <div class="bh-ddm-filter-button" @click="sureFilter">
+                          确定
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </mt-dropdown-menus>
             <mt-cell-group>
-                <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="item in menuDatas" :key="item.value" iconpattern="hook">
-                    {{item.label}}
-                </mt-radiobox>
+              <mt-cell v-for="n in 40" :title="'内容 ' + n" cellheight="44px"/>
             </mt-cell-group>
-          </mt-box-group>
-          <mt-side-navbar  v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
-            <div slot="nav">
-              <mt-tab-item id="4" componentname="sidenavbar">全部国家</mt-tab-item>
-              <mt-tab-item id="1" componentname="sidenavbar">选项一</mt-tab-item>
-              <mt-tab-item id="2" componentname="sidenavbar">选项二</mt-tab-item>
-              <mt-tab-item id="3" componentname="sidenavbar">选项三</mt-tab-item>
-            </div>
-            <mt-tab-container v-model="lv2Selected" slot="content">
-              <mt-tab-container-item id="4">
-                <mt-cell-group>
-                  <mt-cell :title="'国家'" :id="'countryAll'" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
-                </mt-cell-group>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="1">
-                <mt-cell-group>
-                  <mt-cell v-for="n in 10" :title="'内容 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
-                </mt-cell-group>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="2">
-                <mt-cell-group>
-                  <mt-cell v-for="n in 4" :title="'测试 ' + n" :aria-invalid="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
-                </mt-cell-group>
-              </mt-tab-container-item>
-              <mt-tab-container-item id="3">
-                <mt-cell-group>
-                  <mt-cell v-for="n in 6" :title="'选项 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
-                </mt-cell-group>
-              </mt-tab-container-item>
-            </mt-tab-container>
-          </mt-side-navbar>
-          <!-- <div  v-if="type==='lv2'" class="bh-ddm-two">
-              <div class="bh-ddm-lv1-container">
-                  <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
-                  </mt-cell>
-              </div>
-              <div class="bh-ddm-lv2-container">
-                  <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="subMenuDatas" v-model="countryValue">
-                  </mt-radiobox>
-              </div>
-          </div> -->
-          <div v-if="type==='lv3'" class="bh-ddm-three">
-              <div class="bh-ddm-lv1-container">
-                  <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
-                  </mt-cell>
-              </div>
-              <div class="bh-ddm-lv2-container">
-                  <mt-cell v-for=" item in subMenuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @cellClick="setSubSelected(item)">
-                  </mt-cell>
-              </div>
-              <div class="bh-ddm-lv3-container">
-                  <mt-radiobox class="bh-radio-slot"  align="right" type="hook" :options="grandMenuDatas" v-model="trafficValue">
-                  </mt-radiobox>
-              </div>
-          </div>
-          <div v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
-              <div style="padding:0 20px;">
-                  <mt-button-list label="频率" :multiple="true" :plain="false" :options="filterMenuDatas" v-model="multiValue" :display.sync="multiValue_display"></mt-button-list>
-                  <p>value: {{multiValue}}</p>
-                  <p>display: {{multiValue_display}}</p>
-              </div>
-              <div class="bh-ddm-filter-buttons">
-                  <div class="bh-ddm-filter-button" @click="resetFilter">
-                  重置
-                  </div>
-                  <div class="bh-ddm-filter-button" @click="sureFilter">
-                  确定
-                  </div>
-              </div>
-          </div>
-      </div>
+        </div>
     </div>
 </template>
 <style>
@@ -434,15 +443,93 @@ export default {
         this.isShowMenu = false;
     },
     cellClick:function(param,item){
-      console.log(param)
-      console.log(item)
       this.lv2SelectedId = item;
     }
   }
 };
 </script>
 <style>
-.bh-ddm-sideNavbar.mint-side-navbar .navbar.is-fixed {
-  position: relative;
-}
+  .bh-ddm-sideNavbar.mint-side-navbar .navbar.is-fixed {
+    position: relative;
+  }
+  .bh-ddm-filter .mint-button--normal {
+    border-radius: 4px;
+    padding: 6px 24px;
+    margin: 4px 10px;
+    box-shadow: 0 0 3px #bdc0c5;
+  }
+  .bh-ddm-lv1-container {
+    float: left;
+    width: 30%;
+    background-color: #f4f4f4;
+    border-right: solid 0.5px rgba(0, 0, 0, 0.25);
+  }
+  .bh-ddm-two {
+    overflow: auto;
+    display: flex;
+  }
+  .bh-ddm-two .bh-ddm-lv2-container {
+    float: right;
+    width: 70%;
+  }
+  .bh-ddm-two .mint-cell-wrapper {
+    border-top: none;
+  }
+  .bh-ddm-three {
+    overflow: auto;
+    display: flex;
+  }
+  .bh-ddm-three .mint-cell-wrapper {
+    border-top: none;
+  }
+  .bh-ddm-three .bh-ddm-lv2-container {
+    float: left;
+    width: 30%;
+  }
+  .bh-ddm-three .bh-ddm-lv3-container {
+    float: right;
+    width: 40%;
+    border-left: solid 0.5px rgba(0, 0, 0, 0.1);
+  }
+
+  .bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
+    background-color: #fff;
+    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
+    border-bottom: solid 0.5px rgba(0, 0, 0, 0.25);
+    border-right: solid 0.5px #fff;
+    width: calc(100% + 1px);
+  }
+  .bh-ddm-lv1-container .bh-ddm-lv1-item:first-child.bh-ddm-lv1-item-selected {
+    border-top: none;
+  }
+  .bh-ddm-lv1-container .bh-ddm-lv1-item:last-child.bh-ddm-lv1-item-selected {
+    border-bottom: none;
+  }
+  .bh-ddm-lv2-item-selected {
+    color: #38cdc1 !important;
+  }
+  .bh-ddm-lv3-item-selected {
+    color: #38cdc1 !important;
+  }
+
+  .bh-ddm-filter {
+    position: relative;
+  }
+  .bh-ddm-filter-buttons {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
+  }
+  .bh-ddm-filter-button {
+    width: 50%;
+    float: left;
+    padding: 10px 0;
+    text-align: center;
+  }
+  .bh-ddm-filter-buttons .bh-ddm-filter-button:last-child {
+    background-color: #06c1ae;
+    color: #fff;
+  }
+
 </style>

@@ -18,7 +18,6 @@
 <style lang="css">
   @component-namespace mint {
     @component tab-container {
-      overflow: hidden;
       position: relative;
 
       @descendent wrap {

@@ -249,7 +249,6 @@ export default {
     },
 
     currentValue(val) {
-      debugger;
       if (this.easycheck === false) {
         let reg = /[^\x00-\xff]/ig;
         let count = 0;

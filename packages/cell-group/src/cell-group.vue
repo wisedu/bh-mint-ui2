@@ -29,7 +29,6 @@ export default {
 @component-namespace mint {
   @component cell {
     @descendent group{
-      overflow: hidden;
       @descendent title{
         margin: 14px 0 8px 20px;
         font-size: 14px;

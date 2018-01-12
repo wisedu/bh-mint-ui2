@@ -19,12 +19,12 @@
     <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
         <mt-cell-group>
-          <mt-cell v-for="n in 10" :title="'内容 ' + n" wrapperpaddingleft="20px"/>
+          <mt-cell v-for="n in 20" :title="'内容 ' + n" wrapperpaddingleft="20px"/>
         </mt-cell-group>
       </mt-tab-container-item>
       <mt-tab-container-item id="2">
         <mt-cell-group>
-          <mt-cell v-for="n in 4" :title="'测试 ' + n" wrapperpaddingleft="20px"/>
+          <mt-cell v-for="n in 10" :title="'测试 ' + n" wrapperpaddingleft="20px"/>
         </mt-cell-group>
       </mt-tab-container-item>
       <mt-tab-container-item id="3">
