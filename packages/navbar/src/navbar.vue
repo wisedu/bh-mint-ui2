@@ -42,7 +42,7 @@ export default {
   name: 'mt-navbar',
   props: {
     fixed: Boolean,
-    value: {},
+    value: {}
   }
 };
 
@@ -78,7 +78,7 @@ export default {
 
       @when fixed {
         position: fixed 0 0 * 0;
-        z-index: 1;
+        z-index: 1001;
       }
 
       .mint-tab-item {

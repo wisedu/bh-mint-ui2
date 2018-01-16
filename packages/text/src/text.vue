@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'']" :style="computeStyle">
+  <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'mt-color-grey']" :style="computeStyle">
     <slot></slot>
   </div>
 </template>
@@ -117,6 +117,7 @@ export default {
   @component-namespace mint {
     @component text {
       position: relative;
+      word-wrap: break-word;
     }
   }
 </style>

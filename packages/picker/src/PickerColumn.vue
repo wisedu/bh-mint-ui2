@@ -58,6 +58,10 @@ export default {
     defaultIndex: {
       type: Number,
       default: 0
+    },
+    isInterrelated:{
+      type: Boolean,
+      default: false
     }
   },
   data() {

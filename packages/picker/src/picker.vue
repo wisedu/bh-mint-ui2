@@ -2,7 +2,7 @@
   <div class="mint-picker mt-bg-lv3">
     <div class="mint-picker__toolbar mt-bColor-grey-lv6" v-if="showToolbar">
       <slot>
-        <div class="mint-picker__cancel mt-color-theme" @click="emit('cancel')">{{ cancelText }}</div>
+        <div class="mint-picker__cancel mt-color-grey" @click="emit('cancel')"><i v-if="!cancelText" class="iconfont icon-close"></i><span class="mt-color-theme">{{cancelText}}</span></div>
         <div class="mint-picker__confirm  mt-color-theme" @click="emit('confirm')">{{ confirmText }}</div>
         <div class="mint-picker__title  mt-color-grey" v-if="title" v-text="title" />
       </slot>
@@ -17,7 +17,8 @@
         :defaultIndex="item.defaultIndex"
         :itemHeight="itemHeight"
         :visibileColumnCount="visibileColumnCount"
-        @change="onChange(index)"
+        :isInterrelated="isInterrelated"
+        @change="onChange"
       />
     </div>
   </div>
@@ -45,12 +46,13 @@ export default {
     },
     cancelText: {
       type: String,
-      default: '取消'
+      default: ''
     },
     confirmText: {
       type: String,
       default: '确定'
-    }
+    },
+    isInterrelated: Boolean
   },
   data() {
     return {
@@ -74,6 +76,22 @@ export default {
       const columns = JSON.parse(JSON.stringify(this.columns));
       this.isSimpleColumn = columns.length && !columns[0].values;
       this.currentColumns = this.isSimpleColumn ? [{ values: columns }] : columns;
+      if(this.isInterrelated){
+        let showData = columns;
+        let id_1 = "";
+        if(showData[0].defaultIndex){
+          id_1 = showData[0].values[showData[0].defaultIndex].id;
+        }else{
+          id_1 = showData[0].values[0].id;
+        }
+        let childrenColumn=[];
+        for(let i=0;i<showData[1].values.length;i++){
+          if(showData[1].values[i].pid === id_1) childrenColumn.push(showData[1].values[i]);
+        }
+        showData[1].values=childrenColumn;
+        this.currentColumns = showData;
+      }
+
     },
     emit(event) {
       if (this.isSimpleColumn) {
@@ -86,7 +104,20 @@ export default {
       if (this.isSimpleColumn) {
         this.$emit('change', this, this.getColumnValue(0), this.getColumnIndex(0));
       } else {
-        this.$emit('change', this, this.getValues(), columnIndex);
+         this.$emit('change', this, this.getValues(), columnIndex);
+        if(this.isInterrelated){
+          const columns = JSON.parse(JSON.stringify(this.columns));
+          let id_1 = this.getValues()[0].id;
+          let showData = columns;
+          let childrenColumn=[];
+          for(let i=0;i<showData[1].values.length;i++){
+            if(showData[1].values[i].pid === id_1) childrenColumn.push(showData[1].values[i]);
+          }
+          showData[1].values=childrenColumn;
+          this.currentColumns = showData;
+        }else{
+          this.$emit('change', this, this.getValues(), columnIndex);
+        }
       }
     },
     // get column instance by index
@@ -152,8 +183,9 @@ export default {
     user-select: none;
 
     &__toolbar {
-      height: 44px;
-      line-height: 44px;
+      padding: 13px 0;
+      font-size: 18px;
+      line-height: 1;
       overflow: hidden;
       border-bottom-width: 0.5px;
       border-bottom-style: solid;
@@ -162,7 +194,6 @@ export default {
     &__cancel,
     &__confirm {
       padding: 0 15px;
-      font-size: 17px;
 
       &:active {
         opacity:0.6;
@@ -171,6 +202,12 @@ export default {
 
     &__cancel {
       float: left;
+      height: 18px;
+      .iconfont{
+        font-size:30px;
+        display:inline-block;
+        margin-top:-4px;
+      }
     }
 
     &__confirm {
@@ -178,7 +215,6 @@ export default {
     }
 
     &__title {
-      font-size: 18px;
       text-align: center;
       overflow: hidden;
       white-space: nowrap;

@@ -11,8 +11,8 @@
       <mt-cell title="标题文字" is-link value="带链接的" wrapperpaddingright="15px" arrowdefined>
         <i slot="arrowdefined" class="icon iconfont icon-localgrocerystore" style="font-size:24px;color:#bdc0c5;"></i>
       </mt-cell>
-      <mt-cell title="标题文字" is-link wrapperpaddingright="30px">
-        <span style="color: green">自定义右内边距30px</span>
+      <mt-cell title="标题文字" is-link wrapperpaddingright="30px" value="自定义右内边距30px">
+       <!--  <span style="color: green">自定义右内边距30px</span> -->
       </mt-cell>
       <mt-cell title="标题文字" to="click" @cellClick="cellClick" wrapperpaddingright="15px">
         <mt-button size="small" type="primary" icon="back">按钮</mt-button>

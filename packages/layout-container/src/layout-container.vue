@@ -33,16 +33,16 @@
                 let padding = this.padding;
                 let margin = this.margin;
                 if (background) {
-                    let bgColor = '';
-                    switch (background) {
-                        case 'gray':
-                            bgColor = 'rgba(0,0,0,0.1)';
-                            break;
-                        default:
-                            bgColor += background;
-                            break;
-                    }
-                    _style += `background: ${bgColor};`;
+                    // let bgColor = '';
+                    // switch (background) {
+                    //     case 'gray':
+                    //         bgColor = 'rgba(0,0,0,0.1)';
+                    //         break;
+                    //     default:
+                    //         bgColor += background;
+                    //         break;
+                    // }
+                    _style += `background: ${background};`;
                 }
 
                 if (padding) {

@@ -71,7 +71,7 @@ export default {
   props: {
     cellheight:{
       type:String,
-      default:'50px'
+      default:''
     },
     to: [String, Object],
       /**
@@ -264,6 +264,7 @@ export default {
       overflow: hidden;
       position: relative;
       text-decoration: none;
+      min-height: 50px;
 
       &:first-child {
         .mint-cell-wrapper {

@@ -1,7 +1,7 @@
 <template>
   <div class="page-navbar">
     <mt-cell title="当前选中" wrapperpaddingleft="20px">{{ selected }}</mt-cell>
-    <mt-side-navbar v-model="selected">
+    <mt-side-navbar v-model="selected"> 
       <div slot="nav">
         <mt-tab-item id="1" componentname="sidenavbar">选项一</mt-tab-item>
         <mt-tab-item id="2" componentname="sidenavbar">选项二</mt-tab-item>
@@ -25,6 +25,7 @@
         </mt-tab-container-item>
       </mt-tab-container>
     </mt-side-navbar>
+    </div>
   </div>
 </template>
 

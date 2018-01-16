@@ -3,7 +3,7 @@
     <mt-navbar v-model="selected">
       <mt-tab-item id="1" componentname="navbar">
         选项一
-        <mt-badge size="normal" padding="3px" color="red" slot="badge"></mt-badge>
+        <mt-badge size="normal" padding="3px" color="red" slot="badge" ></mt-badge>
       </mt-tab-item>
       <mt-tab-item id="2" componentname="navbar">选项二</mt-tab-item>
       <mt-tab-item id="3" componentname="navbar">选项三</mt-tab-item>

@@ -11,7 +11,7 @@
                         </mt-radiobox>
                     </mt-cell-group>
                   </mt-box-group>
-                  <mt-side-navbar  v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected">
+                  <mt-side-navbar  v-if="type==='lv2'" class="bh-ddm-sideNavbar" v-model="lv2Selected" :fixed="false">
                     <div slot="nav">
                       <mt-tab-item id="4" componentname="sidenavbar">全部国家</mt-tab-item>
                       <mt-tab-item id="1" componentname="sidenavbar">选项一</mt-tab-item>

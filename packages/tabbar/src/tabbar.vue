@@ -55,7 +55,7 @@ export default {
 
       @when fixed {
         position: fixed * 0 0 0;
-        z-index: 1;
+        z-index: 998;
       }
     }
   }

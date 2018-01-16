@@ -1,12 +1,20 @@
 <template>
   <div style="margin-top:45px;">
-    <div style="margin-left:10px">默认背景色gray</div>
+    <div style="margin-left:10px">背景(gray):</div>
     <!--start
-      @name gray
-      -->
-    <mt-layout-container background="gray" padding="30px" margin="10px">margin (10px)+padding(30px)</mt-layout-container>
+    @name gray
+    -->
+    <mt-layout-container background="gray">普通容器</mt-layout-container>
 
-    <mt-layout-container background="#52C7CA" class="layout-container" margin="10px">
+
+    <div style="margin-left:10px">padding(10px)</div>
+    <mt-layout-container padding="10px" background="gray">普通容器</mt-layout-container>
+
+
+    <div style="margin-left:10px">margin(10px)</div>
+    <mt-layout-container margin="10px" background="gray">普通容器</mt-layout-container>
+
+    <mt-layout-container background="#52C7CA" class="layout-container" margin="10px" @click="handleClick">
       Hello World!!!
       <mt-subscript label="成功" fontsize="12px" background="red" width="90px" height="16px" rotate="45"></mt-subscript>
     </mt-layout-container>
@@ -21,7 +29,12 @@
 
 <script>
 export default {
-    name: 'page-layout-container'
+    name: 'page-layout-container',
+    methods: {
+      handleClick(evt) {
+        console.log("您点击了！");
+      }
+    },
 };
 </script>
 

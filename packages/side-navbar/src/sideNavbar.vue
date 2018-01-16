@@ -1,11 +1,11 @@
 <template>
-  <div class="mint-side-navbar">
-    <div class="side-nav" v-bind:style="{width:width}">
+  <div class="mint-side-navbar" :style="{height:sideNavbarHeight}">
+<!--     <div class="side-nav" v-bind:style="{width:width}"> -->
       <div class="navbar mt-bg-lv1" :class="{ 'is-fixed': fixed }" v-bind:style="{width:width,top:top}">
         <slot name="nav"></slot>
       </div>
-    </div>
-    <div class="nav-content">
+<!--     </div> -->
+    <div class="nav-content" :style="{marginLeft:marginLeft}">
       <slot name="content"></slot>
     </div>
   </div>
@@ -40,7 +40,12 @@
  */
 export default {
   name: 'mt-side-navbar',
-
+  data(){
+    return {
+      marginLeft:"",
+      sideNavbarHeight:""
+    }
+  },
   props: {
     fixed: {
       type: Boolean,
@@ -53,6 +58,10 @@ export default {
     },
     top: {
       type: String,
+      default: ''
+    },
+    height: {
+      type: String,
       default: '0'
     }
   },
@@ -61,8 +70,28 @@ export default {
   },
   methods: {
     resetPosition() {
-      if (this.top === '0') {
-        this.$el.querySelector('.navbar').style.top = this.$el.offsetTop + 'px';
+      let elem = this.$el;
+      console.log(elem.offsetHeight)
+      let obj = {
+        "top":elem.offsetTop
+      };
+      while(elem != document.body){
+        elem = elem.offsetParent ;
+        obj.top += elem.offsetTop ;
+      }
+      if(this.height === '0'){
+        this.sideNavbarHeight = window.screen.height-obj.top;
+        this.sideNavbarHeight = (this.sideNavbarHeight > elem.offsetHeight?elem.offsetHeight:this.sideNavbarHeight)+"px";
+      }else{
+        this.sideNavbarHeight = this.height;
+      }
+      if (this.fixed){
+        this.marginLeft=this.width;
+        if(this.top === ''){
+          this.$el.querySelector('.navbar').style.top = obj.top + 'px';
+        }else{
+          this.$el.querySelector('.navbar').style.top = this.top;
+        }
       }
     }
   }
@@ -73,13 +102,15 @@ export default {
 
   @component-namespace mint {
     @component side-navbar {
+      overflow:auto;
       display: flex;
       .navbar{
         display: block;
         @when fixed {
           position: fixed;
+          top: 0;
           bottom: 0;
-          z-index: 1;
+          z-index: 999;
         }
 
         .mint-tab-item {
