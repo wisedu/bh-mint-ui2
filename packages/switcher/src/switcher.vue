@@ -62,9 +62,9 @@ export default {
     currentValue: {
       get() {
         if (this.value === '0' || this.value === 0) {
-          return false;
+          return 0;
         } else {
-          return true;
+          return 1;
         }
       },
       set(val) {
