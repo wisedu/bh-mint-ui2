@@ -54,6 +54,7 @@
   "layout-left-right": "./packages/layout-left-right/index.js",
   "layout-left-right-item": "./packages/layout-left-right-item/index.js",
   "layout-container": "./packages/layout-container/index.js",
+  "layout-container-status": "./packages/layout-container-status/index.js",
   "fixed-container": "./packages/fixed-container/index.js",
   "layout-container-multiple": "./packages/layout-container-multiple/index.js",
   "layout-container-multiple-item": "./packages/layout-container-multiple-item/index.js",
