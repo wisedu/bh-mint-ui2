@@ -33,7 +33,7 @@ export default {
         return this.value ? 1 : 0;
       },
       set(val) {
-        this.$emit('input', val);
+        this.$emit('input', val ? 1 : 0);
       }
     }
   }
