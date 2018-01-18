@@ -57,11 +57,12 @@ export default {
   computed: {
     currentValue: {
       get() {
-        if (this.value === '0' || this.value === 0) {
-          return 0;
-        } else {
-          return 1;
-        }
+        // if (this.value === '0' || this.value === 0) {
+        //   return 0;
+        // } else {
+        //   return 1;
+        // }
+        return this.value ? 1 : 0;
       },
       set(val) {
         this.$emit('input', val ? 1 : 0);
