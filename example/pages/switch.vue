@@ -28,10 +28,10 @@ export default {
 
   data() {
     return {
-      value1: false,
-      value2: false,
-      value3: true,
-      value4: true
+      value1: 0,
+      value2: 0,
+      value3: 1,
+      value4: 1
     };
   },
 
