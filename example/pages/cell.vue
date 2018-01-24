@@ -14,6 +14,8 @@
       <mt-cell title="标题文字" is-link value="右侧value自定义图标" arrowdefined>
         <i slot="arrowdefined" class="icon iconfont icon-localgrocerystore" style="font-size:24px;color:#bdc0c5;"></i>
       </mt-cell>
+    </mt-cell-group>
+    <mt-cell-group title="cell组的标题">
       <mt-cell title="自定义左内边距30px" wrapperpaddingleft="30px" is-link></mt-cell>
       <mt-cell title="标题文字" is-link wrapperpaddingright="30px" value="自定义右内边距30px"></mt-cell>
       <mt-cell title="标题文字" is-link wrapperpaddingright="30px" value="自定义右内边距30px">

@@ -34,13 +34,14 @@
         MessageBox.alert('请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容请输入文本内容', '请输入标题提示语');
       },
       openAlert1() {
-        MessageBox.alert('', '请输入标题提示语');
+        MessageBox.alert('', '请输入标题提示语').then(action =>{
+          console.log(action)
+        });
       },
 
       openConfirm() {
-        console.log(MessageBox.confirm);
-        MessageBox.confirm('确定执行此操作?', '提示','',function(val){
-          console.log(val)
+        MessageBox.confirm('确定执行此操作?', '提示','').then(action =>{
+          console.log(action)
         });
       },
 

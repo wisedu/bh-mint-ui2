@@ -38,7 +38,7 @@
  */
 export default {
   name: 'mt-tab-item',
-  data: function(){
+  data(){
     return {
       itemwidth:''
     }
@@ -85,7 +85,7 @@ export default {
     this.navbarWidth();
   },
   methods: {
-    navbarWidth: function() {
+    navbarWidth() {
       this.$nextTick(function(){
         if(this.componentname === 'navbar'){
           let len = this.$parent.$el.querySelectorAll('.mint-tab-item').length;

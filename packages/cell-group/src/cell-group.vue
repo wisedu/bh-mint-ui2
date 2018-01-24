@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-cell-group">
+  <div class="mint-cell-group mt-bg-lv2">
     <div v-if="title.length > 0" class="mint-cell-group-title mt-color-grey-lv3">{{title}}</div>
     <div class="mint-cell-group-content mint-hairline--top-bottom mt-bg-white mt-bColor-after-grey-lv5" :style="{'padding-left':grouppaddingleft}">
       <slot></slot>
@@ -17,7 +17,7 @@ export default {
     },
     grouppaddingleft: {
       type: String,
-      default: '20px'
+      default: ''
     }
   }
 };
@@ -30,8 +30,12 @@ export default {
   @component cell {
     @descendent group{
       @descendent title{
-        margin: 14px 0 8px 20px;
+        padding: 10px 20px 7px 20px;
         font-size: 14px;
+        line-height: 20px;
+      }
+      @descendent content{
+        padding-left: 20px;
       }
     }
   }

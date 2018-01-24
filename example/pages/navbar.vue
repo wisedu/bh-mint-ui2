@@ -2,14 +2,14 @@
   <div class="page-navbar" style="margin-top:45px">
     <mt-navbar v-model="selected">
       <mt-tab-item id="1" componentname="navbar">
-        选项一
+        选项一四
         <mt-badge size="normal" padding="3px" color="red" slot="badge" ></mt-badge>
       </mt-tab-item>
-      <mt-tab-item id="2" componentname="navbar">选项二</mt-tab-item>
-      <mt-tab-item id="3" componentname="navbar">选项三</mt-tab-item>
-      <mt-tab-item id="4" componentname="navbar">选项四</mt-tab-item>
-      <mt-tab-item id="5" componentname="navbar">选项五</mt-tab-item>
-      <mt-tab-item id="6" componentname="navbar">选项六</mt-tab-item>
+      <mt-tab-item id="2" componentname="navbar">选项二四</mt-tab-item>
+      <mt-tab-item id="3" componentname="navbar">选项三四</mt-tab-item>
+      <mt-tab-item id="4" componentname="navbar">选项四四</mt-tab-item>
+      <mt-tab-item id="5" componentname="navbar">选项五四</mt-tab-item>
+      <mt-tab-item id="6" componentname="navbar">选项六四</mt-tab-item>
     </mt-navbar>
 
     <div style="margin:15px 0;">
