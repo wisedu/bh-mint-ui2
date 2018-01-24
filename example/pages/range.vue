@@ -1,14 +1,14 @@
 <template>
   <div class="page-range">
     <mt-cell-group title="基本功能">
-      <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
+      <mt-cell v-for="(item,inde) in cells1" :key="index" :title="item.title" :label="'value:' + item.value">
         <mt-range v-model="item.value">
           <div slot="start" v-if="item.start">{{ item.start }}</div>
           <div slot="end" v-if="item.end">{{ item.end }}</div>
         </mt-range>
       </mt-cell>
       <br/>
-      <div  v-for="item in cells1">
+      <div  v-for="(item,inde) in cells1" :key="index">
         <p>当前值：{{item.value}}</p>
         <mt-range v-model="item.value">
           <div slot="start" v-if="item.start">{{ item.start }}</div>
@@ -18,7 +18,7 @@
       </div>
     </mt-cell-group>
     <mt-cell-group title="自定义">
-      <mt-cell v-for="item in cells2" :title="item.title" :label="'value:' + item.value">
+      <mt-cell v-for="(item,inde) in cells2 :key="index"" :title="item.title" :label="'value:' + item.value">
         <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
           <div slot="start" v-if="item.start">{{ item.start }}</div>
           <div slot="end" v-if="item.end">{{ item.end }}</div>
@@ -26,7 +26,7 @@
       </mt-cell>
     </mt-cell-group>
     <mt-cell-group title="场景举例">
-      <mt-cell v-for="item in cells3" :title="item.title" :label="'value:' + item.value">
+      <mt-cell v-for="(item,inde) in cells3" :key="index" :title="item.title" :label="'value:' + item.value">
         <mt-range v-model="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
           <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
           <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>

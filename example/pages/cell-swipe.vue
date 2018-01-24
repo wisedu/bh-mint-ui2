@@ -3,6 +3,7 @@
     <mt-cell-group grouppaddingleft="0">
       <mt-cell-swipe
         v-for="n in 15"
+        :key="n"
         :right="rightButtons"
         wrapperpaddingleft="20px"
         title="swipe me">

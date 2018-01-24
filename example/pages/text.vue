@@ -1,7 +1,7 @@
 <template>
   <div class="text">
     <mt-cell-group title="文本颜色:">
-      <mt-text>默认文本(grey)</mt-text>
+      <mt-text wordwrap>{{text}}</mt-text>
       <mt-text type="grey">grey文本</mt-text>
       <mt-text type="primary">primary文本</mt-text>
       <mt-text type="warning">warning文本</mt-text>
@@ -16,7 +16,7 @@
       <mt-text type="purple">purple文本</mt-text>
     </mt-cell-group>
     <mt-cell-group title="自定义颜色:">
-      <mt-text color="#F334AB">自定义颜色文本</mt-text>
+      <mt-text color="#F334AB">自定义颜色</mt-text>
     </mt-cell-group>
     <mt-cell-group title="字体大小:">
       <mt-text size="20px" @click="handleClick">20px</mt-text>
@@ -26,6 +26,11 @@
 <script>
 export default {
   name: 'button',
+  data(){
+    return {
+      text:"aaaaaaaaaaaaa\naa"
+    }
+  },
   methods: {
       handleClick(evt) {
           console.log("您点击了！");

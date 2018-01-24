@@ -19,10 +19,10 @@
         type: String,
         default: 'bottom-right'
       },
-        type: {
-            type: String,
-            default: 'primary'
-        },
+      type: {
+          type: String,
+          default: 'primary'
+      },
       size: String,
       borderradius: String,
       color: String,
@@ -102,34 +102,32 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 4rem;
-      height: 4rem;
-      font-size: 3rem;
+      width: 46px;
+      height: 46px;
+      font-size: 18px;
 
       @modifier top-left {
-        top: 1.5rem;
-        left: 1.5rem;
+        top: 20px;
+        left: 16px;
       }
 
       @modifier top-right {
-        top: 1.5rem;
-        right: 1.5rem;
+        top: 20px;
+        right: 16px;
       }
 
       @modifier bottom-left {
-        bottom: 1.5rem;
-        left: 1.5rem;
+        bottom: 20px;
+        left: 16px;
       }
 
       @modifier bottom-right {
-        bottom: 1.5rem;
-        right: 1.5rem;
+        bottom: 20px;
+        right: 16px;
       }
 
       @modifier content {
         position: relative;
-        color: inherit;
-        font-size: inherit;
         font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
       }
     }

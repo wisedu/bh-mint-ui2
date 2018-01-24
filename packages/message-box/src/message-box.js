@@ -173,7 +173,7 @@ MessageBox.alert = function(message, title, options) {
   }, options));
 };
 
-MessageBox.confirm = function(message, title, options) {
+MessageBox.confirm = function(message, title, options,callback) {
   if (typeof title === 'object') {
     options = title;
     title = '';
@@ -183,7 +183,7 @@ MessageBox.confirm = function(message, title, options) {
     message: message,
     $type: 'confirm',
     showCancelButton: true
-  }, options));
+  }, options),callback);
 };
 
 MessageBox.prompt = function(message, title, options) {

@@ -2,22 +2,22 @@
 
 /*主题色*/
 .mt-bg-theme{
-	background-color: @primary-lv1; 
+	background-color: @theme-lv1; 
 }
 .mt-bg-theme-lv2{
-	background-color: @primary-lv2; 
+	background-color: @theme-lv2; 
 }
 .mt-bColor-theme{
-	border-color: @primary-lv1;
+	border-color: @theme-lv1;
 }
 .mt-bColor-theme-lv2{
-	border-color: @primary-lv2;
+	border-color: @theme-lv2;
 }
 .mt-color-theme{
-	color: @primary-lv1;
+	color: @theme-lv1;
 }
 .mt-color-theme-lv2{
-	color:@primary-lv2;
+	color:@theme-lv2;
 }
 /*背景色*/
 .mt-bg-grey{
@@ -45,13 +45,13 @@
 	background-color: @bg-lv2;
 }
 .mt-bg-lv3{
-	background-color: @light;
+	background-color: @bg-lv3;
 }
 .mt-bg-primary,.mt-bg-success{
-	background-color: @primary-lv1; 
+	background-color: @theme-lv1; 
 }
 .mt-bg-primary-lv2,.mt-bg-success-lv2{
-	background-color: @primary-lv2; 
+	background-color: @theme-lv2; 
 }
 .mt-bg-warning{
 	background-color: @warning-lv1; 
@@ -69,7 +69,7 @@
 	background-color: @link;
 }
 .mt-bg-white{
-	background-color: @light;
+	background-color: @bg-lv3;
 }
 .mt-bg-transparent{
 	background-color: transparent;
@@ -118,10 +118,10 @@
 	color:@bg-lv2;
 }
 .mt-color-primary{
-	color:@primary-lv1;
+	color:@theme-lv1;
 }
 .mt-color-primary-lv2{
-	color:@primary-lv2;
+	color:@theme-lv2;
 }
 .mt-color-warning{
 	color:@warning-lv1;
@@ -136,7 +136,7 @@
 	color:@danger-lv2;
 }
 .mt-color-white{
-	color:@light;
+	color:@bg-lv3;
 }
 .mt-color-red{
 	color: @red;
@@ -188,10 +188,10 @@
 	border-color:@bg-lv2;
 }
 .mt-bColor-primary{
-	border-color:@primary-lv1;
+	border-color:@theme-lv1;
 }
 .mt-bColor-primary-lv2{
-	border-color:@primary-lv2;
+	border-color:@theme-lv2;
 }
 .mt-bColor-warning{
 	border-color:@warning-lv1;
@@ -209,7 +209,7 @@
 	border-color:transparent;
 }
 .mt-bColor-white{
-	border-color:@light;
+	border-color:@bg-lv3;
 }
 .mt-bColor-red{
 	border-color: @red;
@@ -236,7 +236,7 @@
 /*按钮*/
 .mt-btn-default{
 	color:@grey-lv2;
-	background-color: @light;
+	background-color: @bg-lv3;
 	box-shadow: 0 0 0.5px @grey-lv4 inset;
 }
 .mt-btn-default.is-disabled{
@@ -250,31 +250,31 @@
 	color:@grey-lv2;
 }
 .mt-btn-primary{
-	color:@light;
-	background-color: @primary-lv1;
-	box-shadow: 0 0 0.5px @primary-lv2 inset;
+	color:@bg-lv3;
+	background-color: @theme-lv1;
+	box-shadow: 0 0 0.5px @theme-lv2 inset;
 }
 .mt-btn-primary.is-disabled{
 	opacity: 0.3;
-	background-color: @primary-lv1;
+	background-color: @theme-lv1;
 }
 .mt-btn-primary:not(.is-disabled):active{
-	background-color: @primary-lv1;
+	background-color: @theme-lv1;
 	opacity: 0.6;
 }
 .mt-btn-primary.is-plain{
-	border-color: @primary-lv1;
-	color:@primary-lv1;
+	border-color: @theme-lv1;
+	color:@theme-lv1;
 	background-color: transparent;
 }
 .mt-btn-primary.is-plain:not(.is-disabled):active{
 	background-color: transparent;
 }
 .mt-btn-primary.is-plain:not(.is-disabled):active:after{
-	background-color: @primary-lv1;
+	background-color: @theme-lv1;
 }
 .mt-btn-warning{
-	color:@light;
+	color:@bg-lv3;
 	background-color: @warning-lv1;
 	box-shadow: 0 0 0.5px @warning-lv2 inset;
 }
@@ -298,7 +298,7 @@
 	background-color: @warning-lv1;
 }
 .mt-btn-danger{
-	color:@light;
+	color:@bg-lv3;
 	background-color: @danger-lv1;
 	box-shadow: 0 0 0.5px @danger-lv2 inset;
 }
@@ -348,10 +348,10 @@
 	background-color: @bg-lv2;
 }
 .mt-bg-active-primary:active,.mt-bg-active-success:active{
-	background-color: @primary-lv1; 
+	background-color: @theme-lv1; 
 }
 .mt-bg-active-primary-lv2:active,.mt-bg-active-success-lv2:active{
-	background-color: @primary-lv2; 
+	background-color: @theme-lv2; 
 }
 .mt-bg-active-warning:active{
 	background-color: @warning-lv1; 
@@ -369,7 +369,7 @@
 	background-color: @link;
 }
 .mt-bg-active-white:active,.mt-bg-active-white:focus,.mt-bg-active-white:visited{
-	background-color: @light;
+	background-color: @bg-lv3;
 }
 .mt-bg-active-transparent:active{
 	background-color: transparent;
@@ -422,10 +422,10 @@
 	background-color: @bg-lv2;
 }
 .mt-bg-before-primary:before,.mt-bg-before-success:before,.mt-bg-after-success:after,.mt-bg-after-success:after{
-	background-color: @primary-lv1; 
+	background-color: @theme-lv1; 
 }
 .mt-bg-before-primary-lv2:before,.mt-bg-before-success-lv2:before,.mt-bg-after-success:after,.mt-bg-before-success-lv2:after{
-	background-color: @primary-lv2; 
+	background-color: @theme-lv2; 
 }
 .mt-bg-before-warning:before,.mt-bg-after-warning:after{
 	background-color: @warning-lv1; 
@@ -443,7 +443,7 @@
 	background-color: @link;
 }
 .mt-bg-before-white:before,.mt-bg-after-white:after{
-	background-color: @light;
+	background-color: @bg-lv3;
 }
 .mt-bg-before-transparent:before,.mt-bg-after-transparent:after{
 	background-color: transparent;
@@ -496,10 +496,10 @@
 	border-color: @bg-lv2;
 }
 .mt-bColor-before-primary:before,.mt-bColor-before-success:before,.mt-bColor-after-success:after,.mt-bColor-after-success:after{
-	border-color: @primary-lv1; 
+	border-color: @theme-lv1;
 }
 .mt-bColor-before-primary-lv2:before,.mt-bColor-before-success-lv2:before,.mt-bColor-after-success:after,.mt-bColor-before-success-lv2:after{
-	border-color: @primary-lv2; 
+	border-color: @theme-lv2; 
 }
 .mt-bColor-before-warning:before,.mt-bColor-after-warning:after{
 	border-color: @warning-lv1; 
@@ -517,7 +517,7 @@
 	border-color: @link;
 }
 .mt-bColor-before-white:before,.mt-bColor-after-white:after{
-	border-color: @light;
+	border-color: @bg-lv3;
 }
 .mt-bColor-before-transparent:before,.mt-bColor-after-transparent:after{
 	border-color: transparent;

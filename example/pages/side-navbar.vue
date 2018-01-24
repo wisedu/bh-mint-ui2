@@ -10,17 +10,17 @@
       <mt-tab-container v-model="selected" slot="content">
         <mt-tab-container-item id="1">
           <mt-cell-group>
-            <mt-cell v-for="n in 40" :title="'内容 ' + n" cellheight="44px"/>
+            <mt-cell v-for="n in 40" :key="n" :title="'内容 ' + n" cellheight="44px"/>
           </mt-cell-group>
         </mt-tab-container-item>
         <mt-tab-container-item id="2">
           <mt-cell-group>
-            <mt-cell v-for="n in 4" :title="'测试 ' + n" cellheight="44px"/>
+            <mt-cell v-for="n in 4" :key="n" :title="'测试 ' + n" cellheight="44px"/>
           </mt-cell-group>
         </mt-tab-container-item>
         <mt-tab-container-item id="3">
           <mt-cell-group>
-            <mt-cell v-for="n in 6" :title="'选项 ' + n" cellheight="44px"/>
+            <mt-cell v-for="n in 6" :key="n" :title="'选项 ' + n" cellheight="44px"/>
           </mt-cell-group>
         </mt-tab-container-item>
       </mt-tab-container>

@@ -3,9 +3,9 @@
     <p class="page-indexlist-desc">此例请使用手机查看</p>
     <div class="page-indexlist-wrapper">
       <mt-index-list>
-        <mt-index-section v-for="item in alphabet" :index="item.initial">
+        <mt-index-section v-for="(item,index) in alphabet" :index="item.initial" :key="index">
           <mt-cell-group grouppaddingleft="16px">
-            <mt-cell v-for="cell in item.cells" :title="cell" cellheight='44px'></mt-cell>
+            <mt-cell v-for="(cell,index) in item.cells" :key="index" :title="cell" cellheight='44px'></mt-cell>
           </mt-cell-group>
         </mt-index-section>
       </mt-index-list>

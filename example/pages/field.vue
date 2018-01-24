@@ -52,6 +52,7 @@
       <!--start
       @name textarea
       -->
+      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" heightAuto value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666"></mt-field>
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
       <!--end-->
     </mt-cell-group>

@@ -7,8 +7,10 @@
     :disabledcolor="readonly||disabled"
     :class="[{
       'is-textarea': type === 'textarea',
-      'is-nolabel': !label
+      'is-nolabel': !label,
+      'is-autoheight': heightAuto
     }]">
+    <pre v-if="type === 'textarea'&&heightAuto" class="pre" :style="{width:preWidth}">{{currentValue}}</pre>
     <textarea
       @change="$emit('change', currentValue, $event)"
       ref="textarea"
@@ -18,10 +20,11 @@
       :rows="rows"
       :disabled="disabled"
       :readonly="readonly"
-      v-model="currentValue">
+      v-model="currentValue"
+      :style="{width:preWidth}">
     </textarea>
     <input
-      @change="$emit('change', currentValue, $event)"
+      @change=" $emit('change', currentValue, $event)"
       ref="input"
       class="mint-field-core"
       :placeholder="placeholder"
@@ -115,7 +118,11 @@ export default {
       default: ''
     },
     value: {},
-    attr: Object
+    attr: Object,
+    heightAuto: {
+      type: Boolean,
+      default: true
+    }
   },
 
   components: { XCell },
@@ -157,6 +164,14 @@ export default {
           break;
       }
       return iconColor;
+    },
+    preWidth:function(){
+      if(!this.heightAuto) return
+      let width="100%";
+      if(this.state){
+        width="calc(100% - 40px)";
+      }
+      return width
     }
   },
   watch: {
@@ -192,6 +207,19 @@ export default {
   @component-namespace mint {
     @component field {
       display: flex;
+
+      @when autoheight{
+        .mint-cell-value{
+          position: relative;
+        }
+
+        .mint-cell-value textarea{
+          position: absolute;
+          top: 5px;
+          left: 0;
+          height: calc(100% - 10px);
+        }
+      }
 
       @when textarea {
         align-items: inherit;
@@ -247,6 +275,21 @@ export default {
           display: none;
         }
       }
+
     }
+  }
+  /*新增texterea高度功能功能专用样式 2018-1-22 王永建*/
+  .pre{
+    margin:0;
+    font-size: inherit;
+    font-family: inherit;
+    visibility:hidden;
+    min-height: 54px;
+    line-height: 1.6;
+    width: 100%;
+    word-break:break-all
+  }
+  textarea{
+    padding:0;
   }
 </style>

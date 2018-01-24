@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="mint-msgbox-btns">
-          <button class="mint-msgbox-btn mint-msgbox-cancel mt-btn-default" v-show="showCancelButton" @click="handleAction('cancel')">{{ cancelButtonText }}</button>
+          <button class="mint-msgbox-btn mint-msgbox-cancel mt-btn-default" v-show="showCancelButton" @click="handleAction('cancel')" >{{ cancelButtonText }}</button>
           <button class="mint-msgbox-btn mint-msgbox-confirm mt-btn-primary" v-show="showConfirmButton" @click="handleAction('confirm')">{{ confirmButtonText }}</button>
         </div>
       </div>

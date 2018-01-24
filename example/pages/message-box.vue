@@ -38,7 +38,10 @@
       },
 
       openConfirm() {
-        MessageBox.confirm('确定执行此操作?', '提示');
+        console.log(MessageBox.confirm);
+        MessageBox.confirm('确定执行此操作?', '提示','',function(val){
+          console.log(val)
+        });
       },
 
       openPrompt() {

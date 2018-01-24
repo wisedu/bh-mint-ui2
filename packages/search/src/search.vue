@@ -30,7 +30,7 @@
         <div class="mint-search-list-warp">
           <slot>
             <mt-cell-group>
-              <x-cell v-for="(item, index) in result" :key="index" :title="item" wrapperpaddingleft="15px"></x-cell>
+              <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
             </mt-cell-group>
           </slot>
         </div>
@@ -104,6 +104,7 @@ export default {
 
   mounted() {
     this.autofocus && this.$refs.input.focus();
+    if(this.autofocus) this.visible=true;
   },
 
   methods: {
@@ -167,8 +168,8 @@ export default {
         appearance: none;
         border: 0;
         box-sizing: border-box;
-        width: 100%;
-        height: 100%;
+        width: calc(100% - 24px);
+        height: calc(100% - 1px);
         font-size: 14px;
         outline: 0;
         padding-left: 7px;
@@ -199,5 +200,8 @@ export default {
       /* margin-top:44px;  与下拉菜单配合使用时存在，下拉菜单被遮住的问题。2017-12-14 需求来源张毅学工 。修改人徐佳宾 */
       position: absolute 0 0 0 0;
     }
+  }
+  input::-webkit-search-cancel-button {
+    display: none;
   }
 </style>

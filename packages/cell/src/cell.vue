@@ -1,13 +1,13 @@
 <template>
   <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" :href="href" :style="{'min-height':cellheight}">
-    <span class="mint-cell-mask mt-bg-after-grey-lv6" v-if="isLink"></span>
+    <span class="mint-cell-mask mt-bg-after-grey" v-if="isLink"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
     <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
       <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
-          <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
+          <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
         </slot>
         <slot name="title">
           <span class="mint-cell-text" :class="[disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" v-html="title"></span>
@@ -221,8 +221,11 @@ export default {
   created:function(){
     this.$nextTick(function(){
       let targetDom=this.$refs.cellValue;
-      if(targetDom.firstChild.nodeName === "TEXTAREA"){
-        targetDom.parentNode.style.alignItems="normal"
+      for(let key in targetDom.children){
+        if(targetDom.children[key].nodeName === "TEXTAREA"){   
+          targetDom.parentNode.style.alignItems="normal";
+          return
+        }
       }
     })
   }

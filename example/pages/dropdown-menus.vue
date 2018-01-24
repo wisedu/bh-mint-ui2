@@ -6,7 +6,7 @@
               <div v-if="isShowMenu" slot="menu">
                   <mt-box-group v-model="sexValue" align="right" v-if="type==='lv1'">
                     <mt-cell-group>
-                        <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="item in menuDatas" :key="item.value" iconpattern="hook">
+                        <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="(item,index) in menuDatas" :key="index" iconpattern="hook">
                             {{item.label}}
                         </mt-radiobox>
                     </mt-cell-group>
@@ -26,17 +26,17 @@
                       </mt-tab-container-item>
                       <mt-tab-container-item id="1">
                         <mt-cell-group>
-                          <mt-cell v-for="n in 50" :title="'内容 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                          <mt-cell v-for="n in 50" :key="n" :title="'内容 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
                         </mt-cell-group>
                       </mt-tab-container-item>
                       <mt-tab-container-item id="2">
                         <mt-cell-group>
-                          <mt-cell v-for="n in 4" :title="'测试 ' + n" :aria-invalid="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                          <mt-cell v-for="n in 4" :key="n" :title="'测试 ' + n" :aria-invalid="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
                         </mt-cell-group>
                       </mt-tab-container-item>
                       <mt-tab-container-item id="3">
                         <mt-cell-group>
-                          <mt-cell v-for="n in 6" :title="'选项 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
+                          <mt-cell v-for="n in 6" :key="n" :title="'选项 ' + n" :id="n" is-link to="click" @cellClick="cellClick" cellheight='44px'/>
                         </mt-cell-group>
                       </mt-tab-container-item>
                     </mt-tab-container>
@@ -54,12 +54,12 @@
                   <div v-if="type==='lv3'" class="bh-ddm-three">
                       <div class="bh-ddm-lv1-container">
                         <mt-cell-group>
-                          <mt-cell v-for=" item in menuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
+                          <mt-cell v-for=" (item,index) in menuDatas" :key="index" :title="item.label" is-link :to="'click'" class="bh-ddm-lv1-item" :class="{'bh-ddm-lv1-item-selected':item.active}" @cellClick="setSelected(item)">
                           </mt-cell>
                         </mt-cell-group>
                       </div>
                       <div class="bh-ddm-lv2-container">
-                          <mt-cell v-for=" item in subMenuDatas" :title="item.label" is-link :to="'click'" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @cellClick="setSubSelected(item)">
+                          <mt-cell v-for=" (item,index) in subMenuDatas" :key="index" :title="item.label" is-link :to="'click'" class="bh-ddm-lv2-item" :class="{'bh-ddm-lv2-item-selected':item.active}" @cellClick="setSubSelected(item)">
                           </mt-cell>
                       </div>
                       <div class="bh-ddm-lv3-container">
@@ -85,7 +85,7 @@
               </div>
             </mt-dropdown-menus>
             <mt-cell-group>
-              <mt-cell v-for="n in 40" :title="'内容 ' + n" cellheight="44px"/>
+              <mt-cell v-for="n in 40" :key="n" :title="'内容 ' + n" cellheight="44px"/>
             </mt-cell-group>
         </div>
     </div>

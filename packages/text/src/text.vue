@@ -1,6 +1,7 @@
 <template>
   <div @click="handleClick" class="mint-text" :class="[type?'mt-color-' + type:'mt-color-grey']" :style="computeStyle">
-    <slot></slot>
+    <pre v-if="wordwrap"><slot></slot></pre>
+    <slot v-else></slot>
   </div>
 </template>
 
@@ -76,7 +77,11 @@ export default {
        * @desc 字体颜色
        * @type input
        */
-      color: String
+      color: String,
+      wordwrap: {
+        type: Boolean,
+        default: false
+      }
   },
     computed: {
         computeStyle: function() {
@@ -119,5 +124,12 @@ export default {
       position: relative;
       word-wrap: break-word;
     }
+  }
+  pre{
+    margin:0;
+    font-size: inherit;
+    font-family: inherit;
+    word-wrap: break-word;
+    white-space: pre-wrap;
   }
 </style>

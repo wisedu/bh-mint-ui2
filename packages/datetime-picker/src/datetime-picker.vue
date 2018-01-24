@@ -73,7 +73,7 @@
       value: {},
       cancelText: {
         type: String,
-        default: '取消'
+        default: ''
       },
       confirmText: {
         type: String,

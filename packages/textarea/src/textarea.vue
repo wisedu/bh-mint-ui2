@@ -10,8 +10,10 @@
     :wrapperpaddingleft="wrapperpaddingleft"
     :class="[{
       'is-textarea': true,
-      'is-nolabel': !label
+      'is-nolabel': !label,
+      'is-autoheight': heightAuto
     }]">
+    <pre v-if="heightAuto" class="pre" ref="pre">{{currentValue}}</pre>
     <textarea
       @change="$emit('change', currentValue, $event)"
       ref="textarea"
@@ -21,10 +23,10 @@
       :maxlength="maxlength"
       :disabled="disabled"
       :readonly="readonly"
-      :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
+      :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft,'width':preWidth}"
       v-model="currentValue">
     </textarea>
-    <span class="mint-textarea-state" v-if="state!=='default'" :class="iconColor">
+    <span class="mint-textarea-state" v-if="state!=='default'" :class="iconColor" >
       <i class="iconfont" :class="['icon-' + iconstate]"></i>
     </span>
     <div class="mint-textarea-other">
@@ -74,7 +76,8 @@ export default {
     return {
       active: false,
       currentValue: this.value,
-      count:0
+      count:0,
+      preWidth:''
     };
   },
 
@@ -202,7 +205,12 @@ export default {
     titlepaddingbottom:String,
     titlepaddingleft:String,
     //简单校验长度，不区分中文
-    easycheck:true
+    easycheck:true,
+    //textarea内容不自适应
+    heightAuto: {
+      type:Boolean,
+      default:true
+    }
   },
 
   components: { XCell },
@@ -210,6 +218,26 @@ export default {
   methods: {
     doCloseActive() {
       this.active = false;
+    },
+    checkCount(val){
+      if(val===undefined){
+        this.count=0;
+        return
+      }
+      if (this.easycheck === false) {
+        let reg = /[^\x00-\xff]/ig;
+        let count = 0;
+        val.split('').forEach(function(code){
+          if (code.match(reg) !== null) {
+            count += 3;
+          } else {
+            count ++;
+          }
+        });
+        this.count = count;
+      } else {
+        this.count = val.length;
+      }
     }
   },
   computed:{
@@ -249,20 +277,7 @@ export default {
     },
 
     currentValue(val) {
-      if (this.easycheck === false) {
-        let reg = /[^\x00-\xff]/ig;
-        let count = 0;
-        val.split('').forEach(function(code){
-          if (code.match(reg) !== null) {
-            count += 3;
-          } else {
-            count ++;
-          }
-        });
-        this.count = count;
-      } else {
-        this.count = val.length;
-      }
+      this.checkCount(val);
       this.$emit('input', val);
     },
 
@@ -278,6 +293,15 @@ export default {
         });
       }
     }
+  },
+  created:function(){
+    this.checkCount(this.value);
+
+    if(!this.heightAuto) return
+    this.$nextTick(function(){
+      this.preWidth = this.$refs.pre.scrollWidth+"px";
+      console.log(this.$refs.pre.scrollWidth)
+    });
   }
 };
 /**
@@ -299,6 +323,19 @@ export default {
 
   @component-namespace mint {
     @component textarea {
+      @when autoheight{
+        .mint-cell-value{
+          position: relative;
+        }
+
+        .mint-cell-value textarea{
+          position: absolute;
+          top: 5px;
+          left: 0;
+          height: calc(100% - 5px);
+        }
+      }
+
       .mint-cell-title {
         padding: 10px 0;
       }
@@ -358,5 +395,21 @@ export default {
         }
       }
     }
+  }
+  /*新增texterea高度功能功能专用样式 2018-1-22 王永建*/
+  .pre{
+    margin:0;
+    font-size: inherit;
+    font-family: inherit;
+    visibility:hidden;
+    min-height: 79px;
+    line-height: 1.6;
+    width: 100%;
+    word-break:break-all;
+    white-space: pre-wrap;
+    padding: 0;
+  }
+  textarea{
+    padding:0;
   }
 </style>
