@@ -221,6 +221,10 @@ export default {
   created:function(){
     this.$nextTick(function(){
       let targetDom=this.$refs.cellValue;
+      if(targetDom.firstChild.className === "mint-textarea-height-auto"){
+        targetDom.parentNode.style.alignItems="normal";
+        return
+      }
       for(let key in targetDom.children){
         if(targetDom.children[key].nodeName === "TEXTAREA"){   
           targetDom.parentNode.style.alignItems="normal";

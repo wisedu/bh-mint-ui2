@@ -66,10 +66,10 @@
       return {
         minHour: 10,
         maxHour: 20,
-        minDate: new Date(),
+        minDate: new Date(2008,0,31),
         maxDate: new Date(2019, 10, 1),
         currentDate1: new Date(2018, 0, 1),
-        currentDate2: "2017-12-31",
+        currentDate2: "2018-12-31",
         currentDate3: null
       };
     },

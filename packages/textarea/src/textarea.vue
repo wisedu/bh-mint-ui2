@@ -13,8 +13,23 @@
       'is-nolabel': !label,
       'is-autoheight': heightAuto
     }]">
-    <pre v-if="heightAuto" class="pre" ref="pre">{{currentValue}}</pre>
+    <div v-if="heightAuto" class="mint-textarea-height-auto">
+      <pre  class="pre" ref="pre">{{currentValue}}</pre>
+      <textarea
+        @change="$emit('change', currentValue, $event)"
+        ref="textarea"
+        class="mint-textarea-core"
+        :placeholder="placeholder"
+        :rows="rows"
+        :maxlength="maxlength"
+        :disabled="disabled"
+        :readonly="readonly"
+        :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
+        v-model="currentValue">
+      </textarea>
+    </div>
     <textarea
+      v-if="!heightAuto"
       @change="$emit('change', currentValue, $event)"
       ref="textarea"
       class="mint-textarea-core"
@@ -23,7 +38,7 @@
       :maxlength="maxlength"
       :disabled="disabled"
       :readonly="readonly"
-      :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft,'width':preWidth}"
+      :style="{'padding-top':areapaddingtop,'padding-right':areapaddingright,'padding-bottom':areapaddingbottom,'padding-left':areapaddingleft}"
       v-model="currentValue">
     </textarea>
     <span class="mint-textarea-state" v-if="state!=='default'" :class="iconColor" >
@@ -76,8 +91,7 @@ export default {
     return {
       active: false,
       currentValue: this.value,
-      count:0,
-      preWidth:''
+      count:0
     };
   },
 
@@ -294,14 +308,8 @@ export default {
       }
     }
   },
-  created:function(){
+  created(){
     this.checkCount(this.value);
-
-    if(!this.heightAuto) return
-    this.$nextTick(function(){
-      this.preWidth = this.$refs.pre.scrollWidth+"px";
-      console.log(this.$refs.pre.scrollWidth)
-    });
   }
 };
 /**
@@ -324,15 +332,11 @@ export default {
   @component-namespace mint {
     @component textarea {
       @when autoheight{
-        .mint-cell-value{
-          position: relative;
-        }
-
         .mint-cell-value textarea{
           position: absolute;
-          top: 5px;
+          top: 0px;
           left: 0;
-          height: calc(100% - 5px);
+          height: 100%;
         }
       }
 
@@ -356,6 +360,11 @@ export default {
 
       .mint-cell-wrapper{
         border-bottom: none;
+      }
+
+      @descendent height-auto{
+         position:relative;
+         width: 100%;
       }
 
       @descendent count {

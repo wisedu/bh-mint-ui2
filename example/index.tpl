@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="//res.wisedu.com/fe_components/iconfont_mobile/iconfont.css">
     <link rel="stylesheet" href="//res.wisedu.com/fe_components/skins/mint2.0/skin.css">
     <link rel="stylesheet" href="//res.wisedu.com/bower_components/animate.css/animate.min.css">
+    <style type="text/css" id="skins"></style>
   </head>
   <body>
     <div id="app"></div><% if (process.env.NODE_ENV === 'production') { %>
