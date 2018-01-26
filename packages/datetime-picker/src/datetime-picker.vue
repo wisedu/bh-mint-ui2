@@ -4,7 +4,7 @@
       ref="picker"
       showToolbar
       :columns="columns"
-      :visibleItemCount="visibleItemCount"
+      :visibileColumnCount="visibileColumnCount"
       :cancelText="cancelText" :confirmText="confirmText"
       @change="onChange" @confirm="onConfirm" @cancel="visible = false;maskFunAvailable=false; $emit('cancel')">
     </mt-picker>
@@ -44,7 +44,7 @@
         type: String,
         default: 'YYYY.MM.DD HH时 mm分'
       },
-      visibleItemCount: {
+      visibileColumnCount: {
         type: Number,
         default: 5
       },
@@ -153,10 +153,21 @@
           //qiyu 2017-12-14 对字符串日期类型进行解析
           let invaild = true;
           if (typeof value === "string") {
-            let datepart = value.split("-");
-            if (datepart.length === 3) {
-              value = new Date(datepart[0], Number(datepart[1]) - 1, datepart[2]);
-              invaild = false;
+            //wangyongjian 2018-1-26 对字符串日期类型进行解析扩展到时分
+            value = value.replace(/(^\s*)|(\s*$)/g,"");
+            if(value.length === 10){
+              let datepart = value.split("-");
+              if (datepart.length === 3) {
+                value = new Date(datepart[0], Number(datepart[1]) - 1, datepart[2]);
+                invaild = false;
+              }
+            }else{
+              let datepart = value.slice(0,10).split("-");
+              let timepart = value.slice(-5).split(":");
+              if(datepart.length === 3&&timepart.length === 2){
+                value = new Date(datepart[0], Number(datepart[1]) - 1, datepart[2],timepart[0],timepart[1]);
+                invaild = false;
+              }
             }
           } 
           
@@ -196,12 +207,12 @@
         const year = boundary.getFullYear();
         let month = 1;
         let date = 1;
-        let hour = 0;
+        let hour = this.minHour;
         let minute = 0;
         if (type === 'max') {
           month = 12;
           date = this.getMonthEndDay(value.getFullYear(), value.getMonth() + 1);
-          hour = 23;
+          hour = this.maxHour;
           minute = 59;
         }
         if (value.getFullYear() === year) {
@@ -260,6 +271,14 @@
           const year = this.getTrueValue(values[0]);
           const month = this.getTrueValue(values[1]);
           const maxDate = this.getMonthEndDay(year, month);
+          //wangyongjian 2018-1-26 校正月份对应的日期
+          let mouthArray = [];
+          for(let i=1;i<=maxDate;i++){
+            i=i>9?i:"0"+i;
+            mouthArray.push(String(i))
+          }
+          picker.setColumnValues(2,mouthArray);
+
           let date = this.getTrueValue(values[2]);
           date = date > maxDate ? maxDate : date;
           let hour = 0;
@@ -295,9 +314,10 @@
             );
           }
         }
-        this.$nextTick(() => {
-          this.setColumnByValues(values);
-        });
+        this.setColumnByValues(values);
+        // this.$nextTick(() => {
+        //   this.setColumnByValues(values);
+        // });
       },
       setColumnByValues(values) {
         if (!this.$refs.picker) {

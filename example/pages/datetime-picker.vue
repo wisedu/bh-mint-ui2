@@ -8,31 +8,30 @@
     <mt-datetime-picker
       ref="picker1"
       :maskFun="true"
-      @maskCallback="cancel"
       v-model="currentDate1"
       type="datetime"
       :minHour="minHour"
       :maxHour="maxHour"
       :minDate="minDate"
       :maxDate="maxDate"
+      @maskCallback="cancel"
       @confirm="handleChange"
       @cancel="cancel">
     </mt-datetime-picker>
     <mt-datetime-picker
       ref="picker2"
       type="date"
-      :minHour="minHour"
-      :maxHour="maxHour"
       :minDate="minDate"
+      :maxDate="maxDate"
       v-model="currentDate2"
       @confirm="handleChange"
       @cancel="cancel">
     </mt-datetime-picker>
     <mt-datetime-picker
       ref="picker3"
+      type="time"
       :minHour="minHour"
       :maxHour="maxHour"
-      :minDate="minDate"
       v-model="currentDate3"
       @confirm="handleChange"
       @cancel="cancel">
@@ -67,10 +66,11 @@
         minHour: 10,
         maxHour: 20,
         minDate: new Date(2008,0,31),
-        maxDate: new Date(2019, 10, 1),
-        currentDate1: new Date(2018, 0, 1),
+        maxDate: new Date(2028, 10, 1),
+        // currentDate1: new Date(2018, 5, 1,10,11),
+        currentDate1:"2018-12-31 12:00",
         currentDate2: "2018-12-31",
-        currentDate3: null
+        currentDate3: "12:00"
       };
     },
 
@@ -93,7 +93,6 @@
           position: 'bottom'
         });
       }
-
     }
   };
 </script>

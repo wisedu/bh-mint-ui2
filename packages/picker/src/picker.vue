@@ -104,7 +104,6 @@ export default {
       if (this.isSimpleColumn) {
         this.$emit('change', this, this.getColumnValue(0), this.getColumnIndex(0));
       } else {
-         this.$emit('change', this, this.getValues(), columnIndex);
         if(this.isInterrelated){
           const columns = JSON.parse(JSON.stringify(this.columns));
           let id_1 = this.getValues()[0].id;

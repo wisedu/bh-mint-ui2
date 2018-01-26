@@ -2,7 +2,7 @@
   <div class="page-datetime-selector" style="padding-top:45px;">
     <mt-button @click="handlerClear">清空</mt-button>
     <mt-cell-group>
-      <mt-datetime-selector label="日期时间" placeholder="请输入发生时间" type="datetime" value="2017-08-02 09:01:01" disableClear></mt-datetime-selector>
+      <mt-datetime-selector label="日期时间" placeholder="请输入发生时间" type="datetime" value="2018-08-02 11:12" disableClear :maxHour="20"></mt-datetime-selector>
       <mt-datetime-selector label="日期时间" placeholder="限制日期选择区间" type="datetime" v-model="current" :min-date="new Date()" :max-date="new Date()"></mt-datetime-selector>
       <mt-datetime-selector label="时间" placeholder="限制时间选择区间" type="time" :min-hour="10" :max-hour="15" ></mt-datetime-selector>
     </mt-cell-group>

@@ -222,7 +222,7 @@ export default {
 
       let result = "";
       if (type === "datetime") {
-        result = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min + ":00";
+        result = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min;
       } else if (type === "date") {
         result = date.getFullYear() + "-" + month + "-" + day;
       // } else if (type === "ym") {
