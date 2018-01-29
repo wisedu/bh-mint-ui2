@@ -47,7 +47,7 @@
   export default {
     computed: {
       visible() {
-        return ['/', '/header', '/search', '/infinite-calendar'].indexOf(this.$route.path) < 0;
+        return ['/', '/header', '/search', '/infinite-calendar','/skinTools'].indexOf(this.$route.path) < 0;
       },
       routeName() {
         return this.$route.name;

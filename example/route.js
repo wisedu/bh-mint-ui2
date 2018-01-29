@@ -24,6 +24,9 @@ const route = registerRoute(NavConfig);
 route.route.push({
   path: '/',
   component: require('./demos.vue')
+},{
+  path: '/skinTools',
+  component: require('./demos.vue')
 });
 
 export const navs = route.navs;
