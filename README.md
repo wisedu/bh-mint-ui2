@@ -52,7 +52,7 @@ import 'bh-mint-ui2/lib/radiobox/style.css';
 Vue.component(MtRadiobox.name, MtRadiobox);
 ```
 
-## 插件
+## 配置文件，特别注意
 - Auto import css file
 - Modular import component
 
