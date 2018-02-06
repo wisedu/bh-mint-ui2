@@ -5,7 +5,7 @@
           <span class="iconfont icon-keyboardarrowleft"></span>
         </router-link>
       </mt-header>
-    <mt-search autofocus v-model="value" :result="filterResult" margintop="87px"></mt-search>
+    <mt-search v-model="value" :result="filterResult" margintop="87px" @onFocus="handleFocus" @onBlur="handleBlur" @search="search"></mt-search>
   </div>
 </template>
 
@@ -40,6 +40,17 @@ export default {
   computed: {
     filterResult() {
       return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));
+    }
+  },
+  methods:{
+    handleFocus(value){
+      console.log("focus:%s",value)
+    },
+    handleBlur(value){
+      console.log("blur:%s",value)
+    },
+    search(value){
+      console.log("search:%s",value)
     }
   }
 };

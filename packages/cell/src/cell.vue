@@ -1,10 +1,11 @@
 <template>
-  <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" :href="href" :style="{'min-height':cellheight}">
+  <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" :href="href" :style="{'min-height':cellheight}" :class="[{'is-require':required}]">
     <span class="mint-cell-mask mt-bg-after-grey" v-if="isLink"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
     <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
+      <i class="mint-cell-require" v-if="required"></i>
       <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
@@ -158,7 +159,11 @@ export default {
     titlepaddingtop:String,
     titlepaddingright:String,
     titlepaddingbottom:String,
-    titlepaddingleft:String
+    titlepaddingleft:String,
+    required:{
+      type:Boolean,
+      default:false
+    }
   },
 
   computed: {
@@ -277,6 +282,14 @@ export default {
         .mint-cell-wrapper {
           background-origin: border-box;
         }
+      }
+
+      @when require{
+        .mint-cell-require:before{
+          content: "*";
+          color: red;
+          margin-right: 4px;
+        };
       }
 /*
       &:last-child {

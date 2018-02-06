@@ -63,7 +63,6 @@ export default {
     @component header {
       @descendent main {
         margin-top: 60px;
-        min-height: 120vh;
 
         > * {
           margin-bottom: 15px;

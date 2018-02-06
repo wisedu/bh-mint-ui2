@@ -7,6 +7,8 @@
           <input
           ref="input"
           @click="visible = true"
+          @focus="handleFocus"
+          @blur="handleBlur"
           type="search"
           v-model="currentValue"
           :placeholder="placeholder"
@@ -120,6 +122,16 @@ export default {
     },
     handleClear() {
       this.currentValue = '';
+    },
+    handleFocus(e){
+      e.preventDefault();
+      this.$emit('onFocus', this.value);
+      return false;
+    },
+    handleBlur(e){
+      e.preventDefault();
+      this.$emit('onBlur', this.value);
+      return false;
     }
   }
 };

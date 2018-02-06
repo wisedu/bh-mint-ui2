@@ -28,7 +28,7 @@
             </mt-step>
         </mt-steps>
         <br><br>
-        <mt-steps direction="vertical" description="步骤的描述" :padding-left="70">
+        <mt-steps direction="vertical" :paddingLeft="paddingLeft">
             <mt-step>
                 <h3>【城市】物流状态3</h3>
             </mt-step>
@@ -43,6 +43,7 @@
             </mt-step>
         </mt-steps>
         <mt-button @click="changeStatus">第二步</mt-button>
+        <mt-button @click="changePaddingLeft">变更paddingLeft</mt-button>
     </div>
 </template>
 
@@ -50,7 +51,8 @@
 export default {
     data:function(){
         return {
-            status: "error"
+            status: "error",
+            paddingLeft:150
         }
     },
     methods: {
@@ -69,6 +71,9 @@ export default {
                     this.status = "";
                     break;
             }
+        },
+        changePaddingLeft(){
+            this.paddingLeft=100;
         }
     }
 }

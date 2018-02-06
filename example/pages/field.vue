@@ -4,7 +4,7 @@
       <!--start
       @name normal
       -->
-      <mt-field label="用户名" placeholder="请输入用户名"></mt-field>
+      <mt-field label="用户名" placeholder="请输入用户名" required></mt-field>
       <!--end-->
 
       <!--start
@@ -22,7 +22,7 @@
       <!--start
       @name password
       -->
-      <mt-field label="密码" placeholder="请输入密码" type="password"></mt-field>
+      <mt-field label="密码" placeholder="请输入密码" type="password" required></mt-field>
       <!--end-->
 
       <!--start
@@ -52,8 +52,8 @@
       <!--start
       @name textarea
       -->
-      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" heightAuto value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666"></mt-field>
-      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
+      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666"></mt-field>
+      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4" required :heightAuto="false"></mt-field>
       <!--end-->
     </mt-cell-group>
     <mt-hr height="15px" color="#e8e8e8"></mt-hr>

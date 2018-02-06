@@ -5,6 +5,8 @@
     v-clickoutside="doCloseActive"
     :wrapperpaddingright="state!=='default'?'15px':'20px'"
     :disabledcolor="readonly||disabled"
+    :titlewidth="titlewidth"
+    :required="required"
     :class="[{
       'is-textarea': type === 'textarea',
       'is-nolabel': !label,
@@ -122,7 +124,9 @@ export default {
     heightAuto: {
       type: Boolean,
       default: true
-    }
+    },
+    titlewidth: String,
+    required:Boolean,
   },
 
   components: { XCell },
@@ -224,7 +228,7 @@ export default {
       @when textarea {
         align-items: inherit;
 
-        .mint-cell-title {
+        .mint-cell-title,.mint-cell-require{
           padding: 10px 0;
         }
 

@@ -16,7 +16,7 @@
       </slot>
     </div>
     <div class="mint-steps__items" :class="[{'mint-steps__items--alone': !title && !description}]" 
-         :style="{'padding-left': direction === 'vertical' ? (paddingLeft + 'px') : '0'}">
+         :style="{'padding-left': direction === 'vertical' ? (paddingLeft + 'px') : ''}">
       <slot></slot>
     </div>
   </div>

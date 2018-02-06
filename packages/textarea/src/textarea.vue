@@ -8,6 +8,7 @@
     :titlePaddingBottom="titlepaddingbottom"
     :titlePaddingLeft="titlepaddingleft"
     :wrapperpaddingleft="wrapperpaddingleft"
+    :required="required"
     :class="[{
       'is-textarea': true,
       'is-nolabel': !label,
@@ -224,7 +225,8 @@ export default {
     heightAuto: {
       type:Boolean,
       default:true
-    }
+    },
+    required:Boolean
   },
 
   components: { XCell },
@@ -339,7 +341,9 @@ export default {
           height: 100%;
         }
       }
-
+      .mint-cell-require{
+        padding-top: 10px;
+      }
       .mint-cell-title {
         padding: 10px 0;
       }

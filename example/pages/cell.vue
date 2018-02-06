@@ -1,6 +1,6 @@
 <template>
-  <div class="page-cell">
-    <mt-cell title="单一cell组件使用" wrapperpaddingleft="20px" is-link></mt-cell>
+  <div class="page-cell" >
+    <mt-cell title="单一cell组件使用" wrapperpaddingleft="20px" is-link required></mt-cell>
     <mt-cell-group title="cell组的标题">
       <mt-cell title="标题文字"></mt-cell>
       <mt-cell title="title内边距设置" titlepaddingtop="2px" titlepaddingright="2px" titlepaddingbottom="2px" titlepaddingleft="2px"></mt-cell>
@@ -25,7 +25,7 @@
         <mt-button size="small" type="primary" icon="back">按钮</mt-button>
       </mt-cell>
       <mt-cell title="标题" label="描述信息" is-link></mt-cell>
-      <mt-cell title="原生跳转" label="跳转到 https://bh-mint-ui2.github.io" is-link to="https://bh-mint-ui2.github.io" cellheight="60px"></mt-cell>
+      <mt-cell title="原生跳转" label="跳转到 https://bh-mint-ui2.github.io" is-link to="https://bh-mint-ui2.github.io" cellheight="60px" required></mt-cell>
     </mt-cell-group>
   </div>
 </template>
