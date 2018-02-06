@@ -4,9 +4,9 @@
 > Mobile UI elements for **Vue 2.0**
 
 - [Homepage](https://wisedu.github.io/bh-mint-ui2/)
-- [Documentation](https://res.wisedu.com/FS/desgin_style/#/mobile)
+- [Documentation](https://res.wisedu.com/mobile)
 
-## Installation
+## 安装
 ```shell
 npm i bh-mint-ui2 -S
 
@@ -14,7 +14,7 @@ npm i bh-mint-ui2 -S
 npm i bh-mint-ui2@1 -S
 ```
 
-## Usage
+## 使用
 
 Import all components.
 
@@ -52,7 +52,7 @@ import 'bh-mint-ui2/lib/radiobox/style.css';
 Vue.component(MtRadiobox.name, MtRadiobox);
 ```
 
-## babel-plugin-component
+## 配置文件，特别注意
 - Auto import css file
 - Modular import component
 
@@ -72,7 +72,7 @@ Usage
 }
 ```
 
-## SKIN
+## 换肤
 
 ```
 <!-- 引入换肤 -->
