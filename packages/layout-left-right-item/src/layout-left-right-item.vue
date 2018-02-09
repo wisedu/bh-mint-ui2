@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-layout-lr-item" :position="position" :style="{ flex: percentageWidth}">
+  <div @click="handleClick" class="mint-layout-lr-item mint-layout-container" :position="position" :style="{ flex: percentageWidth}">
       <slot></slot>
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
     @component layout-lr-item {
       position: relative;
       flex: 1;
+      align-self: center;
     }
   }
 </style>
