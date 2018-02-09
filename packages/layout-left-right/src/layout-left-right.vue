@@ -52,7 +52,7 @@
   @component-namespace mint {
     @component layout-lr {
         position: relative;
-        display: table;
+        display: flex;
         width: 100%;
         box-sizing: border-box;
     }

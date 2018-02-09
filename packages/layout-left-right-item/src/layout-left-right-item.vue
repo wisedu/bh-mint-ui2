@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick" class="mint-layout-lr-item" :position="position" :style="{ width: percentageWidth}">
+  <div @click="handleClick" class="mint-layout-lr-item" :position="position" :style="{ flex: percentageWidth}">
       <slot></slot>
   </div>
 </template>
@@ -30,11 +30,13 @@ export default {
         percentageWidth: function() {
             let percentage = this.percentage;
             if (typeof percentage === 'undefined' || percentage === null) {
-                percentage = '50';
+                percentage = '';
             }
-            if(/^\d+$/.test(percentage)){
+            if(/^\d+%$/.test(percentage)){
+
                 return percentage + '%';
             }else{
+              console.log(percentage)
                 return percentage;
             }
         }
@@ -45,15 +47,7 @@ export default {
   @component-namespace mint {
     @component layout-lr-item {
       position: relative;
-      display: table-cell;
-      vertical-align: middle;
+      flex: 1;
     }
   }
-
-    .mint-layout-lr-item:after{
-        content: "";
-        display: table;
-        clear: both;
-    }
-
 </style>
