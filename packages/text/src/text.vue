@@ -122,7 +122,7 @@ export default {
   @component-namespace mint {
     @component text {
       position: relative;
-      word-wrap: break-word;
+      word-break: break-word;
     }
   }
   pre{

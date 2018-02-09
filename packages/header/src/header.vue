@@ -87,7 +87,7 @@ export default {
       position: relative;
       text-align: center;
       white-space: nowrap;
-      border-bottom-width: 0.5px;
+      border-bottom-width: 1px;
       border-bottom-style: solid;
 
       @descendent button {

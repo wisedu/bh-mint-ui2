@@ -32,7 +32,7 @@
       <!--start
       @name normal
       -->
-      <mt-layout-spacing border="0.5px solid #52C7CA" :borderside="borderside"></mt-layout-spacing>
+      <mt-layout-spacing border="1px solid #52C7CA" :borderside="borderside"></mt-layout-spacing>
       <!--end-->
     </div>
   </div>

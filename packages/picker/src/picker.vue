@@ -186,7 +186,7 @@ export default {
       font-size: 18px;
       line-height: 1;
       overflow: hidden;
-      border-bottom-width: 0.5px;
+      border-bottom-width: 1x;
       border-bottom-style: solid;
     }
 

@@ -28,7 +28,7 @@
       }
 
       @descendent listitem:not(:last-child) {
-        border-bottom-width: 0.5px;
+        border-bottom-width: 1px;
         border-bottom-style: solid;
       }
 

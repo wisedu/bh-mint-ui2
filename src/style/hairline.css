@@ -40,7 +40,7 @@
     }
   
     &--top-bottom::after {
-      border-width: 0.5px 0;
+      border-width: 1px 0;
     }
   
     &--surround::after {

@@ -142,7 +142,7 @@ export default {
     @component search {
       height: 100%;
       height: 44px;
-      border-bottom-width: 0.5px;
+      border-bottom-width: 1px;
       border-bottom-style: solid;
       overflow: hidden;
     }
@@ -162,7 +162,7 @@ export default {
         display: flex;
         flex: 1;
         height: 29px;
-        border-width: 0.5px;
+        border-width: 1px;
         border-style: solid;
         .icon-search {
           margin:4px 0 0 7px;

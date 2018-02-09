@@ -236,7 +236,7 @@
 .mt-btn-default {
   color: #2F343B;
   background-color: #FFFFFF;
-  box-shadow: 0 0 0.5px #BDC0C5 inset;
+  box-shadow: 0 0 1px #BDC0C5 inset;
 }
 .mt-btn-default.is-disabled {
   background-color: #EFEFEF;
@@ -251,7 +251,7 @@
 .mt-btn-primary {
   color: #FFFFFF;
   background-color: #52C7CA;
-  box-shadow: 0 0 0.5px #52B5B7 inset;
+  box-shadow: 0 0 1px #52B5B7 inset;
 }
 .mt-btn-primary.is-disabled {
   opacity: 0.3;
@@ -275,7 +275,7 @@
 .mt-btn-warning {
   color: #FFFFFF;
   background-color: #FFB950;
-  box-shadow: 0 0 0.5px #E8AA4D inset;
+  box-shadow: 0 0 1px #E8AA4D inset;
 }
 .mt-btn-warning.is-disabled {
   opacity: 0.3;
@@ -299,7 +299,7 @@
 .mt-btn-danger {
   color: #FFFFFF;
   background-color: #F26666;
-  box-shadow: 0 0 0.5px #D35A5A inset;
+  box-shadow: 0 0 1px #D35A5A inset;
 }
 .mt-btn-danger.is-disabled {
   opacity: 0.3;

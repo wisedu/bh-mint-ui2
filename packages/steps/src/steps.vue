@@ -69,7 +69,7 @@ export default {
 }
 
 .mint-steps__status{
-  border-bottom-width:0.5px;
+  border-bottom-width:1px;
   border-bottom-style: solid;
 }
 

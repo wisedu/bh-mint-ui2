@@ -71,8 +71,6 @@ export default {
     @component navbar {
       display: flex;
       text-align: center;
-      border-bottom-width: 0.5px;
-      border-bottom-style: solid;
       width: 100%;
       overflow-x: scroll;
 
@@ -84,6 +82,8 @@ export default {
       .mint-tab-item {
         padding: 14px 0 13px;
         font-size: 14px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
 
         &:last-child {
           border-right: 0;
@@ -91,7 +91,6 @@ export default {
 
         &.is-selected {
           border-bottom-width: 1px;
-          border-bottom-style: solid;
         }
       }
     }

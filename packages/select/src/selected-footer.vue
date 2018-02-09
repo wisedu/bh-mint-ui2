@@ -85,7 +85,7 @@ export default {
 .mint-selected-footer {
   position: fixed;
   width: 100%;
-  border-top-width: 0.5px;
+  border-top-width: 1px;
   border-top-style: solid;
   padding: 7px 8px;
   left: 0;

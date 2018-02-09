@@ -285,15 +285,21 @@ export default {
       }
 
       @when require{
+        .mint-cell-require{
+          position: relative;
+          left:0px;
+        }
         .mint-cell-require:before{
           content: "*";
           color: red;
+          position: relative;
+          top: 4px;
           margin-right: 4px;
         };
       }
 /*
       &:last-child {
-        border-bottom-width: 0.5px;
+        border-bottom-width: 1px;
         border-bottom-style: solid;
         background-size: 100% 1px;
         background-repeat: no-repeat;
@@ -301,9 +307,9 @@ export default {
       }*/
 
       @descendent wrapper {
-        border-top-width: 0.5px;
+        border-top-width: 1px;
         border-top-style: solid;
-        border-bottom-width: 0.5px;
+        border-bottom-width: 1px;
         border-bottom-style: solid;
         background-size: 120% 1px;
         background-repeat: no-repeat;

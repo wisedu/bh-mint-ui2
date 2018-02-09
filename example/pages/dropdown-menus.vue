@@ -462,7 +462,7 @@ export default {
     float: left;
     width: 30%;
     background-color: #f4f4f4;
-    border-right: solid 0.5px rgba(0, 0, 0, 0.25);
+    border-right: solid 1px rgba(0, 0, 0, 0.25);
   }
   .bh-ddm-two {
     overflow: auto;
@@ -489,14 +489,14 @@ export default {
   .bh-ddm-three .bh-ddm-lv3-container {
     float: right;
     width: 40%;
-    border-left: solid 0.5px rgba(0, 0, 0, 0.1);
+    border-left: solid 1px rgba(0, 0, 0, 0.1);
   }
 
   .bh-ddm-lv1-item.bh-ddm-lv1-item-selected {
     background-color: #fff;
-    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
-    border-bottom: solid 0.5px rgba(0, 0, 0, 0.25);
-    border-right: solid 0.5px #fff;
+    border-top: solid 1px rgba(0, 0, 0, 0.25);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.25);
+    border-right: solid 1px #fff;
     width: calc(100% + 1px);
   }
   .bh-ddm-lv1-container .bh-ddm-lv1-item:first-child.bh-ddm-lv1-item-selected {
@@ -519,7 +519,7 @@ export default {
     width: 100%;
     position: fixed;
     bottom: 0;
-    border-top: solid 0.5px rgba(0, 0, 0, 0.25);
+    border-top: solid 1px rgba(0, 0, 0, 0.25);
   }
   .bh-ddm-filter-button {
     width: 50%;

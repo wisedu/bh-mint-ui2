@@ -17,8 +17,8 @@
   .bh-ddb {
       overflow: auto;
       padding: 13px 0 12px;
-      border-bottom-width: 0.5px;
-      border-top-width: 0.5px;
+      border-bottom-width: 1px;
+      border-top-width: 1px;
       border-bottom-style: solid;
       border-top-style: solid;
   }
@@ -30,7 +30,7 @@
       font-size: 13px;
       position: relative;
       box-sizing: border-box;
-      border-right-width: 0.5px;
+      border-right-width: 1px;
       border-right-style: solid;
       text-align: center;
       padding-right: 6px;

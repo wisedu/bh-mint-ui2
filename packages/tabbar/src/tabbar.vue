@@ -43,7 +43,7 @@ export default {
 
   @component-namespace mint {
     @component tabbar {
-      border-top-width: 0.5px;
+      border-top-width: 1px;
       border-top-style: solid;
       background-size: 100% 1px;
       background-repeat: no-repeat;

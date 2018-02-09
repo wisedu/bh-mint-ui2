@@ -59,8 +59,8 @@
     }
 
     .calendar .calendar-header .week-number {
-        border-top-width: 0.5px;
-        border-bottom-width: 0.5px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
         border-top-style: solid;
         border-bottom-style: solid;
     }

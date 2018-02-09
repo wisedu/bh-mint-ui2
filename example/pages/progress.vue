@@ -1,7 +1,7 @@
 <template>
   <div class="page-progress" >
     <div style="height:100px;" ref="test"></div>
-    <div  ref="progress" style="background:#fff">
+    <div  ref="progress" style="background:#fff;">
       <mt-cell-group>
         <mt-cell title="默认">
           <mt-progress></mt-progress>
@@ -100,31 +100,24 @@
           this.timer = setInterval(() => this.value++, 10);
         }
       },
-      bhFillStyle(childNode,prevNode,parentNode){
-        if(!childNode) throw new Error("[childNode] is undefined.");
-        if(!this.isDom(childNode)) throw new Error("[childNode] should be a DOM Object. ");
-        let prevNodeHeight = "",
-            parentNodeHeight = "";
-        if(!(prevNode||parentNode)){
-          parentNodeHeight = window.screen.height;
+      bhFillStyle(childNode,parentNode){
+        console.log(document.getElementsByTagName("html")[0].clientHeight);
+        for(var i=0;i<arguments.length;i++){
+            if(!this.isDom(arguments[i])) throw new Error("Invalid arguments");
         }
-        if(prevNode&&!parentNode){
-          if(!this.isDom(prevNode)) throw new Error("[prevNode] should be a DOM Object. ");
-          if(!this.isFather(childNode,prevNode)){
-            prevNodeHeight = prevNode.clientHeight;
-            parentNodeHeight = window.screen.height;
-          }else{
-            parentNodeHeight = prevNode.clientHeight;
-          }
+        var childNodeTop = childNode.offsetTop,
+            childNodeHeight = childNode.clientHeight,
+            parentNodeHeight = null;
+        var htmlHeight = document.getElementsByTagName("html")[0].clientHeight;
+        if(childNodeHeight+parentNodeHeight<htmlHeight){
+            if(parentNode){
+                if(!this.isFather(childNode,parentNode)) throw new Error(parentNode+" should be "+childNode+"'s Parent Node. ");
+                parentNodeHeight = parentNode.clientHeight;
+            }else{
+                parentNodeHeight = htmlHeight;//window.screen.availHeight;
+            }
+            childNode.style.minHeight = parentNodeHeight-childNodeTop+"px";
         }
-        if(prevNode&&parentNode){
-          if(!this.isDom(prevNode)) throw new Error("[prevNode] should be a DOM Object. ");
-          if(!this.isDom(parentNode)) throw new Error("[parentNode] should be a DOM Object. ");
-          if(!this.isFather(childNode,parentNode)) throw new Error("[parentNode] should be [childNode]'s Parent Node. ");
-          prevNodeHeight = prevNode.clientHeight;
-          parentNodeHeight = parentNode.clientHeight;
-        }
-        childNode.style.minHeight = parentNodeHeight-prevNodeHeight+"px";
       },
       isDom(obj){
         return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
@@ -142,7 +135,7 @@
       let progress = this.$refs.progress;
       let test = this.$refs.test;
       let screen = document.body;
-      this.bhFillStyle(progress,test,document.body.parentNode);
+      this.bhFillStyle(progress);
     }
   };
 </script>

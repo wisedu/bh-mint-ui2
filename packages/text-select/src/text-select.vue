@@ -211,7 +211,7 @@ export default {
 .select-container-button{
   display: inline-block;
   margin: 6px;
-  border-width: 0.5px;
+  border-width: 1px;
   border-style: solid;
   padding: 8px 14px;
   font-size: 12px;

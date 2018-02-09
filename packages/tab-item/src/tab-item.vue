@@ -77,6 +77,8 @@ export default {
         _class += 'is-selected ';
         _class += this.componentname === 'navbar'?'mt-bColor-theme ':'';
         _class += this.componentname === 'sidenavbar'?'mt-bg-lv3':'';
+      }else{
+        _class += this.componentname === 'navbar'?'mt-color-grey-lv4':'';
       }
       return _class;
     }
