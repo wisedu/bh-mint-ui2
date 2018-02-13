@@ -53,7 +53,6 @@
     @component layout-lr {
         position: relative;
         display: flex;
-        width: 100%;
         box-sizing: border-box;
     }
   }
