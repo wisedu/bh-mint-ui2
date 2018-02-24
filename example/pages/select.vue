@@ -14,16 +14,18 @@
       </mt-select>
       <p>{{multiSelectValue}}</p>
     </mt-cell-group>
-<!--     <div class="">
-      <mt-select label="单选" :options="yearSlot" :value.sync="value">
-        <template scope="scope" slot="display">
+
+    <h1 class="page-item-title">custom 快捷语法糖</h1>
+    <mt-cell-group>
+      <mt-select label="自定义" :options="yearSlot" :value.sync="value" select-type="custom">
+        <template slot-scope="scope" slot="display">
           {{scope.value}}
         </template>
-        <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.options" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)"></mt-cell>
+        <template slot-scope="scope" slot="selector">
+          <mt-cell v-for="item in scope.options" :key="item" :class="{active: item === scope.value}" :title="item" @click.native.stop="selectClick(item)" wrapperpaddingleft="20px"></mt-cell>
         </template>
       </mt-select>
-    </div> -->
+    </mt-cell-group>
 
 <!--     <h1 class="page-title">Multi Select</h1>
     <div class="">
@@ -135,7 +137,8 @@
           }
         });
       },
-      singleSelectClick () {
+      singleSelectClick (pid) {
+        console.log(pid)
         // axios.get('/mock/userdata.json').then(resp => {
         //   let respData = resp.data
         //   if (respData.code == '0') {
@@ -248,7 +251,8 @@
             }
           ]
       },
-      multiSelectClick () {
+      multiSelectClick (pid) {
+        console.log(pid)
         // axios.get('/mock/userdata.json').then(resp => {
         //   let respData = resp.data
         //   if (respData.code == '0') {

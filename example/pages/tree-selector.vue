@@ -1,8 +1,9 @@
 <template>
-  <div style="margin-top:45px;">
+  <div style="margin-top:45px;" id="singleSelect">
     <mt-cell-group>
-      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
-      <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap"></mt-tree-selector>
+      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap" required ></mt-tree-selector>
+      <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap" required></mt-tree-selector>
+      <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap" disabled></mt-tree-selector>
     </mt-cell-group>
   </div>
 </template>
@@ -42,13 +43,14 @@
               options.filter(item => item.id === pId)[0].children = respData.datas ? respData.datas.code.rows : []
               this.$set(this, 'options', [])
               this.$nextTick(_ => {
-                this.$set(this, 'options', options)
+                this.$set(this, 'options', options);
               })
             }
           }
         })
       },
-      loadOptionsEmap (pId) {
+      loadOptionsEmap (id,e) {
+        console.log("单选",id,e)
         // if (this.options.filter(item => item.pId === pId).length > 0) return
         // axios.get('http://localhost:8080/emap/code/c9fe4e9d-5460-4372-87ca-437d373c2531.do?pId=' + pId).then(resp => {
         //   let respData = resp.data
@@ -61,7 +63,8 @@
         //   }
         // })
       },
-      loadMultiOptionsEmap (pId) {
+      loadMultiOptionsEmap (pid,e) {
+        console.log("多选",pid,e)
         // if (this.multiOptions.filter(item => item.pId === pId).length > 0) return
         // axios.get('http://localhost:8080/emap/code/c9fe4e9d-5460-4372-87ca-437d373c2531.do?pId=' + pId).then(resp => {
         //   let respData = resp.data
@@ -78,8 +81,9 @@
 
     data() {
       return {
-        value: '',
-        options: [{
+        value: '6',
+        options: [
+            {
                 "id": "1",
                 "name": "党群组织",
                 "pId": "",
@@ -2300,12 +2304,13 @@
                 "pId": "000017",
                 "isParent": 0
             }],
-        multiValue: '',
+        multiValue: '000426',
         multiOptions: []
       };
     },
 
     mounted() {
+        //this.loadOptions();
     }
   };
 </script>

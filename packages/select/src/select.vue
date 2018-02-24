@@ -1,12 +1,12 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink>
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabledcolor="readonly||disabled">
     <div class="select-value" >
       <!-- select 模板 -->
       <template v-if="selectType === 'select'">{{singleSelectDisplay()}}</template>
       <!-- multi-select 模板 -->
       <template v-if="selectType === 'multi-select'">{{multiSelectDisplay()}}</template>
       <!-- 自定义 -->
-      <slot v-else  name="display" :options="options" :value="value"></slot>
+      <slot v-else  name="display" :options="options" :value="value" @testhandle="testhandle(value)"></slot>
     </div>
     <transition name="slide">
       <div class="select-container mt-bg-lv2" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
@@ -100,11 +100,15 @@ export default {
      */
     selectType: { type: String, default: 'select' },
     iconpattern: { type: String, default: 'circle' },
-    align: String
+    align: String,
+    required: Boolean,
+    disabled: Boolean,
+    readonly: Boolean
   },
   data() {
     return {
-      selectorShow: false
+      selectorShow: false,
+      cHeight:document.documentElement.clientHeight
     };
   },
   computed: {
@@ -131,14 +135,15 @@ export default {
         }
       }
     },
-    cHeight () {
-      return document.documentElement.clientHeight
-    }
+    // cHeight () {
+    //   return document.documentElement.clientHeight
+    // }
     /***** select 专有属性 end *****/
   },
   methods: {
     handleDisplayClick(e) {
-      this.$emit('selector-click', 'single', e)
+      if(this.disabled||this.readonly) return;
+      this.$emit('selector-click', this.selectType, e)
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },

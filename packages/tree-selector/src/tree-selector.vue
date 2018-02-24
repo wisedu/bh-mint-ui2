@@ -1,5 +1,5 @@
-<template>
-  <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom">
+ <template>
+  <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom" :required="required" :disabled="disabled" :readonly="readonly">
     <template slot-scope="scope" slot="display">
       {{scope.value === '' ? placeholder : getDisplay(scope.value)}}
       <!-- {{scope.value.join(',')}} -->
@@ -93,16 +93,32 @@ export default {
     iconpattern: {
       type: String,
       default: "hook"
-    }
+    },
+    required: Boolean,
+    disabled: Boolean,
+    readonly: Boolean
   },
   data() {
     return {
       activePids: []
     };
   },
-  watch: {
-    options (val) {
+  created() {
+    let id = this.value;
+    let options = this.options;
+    if(!this.multiple){
+      if(id){
+        this.activePids.unshift(this.value);
+        let activeItem = options.filter(o => o.id === id)[0];
+        while(activeItem.pId){
+          id=activeItem.pId;
+          this.activePids.unshift(id);
+          activeItem = options.filter(o => o.id === id)[0];
+        }
+      }
     }
+
+
   },
   computed: {
     activeOptions() {
@@ -121,7 +137,7 @@ export default {
       if (this.activePids.length === 0) {
         return [{ name: '全部', id: ''}]
       }
-      let result = [{ name: '全部', id: ''}]
+      let result = [{ name: '全部', id: ''}];
       let options = this.options;
       this.activePids.map(item => {
         let activeItem = options.filter(o => o.id === item)[0];
@@ -129,6 +145,7 @@ export default {
           result.push(activeItem);
         }
       });
+      console.log(result)
       return result;
     },
     currentValue: {
@@ -185,8 +202,8 @@ export default {
           if (item.pId === this.activePids[this.activePids.length - 1]) {
             this.activePids.push(item.id)
           } else {
-            let activePids = this.activePids
-            activePids.splice(activePids.length - 1, 1, item.id)
+            let activePids = this.activePids;
+            activePids.splice(activePids.length - 1, 1, item.id);
             this.$set(this, 'activePids', activePids)
           }
           this.currentValue = this.activePids[this.activePids.length - 1]
@@ -196,7 +213,7 @@ export default {
     },
     getDisplay (value) {
       if (this.multiple === true) {
-        if (value.length  === 0) return ''
+        if (value.length  === 0) return this.placeholder
         return value.map(item => this.getItemDisplay(item)).join(',')
       } else {
         // 单选
@@ -209,7 +226,7 @@ export default {
       let optionItem = options.filter(item => item.id === value)[0]
       result += optionItem.name
       if (optionItem.pId !== undefined && optionItem.pId !== '') {
-        result = this.getItemDisplay(optionItem.pId) + result
+        result = this.getItemDisplay(optionItem.pId) + " " + result
       }
       return result
     },
