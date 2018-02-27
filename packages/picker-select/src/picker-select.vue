@@ -72,6 +72,7 @@ export default {
       this.popupVisible=false;
     },
     onCancel(value) {
+      console.log(value)
       this.popupVisible=false;
     }
   }

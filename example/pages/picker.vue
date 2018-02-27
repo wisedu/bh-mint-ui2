@@ -116,8 +116,8 @@ export default {
     onConfirm1(value, index ,picker) {
       Toast(`当前值：${value}, 当前索引：${index}`);
     },
-    onChange4(picker, values,index) {
-      console.log(values, index);
+    onChange4(picker, values,column,line) {
+      console.log(values, column,line);
       picker.setColumnValues(1, this.column4[values[0]]);
     },
     onConfirm(value,index) {

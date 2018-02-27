@@ -42,6 +42,7 @@ export default {
   name: 'mt-picker-column',
   props: {
     valueKey: String,
+    columnIndex:Number,
     className: String,
     options: {
       type: Array,
@@ -92,7 +93,7 @@ export default {
       }
     },
     currentIndex(index) {
-      this.$emit('change', index);
+      this.$emit('change', this.columnIndex ,index);
     }
   },
   computed: {

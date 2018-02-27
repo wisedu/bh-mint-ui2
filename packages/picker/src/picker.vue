@@ -12,6 +12,7 @@
         v-for="(item, index) in currentColumns"
         :key="index"
         :valueKey="valueKey"
+        :columnIndex="index"
         :options="item.values"
         :className="item.className"
         :defaultIndex="item.defaultIndex"
@@ -100,7 +101,7 @@ export default {
         this.$emit(event, this.getValues(), this.getIndexes(), this);
       }
     },
-    onChange(columnIndex) {
+    onChange(columnIndex,lineIndex) {
       if (this.isSimpleColumn) {
         this.$emit('change', this, this.getColumnValue(0), this.getColumnIndex(0));
       } else {
@@ -115,7 +116,7 @@ export default {
           showData[1].values=childrenColumn;
           this.currentColumns = showData;
         }else{
-          this.$emit('change', this, this.getValues(), columnIndex);
+          this.$emit('change', this, this.getValues(),columnIndex,lineIndex);
         }
       }
     },

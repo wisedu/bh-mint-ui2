@@ -238,7 +238,7 @@ export default {
       }
 
       .mint-cell-title {
-        width: 72px;
+        width: 20%;
         flex: none;
       }
 

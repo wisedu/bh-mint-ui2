@@ -136,6 +136,9 @@ export default {
       }
     },
     // cHeight () {
+
+
+      
     //   return document.documentElement.clientHeight
     // }
     /***** select 专有属性 end *****/
@@ -143,7 +146,7 @@ export default {
   methods: {
     handleDisplayClick(e) {
       if(this.disabled||this.readonly) return;
-      this.$emit('selector-click', this.selectType, e)
+      this.$emit('selector-click', this.selectType, this,e);
       history.pushState('', null, '#/smile-select');
       this.selectorShow = true;
     },

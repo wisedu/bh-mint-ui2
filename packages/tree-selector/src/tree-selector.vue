@@ -1,8 +1,7 @@
  <template>
   <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom" :required="required" :disabled="disabled" :readonly="readonly">
     <template slot-scope="scope" slot="display">
-      {{scope.value === '' ? placeholder : getDisplay(scope.value)}}
-      <!-- {{scope.value.join(',')}} -->
+      <span :class="[{'mt-color-grey-lv3':(scope.value === '' && placeholder === '请选择') || (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)}]">{{scope.value === ''|| (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0) ? placeholder : getDisplay(scope.value)}}</span>
     </template>
     <template slot-scope="scope" slot="selector">
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
@@ -12,7 +11,6 @@
           <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1}" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
         </mt-cell-group>
       </template>
-
       <template v-else-if="multiple" v-show="scope.options.length > 0">
         <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue" :iconpattern="iconpattern"></tree-checkbox-list>
       </template>
@@ -96,7 +94,8 @@ export default {
     },
     required: Boolean,
     disabled: Boolean,
-    readonly: Boolean
+    readonly: Boolean,
+    displayType: Boolean
   },
   data() {
     return {
@@ -106,7 +105,7 @@ export default {
   created() {
     let id = this.value;
     let options = this.options;
-    if(!this.multiple){
+    if(!this.multiple&&options.length){
       if(id){
         this.activePids.unshift(this.value);
         let activeItem = options.filter(o => o.id === id)[0];
@@ -117,8 +116,6 @@ export default {
         }
       }
     }
-
-
   },
   computed: {
     activeOptions() {
@@ -145,7 +142,6 @@ export default {
           result.push(activeItem);
         }
       });
-      console.log(result)
       return result;
     },
     currentValue: {
@@ -213,7 +209,6 @@ export default {
     },
     getDisplay (value) {
       if (this.multiple === true) {
-        if (value.length  === 0) return this.placeholder
         return value.map(item => this.getItemDisplay(item)).join(',')
       } else {
         // 单选
@@ -221,12 +216,20 @@ export default {
       }
     },
     getItemDisplay (value) {
-      let result = ''
-      let options = this.options
-      let optionItem = options.filter(item => item.id === value)[0]
-      result += optionItem.name
-      if (optionItem.pId !== undefined && optionItem.pId !== '') {
-        result = this.getItemDisplay(optionItem.pId) + " " + result
+      let result = '';
+      let options = this.options;
+      if(options.length){
+        let optionItem = options.filter(item => item.id === value)[0];
+        if(!this.displayType){
+          result = optionItem.name
+        }else{
+          result += optionItem.name
+          if (optionItem.pId !== undefined && optionItem.pId !== '') {
+            result = this.getItemDisplay(optionItem.pId) + " " + result
+          }
+        }
+      }else{
+        result=this.placeholder
       }
       return result
     },

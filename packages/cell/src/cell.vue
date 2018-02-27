@@ -6,7 +6,7 @@
     </div>
     <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
       <i class="mint-cell-require" v-if="required"></i>
-      <div class="mint-cell-title" :style="{'width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
+      <div class="mint-cell-title" :style="{'flex':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
         </slot>
@@ -15,7 +15,7 @@
           <span v-if="label" class="mint-cell-label mt-color-grey-lv3" v-html="label"></span>
         </slot>
       </div>
-      <div class="mint-cell-value" :class="[{'is-link' : isLink },disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue">
+      <div class="mint-cell-value" :class="[{'is-link' : isLink },disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue" :style="{'flex':titlewidth?'calc(100% - '+titlewidth+')':'','justify-content':valueAlign}">
         <slot>
           <span v-text="value"></span>
         </slot>
@@ -154,7 +154,7 @@ export default {
     },
     titlewidth:{
       type:String,
-      default:'20%'
+      default:''
     },
     titlepaddingtop:String,
     titlepaddingright:String,
@@ -163,7 +163,8 @@ export default {
     required:{
       type:Boolean,
       default:false
-    }
+    },
+    valueAlign:String
   },
 
   computed: {
@@ -273,7 +274,6 @@ export default {
       box-sizing: border-box;
       color: inherit;
       display: block;
-      overflow: hidden;
       position: relative;
       text-decoration: none;
       min-height: 50px;
@@ -286,8 +286,7 @@ export default {
 
       @when require{
         .mint-cell-require{
-          position: relative;
-          left:0px;
+          margin-left:-10px;
         }
         .mint-cell-require:before{
           content: "*";
@@ -321,7 +320,6 @@ export default {
         font-size: 16px;
         line-height: 1;
         min-height: inherit;
-        overflow: hidden;
         width: 100%;
       }
 
@@ -359,6 +357,7 @@ export default {
 
       @descendent value {
         display: flex;
+        justify-content: flex-end;
         align-items: center;
         
         @when link {

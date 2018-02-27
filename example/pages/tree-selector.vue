@@ -1,8 +1,8 @@
 <template>
   <div style="margin-top:45px;" id="singleSelect">
     <mt-cell-group>
-      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap" required ></mt-tree-selector>
-      <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap" required></mt-tree-selector>
+      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="教学机构\/外国语学院" @selector-click="loadOptions" required ></mt-tree-selector>
+      <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadOptions" required></mt-tree-selector>
       <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap" disabled></mt-tree-selector>
     </mt-cell-group>
   </div>
@@ -32,11 +32,13 @@
 
   export default {
     methods: {
-      loadOptions (pId) {
+      loadOptions (pId,vm) {
+        console.log(pId,vm)
         axios.get('/mock/tree.json?pId=' + pId).then(resp => {
-          let respData = resp.data
+          let respData = resp.data;
+          console.log(respData)
           if (respData.code == '0') {
-            if (pId === '' || pId.length === 0) {
+            if (pId === 'custom' || pId.length === 0) {
               this.options = respData.datas ? respData.datas.code.rows : []
             } else {
               let options = this.options
@@ -81,7 +83,7 @@
 
     data() {
       return {
-        value: '6',
+        value: '',
         options: [
             {
                 "id": "1",
@@ -2304,7 +2306,7 @@
                 "pId": "000017",
                 "isParent": 0
             }],
-        multiValue: '000426',
+        multiValue: '',
         multiOptions: []
       };
     },

@@ -1,5 +1,5 @@
 <template>
-  <x-cell @click.native.stop="handleRadioClick">
+  <x-cell @click.native.stop="handleRadioClick" :isLink="isLink">
     <label class="mint-radiobox-row" slot="title">
       <span :class="{'is-right': align === 'right'}" class="mint-radiobox">
         <input :value="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"/>
@@ -31,6 +31,10 @@ export default {
     iconpattern:{
       type:String,
       default:"circle"
+    },
+    isLink:{
+      type: Boolean,
+      default: false
     }
   },
   components: { XCell },
