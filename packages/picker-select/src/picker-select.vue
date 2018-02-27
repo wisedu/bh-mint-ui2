@@ -1,9 +1,9 @@
 <template>
   <div>
-    <mt-cell :title="label" @click.native="popupVisible = (disabled||readonly)?false:true" arrowdefined :disabledcolor="disabled||readonly">
+    <mt-cell :title="label" @click.native="popupVisible = (disabled||readonly)?false:true" arrowdefined :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign" :required="required">
       <i slot="arrowdefined" class="iconfont icon-keyboardarrowright mt-color-grey-lv3"></i>
       <div class="select-value">
-        <template>{{singleSelectDisplay()}}</template>
+        <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
       </div>
     </mt-cell>
     <mt-popup v-model="popupVisible" position="bottom">
@@ -47,8 +47,11 @@ export default {
      * @value
      */
     options: { type: Array, required: true },
+    required: Boolean,
     disabled: Boolean,
-    readonly: Boolean
+    readonly: Boolean,
+    titlewidth: String,
+    valueAlign:String
   },
   data() {
     return {

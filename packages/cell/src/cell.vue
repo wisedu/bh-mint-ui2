@@ -1,27 +1,25 @@
 <template>
   <a class="mint-cell mt-bg-white mt-bColor-grey-lv5" :href="href" :style="{'min-height':cellheight}" :class="[{'is-require':required}]">
-    <span class="mint-cell-mask mt-bg-after-grey" v-if="isLink"></span>
+    <span class="mint-cell-mask mt-bg-after-grey" v-if="isLink&&!readonly&&!disabled"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
     <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
-      <i class="mint-cell-require" v-if="required"></i>
       <div class="mint-cell-title" :style="{'flex':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
         </slot>
         <slot name="title">
-          <span class="mint-cell-text" :class="[disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" v-html="title"></span>
-          <span v-if="label" class="mint-cell-label mt-color-grey-lv3" v-html="label"></span>
+          <i class="mint-cell-require" v-if="required&&!readonly&&!disabled"></i><span class="mint-cell-text" :class="[readonly||disabled?'mt-color-grey-lv3':'mt-color-grey']" v-html="title"></span><span v-if="label" class="mint-cell-label mt-color-grey-lv3" v-html="label"></span>
         </slot>
       </div>
-      <div class="mint-cell-value" :class="[{'is-link' : isLink },disabledcolor?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue" :style="{'flex':titlewidth?'calc(100% - '+titlewidth+')':'','justify-content':valueAlign}">
+      <div class="mint-cell-value" :class="[{'is-link' : isLink },readonly||disabled?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue" :style="{'flex':titlewidth?'calc(100% - '+titlewidth+')':'','justify-content':valueAlign}">
         <slot>
           <span v-text="value"></span>
         </slot>
       </div>
       <slot v-if="isLink||arrowdefined" name="arrowdefined">
-        <i class="mint-cell-icon mt-color-grey-lv3 iconfont icon-keyboardarrowright" v-if="!arrowdefined"></i>
+        <i class="mint-cell-icon mt-color-grey-lv3 iconfont icon-keyboardarrowright" v-if="!arrowdefined&&(!readonly&&!disabled)"></i>
       </slot>
     </div>
     <div class="mint-cell-right">
@@ -164,11 +162,14 @@ export default {
       type:Boolean,
       default:false
     },
-    valueAlign:String
+    valueAlign:String,
+    readonly:Boolean,
+    disabled:Boolean
   },
 
   computed: {
     href() {
+      if (this.disabled||this.readonly) return null;
       if (this.to && !this.added && this.$router) {
         const resolved = this.$router.match(this.to);
         if (this.to === 'click') {

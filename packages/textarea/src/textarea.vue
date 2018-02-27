@@ -12,7 +12,8 @@
     :class="[{
       'is-textarea': true,
       'is-nolabel': !label,
-      'is-autoheight': heightAuto
+      'is-autoheight': heightAuto,
+      'is-vertical': direction === 'vertical'
     }]">
     <div v-if="heightAuto" class="mint-textarea-height-auto">
       <pre  class="pre" ref="pre">{{currentValue}}</pre>
@@ -226,7 +227,8 @@ export default {
       type:Boolean,
       default:true
     },
-    required:Boolean
+    required:Boolean,
+    direction:String
   },
 
   components: { XCell },
@@ -339,6 +341,16 @@ export default {
           top: 0px;
           left: 0;
           height: 100%;
+        }
+      }
+      @when vertical {
+        .mint-cell-title{
+          width: 100%;
+          margin:0;
+          padding: 10px 0 0;
+        }
+        .mint-cell-wrapper{
+          flex-direction: column;
         }
       }
       .mint-cell-require{

@@ -1,6 +1,7 @@
 <template>
   <div style="margin-top:45px;">
-    <mt-textarea label="有标题" placeholder="全宽度" rows=3 maxlength=100 wrapperpaddingleft="20px" :heightAuto="false" required></mt-textarea>
+    <mt-textarea label="左右结构标题" placeholder="全宽度" rows=3 maxlength=100 wrapperpaddingleft="20px" :heightAuto="false" required></mt-textarea>
+    <mt-textarea label="上下结构标题" placeholder="全宽度" rows=3 maxlength=100 wrapperpaddingleft="20px" required direction="vertical"></mt-textarea>
     <br>
     <mt-cell-group>
       <mt-textarea placeholder="全宽度" rows=3 maxlength=100  :easycheck="false" required></mt-textarea>

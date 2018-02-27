@@ -1,12 +1,10 @@
 /*body{
-	font-size: 14px;
-	line-height: 1;
-	font-family: "Microsoft YaHei",-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",  sans-serif;
-}
+	font:14px/1 "Microsoft YaHei",-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",  sans-serif;
+}*/
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
 	margin:0;
 	padding:0;
-} 
+}
 h1, h2, h3, h4, h5, h6{ 
 	font-size:100%;
 } 
@@ -47,14 +45,22 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-*/
+input,textarea{
+    border:0;
+}
+textarea{
+    resize: none;
+}
+input:focus, textarea:focus, select:focus{
+    outline-offset:0;
+    outline:none;
+}
 
-button,
-input[type='number'],input[type='text'],input[type='password'],input[type='email'],input[type='search'],
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-  margin: 0;
-  -webkit-appearance: none;
+button,input[type='number'],input[type='text'],input[type='password'],input[type='email'],input[type='search'],select,textarea {
+    font:inherit;
+    margin: 0;
+    -webkit-appearance: none;
+}
+textarea:disabled, input:not([type]):disabled, input[type="color"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="email"]:disabled, input[type="month"]:disabled, input[type="password"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="text"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="week"]:disabled{
+    background-color: rgb(255,255,255);
 }

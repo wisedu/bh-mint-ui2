@@ -54,6 +54,8 @@
       -->
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666"></mt-field>
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4" required :heightAuto="false"></mt-field>
+
+      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4" required direction="vertical"></mt-field>
       <!--end-->
     </mt-cell-group>
     <mt-hr height="15px" color="#e8e8e8"></mt-hr>

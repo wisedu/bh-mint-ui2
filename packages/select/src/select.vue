@@ -1,10 +1,10 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabledcolor="readonly||disabled">
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign">
     <div class="select-value" >
       <!-- select 模板 -->
-      <template v-if="selectType === 'select'">{{singleSelectDisplay()}}</template>
+      <template v-if="selectType === 'select'"><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
       <!-- multi-select 模板 -->
-      <template v-if="selectType === 'multi-select'">{{multiSelectDisplay()}}</template>
+      <template v-if="selectType === 'multi-select'"><span :class="[{'mt-color-grey-lv3': multiSelectDisplay()=== this.placeholder}]">{{multiSelectDisplay()}}</span></template>
       <!-- 自定义 -->
       <slot v-else  name="display" :options="options" :value="value" @testhandle="testhandle(value)"></slot>
     </div>
@@ -103,7 +103,9 @@ export default {
     align: String,
     required: Boolean,
     disabled: Boolean,
-    readonly: Boolean
+    readonly: Boolean,
+    titlewidth: String,
+    valueAlign:String
   },
   data() {
     return {

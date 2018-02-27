@@ -3,7 +3,7 @@
 
     <h1 class="page-item-title">Select 快捷语法糖</h1>
     <mt-cell-group>
-      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick">
+      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick" required>
       </mt-select>
       <p>{{singleSelectValue}}</p>
     </mt-cell-group>
@@ -25,7 +25,6 @@
       </mt-select>
       <p>{{value}}</p>
     </mt-cell-group>
-
     <!-- <h1 class="page-item-title">Multi Select</h1>
     <mt-cell-group>
       <mt-select label="多选" :options="yearSlot" :value.sync="multiValue" select-type="custom">
@@ -366,6 +365,7 @@
 
     data() {
       return {
+        readonly:true,
         singleSelectValue: '',
         singleSelectOptions: [],
 

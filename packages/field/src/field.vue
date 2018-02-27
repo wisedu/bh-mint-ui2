@@ -4,13 +4,15 @@
     :title="label"
     v-clickoutside="doCloseActive"
     :wrapperpaddingright="state!=='default'?'15px':'20px'"
-    :disabledcolor="readonly||disabled"
+    :disabled="disabled"
+    :readonly="readonly"
     :titlewidth="titlewidth"
     :required="required"
     :class="[{
       'is-textarea': type === 'textarea',
       'is-nolabel': !label,
-      'is-autoheight': heightAuto
+      'is-autoheight': heightAuto,
+      'is-vertical': direction === 'vertical'
     }]">
     <pre v-if="type === 'textarea'&&heightAuto" class="pre" :style="{width:preWidth}">{{currentValue}}</pre>
     <textarea
@@ -126,7 +128,8 @@ export default {
       default: true
     },
     titlewidth: String,
-    required:Boolean,
+    required: Boolean,
+    direction: String
   },
 
   components: { XCell },
@@ -235,6 +238,16 @@ export default {
         .mint-cell-value {
           padding: 5px 0;
         }
+        @when vertical {
+          .mint-cell-title{
+            width: 100%;
+            margin:0;
+            padding: 10px 0 0;
+          }
+          .mint-cell-wrapper{
+            flex-direction: column;
+          }
+        }
       }
 
       .mint-cell-title {
@@ -253,6 +266,7 @@ export default {
         border: 0;
         flex: 1;
         outline: 0;
+        padding-top: 1px;
         line-height: 1.6;
         font-size: inherit;
         width: 100%;
