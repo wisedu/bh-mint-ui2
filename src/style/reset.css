@@ -1,6 +1,6 @@
-/*body{
-	font:14px/1 "Microsoft YaHei",-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",  sans-serif;
-}*/
+body{
+	font-family: PingFang SC, "Microsoft YaHei",-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB",  sans-serif;
+}
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
 	margin:0;
 	padding:0;
@@ -57,7 +57,6 @@ input:focus, textarea:focus, select:focus{
 }
 
 button,input[type='number'],input[type='text'],input[type='password'],input[type='email'],input[type='search'],select,textarea {
-    font:inherit;
     margin: 0;
     -webkit-appearance: none;
 }

@@ -353,9 +353,6 @@ export default {
           flex-direction: column;
         }
       }
-      .mint-cell-require{
-        padding-top: 10px;
-      }
       .mint-cell-title {
         padding: 10px 0;
       }
@@ -364,7 +361,7 @@ export default {
       }
 
       .mint-cell-title {
-        width: 105px;
+        width: 80px;
         flex: none;
       }
 

@@ -231,7 +231,7 @@ export default {
       @when textarea {
         align-items: inherit;
 
-        .mint-cell-title,.mint-cell-require{
+        .mint-cell-title{
           padding: 10px 0;
         }
 
@@ -251,7 +251,7 @@ export default {
       }
 
       .mint-cell-title {
-        width: 20%;
+        width: 80px;
         flex: none;
       }
 
@@ -266,7 +266,6 @@ export default {
         border: 0;
         flex: 1;
         outline: 0;
-        padding-top: 1px;
         line-height: 1.6;
         font-size: inherit;
         width: 100%;

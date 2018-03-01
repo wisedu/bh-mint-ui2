@@ -5,7 +5,7 @@
       <slot name="left"></slot>
     </div>
     <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
-      <div class="mint-cell-title" :style="{'flex':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
+      <div class="mint-cell-title" :style="{'flex':titlewidth,'min-width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
         </slot>
@@ -288,13 +288,14 @@ export default {
       @when require{
         .mint-cell-require{
           margin-left:-10px;
+          display: inline-block;
+          width: 10px;
         }
         .mint-cell-require:before{
           content: "*";
           color: red;
           position: relative;
           top: 4px;
-          margin-right: 4px;
         };
       }
 /*
@@ -352,7 +353,7 @@ export default {
 
       @descendent title {
         flex: 1;
-        min-width: 68px;
+        min-width: 80px;
         margin-right: 8px;
       }
 

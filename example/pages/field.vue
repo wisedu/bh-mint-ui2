@@ -4,7 +4,8 @@
       <!--start
       @name normal
       -->
-      <mt-field label="用户名" placeholder="请输入用户名" required></mt-field>
+      <mt-field label="用户名五个字" placeholder="请输入用户名" required></mt-field>
+
       <!--end-->
 
       <!--start
@@ -74,8 +75,8 @@
       <!--start
       @name normal-success
       -->
-      <mt-field label="邮箱" placeholder="成功状态" value="禁用的内容" disabled state="default"></mt-field>
-      <mt-field label="邮箱" placeholder="成功状态" value="只读的内容" readonly state="success"></mt-field>
+      <mt-field label="禁用的邮箱" placeholder="成功状态" value="禁用的内容" disabled state="default"></mt-field>
+      <mt-field label="只读的邮箱" placeholder="成功状态" value="只读的内容" readonly state="success"></mt-field>
       <!--end-->
 
       <!--start
