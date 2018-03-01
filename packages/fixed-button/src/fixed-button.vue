@@ -1,7 +1,8 @@
 <template>
   <div @click="handleClick" class="mint-fixed-button mt-color-white" :class="['mint-fixed-button--' + position, 'mint-fixed-button--' + type,'mt-bg-'+type]" :style="computeStyle">
-    <div class="mint-fixed-button--content" :style="computeContentStyle">
-      <slot></slot>
+    <div class="mint-fixed-button--plus" :style="computePlusStyle">
+      <div class="mint-fixed-button--plus_h" :style="computePlusItemStyle"></div>
+      <div class="mint-fixed-button--plus_v" :style="computePlusItemStyle"></div>
     </div>
   </div>
 </template>
@@ -23,17 +24,14 @@
           type: String,
           default: 'primary'
       },
-      size: String,
-      borderradius: String,
+      buttonSize: String,
+      contentSize: String,
       color: String,
-      background: String,
-      width: String,
-      height: String,
+      backgroundColor: String,
       left: String,
       right: String,
       top: String,
-      bottom: String,
-      contentmargintop: String
+      bottom: String
     },
       computed: {
           computeStyle: function() {
@@ -41,13 +39,11 @@
               let right = this.right;
               let top = this.top;
               let bottom = this.bottom;
+              let backgroundColor = this.backgroundColor;
+              let buttonSize = this.buttonSize;
               let color = this.color;
-              let background = this.background;
-              let width = this.width;
-              let height = this.height;
-              let borderRadius = this.borderradius;
-              let size = this.size;
               let _style = '';
+
               if (left) {
                   _style += 'left:' + left + ';';
               }
@@ -61,33 +57,35 @@
                   _style += 'bottom:' + bottom + ';';
               }
 
-              if (color) {
-                  _style += 'color:' + color + ';';
+              if (backgroundColor) {
+                  _style += 'background-color:' + backgroundColor + ';';
               }
-              if (background) {
-                  _style += 'background:' + background + ';';
+              if (buttonSize) {
+                  _style += 'width:' + buttonSize + ';';
+                  _style += 'height:' + buttonSize + ';';
               }
-              if (width) {
-                  _style += 'width:' + width + ';';
-              }
-              if (height) {
-                  _style += 'height:' + height + ';';
-              }
-              if (borderRadius) {
-                  _style += 'border-radius:' + borderRadius + ';';
-              }
-              if (size) {
-                  _style += 'font-size:' + size + ';';
-              }
+
               return _style;
           },
-          computeContentStyle: function() {
-              let _style = '';
-              let contentMarginTop = this.contentmargintop;
-              if (contentMarginTop) {
-                  _style += 'margin-top:' + contentMarginTop + ';';
+          computePlusStyle: function() {
+              let contentSize = this.contentSize;
+              let color = this.color;
+              let plusStyle = '';
+              if (contentSize) {
+                  plusStyle += 'width:' + contentSize + ';';
+                  plusStyle += 'height:' + contentSize + ';';
               }
-              return _style;
+
+              return plusStyle;
+          },
+          computePlusItemStyle: function() {
+              let color = this.color;
+              let plusStyle = '';
+              if(color){
+                  plusStyle += 'background-color:' + color + ';';
+              }
+
+              return plusStyle;
           }
       }
   };
@@ -125,11 +123,29 @@
         bottom: 20px;
         right: 16px;
       }
-
-      @modifier content {
-        position: relative;
-        font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
-      }
     }
+  }
+
+  .mint-fixed-button--plus{
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+  .mint-fixed-button--plus_h,
+  .mint-fixed-button--plus_v{
+    position: absolute;
+    background-color: #fff;
+  }
+  .mint-fixed-button--plus_h{
+    top: calc(50% - 1px);
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  .mint-fixed-button--plus_v{
+    top: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 100%;
   }
 </style>
