@@ -421,6 +421,7 @@ export default {
   /*新增texterea高度功能功能专用样式 2018-1-22 王永建*/
   .pre{
     margin:0;
+    padding: 1px 0 0;
     font-size: inherit;
     font-family: inherit;
     visibility:hidden;
@@ -432,6 +433,6 @@ export default {
     padding: 0;
   }
   textarea{
-    padding:0;
+    padding:1px 0 0;
   }
 </style>

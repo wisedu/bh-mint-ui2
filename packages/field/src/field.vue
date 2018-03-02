@@ -266,7 +266,7 @@ export default {
         border: 0;
         flex: 1;
         outline: 0;
-        line-height: 1.6;
+        line-height: 1.5;
         font-size: inherit;
         width: 100%;
       }
@@ -298,6 +298,7 @@ export default {
   /*新增texterea高度功能功能专用样式 2018-1-22 王永建*/
   .pre{
     margin:0;
+    padding: 2px 0 0;
     font-size: inherit;
     font-family: inherit;
     visibility:hidden;
@@ -307,6 +308,6 @@ export default {
     word-break:break-all
   }
   textarea{
-    padding:0;
+    padding:2px 0 0;
   }
 </style>
