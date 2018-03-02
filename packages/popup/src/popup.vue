@@ -99,7 +99,7 @@
       },
 
       lockScroll: {
-        default: false
+        default: true
       },
 
       closeOnClickModal: {

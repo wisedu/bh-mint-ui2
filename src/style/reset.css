@@ -1,5 +1,5 @@
 body{
-	font-family: PingFang SC, "Microsoft YaHei",-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Sans GB",  sans-serif;
+	font-family: PingFang SC, "Microsoft YaHei";
 }
 body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
 	margin:0;
@@ -62,4 +62,17 @@ button,input[type='number'],input[type='text'],input[type='password'],input[type
 }
 textarea:disabled, input:not([type]):disabled, input[type="color"]:disabled, input[type="date"]:disabled, input[type="datetime"]:disabled, input[type="datetime-local"]:disabled, input[type="email"]:disabled, input[type="month"]:disabled, input[type="password"]:disabled, input[type="number"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="text"]:disabled, input[type="time"]:disabled, input[type="url"]:disabled, input[type="week"]:disabled{
     background-color: rgb(255,255,255);
+}
+/*设置input,textarea默认placeholder样式*/
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {/*WebKit browsers*/
+	color:#92969C;
+}
+input:-moz-placeholder,textarea:-moz-placeholder {/*Mozilla Firefox 4 to 18*/
+	color:#92969C;
+}
+input::-moz-placeholder,textarea::-moz-placeholder {/*Mozilla Firefox 18+*/
+	color:#92969C;
+}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {/*Internet Explore*/
+	color:#92969C;
 }

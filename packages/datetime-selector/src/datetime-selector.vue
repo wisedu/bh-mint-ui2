@@ -1,8 +1,8 @@
 <template>
-  <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :disabledcolor="readonly||disabled" :wrapperpaddingright="state!=='default'?'15px':'20px'" :class="[{
+  <x-cell class="mint-field" :title="label" v-clickoutside="doCloseActive" :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :wrapperpaddingright="state!=='default'?'15px':'20px'" :class="[{
               'is-nolabel': !label
             }]">
-    <div class="mint-field-core" :class="[{'mt-color-grey-lv3':placeholder===showValue},{'mt-color-danger':state==='error'},{'mt-color-warning':state==='warning'}]" @click="handlePick()">{{showValue}}</div>
+    <div class="mint-field-core" :class="[{'mt-color-grey-lv3':placeholder===showValue},{'mt-color-danger':state==='error'},{'mt-color-warning':state==='warning'}]" :style="{'text-align': valueAlign}" @click="handlePick()">{{showValue}}</div>
     <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue && active">
       <i class="iconfont icon-weiwancheng"></i>
     </div>
@@ -168,7 +168,10 @@ export default {
     maxDate: Date,
     minHour: Number,
     maxHour: Number,
-    visibileColumnCount: Number
+    visibileColumnCount: Number,
+    required: Boolean,
+    titlewidth: String,
+    valueAlign:String
   },
 
   components: { XCell },
@@ -324,7 +327,7 @@ export default {
     }
 
     .mint-cell-title {
-      width: 105px;
+      width: 80px;
       flex: none;
     }
 

@@ -1,7 +1,7 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :disabledcolor="readonly||disabled">
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" valueAlign="valueAlign">
     <div class="select-value">
-      <template>{{singleSelectDisplay()}}</template>
+      <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
     </div>
     <transition name="slide">
       <div class="select-container mt-bg-lv1" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
@@ -82,7 +82,10 @@ export default {
     options: { type: Array, required: true },
     disabled: Boolean,
     readonly: Boolean,
-    attr: Object
+    attr: Object,
+    required: Boolean,
+    titlewidth: String,
+    valueAlign:String
   },
   data() {
     return {
