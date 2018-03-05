@@ -12,7 +12,7 @@
       <slot name="icon">
         <i v-if="icon" class="iconfont" :class="'icon-' + icon" :style="{'font-size':iconSize,'color':iconColor}"></i>
       </slot>
-    </span><label class="mint-button-text" @click.stop="handleClick"><slot></slot></label>
+    </span><slot></slot>
   </button>
 </template>
 

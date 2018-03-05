@@ -12,7 +12,7 @@ address, cite, dfn, em, var {
 	font-style:normal;
 } 
 code, kbd, pre, samp {
-	font-family:couriernew, courier, monospace;
+	font-family:PingFang SC, "Microsoft YaHei";
 } 
 small{
 	font-size:12px;
