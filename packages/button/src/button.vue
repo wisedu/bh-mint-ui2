@@ -6,12 +6,13 @@
       'is-disabled': disabled,
       'is-plain': plain
     }]"
+    @click="handleClick"
     :disabled="disabled">
-    <span :class="['mint-button-icon',size]" v-if="icon || $slots.icon" id="btn-icon">
+    <span :class="['mint-button-icon',size]" v-if="icon || $slots.icon">
       <slot name="icon">
         <i v-if="icon" class="iconfont" :class="'icon-' + icon" :style="{'font-size':iconSize,'color':iconColor}"></i>
       </slot>
-    </span><label class="mint-button-text" for="btn-icon" @click="handleClick"><slot></slot></label>
+    </span><label class="mint-button-text" @click.stop="handleClick"><slot></slot></label>
   </button>
 </template>
 

@@ -506,7 +506,7 @@
         <!--start
         @name large-danger-icon-more
         -->
-        <mt-button size="large" icon="more" type="danger">danger</mt-button>
+        <mt-button size="large" icon="more" type="danger" @click="handleClick">danger</mt-button>
         <!--end-->
 
         <!--start
@@ -524,7 +524,12 @@
 
 <script>
 export default {
-  name: 'button'
+  name: 'button',
+  methods: {
+    handleClick:function(){
+        console.log(0)
+    }
+  }
 };
 </script>
 
