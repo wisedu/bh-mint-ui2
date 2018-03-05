@@ -90,7 +90,7 @@ export default {
         }
 
         &.is-selected {
-          border-bottom-width: 1px;
+          border-bottom-width: 2px;
         }
       }
     }

@@ -128,7 +128,7 @@ export default {
   pre{
     margin:0;
     font-size: inherit;
-    font-family: inherit;
+    font-family: PingFang SC, "Microsoft YaHei";
     word-wrap: break-word;
     white-space: pre-wrap;
   }

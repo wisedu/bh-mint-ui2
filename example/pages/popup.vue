@@ -25,7 +25,7 @@
           <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
-        <mt-cell-group style="margin-bottom:4px">
+        <mt-cell-group style="margin-bottom:4px;" class="mt-cell-group">
           <mt-textarea maxlength=100 placeholder="请输入" rows=4 ></mt-textarea>
         </mt-cell-group>
         <mt-button size="large" @click.native="popupVisible4=false">取消</mt-button>
@@ -103,6 +103,9 @@
         .picker-slot-wrapper, .picker-item {
           backface-visibility: hidden;
         }
+      }
+      .mt-cell-group .mint-cell-group-content{
+        overflow: hidden;
       }
     }
   }

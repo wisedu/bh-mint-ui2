@@ -1,6 +1,6 @@
 <template>
   <transition :name="currentTransition">
-    <div v-show="currentValue" class="mint-popup mt-bg-white" :class="[position ? 'mint-popup-' + position : '']">
+    <div v-show="currentValue" class="mint-popup mt-bg-white" :class="[position ? 'mint-popup-' + position : '']" :id="pid">
       <slot></slot>
     </div>
   </transition>
@@ -114,6 +114,11 @@
       position: {
         type: String,
         default: ''
+      },
+
+      pid:{
+        type: String,
+        default: null
       }
     },
 
@@ -126,7 +131,13 @@
 
     watch: {
       currentValue(val) {
-        if(!val) this.$emit("maskCallback");
+        if(!val){
+          this.$emit("maskCallback");
+          if(this.pid){
+            document.getElementById(this.pid).style.overflow = null;
+            document.getElementById(this.pid).style.height = null;
+          }
+        };
         this.$emit('input', val);
       },
 
