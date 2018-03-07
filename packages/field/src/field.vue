@@ -17,6 +17,8 @@
     <pre v-if="type === 'textarea'&&heightAuto" class="pre" :style="{width:preWidth}">{{currentValue}}</pre>
     <textarea
       @change="$emit('change', currentValue, $event)"
+      @focus="$emit('focus',currentValue, $event)"
+      @blur="$emit('blur',currentValue, $event)"
       ref="textarea"
       class="mint-field-core"
       :placeholder="placeholder"
@@ -35,7 +37,8 @@
       :number="type === 'number'"
       v-else
       :type="type"
-      @focus="active = true"
+      @focus="$emit('focus',currentValue, $event);active = true"
+      @blur="$emit('blur',currentValue, $event)"
       :disabled="disabled"
       :readonly="readonly"
       :value="currentValue"
@@ -243,6 +246,9 @@ export default {
             width: 100%;
             margin:0;
             padding: 10px 0 0;
+          }
+          .mint-cell-value{
+            width: 100%;
           }
           .mint-cell-wrapper{
             flex-direction: column;

@@ -72,7 +72,7 @@ export default {
       display: flex;
       text-align: center;
       width: 100%;
-      overflow-x: scroll;
+      overflow-x: auto;
 
       @when fixed {
         position: fixed 0 0 * 0;

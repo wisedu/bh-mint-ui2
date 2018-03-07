@@ -19,6 +19,8 @@
       <pre  class="pre" ref="pre">{{currentValue}}</pre>
       <textarea
         @change="$emit('change', currentValue, $event)"
+        @focus="$emit('focus',currentValue, $event)"
+        @blur="$emit('blur',currentValue, $event)"
         ref="textarea"
         class="mint-textarea-core"
         :placeholder="placeholder"
@@ -33,6 +35,8 @@
     <textarea
       v-if="!heightAuto"
       @change="$emit('change', currentValue, $event)"
+      @focus="$emit('focus',currentValue, $event)"
+      @blur="$emit('blur',currentValue, $event)"
       ref="textarea"
       class="mint-textarea-core"
       :placeholder="placeholder"
@@ -348,6 +352,9 @@ export default {
           width: 100%;
           margin:0;
           padding: 10px 0 0;
+        }
+        .mint-cell-value{
+          width: 100%;
         }
         .mint-cell-wrapper{
           flex-direction: column;

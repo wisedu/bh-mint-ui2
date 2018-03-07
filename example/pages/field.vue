@@ -4,7 +4,7 @@
       <!--start
       @name normal
       -->
-      <mt-field label="用户名五个字" placeholder="请输入用户名" required></mt-field>
+      <mt-field label="用户名五个字" placeholder="请输入用户名" required @focus="handleFocus"  @blur="handleFocus"></mt-field>
 
       <!--end-->
 
@@ -53,7 +53,7 @@
       <!--start
       @name textarea
       -->
-      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666"></mt-field>
+      <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" state="success" value="666666666666666666666aa66666666666666666666666666666666666666aa666666666666666666666666666666666666666666666666666666666666666666666666666666" @focus="handleFocus" @blur="handleFocus"></mt-field>
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4" required :heightAuto="false"></mt-field>
 
       <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4" required direction="vertical"></mt-field>
@@ -108,6 +108,11 @@
 
 <script>
 export default {
-    name: 'page-field'
+    name: 'page-field',
+    methods:{
+      handleFocus(val){
+        console.log(val)
+      }
+    }
 };
 </script>
