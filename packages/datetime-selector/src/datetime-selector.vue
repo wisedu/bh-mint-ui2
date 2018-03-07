@@ -199,8 +199,9 @@ export default {
         case "date":
           this.currentValue = this.formatDate(val, "date");
           break;
-        // case "ym":
-        //   this.currentValue = this.formatDate(val, "ym");
+        case "dateym":
+          this.currentValue = this.formatDate(val, "dateym");
+          break;
         default:
           this.currentValue = val;
       }
@@ -228,10 +229,10 @@ export default {
         result = date.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + min;
       } else if (type === "date") {
         result = date.getFullYear() + "-" + month + "-" + day;
-      // } else if (type === "ym") {
-      //   result = this.$refs.picker.getYear(date) + "-" + month;
+      } else if (type === "dateym") {
+        result = date.getFullYear() + "-" + month;
       } else {
-        
+        //
       }
       return result;
     }

@@ -120,6 +120,7 @@
           [minMinute, maxMinute]
         ];
         if (this.type === 'date') result.splice(3, 2);
+        if (this.type === 'dateym') result.splice(2,3);
         return result;
       },
       columns() {
@@ -155,7 +156,11 @@
           if (typeof value === "string") {
             //wangyongjian 2018-1-26 对字符串日期类型进行解析扩展到时分
             value = value.replace(/(^\s*)|(\s*$)/g,"");
-            if(value.length === 10){
+            if(value.length === 7){
+              let datepart = value.split("-");
+              value = new Date(datepart[0], Number(datepart[1]) - 1);
+              invaild = false;
+            }else if(value.length === 10){
               let datepart = value.split("-");
               if (datepart.length === 3) {
                 value = new Date(datepart[0], Number(datepart[1]) - 1, datepart[2]);
@@ -267,20 +272,23 @@
         let value;
         if (this.type === 'time') {
           value = values.join(':');
-        } else {
+        }else {
           const year = this.getTrueValue(values[0]);
           const month = this.getTrueValue(values[1]);
           const maxDate = this.getMonthEndDay(year, month);
-          //wangyongjian 2018-1-26 校正月份对应的日期
-          let mouthArray = [];
-          for(let i=1;i<=maxDate;i++){
-            i=i>9?i:"0"+i;
-            mouthArray.push(String(i))
+          //wangyongjian 2018-3-7 添加（年月场景选项）type=dateym
+          let date = (new Date()).getDate();
+          if(this.type !== 'dateym'){
+            //wangyongjian 2018-1-26 校正月份对应的日期
+            let mouthArray = [];
+            for(let i=1;i<=maxDate;i++){
+              i=i>9?i:"0"+i;
+              mouthArray.push(String(i))
+            }
+            picker.setColumnValues(2,mouthArray);
+            date = this.getTrueValue(values[2]);
+            date = date > maxDate ? maxDate : date;
           }
-          picker.setColumnValues(2,mouthArray);
-
-          let date = this.getTrueValue(values[2]);
-          date = date > maxDate ? maxDate : date;
           let hour = 0;
           let minute = 0;
           if (this.type === 'datetime') {
