@@ -27,7 +27,7 @@ export default {
     name: [String, Number],
     iconpattern:{
       type:String,
-      default:"circle"
+      default:"hook"
     }
   },
   components: { XCell },
@@ -130,6 +130,7 @@ export default {
   @component checkbox-new {
     @when right {
       float: right;
+      margin-top: -3px;
     }
 
     @descendent label {
@@ -158,7 +159,6 @@ export default {
 
     @descendent core {
       display: inline-block;
-      border-radius: 100%;
       border-width: 1px;
       border-style: solid;
       position: relative;

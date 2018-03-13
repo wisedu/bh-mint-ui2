@@ -4,7 +4,7 @@
         <h2 class="mint-box-group-title">普通多选</h2>
         <mt-box-group v-model="value1">
             <mt-cell-group>
-                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value" iconpattern="hook">
+                <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in options2" :key="item.value">
                     {{item.label}}
                 </mt-checkbox>
                 <mt-cell title="选中的项">{{ value1 }}</mt-cell>
