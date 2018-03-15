@@ -196,6 +196,7 @@ export default {
         border-style: solid;
         box-shadow: none;
       }
+/*    2018-3-15 wangyongjian ios上手机点击按钮文字部分无效      
       @when plain:not(.is-disabled):active:after{
         content: " ";
         top: 0;
@@ -204,7 +205,7 @@ export default {
         bottom: 0;
         position: absolute;
         opacity: 0.1;
-      }
+      }*/
       @modifier large {
         display: block;
         width: 100%;
