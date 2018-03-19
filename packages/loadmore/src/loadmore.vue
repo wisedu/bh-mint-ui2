@@ -265,7 +265,7 @@
         if (this.scrollEventTarget === window) {
           return document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
-          return this.$el.getBoundingClientRect().bottom <= this.scrollEventTarget.getBoundingClientRect().bottom + 1;
+          return this.$el.getBoundingClientRect().bottom <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 5;
         }
       },
 
