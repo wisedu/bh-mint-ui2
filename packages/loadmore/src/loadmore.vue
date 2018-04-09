@@ -263,9 +263,10 @@
 
       checkBottomReached() {
         if (this.scrollEventTarget === window) {
-          return document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
+          return document.documentElement.scrollTop || document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
+          //return document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
-          return this.$el.getBoundingClientRect().bottom <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 5;
+          return parseInt(this.$el.getBoundingClientRect().bottom) <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 1;//修复使用rem布局checkBottomReached不能正确校验单个列表元素小数高度而导致的不能上拉问题
         }
       },
 
@@ -326,7 +327,7 @@
         this.$emit('translate-change', this.translate);
       },
 
-      handleTouchEnd() {
+      handleTouchEnd(event) {
         if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
           this.topDropped = true;
           if (this.topStatus === 'drop') {
