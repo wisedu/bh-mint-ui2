@@ -15,6 +15,7 @@
           <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
           <span v-show="topStatus === 'loading'">
             <mt-spinner type="snake"></mt-spinner>
+            <span class="mint-loadmore-text">{{ bottomText }}</span>
           </span>
         </div>
       </mt-loadmore>
@@ -101,13 +102,13 @@
         this.translate = translateNum.toFixed(2);
         this.moveTranslate = (1 + translateNum / 70).toFixed(2);
       },
-      loadTop() {
+      loadTop(id) {
         setTimeout(() => {
           let firstValue = this.list[0];
           for (let i = 1; i <= 10; i++) {
             this.list.unshift(firstValue - i);
           }
-          this.$refs.loadmore.onTopLoaded();
+          this.$refs.loadmore.onTopLoaded(id);
         }, 1500);
       }
     },

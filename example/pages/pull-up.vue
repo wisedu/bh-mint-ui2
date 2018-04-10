@@ -12,6 +12,7 @@
           <span v-show="bottomStatus === 'loading'">
             <mt-spinner type="snake"></mt-spinner>
           </span>
+          <span class="mint-loadmore-text">{{ bottomStatus }}</span>
         </div>
       </mt-loadmore>
     </div>
@@ -21,6 +22,10 @@
 <style>
   @component-namespace page {
     @component loadmore {
+      margin-top: 60px;
+      width: 100%;
+      overflow-x: hidden;
+
       @descendent desc {
         text-align: center;
         color: #666;
@@ -80,7 +85,7 @@
         this.bottomStatus = status;
       },
 
-      loadBottom() {
+      loadBottom(id) {
         setTimeout(() => {
           let lastValue = this.list[this.list.length - 1];
           if (lastValue < 40) {
@@ -90,7 +95,7 @@
           } else {
             this.allLoaded = true;
           }
-          this.$refs.loadmore.onBottomLoaded();
+          this.$refs.loadmore.onBottomLoaded(id);
         }, 1500);
       }
     },
