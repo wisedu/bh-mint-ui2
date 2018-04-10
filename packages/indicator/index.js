@@ -15,9 +15,7 @@ export default {
     instance.spinnerType = options.spinnerType || 'snake';
     document.body.appendChild(instance.$el);
 
-    Vue.nextTick(() => {
-      instance.visible = true;
-    });
+    instance.visible = true;
   },
 
   close() {
