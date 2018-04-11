@@ -2,9 +2,13 @@
   <a class="mint-tab-item"
     @click="$parent.$emit('input', id)"
     :class="itemClassObject">
-    <div class="mint-tab-item-icon"><slot name="icon"><i slot="icon" class="iconfont" :class="[$parent.value === id?'mt-color-theme':'mt-color-grey-lv3','icon-'+icontype]" v-if="icontype"></i></slot></div>
+    <div class="mint-tab-item-icon">
+      <slot name="icon"><i class="iconfont" :class="[$parent.value === id?'mt-color-theme':'mt-color-grey-lv3','icon-'+icontype]" v-if="icontype"></i></slot><slot name="badge" v-if="componentname==='mt-tabbar'"><mt-badge size="small" padding="3px" type="danger" class="dot" v-if="badge ==='dot'"></mt-badge><mt-badge size="small" type="danger" class="figure" v-if="badge ==='figure'">{{badgeValue}}</mt-badge></slot>
+    </div>
     <div class="mint-tab-item-label" :class="[$parent.value === id?'mt-color-theme':labelClassObject]"><slot></slot></div>
-    <slot name="badge"></slot>
+    <slot name="badge" v-if="componentname==='mt-navbar'">
+      <mt-badge size="small" padding="3px" type="danger" class="dot" v-if="badge === 'dot'"></mt-badge>
+    </slot>
   </a>
 </template>
 
@@ -40,7 +44,8 @@ export default {
   name: 'mt-tab-item',
   data(){
     return {
-      itemwidth:''
+      itemwidth:'',
+      componentname:this.$parent.$options.name
     }
   },
 
@@ -54,31 +59,30 @@ export default {
   props: {
     id:String,
     icontype:String,
-    componentname:{
-      type:String,
-      default:"tab"
-    }
+    badge:String,
+    badgeValue:[String,Number]
   },
   computed:{
     labelClassObject: function() {
       let _class='';
       switch(this.componentname){
-        case 'tab': _class="mt-color-grey-lv3";break;
-        case 'navbar': _class="mt-color-grey-lv2";break;
-        case 'sidenavbar': _class="mt-color-grey";break;
+        case 'mt-tabbar': _class="mt-color-grey-lv3";break;
+        case 'mt-navbar': _class="mt-color-grey-lv2";break;
+        case 'mt-side-navbar': _class="mt-color-grey";break;
         default:
           _class="mt-color-grey-lv3";break;
       }
+      console.log(_class)
       return _class;
     },
     itemClassObject: function() {
       let _class='';
       if(this.$parent.value === this.id){
         _class += 'is-selected ';
-        _class += this.componentname === 'navbar'?'mt-bColor-theme ':'';
-        _class += this.componentname === 'sidenavbar'?'mt-bg-lv3':'';
+        _class += this.componentname === 'mt-navbar'?'mt-bColor-theme ':'';
+        _class += this.componentname === 'mt-side-navbar'?'mt-bg-lv3':'';
       }else{
-        _class += this.componentname === 'navbar'?'mt-color-grey-lv4':'';
+        _class += this.componentname === 'mt-navbar'?'mt-color-grey-lv4':'';
       }
       return _class;
     }
@@ -89,7 +93,7 @@ export default {
   methods: {
     navbarWidth() {
       this.$nextTick(function(){
-        if(this.componentname === 'navbar'){
+        if(this.componentname === 'mt-navbar'){
           let len = this.$parent.$el.querySelectorAll('.mint-tab-item').length;
           let width = this.$parent.$el.offsetWidth
           len=len>5?5.5:len;
@@ -126,6 +130,7 @@ export default {
       text-decoration: none;
 
       @descendent icon {
+        position: relative;
         size: 26px;
         margin: 0 auto 3px;
 
@@ -137,6 +142,16 @@ export default {
           display: block;
           size: 100%;
           font-size: 26px;
+        }
+
+        & > .mint-badge {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        & > .figure{
+          transform: translate(60%,-25%) scale(0.8);
         }
       }
 

@@ -1,15 +1,16 @@
 <template>
   <div class="page-navbar" style="margin-top:45px">
     <mt-navbar v-model="selected">
-      <mt-tab-item id="1" componentname="navbar">
+      <mt-tab-item id="1" badge="dot">
         选项一四
+      </mt-tab-item>
+      <mt-tab-item id="2" >选项二四
         <mt-badge size="normal" padding="3px" color="red" slot="badge" ></mt-badge>
       </mt-tab-item>
-      <mt-tab-item id="2" componentname="navbar">选项二四</mt-tab-item>
-      <mt-tab-item id="3" componentname="navbar">选项三四</mt-tab-item>
-      <mt-tab-item id="4" componentname="navbar">选项四四</mt-tab-item>
-      <mt-tab-item id="5" componentname="navbar">选项五四</mt-tab-item>
-      <mt-tab-item id="6" componentname="navbar">选项六四</mt-tab-item>
+      <mt-tab-item id="3" >选项三四</mt-tab-item>
+      <mt-tab-item id="4" >选项四四</mt-tab-item>
+      <mt-tab-item id="5" >选项五四</mt-tab-item>
+      <mt-tab-item id="6" >选项六四</mt-tab-item>
     </mt-navbar>
 
     <div style="margin:15px 0;">
