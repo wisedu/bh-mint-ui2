@@ -174,6 +174,7 @@ export default {
         top:14px;
         right: 67px;
         opacity: 0.2;
+        line-height: 1;
       }
 
       @descendent core {
