@@ -11,6 +11,7 @@ cooking.set({
   extractCSS: 'style.min.css',
   extends: ['vue2', 'saladcss', 'buble'],
   alias: config.alias,
+  sourceMap: true,
   externals: { vue: config.externals.vue }
 });
 
