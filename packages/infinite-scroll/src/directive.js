@@ -132,7 +132,7 @@ var doBind = function() {
   if (immediateCheck) {
     doCheck.call(directive);
   }
-
+  //经验证，infinite-scroll-listen-for-event属性无实际应用，待扩展其他功能 wangyongjian2018.4.20
   var eventName = element.getAttribute('infinite-scroll-listen-for-event');
   if (eventName) {
     directive.vm.$on(eventName, function() {

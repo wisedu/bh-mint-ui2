@@ -5,10 +5,14 @@
       <ul class="page-infinite-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
         <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
       </ul>
+<!--       <ul class="page-infinite-list" v-infinite-scroll infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-listen-for-event="loadMoreHandle">
+        <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
+      </ul> -->
       <p v-show="loading" class="page-infinite-loading">
         <mt-spinner type="fading-circle"></mt-spinner>
         加载中...
       </p>
+      <p v-show="allLoaded" class="page-infinite-loading">没有更多数据了</p>
     </div>
   </div>
 </template>
@@ -55,6 +59,7 @@
 </style>
 
 <script type="text/babel">
+  import axios from 'axios';
   export default {
     data() {
       return {
@@ -67,22 +72,26 @@
 
     methods: {
       loadMore() {
+        if(this.list.length && this.list[this.list.length - 1]>=50) {
+          this.allLoaded = true;
+          return
+        };
         this.loading = true;
-        setTimeout(() => {
-          let last = this.list[this.list.length - 1];
-          for (let i = 1; i <= 10; i++) {
+        axios.get('https://res.wisedu.com/fe_components/mock/select.json').then(resp => {
+          let last = this.list.length?this.list[this.list.length - 1]:0;
+          for (let i = 1; i <= 5; i++) {
             this.list.push(last + i);
           }
           this.loading = false;
-        }, 2500);
+        });
+      },
+      loadMoreHandle(){
+        this.loadMore()
       }
     },
 
     mounted() {
       this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
-      for (let i = 1; i <= 20; i++) {
-        this.list.push(i);
-      }
     }
   };
 </script>
