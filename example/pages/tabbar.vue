@@ -53,9 +53,9 @@
 <!--          <img slot="icon" src="../assets/100x100.png"> -->
         外卖
       </mt-tab-item>
-      <mt-tab-item id="订单" icontype="lingdaorichengicon" badge="dot">
+      <mt-tab-item id="订单" icontype="lingdaorichengicon">
         <!-- <img slot="icon" src="../assets/100x100.png"> -->
-        <!-- <mt-badge size="normal" padding="3px" color="red" slot="badge"></mt-badge> -->
+        <mt-badge size="small" padding="3px" color="red" slot="badge"></mt-badge>
         订单
       </mt-tab-item>
       <mt-tab-item id="发现" badge="dot">

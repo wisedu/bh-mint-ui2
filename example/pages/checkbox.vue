@@ -68,8 +68,8 @@ export default {
     };
   },
   methods: {
-      blank(){
-
+      selectAll(){
+        this.value1 = this.value1.length?[]:["值F",'选中禁用的值','值A','值B','值C'] 
       }
   },
 

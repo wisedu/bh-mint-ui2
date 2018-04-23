@@ -72,7 +72,6 @@ export default {
         default:
           _class="mt-color-grey-lv3";break;
       }
-      console.log(_class)
       return _class;
     },
     itemClassObject: function() {
