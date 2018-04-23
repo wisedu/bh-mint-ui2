@@ -1,14 +1,18 @@
 <template>
   <div class="page-radiobox" style="margin-top:45px;">
     <div>
-        <mt-box-group v-model="value1" :max="3">
-            <mt-cell-group title="普通单选">
-                <mt-radiobox :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled" @click="blank">
-                    {{item.label}}
-                </mt-radiobox>
-                <mt-cell title="选中的项">{{ value1 }}</mt-cell>
-            </mt-cell-group>
-        </mt-box-group>
+      <mt-cell-group title="横向单选">
+        <mt-radiobox direction="horizon" name="性别" v-model="value" wrapperpaddingleft="0" :options="options"></mt-radiobox>
+        <mt-cell title="选中的项">{{ value }}</mt-cell>
+      </mt-cell-group>
+      <mt-box-group v-model="value1" :max="3">
+          <mt-cell-group title="普通单选">
+              <mt-radiobox :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled" @click="blank" required>
+                  {{item.label}}
+              </mt-radiobox>
+              <mt-cell title="选中的项">{{ value1 }}</mt-cell>
+          </mt-cell-group>
+      </mt-box-group>
     </div>
 
 
@@ -62,7 +66,8 @@ export default {
       value1: "选中禁用的值",
       value2: '选项A',
       value3: '选项A',
-      value4: ''
+      value4: '',
+      value: "",
     };
   },
   methods: {
@@ -72,6 +77,21 @@ export default {
   },
 
   created() {
+    this.options = [
+      {
+        id:"1",
+        label:"男"
+      },
+      {
+        id:"2",
+        label:"女"
+      },
+      {
+        id:"3",
+        label:"禁用",
+        disabled: true
+      }
+    ]
     this.options1 = ['选项A', '选项B', '选项C'];
     this.options3 = ['选项A', '选项B', '选项C', '选项D'];
     this.options4 = ['选项A', '选项B', '选项C', '选项D'];

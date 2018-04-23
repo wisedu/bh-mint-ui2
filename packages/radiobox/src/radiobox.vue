@@ -1,6 +1,6 @@
 <template>
-  <x-cell @click.native.stop="handleRadioClick" :isLink="isLink">
-    <label class="mint-radiobox-row" slot="title">
+  <x-cell @click.native.stop="handleRadioClick" :isLink="isLink" :title="name" :titlewidth="direction === 'horizon'?'80px':''" :wrapperpaddingleft="direction === 'horizon'?wrapperpaddingleft:''" :valueAlign="valueAlign" :required="required">
+    <label class="mint-radiobox-row" slot="title" v-if="direction === 'vertical'">
       <span :class="{'is-right': align === 'right'}" class="mint-radiobox">
         <input :value="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"/>
         <span class="mint-radiobox-core" :class="['mint-radiobox-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===name?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
@@ -9,6 +9,17 @@
         <slot></slot>
       </span>
       <slot name="newline" :disabled="isDisabled" :checked="currentValue === name"></slot>
+    </label>
+    <label class="mint-radiobox-row" v-if="direction === 'horizon'">
+      <slot>
+        <div class="mint-input-block">
+          <label v-for="item in options" :key="item.id">
+            <input type="radio" name="sex" :value="item.id" :title="item.label" checked="" class="mint-radiobox-input" v-model="currentValue" :disabled="item.disabled">
+            <i class="mint-radiobox-core mint-radiobox-core-circle mt-bg-after-white" :class="[item.disabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===item.id?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></i>
+            <span>{{item.label}}</span>
+          </label>
+        </div>
+      </slot>
     </label>
   </x-cell>
 </template>
@@ -35,6 +46,28 @@ export default {
     isLink:{
       type: Boolean,
       default: false
+    },
+    direction:{
+      type: String,
+      default: "vertical"
+    },
+    valueAlign: {
+      type: String,
+      default: "flex-start"
+    },
+    required:{
+      type:Boolean,
+      default:false
+    },
+    wrapperpaddingleft:{
+      type:String,
+      default:"20px"
+    },
+    options:{
+      type:Array,
+      default:function(){
+        return []
+      }
     }
   },
   components: { XCell },
@@ -67,14 +100,13 @@ export default {
     }
   },
 
-
   methods: {
     // handleLabelClick() {
     //   if (!this.isDisabled) {
     //     this.currentValue = !this.currentValue;
     //   }
     // },
-    handleRadioClick() {
+    handleRadioClick(e) {
       if(!this.currentValue){
         this.$emit('click');
       }
@@ -94,6 +126,7 @@ export default {
       return this.parentGroup;
     }
   }
+
 };
 </script>
 <style> 
@@ -171,5 +204,8 @@ export default {
         }
       }
     }
+  }
+  .mint-input-block > label{
+    margin-right: 20px;
   }
 </style>
