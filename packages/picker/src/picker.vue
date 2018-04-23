@@ -85,12 +85,28 @@ export default {
         }else{
           id_1 = showData[0].values[0].id;
         }
-        let childrenColumn=[];
+        //初始化二级选项列
+        let secondColumn=[];
         for(let i=0;i<showData[1].values.length;i++){
-          if(showData[1].values[i].pid === id_1) childrenColumn.push(showData[1].values[i]);
+          if(showData[1].values[i].pid === id_1) secondColumn.push(showData[1].values[i]);
         }
-        showData[1].values=childrenColumn;
+        showData[1].values=secondColumn;
+        //初始化三级选项列
+        if(showData.length === 3){
+          let thirdColunm = [];
+          let id_2 = "";
+          if(showData[1].defaultIndex){
+            id_2 = showData[1].values[showData[1].defaultIndex].id;
+          }else{
+            id_2 = showData[1].values[0].id;
+          }
+          for(let i=0;i<showData[2].values.length;i++){
+            if(showData[2].values[i].pid === id_2) thirdColunm.push(showData[2].values[i]);
+          }
+          showData[2].values=thirdColunm;
+        }
         this.currentColumns = showData;
+        console.log(this.currentColumns)
       }
 
     },
@@ -109,11 +125,32 @@ export default {
           const columns = JSON.parse(JSON.stringify(this.columns));
           let id_1 = this.getValues()[0].id;
           let showData = columns;
-          let childrenColumn=[];
+          let secondColumn=[];
           for(let i=0;i<showData[1].values.length;i++){
-            if(showData[1].values[i].pid === id_1) childrenColumn.push(showData[1].values[i]);
+            if(showData[1].values[i].pid === id_1) secondColumn.push(showData[1].values[i]);
           }
-          showData[1].values=childrenColumn;
+          showData[1].values = secondColumn;
+          if(showData.length === 3){
+            var id_2;
+            if(columnIndex === 0){
+              id_2 = secondColumn[0].id;
+            }else if(columnIndex === 1){
+              id_2 = secondColumn[lineIndex].id;
+            }else{
+              return
+            }
+            let thirdColumn = [];
+            for(let i=0;i<showData[2].values.length;i++){
+              if(showData[2].values[i].pid === id_2) thirdColumn.push(showData[2].values[i]);
+            }
+            if(thirdColumn.length){
+              showData[2].values = thirdColumn;
+            }else{
+              showData.pop(showData[2]);
+            }
+          }
+
+
           this.currentColumns = showData;
         }else{
           this.$emit('change', this, this.getValues(),columnIndex,lineIndex);
