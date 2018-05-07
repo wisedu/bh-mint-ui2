@@ -116,7 +116,6 @@ export default {
   @component-namespace mint {
     @component image {
       position:relative;
-      width: 100%;
     }
   }
 </style>

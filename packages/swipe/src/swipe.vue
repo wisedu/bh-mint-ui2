@@ -21,6 +21,11 @@
             transform: none;
           }
         }
+        /*预置img,mt-image标签样式 liangpeng 2018.5.7*/
+        & img,.mint-image{
+          width: 100%;
+          height: 100%;
+        }
       }
 
       @descendent indicators {

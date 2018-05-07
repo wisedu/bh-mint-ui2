@@ -69,12 +69,6 @@
         background-color: #D8D8D8;
         color: #fff;
       }
-
-      .swipe img{
-        display: block;
-        height: 100%;
-        width: 100%;
-      }
     }
   }
 </style>
