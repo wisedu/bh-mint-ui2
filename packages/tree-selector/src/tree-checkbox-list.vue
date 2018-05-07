@@ -1,9 +1,9 @@
 <template>
   <mt-cell-group>
     <mt-cell v-for="option in options" :key="option.id" @click.native="handleClick(option)" :is-link="!!option.isParent">
-      <div class="mint-checklist-label" slot="title">
-        <label>
-          <span  class="mint-checkbox" v-if="!option.isParent || parentSelectable">
+      <div class="mint-checklist-label" slot="title" @click.stop="handleClickGroup(option)" style="position:relative">
+        <label style="display:flex;">
+          <span  class="mint-checkbox" v-if="!option.isParent || parentSelectable" >
             <input class="mint-checkbox-input" type="checkbox" v-model="currentValue" :disabled="option.disabled" :value="option.id !== undefined ? option.id : option">
             <span class="mint-checkbox-core" :class="['mint-checkbox-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},option.disabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue.indexOf(option.id)>-1?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
           </span><span class="mint-checkbox-label" v-text="option.name || option"></span>
@@ -33,7 +33,13 @@ export default {
   },
   methods: {
     handleClick (item) {
-      this.$emit('item-click', item)
+      this.$emit('item-click', item);
+    },
+    handleClickGroup (item) {
+      if(this.parentSelectable){
+        return
+      }
+      this.$emit('item-click', item);
     }
   }
 }
@@ -42,7 +48,10 @@ export default {
 
 @component-namespace mint {
   @component checkbox{
-    
+    flex: 35px;
+    align-items: center;
+    display: inline-flex;
+
     @descendent input {
       display: none;
 
@@ -62,9 +71,14 @@ export default {
       }
     }
 
+    @descendent label {
+      flex: calc(100% - 35px);
+      align-items: center;
+      display: inline-flex;
+    }
+
     @descendent core {
       display: inline-block;
-      border-radius: 100%;
       border-width: 1px;
       border-style: solid;
       position: relative;
