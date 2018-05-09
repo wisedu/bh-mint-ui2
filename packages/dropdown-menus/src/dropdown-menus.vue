@@ -5,7 +5,7 @@
                 <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active,}"></i>
             </div>
         </div>
-        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'max-height':maxHeight}">
+        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'height':height,'overflow':'auto'}">
             <slot name="menu"></slot>
         </div>
         <!-- 遮罩层 -->
@@ -101,13 +101,29 @@
   }
 </style>
 <script>
+    var bodyEl = document.body
+    var top = 0
+    function stopBodyScroll (isFixed) {
+      if (isFixed) {
+        top = window.scrollY
+        bodyEl.style.width = '100%'
+        bodyEl.style.position = 'fixed'
+        bodyEl.style.top = -top + 'px'
+      } else {
+        bodyEl.style.position = ''
+        bodyEl.style.top = ''
+
+        window.scrollTo(0, top) // 回到原先的top
+      }
+    }
     export default {
         name: 'mt-dropdown-menus',
         data () {
             return {
               itemWidth:'',
               shadowTop:'',
-              maxHeight:''
+              maxHeight:'',
+              height:''
             }
         },
         props:{
@@ -137,10 +153,21 @@
                   elem = elem.offsetParent ;
                   obj.top += elem.offsetTop ;
                 }
-                this.shadowTop = obj.top+"px";
-                this.maxHeight = window.screen.height -obj.top+"px";
+                this.shadowTop = obj.top + "px";
+                var contentVisibleHeight = window.screen.height - obj.top;
+                this.maxHeight = contentVisibleHeight + "px";
+                var contentEle = document.getElementsByClassName('bh-ddm')[0].children;
+                if (contentEle.length>0) {
+                  var contentHeight = document.getElementsByClassName('bh-ddm')[0].children[0].offsetHeight;
+                  if (contentHeight > contentVisibleHeight) {
+                    this.height = this.maxHeight
+                  } else {
+                    this.height = contentHeight
+                  }
+                }
               })
             }else{
+              stopBodyScroll(false)
               document.body.style.overflow = "auto";
             }
           }
@@ -165,7 +192,9 @@
                   that.$set(param,'index',index);
                   that.$emit('dropDown',param,evt);
                 });
-                document.body.style.overflow = "hidden";
+                //此方法只在PC上生效，移动不生效
+                //document.body.style.overflow = "hidden";
+                stopBodyScroll(true)
             },
             cancelShadow: function(evt) {
               this.options.forEach(function(ele) {

@@ -4,7 +4,7 @@
         <div style="position:relative">
             <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu">
               <div v-if="isShowMenu" slot="menu">
-                  <mt-box-group v-model="sexValue" align="right" v-if="type==='lv1'">
+                  <mt-box-group v-if="type==='lv1'" v-model="sexValue" align="right" >
                     <mt-cell-group>
                         <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="(item,index) in menuDatas" :key="index" iconpattern="hook">
                             {{item.label}}
