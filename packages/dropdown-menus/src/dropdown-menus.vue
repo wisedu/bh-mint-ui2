@@ -162,12 +162,13 @@
                   if (contentHeight > contentVisibleHeight) {
                     this.height = contentVisibleHeight - 70 + 'px'
                   } else {
-                    this.height = contentHeight
+                    this.height = contentHeight + 'px'
                   }
                 }
               })
             }else{
               stopBodyScroll(false)
+              this.height = 0;
               document.body.style.overflow = "auto";
             }
           }
