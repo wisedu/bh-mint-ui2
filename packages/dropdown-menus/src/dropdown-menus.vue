@@ -5,7 +5,7 @@
                 <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active,}"></i>
             </div>
         </div>
-        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'height':height,'overflow':'auto'}">
+        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'height':height}">
             <slot name="menu"></slot>
         </div>
         <!-- 遮罩层 -->
@@ -145,31 +145,11 @@
           isShowMenu: function(n){
             if(n){
               this.$nextTick(function(){
-                let elem = this.$refs.content;
-                let obj = {
-                  "top":elem.offsetTop
-                };
-                while(elem != document.body){
-                  elem = elem.offsetParent ;
-                  obj.top += elem.offsetTop ;
-                }
-                this.shadowTop = obj.top + "px";
-                var contentVisibleHeight = window.screen.height - obj.top;
-                this.maxHeight = contentVisibleHeight + "px";
-                var contentEle = document.getElementsByClassName('bh-ddm')[0].children;
-                if (contentEle.length>0) {
-                  var contentHeight = document.getElementsByClassName('bh-ddm')[0].children[0].offsetHeight;
-                  if (contentHeight > contentVisibleHeight) {
-                    this.height = contentVisibleHeight - 70 + 'px'
-                  } else {
-                    this.height = contentHeight + 'px'
-                  }
-                }
+                this.setContentHeight()
               })
             }else{
               stopBodyScroll(false)
               this.height = 0;
-              document.body.style.overflow = "auto";
             }
           }
         },
@@ -178,11 +158,41 @@
             
         },
         created() {
+          var that = this
             if(this.options.length){
               this.itemWidth = (100 / this.options.length) + '%';
             }
         },
+        mounted(){
+          var that = this
+          var observe=new MutationObserver(function (mutations,observe) {
+              that.setContentHeight()
+          });
+          observe.observe(document.getElementsByClassName('bh-ddm')[0],{ childList: true,subtree: true});
+        },
         methods:{
+            setContentHeight:function(){
+              let elem = this.$refs.content;
+              let obj = {
+                "top":elem.offsetTop
+              };
+              while(elem != document.body){
+                elem = elem.offsetParent ;
+                obj.top += elem.offsetTop ;
+              }
+              this.shadowTop = obj.top + "px";
+              var contentVisibleHeight = window.screen.height - obj.top;
+              this.maxHeight = contentVisibleHeight + "px";
+              var contentEle = document.getElementsByClassName('bh-ddm')[0].children;
+              if (contentEle.length>0) {
+                var contentHeight = document.getElementsByClassName('bh-ddm')[0].children[0].offsetHeight;
+                if (contentHeight > contentVisibleHeight) {
+                  this.height = contentVisibleHeight - 70 + 'px'
+                } else {
+                  this.height = contentHeight + 'px'
+                }
+              }
+            },
             setSelected:function(param,index,evt){
                 var that = this;
                 that.$nextTick(function () {
@@ -193,8 +203,7 @@
                   that.$set(param,'index',index);
                   that.$emit('dropDown',param,evt);
                 });
-                //此方法只在PC上生效，移动不生效
-                //document.body.style.overflow = "hidden";
+                console.log('----------------stopBodyScroll(true)')
                 stopBodyScroll(true)
             },
             cancelShadow: function(evt) {
@@ -209,7 +218,7 @@
             }
         },
         beforeDestroy:function(){
-          document.body.style.overflow = "auto";
+          stopBodyScroll(false)
         }
     }
 </script>
