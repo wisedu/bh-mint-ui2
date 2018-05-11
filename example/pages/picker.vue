@@ -103,9 +103,10 @@ export default {
           values:[
             {text:'浙江',disabled:false,id:101,pid:-1}, 
             {text:'福建',disabled:false,id:201,pid:-1},
-            {text:'江苏',disabled:false,id:301,pid:-1}],
+            {text:'江苏',disabled:false,id:301,pid:-1},
+            {text:'台湾',disabled:false,id:401,pid:-1}],
           className:'className1',
-          defaultIndex: 1
+          defaultIndex: 0
         },{
           values:[
             {text:'杭州',disabled:false,pid:101,id:10101}, 

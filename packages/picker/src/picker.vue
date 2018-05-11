@@ -75,40 +75,31 @@ export default {
   methods: {
     initColumns() {
       const columns = JSON.parse(JSON.stringify(this.columns));
-      this.isSimpleColumn = columns.length && !columns[0].values;
-      this.currentColumns = this.isSimpleColumn ? [{ values: columns }] : columns;
-      if(this.isInterrelated){
-        let showData = columns;
-        let id_1 = "";
-        if(showData[0].defaultIndex){
-          id_1 = showData[0].values[showData[0].defaultIndex].id;
-        }else{
-          id_1 = showData[0].values[0].id;
-        }
-        //初始化二级选项列
-        let secondColumn=[];
-        for(let i=0;i<showData[1].values.length;i++){
-          if(showData[1].values[i].pid === id_1) secondColumn.push(showData[1].values[i]);
-        }
-        showData[1].values=secondColumn;
-        //初始化三级选项列
-        if(showData.length === 3){
-          let thirdColunm = [];
-          let id_2 = "";
-          if(showData[1].defaultIndex){
-            id_2 = showData[1].values[showData[1].defaultIndex].id;
-          }else{
-            id_2 = showData[1].values[0].id;
+      if(columns.length){
+        this.isSimpleColumn = columns.length && !columns[0].values;
+        this.currentColumns = this.isSimpleColumn ? [{ values: columns }] : columns;
+        if(this.isInterrelated){
+          let showData = columns;
+          let len = showData.length;
+          //初始化各级选项列
+          for(let i=0;i<len;i++){
+            if(i>0){
+              let id_pre = "id_"+(i-1);
+              if(showData[i-1].defaultIndex){
+                id_pre = showData[i-1].values[showData[i-1].defaultIndex].id;
+              }else{
+                id_pre = showData[i-1].values[i-1].id;
+              }
+              let currentColumn=[];
+              for(let j=0;j<showData[i].values.length;j++){
+                if(showData[i].values[j].pid === id_pre) currentColumn.push(showData[i].values[j]);
+              }
+              showData[i].values = currentColumn;
+            }
           }
-          for(let i=0;i<showData[2].values.length;i++){
-            if(showData[2].values[i].pid === id_2) thirdColunm.push(showData[2].values[i]);
-          }
-          showData[2].values=thirdColunm;
+          this.currentColumns = showData;
         }
-        this.currentColumns = showData;
-        console.log(this.currentColumns)
       }
-
     },
     emit(event) {
       if (this.isSimpleColumn) {
@@ -123,25 +114,28 @@ export default {
       } else {
         if(this.isInterrelated){
           const columns = JSON.parse(JSON.stringify(this.columns));
+          const len = columns.length;
+          var showData = columns;
           let id_1 = this.getValues()[0].id;
-          let showData = columns;
           let secondColumn=[];
           for(let i=0;i<showData[1].values.length;i++){
             if(showData[1].values[i].pid === id_1) secondColumn.push(showData[1].values[i]);
           }
           showData[1].values = secondColumn;
-          if(showData.length === 3){
-            var id_2;
-            if(columnIndex === 0){
-              id_2 = secondColumn[0].id;
-            }else if(columnIndex === 1){
-              id_2 = secondColumn[lineIndex].id;
-            }else{
-              return
-            }
+          if(showData.length === 3 ){
             let thirdColumn = [];
-            for(let i=0;i<showData[2].values.length;i++){
-              if(showData[2].values[i].pid === id_2) thirdColumn.push(showData[2].values[i]);
+            if(secondColumn.length){
+              let id_2;
+              if(columnIndex === 0){
+                id_2 = secondColumn[0].id;
+              }else if(columnIndex === 1){
+                id_2 = secondColumn[lineIndex].id;
+              }else{
+                return
+              }
+              for(let i=0;i<showData[2].values.length;i++){
+                if(showData[2].values[i].pid === id_2) thirdColumn.push(showData[2].values[i]);
+              }
             }
             if(thirdColumn.length){
               showData[2].values = thirdColumn;
@@ -149,8 +143,6 @@ export default {
               showData.pop(showData[2]);
             }
           }
-
-
           this.currentColumns = showData;
         }else{
           this.$emit('change', this, this.getValues(),columnIndex,lineIndex);

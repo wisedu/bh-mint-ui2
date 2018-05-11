@@ -4,8 +4,8 @@
       <span :class="[{'mt-color-grey-lv3':(scope.value === '' && placeholder === '请选择') || (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)}]">{{scope.value === ''|| (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0) ? placeholder : getDisplay(scope.value)}}</span>
     </template>
     <template slot-scope="scope" slot="selector">
-      <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread> 
-      <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">数据加载中</p>
+      <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread>
+      <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">暂无数据</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
         <mt-cell-group>
           <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1}" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
@@ -118,6 +118,7 @@ export default {
         }
       }
     }
+
   },
   computed: {
     activeOptions() {
@@ -144,6 +145,8 @@ export default {
           result.push(activeItem);
         }
       });
+
+      
       return result;
     },
     currentValue: {

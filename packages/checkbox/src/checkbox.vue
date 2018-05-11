@@ -136,6 +136,7 @@ export default {
     @descendent label {
       vertical-align: middle;
       margin-left: 6px;
+      word-break: break-all;
     }
 
     @descendent input {
