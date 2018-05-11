@@ -88,7 +88,7 @@ export default {
               if(showData[i-1].defaultIndex){
                 id_pre = showData[i-1].values[showData[i-1].defaultIndex].id;
               }else{
-                id_pre = showData[i-1].values[i-1].id;
+                id_pre = showData[i-1].values[0].id;
               }
               let currentColumn=[];
               for(let j=0;j<showData[i].values.length;j++){
@@ -114,6 +114,7 @@ export default {
       } else {
         if(this.isInterrelated){
           const columns = JSON.parse(JSON.stringify(this.columns));
+          if(columns&&!columns.length) return;
           const len = columns.length;
           var showData = columns;
           let id_1 = this.getValues()[0].id;

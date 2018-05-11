@@ -101,6 +101,7 @@ export default {
       column4:[
         {
           values:[
+            {text:'江苏',disabled:false,id:301,pid:-1},
             {text:'浙江',disabled:false,id:101,pid:-1}, 
             {text:'福建',disabled:false,id:201,pid:-1},
             {text:'江苏',disabled:false,id:301,pid:-1},
