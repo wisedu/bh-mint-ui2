@@ -91,22 +91,23 @@ export default {
     },
     options(next, prev) {
       if (JSON.stringify(next) !== JSON.stringify(prev)) {
+        clearInterval(this.visibleTimer);
+        clearInterval(this.touchEndInterval);
         this.setIndex(this.defaultIndex);
       }
     },
     currentIndex(index) {
-      this.$emit('change', this.columnIndex ,index);
-    },
-    currentIndex() {
       clearInterval(this.visibleTimer);
       //判断元素是否隐藏
       if (this.$el.offsetParent) {
         this.$refs.ul.scrollTop = -this.offset;
+        this.$emit('change', this.columnIndex ,index);
       } else {
         //隐藏，启动定时器
         this.visibleTimer = setInterval(()=>{
           if (this.$el.offsetParent) {
             this.$refs.ul.scrollTop = -this.offset;
+            this.$emit('change', this.columnIndex ,index);
             clearInterval(this.visibleTimer);
           }
         }, 30);

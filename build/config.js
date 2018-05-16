@@ -11,17 +11,22 @@ Object.keys(dependencies).forEach(function(key) {
   externals[key] = key;
   pkg[key] = key;
 });
-exports.externals = Object.assign({
+exports.externals = Object.assign({}, externals, {
   vue: {
     root: 'Vue',
     commonjs: 'vue',
     commonjs2: 'vue',
     amd: 'vue'
   }
-}, externals);
-exports.pkg = Object.assign({
-  vue: 'vue'
-}, pkg);
+});
+exports.pkg = Object.assign(pkg, {
+  vue: {
+    root: 'Vue',
+    commonjs: 'vue',
+    commonjs2: 'vue',
+    amd: 'vue'
+  }
+});
 
 exports.alias = {
   'bh-mint-ui2': path.join(__dirname, '..'),
