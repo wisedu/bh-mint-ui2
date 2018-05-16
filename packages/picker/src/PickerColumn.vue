@@ -4,9 +4,10 @@
     <ul
       :style="wrapperStyle"
       @touchstart="onTouchStart"
-      @touchmove.prevent="onTouchMove"
+      @touchmove="onTouchMove"
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
+      ref="ul"
     >
       <li
         v-for="(option, index) in options"
@@ -82,6 +83,7 @@ export default {
   },
   destroyed() {
     this.$parent && this.$parent.children.splice(this.$parent.children.indexOf(this), 1);
+    clearInterval(this.visibleTimer);
   },
   watch: {
     defaultIndex() {
@@ -94,6 +96,21 @@ export default {
     },
     currentIndex(index) {
       this.$emit('change', this.columnIndex ,index);
+    },
+    currentIndex() {
+      clearInterval(this.visibleTimer);
+      //判断元素是否隐藏
+      if (this.$el.offsetParent) {
+        this.$refs.ul.scrollTop = -this.offset;
+      } else {
+        //隐藏，启动定时器
+        this.visibleTimer = setInterval(()=>{
+          if (this.$el.offsetParent) {
+            this.$refs.ul.scrollTop = -this.offset;
+            clearInterval(this.visibleTimer);
+          }
+        }, 30);
+      }
     }
   },
   computed: {
@@ -104,10 +121,12 @@ export default {
       const { itemHeight, visibileColumnCount } = this;
       //lineHeight: itemHeight + 'px',
       return {
-        transition: `${this.duration}ms`,
-        transform: `translate3d(0, ${this.offset}px, 0)`,
+        // transition: `${this.duration}ms`,
+        // transform: `translate3d(0, ${this.offset}px, 0)`,
         height: itemHeight * visibileColumnCount + 'px',
-        paddingTop: itemHeight * (visibileColumnCount - 1) / 2 + 'px'
+        overflow: 'auto',
+        paddingTop: itemHeight * (visibileColumnCount - 1) / 2 + 'px',
+        paddingBottom: itemHeight * (visibileColumnCount - 1) / 2 + 'px'
       };
     },
     frameStyle() {
@@ -121,26 +140,37 @@ export default {
   },
   methods: {
     onTouchStart(event) {
+      clearInterval(this.touchEndInterval);
       this.startY = event.touches[0].clientY;
       this.startOffset = this.offset;
       this.duration = 0;
     },
     onTouchMove(event) {
-      const deltaY = event.touches[0].clientY - this.startY;
-      this.offset = range(this.startOffset + deltaY, [
-        -(this.count * this.itemHeight),
-        this.itemHeight
-      ]);
+      // const deltaY = event.touches[0].clientY - this.startY;
+      // this.offset = range(this.startOffset + deltaY, [
+      //   -(this.count * this.itemHeight),
+      //   this.itemHeight
+      // ]);
     },
     onTouchEnd() {
-      if (this.offset !== this.startOffset) {
-        this.duration = DEFAULT_DURATION;
-        const index = range(Math.round(-this.offset / this.itemHeight), [
-          0,
-          this.count - 1
-        ]);
-        this.setIndex(index);
-      }
+      let scrollTop = this.$refs.ul.scrollTop;
+      //启动定时器，判断滚动是否结束
+      this.touchEndInterval = setInterval(() => {
+          if (this.$refs.ul.scrollTop === scrollTop) {
+            clearInterval(this.touchEndInterval);
+            this.offset = -this.$refs.ul.scrollTop;
+            if (this.offset !== this.startOffset) {
+              this.duration = DEFAULT_DURATION;
+              const index = range(Math.round(-this.offset / this.itemHeight), [
+                0,
+                this.count - 1
+              ]);
+              this.setIndex(index);
+            }
+          } else {
+            scrollTop = this.$refs.ul.scrollTop;
+          }
+      }, 200);
     },
     adjustIndex(index) {
       index = range(index, [0, this.count]);
