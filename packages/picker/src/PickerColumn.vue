@@ -35,6 +35,12 @@
     display: table-cell;
     vertical-align: middle;
   }
+  .mint-picker-column>ul {
+    width: calc(100% + 7px);
+  }
+  .mint-picker-column>ul::-webkit-scrollbar {
+    display:none;
+  }
 </style>
 <script>
 const DEFAULT_DURATION = 200;
@@ -83,7 +89,8 @@ export default {
   },
   destroyed() {
     this.$parent && this.$parent.children.splice(this.$parent.children.indexOf(this), 1);
-    clearInterval(this.visibleTimer);
+    clearTimeout(this.visibleTimer);
+    clearInterval(this.scrollEndInterval);
   },
   watch: {
     defaultIndex() {
@@ -91,26 +98,27 @@ export default {
     },
     options(next, prev) {
       if (JSON.stringify(next) !== JSON.stringify(prev)) {
-        clearInterval(this.visibleTimer);
-        clearInterval(this.touchEndInterval);
+        clearInterval(this.scrollEndInterval);
         this.setIndex(this.defaultIndex);
       }
     },
     currentIndex(index) {
-      clearInterval(this.visibleTimer);
+      clearTimeout(this.visibleTimer);
       //判断元素是否隐藏
       if (this.$el.offsetParent) {
-        this.$refs.ul.scrollTop = -this.offset;
         this.$emit('change', this.columnIndex ,index);
       } else {
         //隐藏，启动定时器
-        this.visibleTimer = setInterval(()=>{
+        let timer = () => {
+          clearTimeout(this.visibleTimer);
           if (this.$el.offsetParent) {
             this.$refs.ul.scrollTop = -this.offset;
             this.$emit('change', this.columnIndex ,index);
-            clearInterval(this.visibleTimer);
+            return;
           }
-        }, 30);
+          this.visibleTimer = setTimeout(timer, 30);
+        }
+        timer();
       }
     }
   },
@@ -141,7 +149,7 @@ export default {
   },
   methods: {
     onTouchStart(event) {
-      clearInterval(this.touchEndInterval);
+      clearInterval(this.scrollEndInterval);
       this.startY = event.touches[0].clientY;
       this.startOffset = this.offset;
       this.duration = 0;
@@ -156,10 +164,15 @@ export default {
     onTouchEnd() {
       let scrollTop = this.$refs.ul.scrollTop;
       //启动定时器，判断滚动是否结束
-      this.touchEndInterval = setInterval(() => {
-          if (this.$refs.ul.scrollTop === scrollTop) {
-            clearInterval(this.touchEndInterval);
-            this.offset = -this.$refs.ul.scrollTop;
+      this.scrollEndInterval = setInterval(() => {
+          let isHidden = !this.$el.offsetParent;
+          if (this.$refs.ul.scrollTop === scrollTop || isHidden) {
+            clearInterval(this.scrollEndInterval);
+            if (!isHidden) {
+              this.offset = -this.$refs.ul.scrollTop;
+            } else {
+              this.offset = -scrollTop;
+            }
             if (this.offset !== this.startOffset) {
               this.duration = DEFAULT_DURATION;
               const index = range(Math.round(-this.offset / this.itemHeight), [
@@ -171,7 +184,7 @@ export default {
           } else {
             scrollTop = this.$refs.ul.scrollTop;
           }
-      }, 200);
+      }, 100);
     },
     adjustIndex(index) {
       index = range(index, [0, this.count]);
@@ -192,6 +205,7 @@ export default {
       index = this.adjustIndex(index);
       this.offset = -index * this.itemHeight;
       this.currentIndex = index;
+      this.$refs.ul.scrollTop = -this.offset;
     },
     setValue(value) {
       const { options, valueKey } = this;
