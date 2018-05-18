@@ -8,6 +8,7 @@
       @touchend="onTouchEnd"
       @touchcancel="onTouchEnd"
       ref="ul"
+      @scroll="scroll"
     >
       <li
         v-for="(option, index) in options"
@@ -162,6 +163,10 @@ export default {
       // ]);
     },
     onTouchEnd() {
+      // this.scroll();
+    },
+    scroll() {
+      clearInterval(this.scrollEndInterval);
       let scrollTop = this.$refs.ul.scrollTop;
       //启动定时器，判断滚动是否结束
       this.scrollEndInterval = setInterval(() => {
