@@ -1,4 +1,5 @@
 import InfiniteScroll from './directive';
+import 'bh-mint-ui2/src/style/empty.css';
 import Vue from 'vue';
 
 const install = function(Vue) {

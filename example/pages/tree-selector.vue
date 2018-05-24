@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top:45px;" id="singleSelect">
     <mt-cell-group>
-        <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="教学机构\/外国语学院" @selector-click="loadOptions" displayType required></mt-tree-selector>
+        <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptions" displayType required></mt-tree-selector>
         <mt-tree-selector label="树形多选择器" multiple :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadOptions" required></mt-tree-selector>
         <mt-tree-selector label="树形多选择器（父级可选）" multiple parentSelectable :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadOptions" required></mt-tree-selector>
         <mt-tree-selector label="树形多选择器" multiple :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap" disabled></mt-tree-selector>
@@ -82,7 +82,7 @@
 
     data() {
       return {
-        value: '',
+        value: '6',
         options: [
             {
                 "id": "1",
@@ -2310,6 +2310,11 @@
       };
     },
 
+    watch:{
+        value:function(e){
+            console.log(e)
+        }
+    },
     mounted() {
         //this.loadOptions();
     }

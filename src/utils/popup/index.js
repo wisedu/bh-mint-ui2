@@ -221,6 +221,9 @@ export default {
           }
           document.body.style.overflow = 'hidden';
           document.body.style.height = '100%';
+          // 解决移动端body上overflow失效的问题，要将隐藏滚动的内容加上一个包裹层div (2018.5.24 wangyongjian);
+          document.body.firstElementChild.style.overflow = 'hidden';
+          document.body.firstElementChild.style.height = '100%';
           if (props.pid) {
             document.getElementById(props.pid).style.overflow = 'hidden';
             document.getElementById(props.pid).style.height = document.getElementsByClassName('v-modal')[0].offsetHeight + 'px';
@@ -283,6 +286,8 @@ export default {
           this.bodyOverflow = null;
           this.bodyPaddingRight = null;
           document.body.style.height = null;
+          document.body.firstElementChild.style.overflow = null;
+          document.body.firstElementChild.style.height = null;
           if (this.pid) {
             document.getElementById(this.pid).style.overflow = null;
             document.getElementById(this.pid).style.height = null;
