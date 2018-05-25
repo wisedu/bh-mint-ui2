@@ -95,7 +95,7 @@ export default {
     required: Boolean,
     disabled: Boolean,
     readonly: Boolean,
-    displayType: Boolean,
+    displayType: [Boolean,String],
     titlewidth: String,
     valueAlign: String
   },
@@ -118,7 +118,6 @@ export default {
         }
       }
     }
-
   },
   computed: {
     activeOptions() {
@@ -230,7 +229,7 @@ export default {
         }else{
           result += optionItem.name
           if (optionItem.pId !== undefined && optionItem.pId !== '') {
-            result = this.getItemDisplay(optionItem.pId) + " " + result
+            result = this.getItemDisplay(optionItem.pId) + ( typeof this.displayType === 'boolean'?" ":this.displayType) + result
           }
         }
       }else{

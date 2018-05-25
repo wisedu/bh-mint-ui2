@@ -88,7 +88,8 @@
         topStatus: '',
         wrapperHeight: 0,
         translate: 0,
-        moveTranslate: 0
+        moveTranslate: 0,
+        bottomText: 'loading'
       };
     },
 
