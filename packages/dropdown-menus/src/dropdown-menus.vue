@@ -183,12 +183,12 @@
               this.shadowTop = obj.top + "px";
               var contentVisibleHeight = window.innerHeight - obj.top;
               //var contentVisibleHeight = window.screen.height - obj.top;
-              this.maxHeight = contentVisibleHeight + "px";
+              //this.maxHeight = contentVisibleHeight + "px";
               var contentEle = document.getElementsByClassName('bh-ddm')[0].children;
               if (contentEle.length>0) {
                 var contentHeight = document.getElementsByClassName('bh-ddm')[0].children[0].offsetHeight;
                 if (contentHeight > contentVisibleHeight) {
-                  this.height = contentVisibleHeight - 70 + 'px'
+                  this.height = contentVisibleHeight + 'px'
                 } else {
                   this.height = contentHeight + 'px'
                 }
