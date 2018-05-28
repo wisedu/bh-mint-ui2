@@ -181,7 +181,8 @@
                 obj.top += elem.offsetTop ;
               }
               this.shadowTop = obj.top + "px";
-              var contentVisibleHeight = window.screen.height - obj.top;
+              var contentVisibleHeight = window.innerHeight - obj.top;
+              //var contentVisibleHeight = window.screen.height - obj.top;
               this.maxHeight = contentVisibleHeight + "px";
               var contentEle = document.getElementsByClassName('bh-ddm')[0].children;
               if (contentEle.length>0) {
