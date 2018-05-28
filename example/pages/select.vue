@@ -366,7 +366,7 @@
     data() {
       return {
         readonly:true,
-        singleSelectValue: '',
+        singleSelectValue: '00000010011111',
         singleSelectOptions: [],
 
         multiSelectValue: '0000001005,0000001007',

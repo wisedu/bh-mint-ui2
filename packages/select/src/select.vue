@@ -2,9 +2,9 @@
   <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign">
     <div class="select-value" >
       <!-- select 模板 -->
-      <template v-if="selectType === 'select'"><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
+      <template v-if="selectType === 'select'"><span :class="[{'mt-color-grey-lv3': isDefalut}]">{{singleSelectDisplay()}}</span></template>
       <!-- multi-select 模板 -->
-      <template v-if="selectType === 'multi-select'"><span :class="[{'mt-color-grey-lv3': multiSelectDisplay()=== this.placeholder}]">{{multiSelectDisplay()}}</span></template>
+      <template v-if="selectType === 'multi-select'"><span :class="[{'mt-color-grey-lv3': isDefalut}]">{{multiSelectDisplay()}}</span></template>
       <!-- 自定义 -->
       <slot v-else  name="display" :options="options" :value="value" @testhandle="testhandle(value)"></slot>
     </div>
@@ -106,12 +106,13 @@ export default {
     disabled: Boolean,
     readonly: Boolean,
     titlewidth: String,
-    valueAlign:String
+    valueAlign: String
   },
   data() {
     return {
       selectorShow: false,
-      cHeight:document.documentElement.clientHeight
+      cHeight: document.documentElement.clientHeight,
+      isDefalut: true
     };
   },
   computed: {
@@ -138,12 +139,6 @@ export default {
         }
       }
     },
-    // cHeight () {
-
-
-      
-    //   return document.documentElement.clientHeight
-    // }
     /***** select 专有属性 end *****/
   },
   methods: {
@@ -169,15 +164,21 @@ export default {
       })
     },
     singleSelectDisplay () {
-      if (this.value === '' || this.value === null || this.value === undefined) return this.placeholder
+      if (this.value === '' || this.value === null || this.value === undefined){
+        this.isDefalut = true;
+        return this.placeholder;
+      }
       if (this.options.length === 0) {
         this.$emit('selector-click', '')
         return ''
       }
-      return this.options.filter(item => {
+      // 解决 初始化设置的值在下拉列表中不存在 ，控制台报错(name "undefined")的问题 wangyongjian 2018-5-28
+      var singleSelectValue = this.options.filter(item => {
         if (!item || item.id === null) return false
         return item.id.toString() === this.value.toString()
-      })[0].name;
+      });
+      this.isDefalut = false;
+      return singleSelectValue.length?singleSelectValue[0].name:this.value
     },
     handleClick_select(val, $event) {
       this.$emit('change', val, $event);
@@ -187,12 +188,17 @@ export default {
 
     /***** multi-select 专有方法 *****/
     multiSelectDisplay () {
-      if (this.value === '') return this.placeholder
+      if (this.value === '') {
+        this.isDefalut = true;
+        return this.placeholder
+      }
       if (this.options.length === 0) {
         this.$emit('selector-click', '')
         return ''
       }
-      return this.options.filter(item => this.currentValue.indexOf(item.id.toString()) > -1).map(item => item.name).join(',')
+      this.isDefalut = false;
+      var multiSelectValue = this.options.filter(item => this.currentValue.indexOf(item.id.toString()) > -1).map(item => item.name).join(',');
+      return  multiSelectValue.length?multiSelectValue:this.value;
     },
     handleClick_multiSelect (val, $event) {
       this.$emit('change', this.currentValue, $event)
