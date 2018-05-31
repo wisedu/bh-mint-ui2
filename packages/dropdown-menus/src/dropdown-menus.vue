@@ -144,7 +144,7 @@
             }
           },
           isShowMenu: function(n){
-            debugger
+            //debugger
             if(n){
               this.$nextTick(function(){
                 this.setContentHeight()
@@ -174,7 +174,7 @@
         },
         methods:{
             setContentHeight:function(){
-              debugger
+              //debugger
               let elem = this.$refs.content;
               let obj = {
                 "top":elem.offsetTop
