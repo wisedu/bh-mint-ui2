@@ -77,6 +77,7 @@
     width: 100%;
     z-index: 2000;
     overflow: auto;
+    -webkit-overflow-scrolling:touch;
   }
   .bh-ddm-shadow {
     width: 100%;
@@ -143,6 +144,7 @@
             }
           },
           isShowMenu: function(n){
+            debugger
             if(n){
               this.$nextTick(function(){
                 this.setContentHeight()
@@ -172,6 +174,7 @@
         },
         methods:{
             setContentHeight:function(){
+              debugger
               let elem = this.$refs.content;
               let obj = {
                 "top":elem.offsetTop

@@ -216,6 +216,46 @@ export default {
             {
               label: "女",
               value: "woman"
+            },
+            {
+              label: "男",
+              value: "man"
+            },
+            {
+              label: "女",
+              value: "woman"
+            },
+            {
+              label: "男",
+              value: "man"
+            },
+            {
+              label: "女",
+              value: "woman"
+            },
+            {
+              label: "男",
+              value: "man"
+            },
+            {
+              label: "女",
+              value: "woman"
+            },
+            {
+              label: "男",
+              value: "man"
+            },
+            {
+              label: "女",
+              value: "woman"
+            },
+            {
+              label: "男",
+              value: "man"
+            },
+            {
+              label: "女",
+              value: "woman"
             }
           ];
         } 
