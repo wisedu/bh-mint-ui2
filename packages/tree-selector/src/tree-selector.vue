@@ -109,8 +109,9 @@ export default {
     let options = this.options;
     if(!this.multiple&&options.length){
       if(id){
-        this.activePids.unshift(this.value);
         let activeItem = options.filter(o => o.id === id)[0];
+        if(!activeItem) return;
+        this.activePids.unshift(this.value);
         while(activeItem.pId){
           id=activeItem.pId;
           this.activePids.unshift(id);
@@ -212,6 +213,7 @@ export default {
       }
     },
     getDisplay (value) {
+      console.log(value)
       if (this.multiple === true) {
         return value.map(item => this.getItemDisplay(item)).join(',')
       } else {
@@ -225,15 +227,15 @@ export default {
       if(options.length){
         let optionItem = options.filter(item => item.id === value)[0];
         if(!this.displayType){
-          result = optionItem.name
+          result = optionItem?optionItem.name:value;
         }else{
-          result += optionItem.name
-          if (optionItem.pId !== undefined && optionItem.pId !== '') {
+          result += (optionItem?optionItem.name:value);
+          if (optionItem && optionItem.pId !== undefined && optionItem.pId !== '') {
             result = this.getItemDisplay(optionItem.pId) + ( typeof this.displayType === 'boolean'?" ":this.displayType) + result
           }
         }
       }else{
-        result=this.placeholder
+        result = value?value:this.placeholder
       }
       return result
     },
