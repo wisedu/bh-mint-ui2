@@ -191,9 +191,10 @@
               if (contentEle.length>0) {
                 var contentHeight = document.getElementsByClassName('bh-ddm')[0].children[0].offsetHeight;
                 if (contentHeight > contentVisibleHeight) {
-                  this.height = contentVisibleHeight + 'px'
+                  this.height = contentVisibleHeight + 'px';
+                  this.shadowTop = obj.top + contentVisibleHeight + 'px';
                 } else {
-                  this.height = contentHeight + 'px'
+                  this.height = contentHeight + 'px';
                 }
               }
             },
