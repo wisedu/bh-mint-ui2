@@ -111,7 +111,7 @@ export default {
   data() {
     return {
       selectorShow: false,
-      cHeight: document.documentElement.clientHeight,
+      cHeight: '',
       isDefalut: true
     };
   },
@@ -143,6 +143,8 @@ export default {
   },
   methods: {
     handleDisplayClick(e) {
+      this.cHeight = document.documentElement.clientHeight;
+
       if(this.disabled||this.readonly) return;
       this.$emit('selector-click', this.selectType, this,e);
       history.pushState('', null, '#/smile-select');
