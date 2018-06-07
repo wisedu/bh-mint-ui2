@@ -71,8 +71,8 @@ export default {
     };
   },
   methods: {
-      blank(e){
-        console.log(e,'你点击了！')
+      blank(e,val){
+        console.log(e,val,'你点击了！')
       }
   },
 

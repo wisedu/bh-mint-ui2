@@ -108,7 +108,7 @@ export default {
     },
     handleRadioClick(e) {
       //if(!this.currentValue){
-        this.$emit('radiobox-click',e);
+        this.$emit('radiobox-click',e,this.name);
       //}
     },
     findParentByName(name) {
