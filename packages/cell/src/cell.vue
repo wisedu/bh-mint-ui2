@@ -15,7 +15,7 @@
       </div>
       <div class="mint-cell-value" :class="[{'is-link' : isLink },readonly||disabled?'mt-color-grey-lv3':'mt-color-grey']" ref="cellValue" :style="{'flex':titlewidth?'calc(100% - '+titlewidth+')':'','justify-content':valueAlign}">
         <slot>
-          <span v-text="value"></span>
+          <span v-text="value" style="line-height:initial;word-break:break-all"></span>
         </slot>
       </div>
       <slot v-if="isLink||arrowdefined" name="arrowdefined">
