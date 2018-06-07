@@ -7,7 +7,7 @@
       </mt-cell-group>
       <mt-box-group v-model="value1" :max="3">
           <mt-cell-group title="普通单选">
-              <mt-radiobox :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled" @click="blank" required>
+              <mt-radiobox :name="item.value" v-for="item in options2" :key="item.value" :disabled="item.disabled" @radiobox-click="blank" required>
                   {{item.label}}
               </mt-radiobox>
               <mt-cell title="选中的项">{{ value1 }}</mt-cell>
@@ -71,8 +71,8 @@ export default {
     };
   },
   methods: {
-      blank(){
-        console.log('你点击了！')
+      blank(e){
+        console.log(e,'你点击了！')
       }
   },
 
