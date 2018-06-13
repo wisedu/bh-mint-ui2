@@ -63,7 +63,7 @@ const PopupManager = {
     const instance = PopupManager.getInstance(topItem.id);
     if (instance && instance.closeOnClickModal) {
       instance.close();
-      if(window.location.href.indexOf('smile-select')>-1){
+      if (window.location.href.indexOf('smile-select') > -1) {
         window.history.go(-1);
       }
     }
