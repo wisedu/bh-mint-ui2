@@ -263,6 +263,9 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.select-value>span{
+  line-height: initial;
+}
 
 .mint-no-data{
   height: calc(100% - 50px);
