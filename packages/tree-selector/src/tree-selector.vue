@@ -1,7 +1,7 @@
  <template>
   <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom" :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign">
     <template slot-scope="scope" slot="display">
-      <span :class="[{'mt-color-grey-lv3':(scope.value === '' && placeholder === '请选择') || (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)}]">{{scope.value === ''|| (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0) ? placeholder : getDisplay(scope.value)}}</span>
+      <span :class="[{'mt-color-grey-lv3':(scope.value === '') || (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)}]">{{scope.value === ''|| (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)? placeholder : getDisplay(scope.value)}}</span>
     </template>
     <template slot-scope="scope" slot="selector">
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread>
@@ -55,12 +55,26 @@ export default {
     label: String,
     /**
      * @noteType prop
+     * @field defName
+     * @desc value值对应的文本
+     * @type input
+     * @value ''
+     */
+    defName: {
+      type: String,
+      default: ''
+    },
+    /**
+     * @noteType prop
      * @field placeholder
      * @desc 占位文本
      * @type input
      * @value 请选择
      */
-    placeholder: String,
+    placeholder: {
+      type: String,
+      default: '请选择'
+    },
     /**
      * @noteType prop
      * @field multiple
@@ -146,19 +160,25 @@ export default {
         }
       });
 
-      
       return result;
     },
     currentValue: {
       get() {
         if (this.multiple) {
           if (this.value === '') return [];
-          return this.value.split(',');
+          var arr = this.value.split(',');
+          if(this.options.length){
+            arr = arr.filter( item => {
+              return this.getItemDisplay(item)!=''
+            });
+          }
+          return arr;
         } else {
           return this.value;
         }
       },
       set(val) {
+        console.log(val)
         if (val === '' || val.length === 0) this.$emit('input', '')
         if (this.multiple) {
           this.$emit('input', val.join(','));
@@ -168,7 +188,7 @@ export default {
       }
     },
     footerOptions () {
-      if (this.currentValue.length === 0) return []
+      if (this.currentValue.length === 0) return [];
       return this.currentValue.map(item => {
         return {
           name: this.getItemDisplay(item),
@@ -213,30 +233,32 @@ export default {
       }
     },
     getDisplay (value) {
-      console.log(value)
-      if (this.multiple === true) {
-        return value.map(item => this.getItemDisplay(item)).join(',')
-      } else {
-        // 单选
-        return this.getItemDisplay(value)
+      if(!this.options.length){
+        return this.defName
+      }else{
+        if (this.multiple === true) {
+          return value.map(item => this.getItemDisplay(item)).join(',')
+        } else {
+          // 单选
+          return this.getItemDisplay(value)
+        }
       }
     },
     getItemDisplay (value) {
       let result = '';
       let options = this.options;
-      if(options.length){
+
         let optionItem = options.filter(item => item.id === value)[0];
         if(!this.displayType){
-          result = optionItem?optionItem.name:value;
+          result = optionItem?optionItem.name:''
         }else{
-          result += (optionItem?optionItem.name:value);
+          result += (optionItem?optionItem.name:'');
+          if(!optionItem && this.multiple) result = "";
           if (optionItem && optionItem.pId !== undefined && optionItem.pId !== '') {
             result = this.getItemDisplay(optionItem.pId) + ( typeof this.displayType === 'boolean'?" ":this.displayType) + result
           }
         }
-      }else{
-        result = value?value:this.placeholder
-      }
+
       return result
     },
     // 多选树点击footer确认按钮
