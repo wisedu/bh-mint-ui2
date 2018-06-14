@@ -59,7 +59,7 @@ export default {
   components: { SelectedFooter },
   props: {
     value: { default: '' },
-    // url: { type: String, default: '' },
+    display: { type: String, default: '' },
 
     /**
      * @noteType prop
@@ -171,8 +171,8 @@ export default {
         return this.placeholder;
       }
       if (this.options.length === 0) {
-        this.$emit('selector-click', '')
-        return ''
+        this.$emit('selector-click', this.selectType, this.display)
+        return this.display
       }
       // 解决 初始化设置的值在下拉列表中不存在 ，控制台报错(name "undefined")的问题 wangyongjian 2018-5-28
       var singleSelectValue = this.options.filter(item => {
@@ -195,7 +195,7 @@ export default {
         return this.placeholder
       }
       if (this.options.length === 0) {
-        this.$emit('selector-click', '')
+        this.$emit('selector-click', this.selectType, '')
         return ''
       }
       this.isDefalut = false;
