@@ -233,6 +233,11 @@
         "icon": "navebar"
       },
       {
+        "path": "/image-clip",
+        "name": "ImageClip",
+        "icon": "navebar"
+      },
+      {
         "path": "/fixed-button",
         "name": "FixedButton",
         "icon": "navebar"

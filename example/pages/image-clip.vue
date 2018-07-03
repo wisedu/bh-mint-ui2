@@ -1,10 +1,7 @@
 <template>
   <div class="page-image">
-    <div style="padding:10px 0">
-     
-      <mt-image-clip :src="file" v-model="value"></mt-image-clip>
-      <!-- <mt-image-clip :src="file" v-model="value"><mt-button type="primary">点我裁剪图片</mt-button></mt-image-clip> -->
-    </div>
+    <mt-image-clip :src="file" v-model="value" type="file"></mt-image-clip>
+    <mt-image-clip src="http://res.wisedu.com/fe_components/images/errorTip/System_upgrade.png" v-model="value"></mt-image-clip>
     <div class="page-image-clip">
       <label>裁剪效果图：</label>
       <img :src="value">
@@ -28,7 +25,6 @@ export default {
       reader.readAsDataURL(file);
       var _that = this;
       reader.onload=function (oFREvent) {  
-        console.log(oFREvent)
         _that.file = oFREvent.target.result; 
       };
     }
