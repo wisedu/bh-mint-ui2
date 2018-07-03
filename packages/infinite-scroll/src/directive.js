@@ -37,12 +37,11 @@ var throttle = function(fn, delay) {
 
 var getScrollTop = function(element) {
   if (element === window) {
-    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop);
+    return Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || document.body.scrollTop);
   }
-
   return element.scrollTop;
 };
-
+// 当使用Firefox 3.6时，其frame中需要使用document.defaultView去获取window对象，才能使用其getComputedStyle方法。
 var getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle;
 
 var getScrollEventTarget = function(element) {
@@ -62,7 +61,6 @@ var getVisibleHeight = function(element) {
   if (element === window) {
     return document.documentElement.clientHeight;
   }
-
   return element.clientHeight;
 };
 
@@ -125,16 +123,23 @@ var doBind = function() {
   var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check');
   var immediateCheck = true;
   if (immediateCheckExpr) {
+    this.vm.$watch(immediateCheckExpr, function(value) {
+      directive.immediateCheck = value;
+      if (value && disabledExpr) {
+        doCheck.call(directive);
+      }
+    });
     immediateCheck = Boolean(directive.vm[immediateCheckExpr]);
   }
   directive.immediateCheck = immediateCheck;
-
   if (immediateCheck) {
     doCheck.call(directive);
   }
-  //经验证，infinite-scroll-listen-for-event属性无实际应用，待扩展其他功能 wangyongjian2018.4.20
+  
+  // 校验，无实际应用场景 
   var eventName = element.getAttribute('infinite-scroll-listen-for-event');
   if (eventName) {
+    directive.eventName = eventName;
     directive.vm.$on(eventName, function() {
       doCheck.call(directive);
     });
@@ -145,7 +150,7 @@ var doCheck = function(force) {
   var scrollEventTarget = this.scrollEventTarget;
   var element = this.el;
   var distance = this.distance;
-
+  // debugger
   if (force !== true && this.disabled) return; //eslint-disable-line
   var viewportScrollTop = getScrollTop(scrollEventTarget);
   var viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget);

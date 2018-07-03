@@ -1,6 +1,6 @@
 <template>
   <div class="page-navbar" style="margin-top:45px">
-    <mt-navbar v-model="selected">
+    <mt-navbar v-model="selected" @change="change">
       <mt-tab-item id="1" badge="dot">
         选项一四
       </mt-tab-item>
@@ -45,6 +45,11 @@ export default {
     return {
       selected: '1'
     };
+  },
+  methods: {
+    change: function(val){
+      console.log(val)
+    }
   }
 };
 </script>

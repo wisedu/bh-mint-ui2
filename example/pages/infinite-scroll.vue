@@ -1,19 +1,46 @@
  <template>
   <div class="page-infinite">
     <p class="page-infinite-desc">当即将滚动至列表底部时, 自动加载更多数据</p>
-    <div class="page-infinite-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+    <div class="page-infinite-wrapper" ref="wrapper" :style="{ 'max-height': wrapperHeight + 'px' }">
       <ul class="page-infinite-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
         <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
       </ul>
-<!--       <ul class="page-infinite-list" v-infinite-scroll infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-listen-for-event="loadMoreHandle">
-        <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
-      </ul> -->
       <p v-show="loading" class="page-infinite-loading">
         <mt-spinner type="fading-circle"></mt-spinner>
         加载中...
       </p>
       <p v-show="allLoaded" class="page-infinite-loading">没有更多数据了</p>
     </div>
+    <!-- 与navbar套用 -->
+<!--     <mt-navbar v-model="selected" @change="change">
+      <mt-tab-item id="1" >选项一四</mt-tab-item>
+      <mt-tab-item id="2" >选项二四</mt-tab-item>
+      <mt-tab-item id="3" >选项三四</mt-tab-item>
+    </mt-navbar>
+    <mt-tab-container v-model="selected" >
+      <mt-tab-container-item id="1">
+        <mt-cell-group>
+          <mt-cell v-for="n in 20" :key="n" :title="'内容 ' + n" wrapperpaddingleft="20px"/>
+        </mt-cell-group>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="2">
+        <mt-cell-group>
+          <mt-cell v-for="n in 10" :key="n" :title="'测试 ' + n" wrapperpaddingleft="20px"/>
+        </mt-cell-group>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="3">
+        <div class="page-infinite-wrapper" ref="wrapper" :style="{ 'max-height': wrapperHeight + 'px' }">
+          <ul class="page-infinite-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="50" infinite-scroll-immediate-check="check">
+            <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
+          </ul>
+          <p v-show="loading" class="page-infinite-loading">
+            <mt-spinner type="fading-circle"></mt-spinner>
+            加载中...
+          </p>
+          <p v-show="allLoaded" class="page-infinite-loading">没有更多数据了</p>
+        </div>
+      </mt-tab-container-item>
+    </mt-tab-container> -->
   </div>
 </template>
 
@@ -66,7 +93,9 @@
         list: [],
         loading: false,
         allLoaded: false,
-        wrapperHeight: 0
+        check: false,
+        wrapperHeight: 0,
+        selected: '1'
       };
     },
 
@@ -79,7 +108,7 @@
         this.loading = true;
         axios.get('https://res.wisedu.com/fe_components/mock/select.json').then(resp => {
           let last = this.list.length?this.list[this.list.length - 1]:0;
-          for (let i = 1; i <= 5; i++) {
+          for (let i = 1; i <= 4; i++) {
             this.list.push(last + i);
           }
           this.loading = false;
@@ -87,9 +116,16 @@
       },
       loadMoreHandle(){
         this.loadMore()
+      },
+      change: function(val){
+        if(val === '3') {
+          this.check = true;
+          this.$nextTick(function(){
+            this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
+          })
+        }
       }
     },
-
     mounted() {
       this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
     }

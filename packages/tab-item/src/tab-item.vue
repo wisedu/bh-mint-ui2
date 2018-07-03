@@ -1,6 +1,6 @@
 <template>
   <a class="mint-tab-item"
-    @click="$parent.$emit('input', id)"
+    @click="$parent.$emit('input', id);$parent.$emit('change', id)"
     :class="itemClassObject">
     <div class="mint-tab-item-icon">
       <slot name="icon"><i class="iconfont" :class="[$parent.value === id?'mt-color-theme':'mt-color-grey-lv3','icon-'+icontype]" v-if="icontype"></i></slot><slot name="badge" v-if="componentname==='mt-tabbar'"><mt-badge size="small" padding="3px" type="danger" class="dot" v-if="badge ==='dot'"></mt-badge><mt-badge size="small" type="danger" class="figure" v-if="badge ==='figure'">{{badgeValue}}</mt-badge></slot>
