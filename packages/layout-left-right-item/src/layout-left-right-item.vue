@@ -32,9 +32,9 @@ export default {
             if (typeof percentage === 'undefined' || percentage === null) {
                 percentage = '';
             }
-            if(/^\d+%$/.test(percentage)){
+            if(/^\d+$/.test(percentage)){
 
-                return percentage + '%';
+                return '1 1 '+percentage;
             }else{
               console.log(percentage)
                 return percentage;

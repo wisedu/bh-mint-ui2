@@ -1,0 +1,12 @@
+{
+  "name": "mint-image-clip",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "01117464",
+  "homepage": "https://github.com/wisedu/bh-mint-ui2",
+  "license": "MIT",
+  "repository": "https://github.com/wisedu/bh-mint-ui2/packages/image-clip",
+  "dependencies": {
+  }
+}

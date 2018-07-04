@@ -46,24 +46,6 @@ export default {
   }
 };
 
-/**
- * @noteType external
- * @content
- {
-    "item": {
-      "componentName": "TabItem",
-      "count": 2,
-      "showProp": "space"
-    },
-    "mock": {
-      "selected": "0"
-    },
-    "modelName": "selected",
-    "relation": {
-      "componentName": "TabContainer"
-    }
- }
- */
 </script>
 
 <style lang="css">
