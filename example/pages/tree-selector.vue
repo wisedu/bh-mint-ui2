@@ -4,7 +4,7 @@
       <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptions"></mt-tree-selector> -->
     <!-- </div> -->
     <div class="page-select">
-      <mt-tree-selector label="树形选择器" :options="options" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
+      <mt-tree-selector label="树形选择器" :options="options2" v-model="value" placeholder="请选择" @selector-click="loadOptionsEmap"></mt-tree-selector>
     </div>
     <div class="page-select">
       <mt-tree-selector label="树形多选择器" :multiple="true" :options="options" v-model="multiValue" placeholder="请选择" @selector-click="loadMultiOptionsEmap"></mt-tree-selector>
@@ -59,15 +59,16 @@
         })
       },
       loadOptionsEmap (pId) {
-        // if (this.options.filter(item => item.pId === pId).length > 0) return
+        // if (this.options2.filter(item => item.pId === pId).length > 0) return
         // axios.get('http://localhost:8080/emap/code/c9fe4e9d-5460-4372-87ca-437d373c2531.do?pId=' + pId).then(resp => {
+        //     console.log(resp)
         //   let respData = resp.data
         //   if (respData.code == '0') {
         //     let options = this.options
         //     if (respData.datas) {
-        //       options = options.concat(respData.datas.code.rows)
+        //       options2 = options2.concat(respData.datas.code.rows)
         //     }
-        //     this.$set(this, 'options', options)
+        //     this.$set(this, 'options2', options2)
         //   }
         // })
       },
@@ -89,6 +90,13 @@
     data() {
       return {
         value: '',
+        options2:[],
+        options1: [{
+            id:"root",
+            isParent:0,
+            name:"湖南工业职业技术学院",
+            pId:""
+        }],
         options: [{
                 "id": "1",
                 "name": "党群组织",

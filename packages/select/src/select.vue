@@ -167,6 +167,7 @@ export default {
         this.$emit('selector-click', '')
         return ''
       }
+      console.log(this.currentValue,this.options.filter(item => this.currentValue.indexOf(item.id.toString()) > -1))
       return this.options.filter(item => this.currentValue.indexOf(item.id.toString()) > -1).map(item => item.name).join(',')
     },
     handleClick_multiSelect (val, $event) {

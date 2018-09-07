@@ -148,8 +148,8 @@
         singleSelectValue: '',
         singleSelectOptions: [],
 
-        multiSelectValue: '0000001005,0000001007',
-        multiSelectOptions: [],
+        multiSelectValue: "198201013,198401012",
+        multiSelectOptions: [{"name":"李宝笃","id":"198401012"},{"name":" 宋希云","id":"198201013"}],
 
         value: '1984',
         multiValue: [],

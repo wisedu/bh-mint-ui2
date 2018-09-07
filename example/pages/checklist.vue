@@ -41,6 +41,7 @@
       class="page-part"
       title="右对齐"
       v-model="value4"
+      square
       :options="options4">
     </mt-checklist>
   </div>

@@ -12,7 +12,7 @@
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
-          <span class="mint-checkbox-core"></span>
+          <span class="mint-checkbox-core" :class="{'is-square': square}"></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>
       </label>
@@ -103,7 +103,8 @@ export default {
      * @type textarea
      * @valueType object
       */
-    value: Array
+    value: Array,
+    square: Boolean
   },
 
   components: { XCell },
@@ -218,7 +219,9 @@ export default {
         position: relative;
         size: 20px;
         vertical-align: middle;
-
+        &.is-square {
+          border-radius: initial;
+        }
         &::after {
           border: 2px solid transparent;
           border-left: 0;
