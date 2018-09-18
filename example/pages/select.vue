@@ -1,6 +1,5 @@
 <template>
   <div class="page-select">
-
     <h1 class="page-item-title">Select 快捷语法糖</h1>
     <mt-cell-group>
       <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick" required>

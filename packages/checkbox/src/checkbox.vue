@@ -51,7 +51,7 @@ export default {
 
     currentValue: {
       get() {
-        return this.isGroup && this.parentGroup ? this.parentGroup.value.indexOf(this.name) !== -1 : this.value;
+        return this.isGroup && this.parentGroup? this.parentGroup.value.indexOf(this.name) !== -1 : this.value;
       },
 
       set(val) {

@@ -1,0 +1,12 @@
+{
+  "name": "mint-calendar",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "ZEE.KIM <129@jinzhe.net>",
+  "homepage": "http://jinzhe.github.io/vue-calendar/",
+  "license": "MIT",
+  "repository": "https://github.com/jinzhe/vue-calendar",
+  "dependencies": {
+  }
+}

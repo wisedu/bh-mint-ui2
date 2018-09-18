@@ -48,6 +48,8 @@
             </mt-cell-group>
         </mt-box-group>
     </div>
+
+
   </div>
 </template>
 
@@ -64,7 +66,7 @@ export default {
       value1: ['选中禁用的值'],
       value2: ['选项A'],
       value3: ['选项A','选项C'],
-      value4: []
+      value4: [],
     };
   },
   methods: {

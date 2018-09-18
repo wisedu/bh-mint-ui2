@@ -12,9 +12,9 @@
         data: function() {
             return {
                 today: new Date(),
-                startDate: '2017-4-10',
-                endDate: '2018-11-9',
-                currentDate: '2017-8-31'
+                startDate: '2018-01-10',
+                endDate: '2020-11-09',
+                currentDate: '2018-8-31'
             };
         },
         methods: {

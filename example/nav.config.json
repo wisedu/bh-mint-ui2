@@ -98,9 +98,9 @@
         "icon": "time"
       },
       {
-        "path": "/infinite-calendar",
-        "name": "infinite calender",
-        "icon": "infinite-scroll"
+        "path": "/calendar",
+        "name": "Calender",
+        "icon": "time"
       },
       {
         "path": "/tree-selector",
