@@ -1,6 +1,6 @@
 <template>
   <div class="page-search">
-    <mt-search autofocus v-model="value" :result="filterResult"></mt-search>
+    <mt-search autofocus v-model="value" :result="filterResult" :value="value"></mt-search>
   </div>
 </template>
 
@@ -31,7 +31,11 @@ export default {
       ]
     };
   },
-
+  watch:{
+    value: function(val){
+      console.log(val)
+    }
+  },
   computed: {
     filterResult() {
       return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));

@@ -148,10 +148,13 @@ export default {
         this.$emit('selector-click', '')
         return ''
       }
-      return this.options.filter(item => {
+
+      // 解决 初始化设置的值在下拉列表中不存在 ，控制台报错(name "undefined")的问题 wangyongjian 2018-9-20
+      var singleSelectValue = this.options.filter(item => {
         if (!item || item.id === null) return false
         return item.id.toString() === this.value.toString()
-      })[0].name
+      });
+      return singleSelectValue.length?singleSelectValue[0].name:this.value
     },
     handleClick_select(val, $event) {
       this.$emit('change', val, $event)

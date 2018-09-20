@@ -2,6 +2,7 @@
   <x-cell
     class="mint-field"
     :title="label"
+    :titleWidth="titleWidth"
     v-clickoutside="doCloseActive"
     :class="[{
       'is-textarea': type === 'textarea',
@@ -230,7 +231,11 @@ export default {
      * @type textarea
       */
     value: {},
-    attr: Object
+    attr: Object,
+    titleWidth: {
+      type:String,
+      default:'20%'
+    }
   },
 
   components: { XCell },
