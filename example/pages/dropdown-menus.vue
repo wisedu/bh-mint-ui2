@@ -67,7 +67,7 @@
                           </mt-radiobox>
                       </div>
                   </div>
-                  <div v-if="type==='filter'" class="bh-ddm-filter" :style="{'height':bodyHeight}">
+                  <div v-if="type==='filter'" class="bh-ddm-filter" :style="[{'height':bodyHeight}]">
                       <div style="padding:0 20px;">
                           <mt-button-list label="频率" :multiple="true" :plain="false" :options="filterMenuDatas" v-model="multiValue" :display.sync="multiValue_display"></mt-button-list>
                           <p>value: {{multiValue}}</p>
@@ -90,9 +90,6 @@
         </div>
     </div>
 </template>
-<style>
-
-</style>
 <script type="text/javascript">
 export default {
   name: "page-field",

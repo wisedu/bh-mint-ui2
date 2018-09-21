@@ -25,20 +25,10 @@
           <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
-        <div style="padding:12px 20px;background-color:#fff;font-size:17px">
-          <span style="float:left;">申请陈述：</span>
-          <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
-          <div style="clear: both;display:table;margin-bottom:5px"></div>
-        </div>
-        <div style="padding:12px 20px;background-color:#fff;font-size:17px">
-          <span style="float:left;">申请陈述：</span>
-          <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
-          <div style="clear: both;display:table;margin-bottom:5px"></div>
-        </div>
         <mt-cell-group style="margin-bottom:4px;max-height: 300px;overflow:scroll" class="mt-cell-group">
           <mt-textarea maxlength=100 placeholder="请输入" rows=4 ></mt-textarea>
         </mt-cell-group>
-        <mt-button size="large" @click.native="popupVisible4=false">取消</mt-button>
+        <mt-button size="large" @click.native="messagebox">取消</mt-button>
       </div>
     </mt-popup>
   </div>
@@ -122,6 +112,7 @@
 </style>
 
 <script type="text/babel">
+  import { MessageBox } from 'src/index';
   export default {
     data() {
       return {
@@ -161,6 +152,11 @@
     },
 
     methods: {
+      messagebox(){
+        MessageBox.confirm('确定执行此操作?', '提示','').then(action =>{
+          console.log(action)
+        });
+      },
       onDateChange(picker, values) {
         if (values[0] > values[1]) {
           picker.setSlotValue(1, values[0]);

@@ -14,9 +14,9 @@
     @component msgbox {
       @descendent wrapper {
         padding: 0 20px;
-        position: absolute 50% * * *;
+        margin-top: 60px;
+        position: absolute * * * *;
         width: 100%;
-        transform: translateY(-50%);
         button:not(:last-child) {
           margin-bottom: 20px;
         }

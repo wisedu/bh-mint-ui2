@@ -2,14 +2,14 @@
     <div>
         <div class="bh-ddb mt-bColor-grey-lv5 mt-bg-lv3">
             <div v-for="(item,index) in options" class="bh-ddb-item mt-bColor-grey-lv5" :class="{'bh-ddb-item-selected':item.active}" v-bind:style="{ width: itemWidth}" @click="setSelected(item,index,$event)">
-                <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active,}"></i>
+                <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="[{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active}]"></i>
             </div>
         </div>
-        <div class="bh-ddm mt-bg-lv3" ref="content" :style="{'height':height}">
+        <div class="bh-ddm mt-bg-lv3" ref="content" :style="[{'height':height}]">
             <slot name="menu"></slot>
         </div>
         <!-- 遮罩层 -->
-        <div v-if="isShowMenu" class="bh-ddm-shadow mt-bg-mask" @click="cancelShadow"  :style="{top:shadowTop}"></div>
+        <div v-if="isShowMenu" class="bh-ddm-shadow mt-bg-mask" @click="cancelShadow"  :style="[{top:shadowTop}]"></div>
     </div>
 </template>
 <style lang="css">
@@ -124,7 +124,8 @@
               itemWidth:'',
               shadowTop:'',
               maxHeight:'',
-              height:''
+              height:'',
+              selectedStorage: -1
             }
         },
         props:{
@@ -174,7 +175,6 @@
         },
         methods:{
             setContentHeight:function(){
-              //debugger
               let elem = this.$refs.content;
               let obj = {
                 "top":elem.offsetTop
@@ -199,6 +199,17 @@
               }
             },
             setSelected:function(param,index,evt){
+                if(this.selectedStorage>-1 && this.selectedStorage === index ){
+                  this.$nextTick(function(){
+                    this.$set(param,'active',false);
+                  })
+                  this.selectedStorage = -1;
+                  this.$parent.isShowMenu = false;
+                  return
+                }else{
+                  this.selectedStorage = index;
+                }
+                
                 var that = this;
                 that.$nextTick(function () {
                     that.options.forEach(function (item) {
