@@ -5,7 +5,7 @@
                 <label :class="[item.active?'mt-color-theme':'mt-color-grey-lv3']">{{item.label}}</label><i class="bh-ddb-i" :class="[{'mt-bColor-grey-lv4 bh-ddb-i-default':!item.active,'bh-ddb-i-selected mt-bColor-theme':item.active}]"></i>
             </div>
         </div>
-        <div class="bh-ddm mt-bg-lv3" ref="content" :style="[{'height':height}]">
+        <div class="bh-ddm mt-bg-lv3" ref="content">
             <slot name="menu"></slot>
         </div>
         <!-- 遮罩层 -->
@@ -152,7 +152,7 @@
               })
             }else{
               stopBodyScroll(false)
-              this.height = 0;
+              // this.height = 0;
             }
           }
         },
@@ -184,6 +184,7 @@
                 obj.top += elem.offsetTop ;
               }
               this.shadowTop = obj.top + "px";
+              console.log(this.shadowTop)
               var contentVisibleHeight = window.innerHeight - obj.top;
               //var contentVisibleHeight = window.screen.height - obj.top;
               //this.maxHeight = contentVisibleHeight + "px";
@@ -199,12 +200,12 @@
               }
             },
             setSelected:function(param,index,evt){
-                if(this.selectedStorage>-1 && this.selectedStorage === index ){
+                if(this.selectedStorage>-1 && this.selectedStorage === index && param.active){
                   this.$nextTick(function(){
                     this.$set(param,'active',false);
                   })
                   this.selectedStorage = -1;
-                  this.$parent.isShowMenu = false;
+                  this.$emit('selected-self',false)
                   return
                 }else{
                   this.selectedStorage = index;

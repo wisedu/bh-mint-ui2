@@ -74,7 +74,9 @@ export default {
     }
   },
   methods: {
-    handleChange() {}
+    handleChange(val) {
+      this.$emit('change',val)
+    }
   },
   components: { MtSwitch, MtCell }
 };
