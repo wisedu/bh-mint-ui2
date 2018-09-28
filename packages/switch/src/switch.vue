@@ -21,7 +21,7 @@ export default {
   name: 'mt-switch',
 
   props: {
-    value: Boolean,
+    value: [Boolean,Number],
     disabled: {
       type: Boolean,
       default: false
