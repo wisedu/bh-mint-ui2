@@ -150,7 +150,7 @@ var doCheck = function(force) {
   var scrollEventTarget = this.scrollEventTarget;
   var element = this.el;
   var distance = this.distance;
-  // debugger
+
   if (force !== true && this.disabled) return; //eslint-disable-line
   var viewportScrollTop = getScrollTop(scrollEventTarget);
   var viewportBottom = viewportScrollTop + getVisibleHeight(scrollEventTarget);
@@ -165,7 +165,7 @@ var doCheck = function(force) {
     shouldTrigger = viewportBottom + distance >= elementBottom;
   }
 
-  if (shouldTrigger && this.expression) {
+  if (shouldTrigger && this.expression && !this.disabled) {
     this.expression();
   }
 };

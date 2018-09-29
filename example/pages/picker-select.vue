@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top:45px;"> 
     <mt-cell-group>
-      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" required></mt-picker-select>
+      <mt-picker-select label="抄送人员" rows="5" maxlength="100" :options="singleSelectOptions" v-model="singleSelectValue" required class="test"></mt-picker-select>
       <mt-picker-select label="只读的" placeholder="请选择" rows="5" maxlength="100" readonly :options="singleSelectOptions" v-model="singleSelectValue1" required></mt-picker-select>
       <mt-picker-select label="禁用的" placeholder="请选择" rows="5" maxlength="100" disabled :options="singleSelectOptions"></mt-picker-select>
     </mt-cell-group>

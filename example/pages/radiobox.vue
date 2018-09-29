@@ -50,10 +50,34 @@
             </mt-cell-group>
         </mt-box-group>
     </div>
+
+    <div v-for = "(tm,idx) in data.tm" :key="idx">
+      <div v-show="tm.TMLX==='1'">
+        <p>单选：{{obj[tm.TMDM]}}</p>
+        <mt-box-group v-model="obj[tm.TMDM]">
+          <mt-cell-group>
+            <mt-radiobox :name="xx.XXDM" v-for="xx in tm.xx" :key="xx.XXDM">
+                {{xx.XXMC}}
+            </mt-radiobox>
+          </mt-cell-group>
+        </mt-box-group>
+      </div>
+      <div v-show="tm.TMLX==='2'">
+        <p>多选：{{obj[tm.TMDM]}}</p>
+        <mt-box-group v-model="obj[tm.TMDM]">
+          <mt-cell-group>
+            <mt-checkbox :name="xx.XXDM" v-for="xx in tm.xx" :key="xx.XXDM">
+                {{xx.XXMC}}
+            </mt-checkbox>
+          </mt-cell-group>
+        </mt-box-group>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'page-checklist',
 
@@ -68,6 +92,9 @@ export default {
       value3: '选项A',
       value4: '',
       value: "",
+      data: {},
+      obj: {
+      }
     };
   },
   methods: {
@@ -75,6 +102,7 @@ export default {
         console.log(e,val,'你点击了！')
       }
   },
+
 
   created() {
     this.options = [
@@ -115,6 +143,19 @@ export default {
         value: '值B'
       }
     ];
+
+  },
+  mounted(){
+    axios.get('/mock/radio.json').then(resp => {
+      this.data = resp.data.data;
+      var tm = this.data.tm;
+      var self = this;
+      tm.forEach(function(opt){
+        var value=opt.TMLX === '2'?[]:'';
+        self.$set( self.obj, opt.TMDM, value )
+        // self.obj[opt.TMDM] = value
+      })
+    });
   }
 };
 </script>

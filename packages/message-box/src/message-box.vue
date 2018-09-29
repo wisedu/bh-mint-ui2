@@ -8,7 +8,7 @@
         <div class="mint-msgbox-content">
           <div class="mint-msgbox-message mt-color-grey-lv3" v-html="message" v-if="message"></div>
           <div class="mint-msgbox-input" v-if="showInput">
-            <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input" class="mt-bg-white mt-bColor-grey-lv4 ">
+            <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input" class="mt-bg-white mt-bColor-grey-lv4">
             <div class="mint-msgbox-errormsg mt-color-red" v-if="editorErrorMessage">{{ editorErrorMessage }}</div>
           </div>
         </div>
@@ -237,7 +237,9 @@
           }
         }
         this.editorErrorMessage = '';
-        this.$refs.input.classList.remove('mt-bColor-danger');
+        this.$nextTick(function(){
+          this.$refs.input.classList.remove('mt-bColor-danger');
+        });
         return true;
       },
 

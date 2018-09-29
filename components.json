@@ -35,7 +35,7 @@
   "text-select": "./packages/text-select/index.js",
   "picker-select": "./packages/picker-select/index.js",
   "datetime-selector": "./packages/datetime-selector/index.js",
-  "infinite-calendar": "./packages/infinite-calendar/index.js",
+  "calendar": "./packages/calendar/index.js",
   "tree-selector": "./packages/tree-selector/index.js",
   "progress": "./packages/progress/index.js",
   "toast": "./packages/toast/index.js",

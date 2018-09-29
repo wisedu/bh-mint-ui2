@@ -1,6 +1,6 @@
 <template>
   <div class="page-popup">
-    <div class="page-popup-wrapper">
+    <div class="page-popup-wrapper" style="margin-top:40px">
       <mt-button @click.native="popupVisible1 = true" size="large" ref="button" type="default" plain>中部弹出 popup</mt-button>
       <mt-button @click.native="popupVisible2 = true" size="large" type="primary" plain>上侧弹出 popup</mt-button>
       <mt-button @click.native="popupVisible3 = true" size="large" type="warning" plain>右侧弹出 popup</mt-button>
@@ -18,17 +18,17 @@
     <mt-popup v-model="popupVisible3" position="right" class="mint-popup-3" :modal="false">
       <mt-button @click.native="popupVisible3 = false" size="large" type="primary">关闭 popup</mt-button>
     </mt-popup>
-    <mt-popup v-model="popupVisible4" position="bottom" class="mint-popup-4">
+    <mt-popup v-model="popupVisible4" position="bottom">
       <div style="background-color:#e8e8e8;">
         <div style="padding:12px 20px;background-color:#fff;font-size:17px">
           <span style="float:left;">申请陈述：</span>
           <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
-        <mt-cell-group style="margin-bottom:4px;" class="mt-cell-group">
+        <mt-cell-group style="margin-bottom:4px;max-height: 300px;overflow:scroll" class="mt-cell-group">
           <mt-textarea maxlength=100 placeholder="请输入" rows=4 ></mt-textarea>
         </mt-cell-group>
-        <mt-button size="large" @click.native="popupVisible4=false">取消</mt-button>
+        <mt-button size="large" @click.native="messagebox">取消</mt-button>
       </div>
     </mt-popup>
   </div>
@@ -39,9 +39,9 @@
     @component popup {
       @descendent wrapper {
         padding: 0 20px;
-        position: absolute 50% * * *;
+        /*position: absolute 50% * * *;
         width: 100%;
-        transform: translateY(-50%);
+        transform: translateY(-50%);*/
         button:not(:last-child) {
           margin-bottom: 20px;
         }
@@ -112,6 +112,7 @@
 </style>
 
 <script type="text/babel">
+  import { MessageBox } from 'src/index';
   export default {
     data() {
       return {
@@ -151,6 +152,11 @@
     },
 
     methods: {
+      messagebox(){
+        MessageBox.confirm('确定执行此操作?', '提示','').then(action =>{
+          console.log(action)
+        });
+      },
       onDateChange(picker, values) {
         if (values[0] > values[1]) {
           picker.setSlotValue(1, values[0]);
@@ -164,7 +170,7 @@
     },
 
     mounted() {
-      this.buttonBottom = this.$refs.button.$el.getBoundingClientRect().bottom;
+      // this.buttonBottom = this.$refs.button.$el.getBoundingClientRect().bottom;
     }
   };
 </script>

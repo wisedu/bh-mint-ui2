@@ -14,9 +14,9 @@
     @component msgbox {
       @descendent wrapper {
         padding: 0 20px;
-        position: absolute 50% * * *;
+        margin-top: 60px;
+        position: absolute * * * *;
         width: 100%;
-        transform: translateY(-50%);
         button:not(:last-child) {
           margin-bottom: 20px;
         }
@@ -46,7 +46,9 @@
       },
 
       openPrompt() {
-        MessageBox.prompt('', '请输入姓名').then(({ value }) => {
+        MessageBox.prompt('', '请输入姓名',{
+          inputValue: '11111',
+        }).then(({ value }) => {
           if (value) {
             MessageBox.alert(`你的名字是 ${ value }`, '输入成功');
           }

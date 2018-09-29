@@ -1,10 +1,10 @@
 <template>
   <div>
     <mt-header :title="routeName" backgroundColor="mt-bg-theme" color="mt-color-white" v-if="visible" fixed>
-        <router-link to="/" slot="left">
-          <span class="iconfont icon-keyboardarrowleft"></span>
-        </router-link>
-      </mt-header>
+      <router-link to="/" slot="left">
+        <span class="iconfont icon-keyboardarrowleft"></span>
+      </router-link>
+    </mt-header>
     <router-view></router-view>
   </div>
 </template>
@@ -13,7 +13,7 @@
   @reset-global mobile;
 
   html, body {
-    background-color: #fafafa;
+    background-color: #EDF2FB;
     -webkit-overflow-scrolling: touch;
     user-select: none;
   }
