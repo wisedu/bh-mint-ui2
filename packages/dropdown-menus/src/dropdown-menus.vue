@@ -179,9 +179,15 @@
               let obj = {
                 "top":elem.offsetTop
               };
-              while(elem != document.body){
-                elem = elem.offsetParent ;
-                obj.top += elem.offsetTop ;
+              console.log(obj.top)
+              while(elem && elem != document.body){
+                elem = elem.offsetParent;
+                if(elem !== null){
+                  if(elem.offsetParent){
+                    //判断elem的position是否等于'fixed'
+                    obj.top += elem.offsetTop;
+                  }
+                }
               }
               this.shadowTop = obj.top + "px";
               console.log(this.shadowTop)
@@ -196,6 +202,7 @@
                   this.shadowTop = obj.top + contentVisibleHeight + 'px';
                 } else {
                   this.height = contentHeight + 'px';
+                  this.shadowTop = obj.top + contentHeight + 'px';
                 }
               }
             },
