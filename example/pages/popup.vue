@@ -16,13 +16,24 @@
       <p>更新成功</p>
     </mt-popup>
     <mt-popup v-model="popupVisible3" position="right" class="mint-popup-3" :modal="false">
+        <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu" ref="dropDown" @selected-self="selectedSelf">
+          <div v-if="isShowMenu" slot="menu">
+              <mt-box-group v-if="type==='lv1'"  v-model="sexValue" align="right" >
+                <mt-cell-group>
+                    <mt-radiobox align="right" :name="item.value" :disabled="item.disabled"  v-for="(item,index) in menuDatas" :key="index" iconpattern="hook">
+                        {{item.label}}
+                    </mt-radiobox>
+                </mt-cell-group>
+              </mt-box-group>
+          </div>
+        </mt-dropdown-menus>
       <mt-button @click.native="popupVisible3 = false" size="large" type="primary">关闭 popup</mt-button>
     </mt-popup>
     <mt-popup v-model="popupVisible4" position="bottom">
       <div style="background-color:#e8e8e8;">
         <div style="padding:12px 20px;background-color:#fff;font-size:17px">
           <span style="float:left;">申请陈述：</span>
-          <span style="float:right;color:#06c1ae" @click="popupVisible4 = false">提交</span>
+          <span style="float:right;color:#06c1ae" @click="submitHandle">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
         <mt-cell-group style="margin-bottom:4px;max-height: 300px;overflow:scroll" class="mt-cell-group">
@@ -137,6 +148,32 @@
             className: 'slot3',
             textAlign: 'left'
           }
+        ],
+        isShowMenu: false,
+        sexValue: '',
+        type:'',
+        options: [
+          {
+            label: "性别",
+            value: "sex",
+            type: "lv1"
+          }
+        ],
+        menuDatas: [
+          {
+            label: "全部性别",
+            value: "sexAll",
+            originLabel:'性别',
+            originValue:'sex'
+          },
+          {
+            label: "男",
+            value: "man"
+          },
+          {
+            label: "女",
+            value: "woman"
+          }
         ]
       };
     },
@@ -148,14 +185,15 @@
             this.popupVisible2 = false;
           }, 2000);
         }
-      }
+      },
+      sexValue: function(newData, oldData) {
+        this.changeSelectValus(newData, this.menuDatas);
+      },
     },
 
     methods: {
       messagebox(){
-        MessageBox.confirm('确定执行此操作?', '提示','').then(action =>{
-          console.log(action)
-        });
+        this.popupVisible4 =false
       },
       onDateChange(picker, values) {
         if (values[0] > values[1]) {
@@ -166,7 +204,50 @@
       },
       cancel(){
         console.log(" mask hide!")
-      }
+      },
+      submitHandle(){
+        var that=this; 
+        MessageBox.confirm('确定执行此操作?', '提示','').then(action =>{
+          that.popupVisible4 =false
+          console.log(action)
+        });
+      },
+      selectedSelf(){
+        this.isShowMenu = false;
+      },
+      cancel(){
+
+      },
+      getSelectedButtons(item){
+        this.type = item.type;
+        this.isShowMenu = true;
+      },
+      changeSelectValus: function(newData, arr) {
+        var that = this;
+        var selectItem = {};
+        this.isShowMenu = false;
+        if (arr) {
+          arr.forEach(function(item) {
+            if (item.value === newData) {
+              that.$set(item, "active", true);
+              selectItem = item;
+            } else {
+              that.$set(item, "active", false);
+            }
+          });
+        }else {
+          selectItem = {
+            label:newData.title,
+            value:newData.id
+          };
+        }
+        that.options.forEach(function(ele) {
+          if (ele.active) {
+            ele.active = false;
+            ele.label = selectItem.originLabel?selectItem.originLabel:selectItem.label;
+          }
+        });
+      },
     },
 
     mounted() {

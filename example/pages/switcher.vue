@@ -1,7 +1,7 @@
 <template>
   <div class="page-switch">
     <div>
-      <mt-switcher label="标题" v-model="value1" @change="handleChange" wrapperpaddingleft="10px">
+      <mt-switcher label="标题" v-model="value1" @input="handleChange" wrapperpaddingleft="10px">
       </mt-switcher>
       {{value1}}
     </div>

@@ -1,25 +1,28 @@
 <template>
     <div class="calendar">
         <div class="calendar-tools">
-            <span class="calendar-prev" @click="prev">
-                <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g class="transform-group">
-                    <g transform="scale(0.015625, 0.015625)">
-                        <path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path>
+            <div class="today" @click.stop="setToday()">今日</div>
+            <div class="setIcon" @click.stop="setEvent" style="font-size:26px;">
+                <slot name="set">
+                    <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+                    <g class="transform-group">
+                        <g transform="scale(0.015625, 0.015625)">
+                            <path d="M128.194764 929.441442C85.742288 929.441442 51.2 894.408934 51.2 851.471951L51.2 151.063063 25.6 177.009009 896.131998 177.009009C938.35962 177.009009 972.8 211.994665 972.8 254.743324L972.8 838.63063C972.8 852.960181 984.26151 864.576576 998.4 864.576576 1012.53849 864.576576 1024 852.960181 1024 838.63063L1024 254.743324C1024 183.362078 966.662825 125.117117 896.131998 125.117117L25.6 125.117117C11.46151 125.117117 0 136.733513 0 151.063063L0 851.471951C0 923.060267 57.457637 981.333333 128.194764 981.333333L883.2 981.333333C897.33849 981.333333 908.8 969.716939 908.8 955.387388 908.8 941.057837 897.33849 929.441442 883.2 929.441442L128.194764 929.441442ZM281.6 254.846846C281.6 269.176397 293.06151 280.792794 307.2 280.792794 321.33849 280.792794 332.8 269.176397 332.8 254.846846L332.8 60.252252C332.8 45.922702 321.33849 34.306306 307.2 34.306306 293.06151 34.306306 281.6 45.922702 281.6 60.252252L281.6 254.846846ZM716.8 241.873873C716.8 256.203424 728.26151 267.819821 742.4 267.819821 756.53849 267.819821 768 256.203424 768 241.873873L768 47.279279C768 32.949729 756.53849 21.333333 742.4 21.333333 728.26151 21.333333 716.8 32.949729 716.8 47.279279L716.8 241.873873ZM332.8 410.522522C346.93849 410.522522 358.4 398.906127 358.4 384.576576 358.4 370.247027 346.93849 358.63063 332.8 358.63063L192 358.63063C177.86151 358.63063 166.4 370.247027 166.4 384.576576 166.4 398.906127 177.86151 410.522522 192 410.522522L332.8 410.522522ZM614.4 410.522522C628.53849 410.522522 640 398.906127 640 384.576576 640 370.247027 628.53849 358.63063 614.4 358.63063L473.6 358.63063C459.46151 358.63063 448 370.247027 448 384.576576 448 398.906127 459.46151 410.522522 473.6 410.522522L614.4 410.522522ZM870.4 410.522522C884.53849 410.522522 896 398.906127 896 384.576576 896 370.247027 884.53849 358.63063 870.4 358.63063L729.6 358.63063C715.46151 358.63063 704 370.247027 704 384.576576 704 398.906127 715.46151 410.522522 729.6 410.522522L870.4 410.522522ZM332.8 566.198197C346.93849 566.198197 358.4 554.581803 358.4 540.252252 358.4 525.922703 346.93849 514.306306 332.8 514.306306L192 514.306306C177.86151 514.306306 166.4 525.922703 166.4 540.252252 166.4 554.581803 177.86151 566.198197 192 566.198197L332.8 566.198197ZM614.4 566.198197C628.53849 566.198197 640 554.581803 640 540.252252 640 525.922703 628.53849 514.306306 614.4 514.306306L473.6 514.306306C459.46151 514.306306 448 525.922703 448 540.252252 448 554.581803 459.46151 566.198197 473.6 566.198197L614.4 566.198197ZM870.4 566.198197C884.53849 566.198197 896 554.581803 896 540.252252 896 525.922703 884.53849 514.306306 870.4 514.306306L729.6 514.306306C715.46151 514.306306 704 525.922703 704 540.252252 704 554.581803 715.46151 566.198197 729.6 566.198197L870.4 566.198197ZM332.8 721.873873C346.93849 721.873873 358.4 710.257478 358.4 695.927927 358.4 681.598379 346.93849 669.981982 332.8 669.981982L192 669.981982C177.86151 669.981982 166.4 681.598379 166.4 695.927927 166.4 710.257478 177.86151 721.873873 192 721.873873L332.8 721.873873ZM614.4 721.873873C628.53849 721.873873 640 710.257478 640 695.927927 640 681.598379 628.53849 669.981982 614.4 669.981982L473.6 669.981982C459.46151 669.981982 448 681.598379 448 695.927927 448 710.257478 459.46151 721.873873 473.6 721.873873L614.4 721.873873ZM870.4 721.873873C884.53849 721.873873 896 710.257478 896 695.927927 896 681.598379 884.53849 669.981982 870.4 669.981982L729.6 669.981982C715.46151 669.981982 704 681.598379 704 695.927927 704 710.257478 715.46151 721.873873 729.6 721.873873L870.4 721.873873Z" fill="#1E2329"></path>
+                        </g>
                     </g>
-                </g>
-                </svg>
-            </span>
-            <span class="calendar-next"  @click="next">
-                <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g class="transform-group">
-                    <g transform="scale(0.015625, 0.015625)">
-                        <path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z" fill="#5e7a88"></path>
-                    </g>
-                </g>
-                </svg>
-            </span>
+                    </svg>
+                </slot>
+            </div>
             <div class="calendar-info"  @click.stop="changeYear">
+                <span class="calendar-prev" @click="prev">
+                    <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g class="transform-group">
+                        <g transform="scale(0.015625, 0.015625)">
+                            <path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path>
+                        </g>
+                    </g>
+                    </svg>
+                </span>
                 <div class="year">{{year}}年</div>
                 <!-- {{monthString}} -->
                 <div class="month">
@@ -27,7 +30,15 @@
                         <span v-for="m in months">{{m}}</span>
                     </div>
                 </div>
-                <div class="today" @click.stop="setToday()">今日</div>
+                <span class="calendar-next"  @click="next">
+                    <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g class="transform-group">
+                        <g transform="scale(0.015625, 0.015625)">
+                            <path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z" fill="#5e7a88"></path>
+                        </g>
+                    </g>
+                    </svg>
+                </span>
             </div>
         </div>
         <table cellpadding="5">
@@ -39,7 +50,7 @@
         <tbody>
         <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
             <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" @click="select(k1,k2,$event)">
-                <span :class="[{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar)}]">{{child.day}}</span>
+                <span :class="[{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar),'blue': new Date().toLocaleDateString() === [year,month+1,child.day].join('/')}]">{{child.day}}</span>
                 <div class="text" v-if="child.eventName!=undefined &&child.eventName.indexOf('color:')==-1">{{child.eventName}}</div>
                 <div class="text" :class="{'isLunarFestival':child.isLunarFestival,'isGregorianFestival':child.isGregorianFestival}" v-if="lunar">{{child.lunar}}</div>
                 <div class="text tag" v-if="child.eventName&&child.eventName.indexOf('color:')>-1"><span :style="[{background: child.eventName.slice(6)}]" ></span></div>
@@ -125,12 +136,7 @@ export default {
             }
         },
         // 自定义事件
-        events:  {
-            type: Object,
-            default: function(){
-                return {}
-            }
-        },
+        events:  Object
     },
     data() {
         return {
@@ -179,8 +185,11 @@ export default {
         }
     },
     watch:{
-        events(){
-            this.render(this.year,this.month)
+        events: {
+            handler: function(news,olds){
+                this.render(this.year,this.month)
+            },
+            deep: true
         },
         value(){
             this.init();
@@ -585,9 +594,9 @@ export default {
                 })
                 if(day!=undefined ){
                   day.selected=true  
-                }
-                
-            })
+                } 
+            });
+            this.$emit("select",[this.year,this.month+1,this.day])
         },
         // 日期补零
         zeroPad(n){
@@ -596,8 +605,12 @@ export default {
         // 时间标识点
         eventsTag(child){
             return child
+        },
+        // 自定义图标事件
+        setEvent(){
+            this.$emit('set')
         }
-    }
+    }   
 }
 
 </script>
@@ -622,11 +635,6 @@ export default {
 }
 .calendar-tools span{
     cursor: pointer;
-}
-.calendar-prev{
-    width: 14.28571429%;
-    float:left;
-    text-align: center;
 }
 .calendar-info{
     display: flex;
@@ -663,19 +671,32 @@ export default {
     text-align: right;
     margin-right: 2px;
 }
-.calendar-info>div.today{
+.calendar-tools>.today {
+    font-size: 16px;
+    width: 14.28571429%;
+    float: left;
+    color: #52C7CA;
+    text-align: center;
+}
+.calendar-tools>.setIcon {
+    width: 14.28571429%;
+    float: right;
+    text-align: center;
+}
+.calendar-prev{
+    font-size: 24px;
     position: absolute;
     top: 0;
-    right: 54px;
-    color: #52C7CA;
+    left: 60px;
     padding: 0 15px;
 }
 .calendar-next{
-    width: 14.28571429%;
-    float:right;
-    text-align: center;
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    right: 60px;
+    padding: 0 15px;
 }
- 
 .calendar table {
     clear: both;
     width: 100%;
@@ -728,6 +749,9 @@ export default {
 
 .calendar td:not(.disabled) span.red{
     color:#F26666;
+}
+.calendar td:not(.disabled) span.blue{
+    border: 1px solid #52C7CA;
 }
 .calendar td.selected span{
     background-color: #52C7CA;

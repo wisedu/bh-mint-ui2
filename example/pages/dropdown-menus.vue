@@ -2,7 +2,7 @@
     <div class="page-field">
       <div style="height:45px;width:100%;"></div>
         <div style="position:relative">
-            <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu">
+            <mt-dropdown-menus :options="options" @dropDown="getSelectedButtons" @cancel="cancel" :isShowMenu="isShowMenu" ref="dropDown" @selected-self="selectedSelf">
               <div v-if="isShowMenu" slot="menu">
                   <mt-box-group v-if="type==='lv1'" v-model="sexValue" align="right" >
                     <mt-cell-group>
@@ -84,7 +84,7 @@
                   </div>
               </div>
             </mt-dropdown-menus>
-            <mt-cell-group>
+            <mt-cell-group  style="height:560px;overflow:scroll">
               <mt-cell v-for="n in 40" :key="n" :title="'内容 ' + n" cellheight="44px"/>
             </mt-cell-group>
         </div>
@@ -161,6 +161,7 @@ export default {
   },
   methods: {
     changeSelectValus: function(newData, arr) {
+      console.log(newData)
       var that = this;
       var selectItem = {};
       this.isShowMenu = false;
@@ -205,46 +206,6 @@ export default {
               value: "sexAll",
               originLabel:'性别',
               originValue:'sex'
-            },
-            {
-              label: "男",
-              value: "man"
-            },
-            {
-              label: "女",
-              value: "woman"
-            },
-            {
-              label: "男",
-              value: "man"
-            },
-            {
-              label: "女",
-              value: "woman"
-            },
-            {
-              label: "男",
-              value: "man"
-            },
-            {
-              label: "女",
-              value: "woman"
-            },
-            {
-              label: "男",
-              value: "man"
-            },
-            {
-              label: "女",
-              value: "woman"
-            },
-            {
-              label: "男",
-              value: "man"
-            },
-            {
-              label: "女",
-              value: "woman"
             },
             {
               label: "男",
@@ -318,6 +279,7 @@ export default {
       }
     },
     setSelected: function(param) {
+      console.log(param)
       var that = this;
       that.$nextTick(function() {
         that.menuDatas.forEach(function(item) {
@@ -459,6 +421,7 @@ export default {
       });
     },
     postEventToParent: function(data) {
+      console.log(data)
       var that = this;
       if (that.type != "filter") {
         that.options.forEach(function(ele) {
@@ -481,6 +444,9 @@ export default {
     },
     cellClick:function(param,item){
       this.lv2SelectedId = item;
+    },
+    selectedSelf: function(){
+      this.isShowMenu = false;
     }
   }
 };
