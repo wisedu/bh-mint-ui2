@@ -40,7 +40,6 @@
 <script>
 export default {
   name: 'page-navbar',
-
   data() {
     return {
       selected: '1'

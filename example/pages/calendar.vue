@@ -15,8 +15,11 @@
             @selectMonth="selectMonth"
             @selectYear="selectYear"
             @eventTag="eventTag"
-            @set="set">
-            <!-- 自定义图标,这里只需要变更svg图标中的path内容 -->
+            @set="set"
+            @action="action">
+             <!-- 自定义插槽1 -->
+            <span slot="action">收起</span>
+            <!-- 自定义插槽2 图标,这里只需要变更svg图标中的path内容 -->
             <span slot="set">
                 <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
                 <g class="transform-group">
@@ -68,6 +71,12 @@ export default {
         set(){
             // 测试events对象变化,注意请使用以下写法
             this.calendar.events = {'2018-10-10':'color:red'};
+        },
+        action(){
+            var dom = this.$refs.calendar.$refs["calendar-content"];
+            var display = dom.style.display;
+            console.log(display,this.$refs)
+            dom.style.display = display?'':'none';
         }
     }
 };

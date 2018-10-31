@@ -2,6 +2,9 @@
     <div class="calendar">
         <div class="calendar-tools">
             <div class="today" @click.stop="setToday()">今日</div>
+            <div class="action" @click.stop="actionEvent">
+                 <slot name="action"></slot>
+            </div>
             <div class="setIcon" @click.stop="setEvent" style="font-size:26px;">
                 <slot name="set">
                     <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -13,56 +16,61 @@
                     </svg>
                 </slot>
             </div>
-            <div class="calendar-info"  @click.stop="changeYear">
-                <span class="calendar-prev" @click="prev">
-                    <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g class="transform-group">
-                        <g transform="scale(0.015625, 0.015625)">
-                            <path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path>
-                        </g>
-                    </g>
-                    </svg>
-                </span>
-                <div class="year">{{year}}年</div>
+            <div class="calendar-info">
+                <div class="year" @click.stop="changeYear">{{year}}年</div>
                 <!-- {{monthString}} -->
-                <div class="month">
+                <div class="month" @click.stop="changeMonth">
                     <div class="month-inner" :style="{'top':-(this.month*40)+'px'}" name="month">
                         <span v-for="m in months">{{m}}</span>
                     </div>
                 </div>
-                <span class="calendar-next"  @click="next">
-                    <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g class="transform-group">
-                        <g transform="scale(0.015625, 0.015625)">
-                            <path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z" fill="#5e7a88"></path>
-                        </g>
-                    </g>
-                    </svg>
-                </span>
+
             </div>
         </div>
-        <table cellpadding="5">
-        <thead>
-            <tr>
-                <td v-for="week in weeks" class="week">{{week}}</td>
+        <div class="calendar-content" ref="calendar-content">
+            <span class="calendar-prev" @click="prev">
+                <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g class="transform-group">
+                    <g transform="scale(0.015625, 0.015625)">
+                        <path d="M671.968 912c-12.288 0-24.576-4.672-33.952-14.048L286.048 545.984c-18.752-18.72-18.752-49.12 0-67.872l351.968-352c18.752-18.752 49.12-18.752 67.872 0 18.752 18.72 18.752 49.12 0 67.872l-318.016 318.048 318.016 318.016c18.752 18.752 18.752 49.12 0 67.872C696.544 907.328 684.256 912 671.968 912z" fill="#5e7a88"></path>
+                    </g>
+                </g>
+                </svg>
+            </span>
+            <table cellpadding="5">
+            <thead>
+                <tr>
+                    <td v-for="week in weeks" class="week">{{week}}</td>
+                </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
+                <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" @click="select(k1,k2,$event)">
+                    <span :class="[{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar),'blue': new Date().toLocaleDateString() === [year,month+1,child.day].join('/')}]">{{child.day}}</span>
+                    <div class="text" v-if="child.eventName!=undefined &&child.eventName.indexOf('color:')==-1">{{child.eventName}}</div>
+                    <div class="text" :class="{'isLunarFestival':child.isLunarFestival,'isGregorianFestival':child.isGregorianFestival}" v-if="lunar">{{child.lunar}}</div>
+                    <div class="text tag" v-if="child.eventName&&child.eventName.indexOf('color:')>-1"><span :style="[{background: child.eventName.slice(6)}]" ></span></div>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
-            <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" @click="select(k1,k2,$event)">
-                <span :class="[{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar),'blue': new Date().toLocaleDateString() === [year,month+1,child.day].join('/')}]">{{child.day}}</span>
-                <div class="text" v-if="child.eventName!=undefined &&child.eventName.indexOf('color:')==-1">{{child.eventName}}</div>
-                <div class="text" :class="{'isLunarFestival':child.isLunarFestival,'isGregorianFestival':child.isGregorianFestival}" v-if="lunar">{{child.lunar}}</div>
-                <div class="text tag" v-if="child.eventName&&child.eventName.indexOf('color:')>-1"><span :style="[{background: child.eventName.slice(6)}]" ></span></div>
-            </td>
-        </tr>
-        </tbody>
-        </table>
+            </tbody>
+            </table>
+            <span class="calendar-next"  @click="next">
+                <svg width="20" height="20" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g class="transform-group">
+                    <g transform="scale(0.015625, 0.015625)">
+                        <path d="M761.056 532.128c0.512-0.992 1.344-1.824 1.792-2.848 8.8-18.304 5.92-40.704-9.664-55.424L399.936 139.744c-19.264-18.208-49.632-17.344-67.872 1.888-18.208 19.264-17.376 49.632 1.888 67.872l316.96 299.84-315.712 304.288c-19.072 18.4-19.648 48.768-1.248 67.872 9.408 9.792 21.984 14.688 34.56 14.688 12 0 24-4.48 33.312-13.44l350.048-337.376c0.672-0.672 0.928-1.6 1.6-2.304 0.512-0.48 1.056-0.832 1.568-1.344C757.76 538.88 759.2 535.392 761.056 532.128z" fill="#5e7a88"></path>
+                    </g>
+                </g>
+                </svg>
+            </span>
+        </div>
 
         <div class="calendar-years" :class="[{'show':yearsShow}]">
             <span v-for="y in years" @click.stop="selectYear(y)" :class="[{'active':y==year}]">{{y}}</span>
         </div>
- 
+        <div class="calendar-months" :class="[{'show':monthsShow}]">
+            <span v-for="m in months" @click.stop="selectMonth(m)" :class="[{'active':months.indexOf(m)==month}]">{{m}}</span>
+        </div>
     </div>
 </template>
 
@@ -142,6 +150,7 @@ export default {
         return {
             years:[],
             yearsShow:false,
+            monthsShow:false,
             year: 0,
             month: 0,
             day: 0,
@@ -312,7 +321,6 @@ export default {
                     temp[line].push(options)
                 } else { // 单选
                      // console.log(this.lunar(this.year,this.month,i));
-                    
                     let chk = new Date()
                     let chkY = chk.getFullYear()
                     let chkM = chk.getMonth()
@@ -477,7 +485,17 @@ export default {
             } else {
                 this.month = parseInt(this.month) - 1
             }
+            this.day = 1;
             this.render(this.year, this.month)
+            // 遍历当前日找到选中
+            this.days.forEach(v => {
+                let day=v.find(vv => {
+                    return vv.day==this.day && !vv.disabled
+                })
+                if(day!=undefined ){
+                  day.selected=true  
+                } 
+            });
             this.$emit('selectMonth',this.month+1,this.year)
             this.$emit('prev',this.month+1,this.year)
         },
@@ -490,9 +508,19 @@ export default {
             } else {
                 this.month = parseInt(this.month) + 1
             }
-            this.render(this.year, this.month)
+            this.day = 1;
+            this.render(this.year, this.month);
+            // 遍历当前日找到选中
+            this.days.forEach(v => {
+                let day=v.find(vv => {
+                    return vv.day==this.day && !vv.disabled
+                })
+                if(day!=undefined ){
+                  day.selected=true  
+                } 
+            });
             this.$emit('selectMonth',this.month+1,this.year)
-            this.$emit('next',this.month+1,this.year)
+            this.$emit('next',this.month+1,this.year);
         },
         // 选中日期
         select(k1, k2, e) {
@@ -564,6 +592,7 @@ export default {
             }
         },
         changeYear(){
+            if(this.monthsShow) this.monthsShow=false;
             if(this.yearsShow){
                 this.yearsShow=false
                 return false
@@ -574,14 +603,30 @@ export default {
                 this.years.push(i)
             }
         },
+        changeMonth(){
+            if(this.yearsShow) this.yearsShow=false;
+            if(this.monthsShow){
+                this.monthsShow=false
+                return false
+            }
+            this.monthsShow=true;
+        },
         selectYear(value){
             this.yearsShow=false
             this.year=value
             this.render(this.year,this.month)
             this.$emit('selectYear',value)
         },
+        selectMonth(value){
+            this.monthsShow=false;
+            this.month = this.months.indexOf(value);
+            this.render(this.year, this.month);
+            this.$emit('selectMonth',this.month+1,this.year)
+        },
         // 返回今天
         setToday(){
+            this.yearsShow=false;
+            this.monthsShow=false;
             let now = new Date();
             this.year = now.getFullYear()
             this.month = now.getMonth()
@@ -596,7 +641,7 @@ export default {
                   day.selected=true  
                 } 
             });
-            this.$emit("select",[this.year,this.month+1,this.day])
+            this.$emit("select",[this.year,this.zero?this.zeroPad(this.month + 1):this.month + 1,this.zero?this.zeroPad(this.day):this.day]);
         },
         // 日期补零
         zeroPad(n){
@@ -609,6 +654,10 @@ export default {
         // 自定义图标事件
         setEvent(){
             this.$emit('set')
+        },
+        // 自定义事件2
+        actionEvent(){
+            this.$emit('action')
         }
     }   
 }
@@ -640,6 +689,7 @@ export default {
     display: flex;
     font-size:16px;
     text-align: center;
+    position: relative;
 }
 .calendar-info>div.month{
     flex: 1;
@@ -678,29 +728,40 @@ export default {
     color: #52C7CA;
     text-align: center;
 }
-.calendar-tools>.setIcon {
+.calendar-tools>.action {
+    font-size:12px;
+    float: right;
+    text-align: center;
     width: 14.28571429%;
+}
+.calendar-tools>.setIcon {
+    width: 40px;
     float: right;
     text-align: center;
 }
 .calendar-prev{
     font-size: 24px;
     position: absolute;
-    top: 0;
-    left: 60px;
-    padding: 0 15px;
+    top: 50%;
+    left: 0;
+    padding: 0 2px;
+    transform: translateY(-50%);
 }
 .calendar-next{
     font-size: 24px;
     position: absolute;
-    top: 0;
-    right: 60px;
-    padding: 0 15px;
+    top: 50%;
+    right: 0;
+    padding: 0 2px;
+    transform: translateY(-50%);
+}
+.calendar-content {
+    position: relative;
+    padding: 0 24px;
 }
 .calendar table {
     clear: both;
     width: 100%;
-    margin-bottom:10px;
     border-collapse: collapse;
     color: #1E2329;
 }
@@ -718,7 +779,7 @@ export default {
     vertical-align: top;
 }
 .calendar td.week{
-    font-size:10px;
+    font-size:12px;
     pointer-events:none !important;
     cursor: default !important;    
 }
@@ -772,7 +833,7 @@ export default {
 .calendar td .tag span{
     position: absolute;
     top: 5px;
-    left: 23px;
+    left: calc(50% - 3px);
     width: 6px;
     height: 6px;
     border-radius: 50%;
@@ -792,7 +853,7 @@ export default {
 }
 .calendar thead td {
   text-transform: uppercase;
-  height:30px;
+  height:38px;
   vertical-align: middle;
 }
 .calendar-button{
@@ -817,10 +878,10 @@ export default {
     background:#efefef;
     color:#666;
 }
-.calendar-years{
+.calendar-years,.calendar-months{
     position: absolute;
     left:0px;
-    top:60px;
+    top:40px;
     right:0px;
     bottom:0px;
     background:#fff;
@@ -834,7 +895,7 @@ export default {
     pointer-events: none;
     transform: translateY(-10px);
 }
-.calendar-years.show{
+.calendar-years.show, .calendar-months.show{
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0px);
@@ -849,7 +910,17 @@ export default {
     border:1px solid #fbfbfb;
     color: #1E2329;
 }
-.calendar-years>span.active{
+.calendar-months>span {
+    margin:1px 5px;
+    display: inline-block;
+    width: 20%;
+    line-height: 30px;
+    border-radius: 20px;
+    text-align:center;
+    border:1px solid #fbfbfb;
+    color: #1E2329;
+}
+.calendar-years>span.active, .calendar-months>span.active{
     border:1px solid #52C7CA;
     background-color: #52C7CA;
     color:#fff; 

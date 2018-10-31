@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-navbar mt-bg-lv3 mt-bColor-grey-lv4" :class="{ 'is-fixed': fixed }">
+  <div class="mint-navbar mt-bg-lv3 mt-bColor-grey-lv4" :class="[{ 'is-fixed': fixed }]">
     <slot></slot>
   </div>
 </template>
