@@ -80,10 +80,10 @@ export default {
             var display = dom.style.display;
             if(display){
                 dom.style.display = '';
-                this.shutYMOption = false;
+                this.calendar.shutYMOption = false;
             }else{
                 dom.style.display = 'none';
-                this.shutYMOption = true;
+                this.calendar.shutYMOption = true;
             }
         }
     }
