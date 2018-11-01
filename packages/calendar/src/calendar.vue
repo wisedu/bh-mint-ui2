@@ -144,7 +144,12 @@ export default {
             }
         },
         // 自定义事件
-        events:  Object
+        events:  Object,
+        // 是否关闭年月选择
+        shutYMOption: {
+            type: Boolean,
+            default: false
+        }
     },
     data() {
         return {
@@ -487,17 +492,9 @@ export default {
             }
             this.day = 1;
             this.render(this.year, this.month)
-            // 遍历当前日找到选中
-            this.days.forEach(v => {
-                let day=v.find(vv => {
-                    return vv.day==this.day && !vv.disabled
-                })
-                if(day!=undefined ){
-                  day.selected=true  
-                } 
-            });
-            this.$emit('selectMonth',this.month+1,this.year)
-            this.$emit('prev',this.month+1,this.year)
+            this.locateSelectDate();
+            this.$emit('selectMonth',this.year,this.month+1,this.day)
+            this.$emit('prev',this.year,this.month+1,this.day);
         },
         //  下月
         next(e) {
@@ -510,17 +507,9 @@ export default {
             }
             this.day = 1;
             this.render(this.year, this.month);
-            // 遍历当前日找到选中
-            this.days.forEach(v => {
-                let day=v.find(vv => {
-                    return vv.day==this.day && !vv.disabled
-                })
-                if(day!=undefined ){
-                  day.selected=true  
-                } 
-            });
-            this.$emit('selectMonth',this.month+1,this.year)
-            this.$emit('next',this.month+1,this.year);
+            this.locateSelectDate();
+            this.$emit('selectMonth',this.year,this.month+1,this.day)
+            this.$emit('next',this.year,this.month+1,this.day);
         },
         // 选中日期
         select(k1, k2, e) {
@@ -592,6 +581,7 @@ export default {
             }
         },
         changeYear(){
+            if(this.shutYMOption) return;
             if(this.monthsShow) this.monthsShow=false;
             if(this.yearsShow){
                 this.yearsShow=false
@@ -604,6 +594,7 @@ export default {
             }
         },
         changeMonth(){
+            if(this.shutYMOption) return;
             if(this.yearsShow) this.yearsShow=false;
             if(this.monthsShow){
                 this.monthsShow=false
@@ -614,14 +605,18 @@ export default {
         selectYear(value){
             this.yearsShow=false
             this.year=value
+            this.day = 1;
             this.render(this.year,this.month)
-            this.$emit('selectYear',value)
+            this.locateSelectDate();
+            this.$emit('selectYear',value,this.month+1,this.day)
         },
         selectMonth(value){
             this.monthsShow=false;
             this.month = this.months.indexOf(value);
+            this.day = 1;
             this.render(this.year, this.month);
-            this.$emit('selectMonth',this.month+1,this.year)
+            this.locateSelectDate();
+            this.$emit('selectMonth',this.year,this.month+1,this.day)
         },
         // 返回今天
         setToday(){
@@ -632,16 +627,19 @@ export default {
             this.month = now.getMonth()
             this.day = now.getDate()
             this.render(this.year,this.month)
-            // 遍历当前日找到选中
+            this.locateSelectDate();
+            this.$emit("select",[this.year,this.zero?this.zeroPad(this.month + 1):this.month + 1,this.zero?this.zeroPad(this.day):this.day]);
+        },
+        // 遍历当前日找到选中
+        locateSelectDate(){
             this.days.forEach(v => {
                 let day=v.find(vv => {
                     return vv.day==this.day && !vv.disabled
                 })
                 if(day!=undefined ){
-                  day.selected=true  
+                    day.selected=true  
                 } 
             });
-            this.$emit("select",[this.year,this.zero?this.zeroPad(this.month + 1):this.month + 1,this.zero?this.zeroPad(this.day):this.day]);
         },
         // 日期补零
         zeroPad(n){

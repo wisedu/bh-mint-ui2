@@ -10,7 +10,8 @@
             :begin="calendar.begin" 
             :end="calendar.end" 
             :weeks="calendar.weeks" 
-            :months="calendar.months" 
+            :months="calendar.months"
+            :shutYMOption="calendar.shutYMOption" 
             @select="select"
             @selectMonth="selectMonth"
             @selectYear="selectYear"
@@ -50,7 +51,8 @@ export default {
                     '2018-10-8':'color:red',
                     '2018-10-18':'标注',
                     '2018-10-19':'$666',
-                }
+                },
+                shutYMOption: false
             },
         }
     },
@@ -58,11 +60,11 @@ export default {
         select(start,end){
             console.log(start,end);
         },
-        selectMonth(month,year){
-            console.log(year,month)
+        selectMonth(year,month,day){
+            console.log(year,month,day)
         },
-        selectYear(year){
-            console.log(year)
+        selectYear(year,month,day){
+            console.log(year,month,day)
         },
         eventTag(tag){
             console.log(tag)
@@ -73,10 +75,16 @@ export default {
             this.calendar.events = {'2018-10-10':'color:red'};
         },
         action(){
+            // 获取日历主体标签
             var dom = this.$refs.calendar.$refs["calendar-content"];
             var display = dom.style.display;
-            console.log(display,this.$refs)
-            dom.style.display = display?'':'none';
+            if(display){
+                dom.style.display = '';
+                this.shutYMOption = false;
+            }else{
+                dom.style.display = 'none';
+                this.shutYMOption = true;
+            }
         }
     }
 };
