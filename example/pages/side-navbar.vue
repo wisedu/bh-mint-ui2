@@ -3,9 +3,10 @@
     <mt-cell title="当前选中" wrapperpaddingleft="20px">{{ selected }}</mt-cell>
     <mt-side-navbar v-model="selected"> 
       <div slot="nav">
-        <mt-tab-item id="1" >选项一</mt-tab-item>
+        <mt-tab-item  v-for="item in items" :id="item.id" :key="item.id">{{item.label}}</mt-tab-item>
+<!--         <mt-tab-item id="1" >选项一</mt-tab-item>
         <mt-tab-item id="2" >选项二</mt-tab-item>
-        <mt-tab-item id="3" >选项三</mt-tab-item>
+        <mt-tab-item id="3" >选项三</mt-tab-item> -->
       </div>
       <mt-tab-container v-model="selected" slot="content">
         <mt-tab-container-item id="1">
@@ -35,7 +36,12 @@ export default {
 
   data() {
     return {
-      selected: '1'
+      selected: '1',
+      items: [
+        { id: '1', label: '选项一'},
+        { id: '2', label: '选项二'},
+        { id: '3', label: '选项三'}
+      ]
     };
   }
 };

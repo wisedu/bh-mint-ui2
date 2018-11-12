@@ -1,11 +1,11 @@
 <template>
-  <div class="mint-side-navbar" :style="{height:sideNavbarHeight}">
+  <div class="mint-side-navbar" :style="[{height:sideNavbarHeight}]">
 <!--     <div class="side-nav" v-bind:style="{width:width}"> -->
-      <div class="navbar mt-bg-lv1" :class="{ 'is-fixed': fixed }" v-bind:style="{width:width,top:top}">
+      <div class="navbar mt-bg-lv1" :class="{ 'is-fixed': fixed }" v-bind:style="[{width:width,top:top}]">
         <slot name="nav"></slot>
       </div>
 <!--     </div> -->
-    <div class="nav-content" :style="{marginLeft:marginLeft}">
+    <div class="nav-content" :style="[{marginLeft:marginLeft}]">
       <slot name="content"></slot>
     </div>
   </div>
@@ -71,7 +71,6 @@ export default {
   methods: {
     resetPosition() {
       let elem = this.$el;
-      console.log(elem.offsetHeight)
       let obj = {
         "top":elem.offsetTop
       };

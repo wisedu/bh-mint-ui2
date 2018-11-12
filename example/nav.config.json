@@ -230,12 +230,17 @@
       {
         "path": "/image",
         "name": "Image",
-        "icon": "navebar"
+        "icon": "img"
       },
       {
         "path": "/image-clip",
         "name": "ImageClip",
-        "icon": "navebar"
+        "icon": "img"
+      },
+      {
+        "path": "/image-preview",
+        "name": "ImagePreview",
+        "icon": "img"
       },
       {
         "path": "/fixed-button",
