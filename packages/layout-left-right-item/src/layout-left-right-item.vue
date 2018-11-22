@@ -36,7 +36,6 @@ export default {
 
                 return '1 1 '+percentage;
             }else{
-              console.log(percentage)
                 return percentage;
             }
         }
