@@ -11,6 +11,36 @@ var MAIN_TEMPLATE = `{{include}}
 import '../src/style/reset.css';
 import merge from './utils/merge';
 
+// 兼容部分低版本手机 Object.assign 为undefined;(vivo android 5.1.1) 使用组件：日历组件  报告人：王永建 2018/11/1
+if (typeof Object.assign !== 'function') {
+// Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, 'assign', {
+    value: function assign(target, varArgs) { // .length of function is 2
+      if (target == null) { // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) { // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
+  });
+}
+
 const version = '{{version}}';
 const install = function(Vue, config = {}) {
   if (install.installed) return;

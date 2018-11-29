@@ -45,7 +45,11 @@ export default {
     return {
       steps: []
     };
+  },
+  mounted() {
+    // TODO
   }
+
 };
 </script>
 <style lang="css">
