@@ -1,6 +1,7 @@
 <template>
   <x-cell
-    @click.native=""
+    v-clickoutside:touchstart="swipeMove"
+    @click.native="swipeMove()"
     @touchstart.native="startDrag"
     @touchmove.native="onDrag"
     @touchend.native="endDrag"
@@ -21,7 +22,7 @@
         class="mint-cell-swipe-button"
         v-for="btn in right"
         :style="btn.style"
-        @click.prevent.stop="btn.handler && btn.handler($event)"
+        @click.prevent.stop="btn.handler && btn.handler(), swipeMove()"
         >
         {{btn.content}}
         <slot name="right"></slot>
@@ -107,6 +108,7 @@ export default {
   },
   watch:{
     'check':function(newds,oldds){
+      // console.log(newds)
       if (newds) {
         this.offsetLeft = this.leftWidth;
         this.swipeLeaveTransition(-1);
@@ -250,6 +252,7 @@ export default {
 
   @component-namespace mint {
     @component cell-swipe {
+      touch-action: none;
       @descendent buttongroup {
         height: 100%;
       }
