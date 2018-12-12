@@ -145,7 +145,7 @@ export default {
     },
     titlewidth:{
       type:String,
-      default:''
+      default:'20%'
     },
     titlepaddingtop:String,
     titlepaddingright:String,
