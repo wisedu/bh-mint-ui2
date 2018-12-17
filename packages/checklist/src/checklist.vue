@@ -1,7 +1,7 @@
 <template>
   <div @change="$emit('change', currentValue, $event)" class="mint-checklist" :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
-    <x-cell v-for="option in options">
+    <x-cell v-for="option in options" :titlewidth="titlewidth">
       <label class="mint-checklist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"
@@ -104,7 +104,11 @@ export default {
      * @valueType object
       */
     value: Array,
-    square: Boolean
+    square: Boolean,
+    titlewidth:{
+      type:String,
+      default:''
+    },
   },
 
   components: { XCell },
