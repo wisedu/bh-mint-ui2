@@ -208,11 +208,14 @@
             },
             setSelected:function(param,index,evt){
                 if(this.selectedStorage>-1 && this.selectedStorage === index && param.active){
-                  this.$nextTick(function(){
-                    this.$set(param,'active',false);
-                  })
-                  this.selectedStorage = -1;
-                  this.$emit('selected-self',false)
+//                  this.$nextTick(function(){
+//                    this.$set(param,'active',false);
+//                  })
+//                  this.selectedStorage = -1;
+//                  this.$emit('selected-self',false)
+
+                    //当该项处于展开状态，再次点击后，该项收起    RES-329
+                    this.cancelShadow();
                   return
                 }else{
                   this.selectedStorage = index;
