@@ -23,7 +23,7 @@
         <!-- multi-select 模板 -->
         <template  v-else-if="selectType === 'multi-select'">
           <div v-if="!getOptions_select(options).length" class="mint-no-data"><img src="http://cdnres.campusphere.cn/images/Nodata.png"></div>
-          <mt-box-group v-else="!getOptions_select(options).length" v-model="currentValue" :style="{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '49px'}">
+          <mt-box-group v-else="!getOptions_select(options).length" v-model="currentValue" :style="[{height: cHeight + 'px', overflow: 'auto', 'padding-bottom': '49px'}]">
             <mt-cell-group>
                 <mt-checkbox :name="item.value" :disabled="item.disabled" v-for="item in getOptions_select(options)" :key="item.value" :iconpattern="iconpattern" :align="align">
                     {{item.label}}

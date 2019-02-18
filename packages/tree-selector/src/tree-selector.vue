@@ -7,9 +7,10 @@
       <bread :data="breadData" :active-id="(activePids.length ? activePids[activePids.length - 1] : '')" @item-click="handleBreadClick"></bread>
       <p class="mint-tree-selector-loading" v-show="scope.options.length === 0">暂无数据</p>
       <template v-if="!multiple" v-show="scope.options.length > 0">
-        <mt-cell-group>
+        <mt-cell-group :style="[{height:parentSelectable?'calc(100% - 88px)':null,overflow:'auto'}]">
           <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1}" :key="item.id" :title="item.name" @click.native.stop="handleItemClick(item, $event)" :is-link="!!item.isParent"></mt-cell>
         </mt-cell-group>
+        <mt-button size="large" type="primary" v-if="parentSelectable"  @click="handleConfirmClick('single')">确定</mt-button> 
       </template>
       <template v-else-if="multiple" v-show="scope.options.length > 0">
         <tree-checkbox-list class="mint-tree-selector-multi-list" :options="scope.options" :parentSelectable="parentSelectable" @item-click="handleItemClick" v-model="currentValue" :iconpattern="iconpattern"></tree-checkbox-list>
@@ -135,6 +136,11 @@ export default {
     }
   },
   computed: {
+    cttHeight(){
+      if(this.parentSelectable){
+        return calc(100% - 87)+'px'
+      }
+    },
     activeOptions() {
       let pid = this.activePids[this.activePids.length - 1]
       if (pid === undefined) pid = ''
@@ -178,7 +184,6 @@ export default {
         }
       },
       set(val) {
-        console.log(val)
         if (val === '' || val.length === 0) this.$emit('input', '')
         if (this.multiple) {
           this.$emit('input', val.join(','));
@@ -261,8 +266,11 @@ export default {
 
       return result
     },
-    // 多选树点击footer确认按钮
-    handleConfirmClick () {
+    // 单选树(single)父级可选确定按钮/多选树点击footer确认按钮
+    handleConfirmClick (flag) {
+      if(flag === 'single'&&this.activePids.length){
+        this.currentValue = this.activePids[this.activePids.length - 1]
+      }
       window.history.back()
     }
   },

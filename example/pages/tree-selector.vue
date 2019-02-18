@@ -90,9 +90,12 @@
     },
 
     watch:{
-        multiValue:function(e){
-            console.log(e)
-        }
+      multiValue:function(e){
+        console.log(e)
+      },
+      value:function(val){
+        console.log(val)
+      }
     },
     mounted() {
         //this.loadOptions();

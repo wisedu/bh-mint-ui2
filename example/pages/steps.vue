@@ -8,10 +8,6 @@
         </mt-steps>
         <br><br>
         <mt-steps direction="vertical" description="步骤的描述" title="物流进度">
-            <mt-step>
-                <h3>【城市】物流状态3</h3>
-                <p slot="left">12:40<br>2016-07-12</p>
-            </mt-step>
             <mt-step :status="status">
                 <h3>【城市】物流状态2</h3>
                 <p slot="left">10:00<br>2016-07-11</p>
@@ -28,7 +24,7 @@
             </mt-step>
         </mt-steps>
         <br><br>
-        <mt-steps direction="vertical" :paddingLeft="paddingLeft">
+        <mt-steps direction="vertical" >
             <mt-step>
                 <h3>【城市】物流状态3</h3>
             </mt-step>
