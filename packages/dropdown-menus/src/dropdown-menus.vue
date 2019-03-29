@@ -105,16 +105,23 @@
     var bodyEl = document.body
     var top = 0
     function stopBodyScroll (isFixed) {
+        let appDom = document.querySelector('#app');
       if (isFixed) {
-        top = window.scrollY
-        bodyEl.style.width = '100%'
-        bodyEl.style.position = 'fixed'
-        bodyEl.style.top = -top + 'px'
+        top = window.scrollY;
+        bodyEl.style.width = '100%';
+        bodyEl.style.position = 'fixed';
+        bodyEl.style.top = -top + 'px';
+          if(appDom){
+              appDom.style.overflow = 'hidden';
+          }
       } else {
         bodyEl.style.position = ''
         bodyEl.style.top = ''
 
         window.scrollTo(0, top) // 回到原先的top
+          if(appDom){
+              appDom.style.overflow = '';
+          }
       }
     }
     export default {
@@ -153,6 +160,10 @@
             }else{
               stopBodyScroll(false)
               // this.height = 0;
+                var that = this;
+                that.$nextTick(function () {
+                    that.$emit('dropDownHidden');
+                });
             }
           }
         },
@@ -179,7 +190,6 @@
               let obj = {
                 "top":elem.offsetTop
               };
-              console.log(obj.top)
               while(elem && elem != document.body){
                 elem = elem.offsetParent;
                 if(elem !== null){
@@ -190,7 +200,6 @@
                 }
               }
               this.shadowTop = obj.top + "px";
-              console.log(this.shadowTop)
               var contentVisibleHeight = window.innerHeight - obj.top;
               //var contentVisibleHeight = window.screen.height - obj.top;
               //this.maxHeight = contentVisibleHeight + "px";
