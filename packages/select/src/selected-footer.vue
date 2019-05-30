@@ -11,7 +11,7 @@
         <span class="mt-color-grey">已选({{value.length}})</span>
         <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm mt-color-theme" href="javascript:void(0)">确定</a>
       </div>
-      <div class="mint-selected-footer-list"  :style="{'max-height': listHeight + 'px'}">
+      <div class="mint-selected-footer-list"  :style="[{'max-height': listHeight + 'px'}]">
         <mt-box-group v-model="currentValue">
           <mt-cell-group>
               <mt-checkbox :name="item.value" v-for="item in listData" :key="item.value" :iconpattern="iconpattern" :align="align">

@@ -277,7 +277,7 @@
           const month = this.getTrueValue(values[1]);
           const maxDate = this.getMonthEndDay(year, month);
           //wangyongjian 2018-3-7 添加（年月场景选项）type=dateym
-          let date = (new Date()).getDate();
+          let date = 1;
           if(this.type !== 'dateym'){
             //wangyongjian 2018-1-26 校正月份对应的日期
             let mouthArray = [];

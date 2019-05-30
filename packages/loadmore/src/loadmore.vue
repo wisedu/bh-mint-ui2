@@ -1,6 +1,6 @@
 <template>
   <div class="mint-loadmore">
-    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': transform }">
+    <div class="mint-loadmore-content" :class="[{ 'is-dropped': topDropped || bottomDropped}]" :style="[{ 'transform': transform }]">
       <slot name="top">
         <div class="mint-loadmore-top" v-if="topMethod">
           <spinner v-if="topStatus === 'loading'" class="mint-loadmore-spinner" :size="20" type="fading-circle"></spinner>
