@@ -438,6 +438,12 @@ export default {
     },
     sureFilter: function() {
       console.log(this.multiValue);
+      this.$refs.dropDown.selectedStorage = -1;
+      this.options = this.options.map(function(option) {
+        option.active = false;
+        return option;
+      });
+      this.isShowMenu = false;
     },
     cancel:function(){
         this.isShowMenu = false;

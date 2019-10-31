@@ -165,7 +165,6 @@
         default: 'text'
       }
     },
-
     computed: {
       confirmButtonClasses() {
         let classes = 'mint-msgbox-btn mint-msgbox-confirm ' + this.confirmButtonClass;

@@ -36,6 +36,7 @@
           <span style="float:right;color:#06c1ae" @click="submitHandle">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
+        <div @click="addPopup">新增popup</div>
         <mt-cell-group style="margin-bottom:4px;max-height: 300px;overflow:scroll" class="mt-cell-group">
           <mt-textarea maxlength=100 placeholder="请输入" rows=4 ></mt-textarea>
         </mt-cell-group>
@@ -174,7 +175,8 @@
             label: "女",
             value: "woman"
           }
-        ]
+        ],
+        newPopup: false
       };
     },
 
@@ -192,6 +194,9 @@
     },
 
     methods: {
+      addPopup() {
+        this.newPopup = true;
+      },
       messagebox(){
         this.popupVisible4 =false
       },

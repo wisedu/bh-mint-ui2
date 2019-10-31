@@ -15,14 +15,14 @@
       :minDate="minDate"
       :maxDate="maxDate"
       @maskCallback="cancel"
+
       @confirm="handleChange"
       @cancel="cancel">
     </mt-datetime-picker>
     <mt-datetime-picker
       ref="picker2"
-      type="date"
+      type="dateym"
       :minDate="minDate"
-      :maxDate="maxDate"
       v-model="currentDate2"
       @confirm="handleChange"
       @cancel="cancel">
@@ -65,11 +65,11 @@
       return {
         minHour: 10,
         maxHour: 20,
-        minDate: new Date(2008,0,31),
+        minDate: new Date(2019,9,31),
         maxDate: new Date(2028, 10, 1),
         // currentDate1: new Date(2018, 5, 1,10,11),
         currentDate1:"2018-12-31 12:00",
-        currentDate2: "2018-12-31",
+        currentDate2: '',
         currentDate3: "12:00"
       };
     },
@@ -80,6 +80,7 @@
       },
 
       handleChange(value) {
+        console.log(this.currentDate2);
         Toast({
           message: '已选择 ' + value.toString(),
           position: 'bottom'

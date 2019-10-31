@@ -262,10 +262,47 @@
       isShortMonth(month) {
         return [4, 6, 9, 11].indexOf(month) > -1;
       },
+      dateFormat(date, fmt) {
+        var o = {
+          "M+": date.getMonth() + 1,  //月 
+          "d+": date.getDate(),       //日 
+          "h+": date.getHours(),      //时 
+          "m+": date.getMinutes()     //分 
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+          if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+      },
       onConfirm(val, index, picker) {
         this.visible = false;
         this.maskFunAvailable = false;
-        this.$emit('confirm', this.innerValue, picker);
+        // 解决val值与this.innerValue不一致的问题，当且仅当minDate=new Date()时出现
+        var str = val.join('/');
+        switch(this.type) {
+          case "datetime": 
+            str = str.slice(0,10) + " " + str.slice(11).replace(/\//g, ':');
+            if(str !== this.dateFormat(this.innerValue, 'yyyy/MM/dd hh:mm')) {
+              this.innerValue = new Date(str);
+              this.$emit('input', this.innerValue);
+            }
+            break;
+          case "dateym":
+            if(str !== this.dateFormat(this.innerValue, 'yyyy/MM')) {
+              this.innerValue = new Date(str);
+              this.$emit('input', this.innerValue);
+            }
+            break;
+          case "date":
+            if(str !== this.dateFormat(this.innerValue, 'yyyy/MM/dd')) {
+              this.innerValue = new Date(str);
+              this.$emit('input', this.innerValue);
+            }
+            break;
+          case "time":
+            break;
+        }
+        this.$emit('confirm', this.innerValue, picker, val);
       },
       onChange(picker, org_value, index) {
         const values = picker.getValues();

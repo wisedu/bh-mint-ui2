@@ -26,7 +26,7 @@
 export default {
   data(){
     return {
-      current1: "2017-11",
+      current1: "2017年11月",
       current2: "2017-11-12"
     }
   },
