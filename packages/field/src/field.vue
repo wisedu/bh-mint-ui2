@@ -238,21 +238,25 @@ export default {
           padding: 10px 0;
         }
 
-        .mint-cell-value {
-          padding: 5px 0;
-        }
         @when vertical {
           .mint-cell-title{
-            width: 100%;
-            margin:0;
             padding: 10px 0 0;
           }
-          .mint-cell-value{
-            width: 100%;
-          }
-          .mint-cell-wrapper{
-            flex-direction: column;
-          }
+        }
+      }
+
+      @when vertical {
+        .mint-cell-title{
+          width: 100%;
+          margin:0;
+          padding: 10px 0 0;
+        }
+        .mint-cell-value{
+          width: 100%;
+          padding: 5px 0;
+        }
+        .mint-cell-wrapper{
+          flex-direction: column;
         }
       }
 

@@ -14,7 +14,7 @@
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
       backface-visibility: hidden;
-      transition: .2s ease-out;
+      transition:  .2s ease-out;
 
       @descendent top {
         top: 0;
@@ -90,22 +90,6 @@
     mixins: [Popup],
 
     props: {
-      modal: {
-        default: true
-      },
-
-      modalFade: {
-        default: false
-      },
-
-      lockScroll: {
-        default: true
-      },
-
-      closeOnClickModal: {
-        default: true
-      },
-
       popupTransition: {
         type: String,
         default: 'popup-slide'

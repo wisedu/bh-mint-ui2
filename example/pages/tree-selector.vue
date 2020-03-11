@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top:45px;" id="singleSelect">
     <mt-cell-group>
-        <mt-tree-selector label="树形选择器" :options="options" v-model="value" defName="aaa"  @selector-click="loadOptions" displayType="-" required parentSelectable></mt-tree-selector>
+        <mt-tree-selector label="树形选择器" :options="options" v-model="value" defName=""  @selector-click="loadOptions" displayType="-" required parentSelectable direction="vertical"></mt-tree-selector>
         <mt-tree-selector label="树形多选择器" multiple :options="options" v-model="multiValue" defName="MMM"  displayType="-" @selector-click="loadOptions" required></mt-tree-selector>
         <mt-tree-selector label="树形多选择器（父级可选）" multiple parentSelectable :options="options" v-model="multiValue"  @selector-click="loadOptions" required></mt-tree-selector>
         <mt-tree-selector label="树形多选择器" multiple :options="options" v-model="multiValue"  @selector-click="loadMultiOptionsEmap" disabled></mt-tree-selector>
@@ -82,7 +82,7 @@
 
     data() {
       return {
-        value: '00001',
+        value: '',
         options: [],
         multiValue: '000010,800',
         multiOptions: []

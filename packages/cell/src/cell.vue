@@ -4,7 +4,10 @@
     <div class="mint-cell-left">
       <slot name="left"></slot>
     </div>
-    <div class="mint-cell-wrapper mt-bColor-grey-lv5" :class="[{'mint-cell-no-top-line':isCell},{'mint-cell-no-bottom-line':isGroupCell}]" :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}">
+    <div 
+      class="mint-cell-wrapper mt-bColor-grey-lv5" 
+      :class="[{'mint-cell-no-top-line':isCell, 'is-vertical': direction === 'vertical', 'mint-cell-no-bottom-line':isGroupCell}]" 
+      :style="{'padding-left':wrapperpaddingleft,'padding-right':wrapperpaddingright?wrapperpaddingright:wrapperpaddingrightdefined}" >
       <div class="mint-cell-title" :style="{'flex':titlewidth,'min-width':titlewidth,'padding-top':titlepaddingtop,'padding-right':titlepaddingright,'padding-bottom':titlepaddingbottom,'padding-left':titlepaddingleft}">
         <slot name="icon">
           <i v-if="icon" class="iconfont" :class="'icon-' + icon"></i>
@@ -158,13 +161,11 @@ export default {
     titlepaddingright:String,
     titlepaddingbottom:String,
     titlepaddingleft:String,
-    required:{
-      type:Boolean,
-      default:false
-    },
+    required: Boolean,
     valueAlign:String,
     readonly:Boolean,
-    disabled:Boolean
+    disabled:Boolean,
+    direction: String
   },
 
   computed: {
@@ -298,14 +299,6 @@ export default {
           top: 4px;
         };
       }
-/*
-      &:last-child {
-        border-bottom-width: 1px;
-        border-bottom-style: solid;
-        background-size: 100% 1px;
-        background-repeat: no-repeat;
-        background-position: bottom;
-      }*/
 
       @descendent wrapper {
         border-top-width: 1px;
@@ -323,6 +316,28 @@ export default {
         line-height: 1;
         min-height: inherit;
         width: 100%;
+
+         @when vertical {
+          flex-direction: column;
+
+          >.mint-cell-title {
+            width: 100%;
+            margin: 0;
+            padding: 10px 20px 0 0;
+          }
+          >.mint-cell-value {
+            width: 100%;
+            padding: 5px 20px 5px 0;
+            margin: 0;
+            justify-content: flex-start;
+          }
+          >.mint-cell-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-10px);
+          }
+        }
       }
 
       @descendent mask {

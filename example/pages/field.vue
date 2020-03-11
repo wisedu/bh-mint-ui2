@@ -1,23 +1,23 @@
 <template>
-  <div class="page-field" style="margin-top:60px">
+  <div class="page-field" style="margin-top:44px">
     <mt-cell-group>
       <!--start
       @name normal
       -->
-      <mt-field label="用户名五个字" placeholder="请输入用户名" required @focus="handleFocus"  @blur="handleFocus"></mt-field>
+      <mt-field label="用户名五个字" placeholder="请输入用户名" required @focus="handleFocus"  @blur="handleFocus" direction="vertical"></mt-field>
 
       <!--end-->
 
       <!--start
       @name normal-max-length
       -->
-      <mt-field label="用户名" placeholder="请输入用户名，长度限制为10" :attr="{ maxlength: 10 }"></mt-field>
+      <mt-field label="用户名" placeholder="请输入用户名，长度限制为10" :attr="{ maxlength: 10 }" direction="vertical"></mt-field>
       <!--end-->
 
       <!--start
       @name email
       -->
-      <mt-field label="邮箱" placeholder="请输入邮箱" type="email"></mt-field>
+      <mt-field label="邮箱" placeholder="请输入邮箱" type="email" direction="vertical"></mt-field>
       <!--end-->
 
       <!--start
@@ -82,7 +82,7 @@
       <!--start
       @name normal-error
       -->
-      <mt-field label="邮箱" placeholder="失败状态" state="error"></mt-field>
+      <mt-field label="邮箱" placeholder="失败状态" state="error" direction="vertical"></mt-field>
       <!--end-->
 
       <!--start

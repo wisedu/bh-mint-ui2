@@ -2,16 +2,16 @@
   <div class="page-select">
     <h1 class="page-item-title">Select 快捷语法糖</h1>
     <mt-cell-group>
-      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick" required>
+      <mt-select label="单选" :options="singleSelectOptions" v-model="singleSelectValue" select-type="select" @selector-click="singleSelectClick" required direction="vertical">
       </mt-select>
-      <p>{{singleSelectValue}}</p>
+<!--       <p>{{singleSelectValue}}</p> -->
     </mt-cell-group>
 
     <h1 class="page-item-title">Multi Select 快捷语法糖</h1>
     <mt-cell-group>
       <mt-select label="多选" :options="multiSelectOptions" v-model="multiSelectValue" select-type="multi-select" @selector-click="multiSelectClick" iconpattern="hook">
       </mt-select>
-      <p>{{multiSelectValue}}</p>
+<!--       <p>{{multiSelectValue}}</p> -->
     </mt-cell-group>
 
     <h1 class="page-item-title">custom 快捷语法糖</h1>
@@ -24,57 +24,6 @@
       </mt-select>
       <p>{{value}}</p>
     </mt-cell-group>
-    <!-- <h1 class="page-item-title">Multi Select</h1>
-    <mt-cell-group>
-      <mt-select label="多选" :options="yearSlot" :value.sync="multiValue" select-type="custom">
-        <template slot-scope="scope" slot="display">
-          {{scope.value.join(',')}}
-        </template>
-        <template slot-scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item" :title="item" @click.native.stop="multiValue.push(item)"  wrapperpaddingleft="20px"></mt-cell>
-        </template>
-      </mt-select>
-    </mt-cell-group>
-
-  <h1 class="page-item-title">字典 Select</h1>
-  <mt-cell-group>
-    <mt-select label="字典多选" :options="dicSlot" :value.sync="dicValue" select-type="custom">
-      <template slot-scope="scope" slot="display">
-        {{scope.value.map(item => item.name).join(',')}}
-      </template>
-      <template slot-scope="scope" slot="selector">
-        <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="dicValue.push(item)" wrapperpaddingleft="20px"></mt-cell>
-      </template>
-    </mt-select>
-    <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
-  </mt-cell-group>
-
-    <h1 class="page-title">异步加载数据 Select</h1>
-    <mt-cell-group>
-      <mt-select label="异步字典多选" :options="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick" select-type="custom">
-        <template slot-scope="scope" slot="display">
-          {{scope.value.map(item => item.name).join(',')}}
-        </template>
-        <template slot-scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.options" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"  wrapperpaddingleft="20px"></mt-cell>
-        </template>
-      </mt-select>
-      <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
-    </mt-cell-group> -->
-
-    <!-- <h1 class="page-title">日期</h1>
-    <div class="">
-      <mt-select label="异步字典多选" :slots="asyncDicSlot" :value.sync="asynvDicValue" @selector-click="handleDicSelectorClick">
-        <template scope="scope" slot="display">
-          {{scope.value.map(item => item.name).join(',')}}
-        </template>
-        <template scope="scope" slot="selector">
-          <mt-cell v-for="item in scope.slots[0].values" :class="{active: scope.value.indexOf(item) > -1 }" :key="item.id" :title="item.name" @click.native.stop="asynvDicValue.push(item)"></mt-cell>
-        </template>
-      </mt-select>
-      <p>取值：{{dicValue.map(item => item.id).join(',')}}</p>
-    </div> -->
-
 
   </div>
 </template>

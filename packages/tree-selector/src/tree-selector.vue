@@ -1,5 +1,5 @@
  <template>
-  <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom" :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign">
+  <mt-select :label="label" :options="activeOptions" v-model="currentValue" @selector-click="handleSelectorClick" select-type="custom" :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign" :direction="direction">
     <template slot-scope="scope" slot="display">
       <span :class="[{'mt-color-grey-lv3':(scope.value === '') || (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)}]">{{scope.value === ''|| (Object.prototype.toString.call(scope.value) === '[object Array]' && scope.value.length === 0)? placeholder : getDisplay(scope.value)}}</span>
     </template>
@@ -112,7 +112,8 @@ export default {
     readonly: Boolean,
     displayType: [Boolean,String],
     titlewidth: String,
-    valueAlign: String
+    valueAlign: String,
+    direction: String
   },
   data() {
     return {

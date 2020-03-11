@@ -1,6 +1,6 @@
 <template>
   <div class="page-cell" >
-    <mt-cell title="单一cell组件使用" wrapperpaddingleft="20px" is-link required></mt-cell>
+    <mt-cell title="单一cell组件使用" wrapperpaddingleft="20px" is-link required value="请选择" direction="vertical"></mt-cell>
     <mt-cell-group title="cell组的标题">
       <mt-cell title="标题文字" titlewidth="20%"></mt-cell>
       <mt-cell title="title内边距设置" titlepaddingtop="2px" titlepaddingright="2px" titlepaddingbottom="2px" titlepaddingleft="2px" titlewidth="72px"></mt-cell>

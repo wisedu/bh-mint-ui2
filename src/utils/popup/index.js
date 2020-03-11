@@ -85,11 +85,11 @@ export default {
     zIndex: {},
     modal: {
       type: Boolean,
-      default: false
+      default: true
     },
     modalFade: {
       type: Boolean,
-      default: true
+      default: false
     },
     modalClass: {
     },
@@ -103,7 +103,7 @@ export default {
     },
     closeOnClickModal: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
 

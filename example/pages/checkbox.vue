@@ -63,7 +63,7 @@ export default {
       options2: [],
       options3: [],
       options4: [],
-      value1: ['选中禁用的值'],
+      value1: ['选中禁用的值','值A','值B','值C'],
       value2: ['选项A'],
       value3: ['选项A','选项C'],
       value4: [],

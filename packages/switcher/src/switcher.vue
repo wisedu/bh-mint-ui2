@@ -1,6 +1,6 @@
 <template>
-  <mt-cell :title="label" :wrapperpaddingleft="wrapperpaddingleft">
-      <mt-switch v-model="currentValue" @change="handleChange"></mt-switch>
+  <mt-cell :title="label" :wrapperpaddingleft="wrapperpaddingleft" >
+    <mt-switch v-model="currentValue" @change="handleChange"></mt-switch>
   </mt-cell>
 </template>
 

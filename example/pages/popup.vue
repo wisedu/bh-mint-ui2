@@ -1,6 +1,6 @@
 <template>
   <div class="page-popup">
-    <div class="page-popup-wrapper" style="margin-top:40px">
+    <div class="page-popup-wrapper" style="margin-top:44px">
       <mt-button @click.native="popupVisible1 = true" size="large" ref="button" type="default" plain>中部弹出 popup</mt-button>
       <mt-button @click.native="popupVisible2 = true" size="large" type="primary" plain>上侧弹出 popup</mt-button>
       <mt-button @click.native="popupVisible3 = true" size="large" type="warning" plain>右侧弹出 popup</mt-button>
@@ -36,7 +36,6 @@
           <span style="float:right;color:#06c1ae" @click="submitHandle">提交</span>
           <div style="clear: both;display:table;margin-bottom:5px"></div>
         </div>
-        <div @click="addPopup">新增popup</div>
         <mt-cell-group style="margin-bottom:4px;max-height: 300px;overflow:scroll" class="mt-cell-group">
           <mt-textarea maxlength=100 placeholder="请输入" rows=4 ></mt-textarea>
         </mt-cell-group>

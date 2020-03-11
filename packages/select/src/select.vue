@@ -1,6 +1,6 @@
 <template>
-  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign">
-    <div class="select-value" >
+  <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign" :direction="direction">
+    <div :class="[{'select-value': direction !== 'vertical'}]" style="word-break: break-all;">
       <!-- select 模板 -->
       <template v-if="selectType === 'select'"><span :class="[{'mt-color-grey-lv3': isDefalut}]">{{singleSelectDisplay()}}</span></template>
       <!-- multi-select 模板 -->
@@ -106,7 +106,8 @@ export default {
     disabled: Boolean,
     readonly: Boolean,
     titlewidth: String,
-    valueAlign: String
+    valueAlign: String,
+    direction: String
   },
   data() {
     return {
