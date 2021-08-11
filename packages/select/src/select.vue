@@ -76,7 +76,7 @@ export default {
      * @type input
      * @value 请选择
      */
-    placeholder: { type: String, default: '请选择' },
+    placeholder: { type: String, default: 'pleaseSelect' }, // 请选择
     options: { type: Array, required: true },
     /**
      * @noteType prop
@@ -141,6 +141,12 @@ export default {
       }
     },
     /***** select 专有属性 end *****/
+    i18n(){
+        return this.$t('message');
+    },
+    computedPlaceholder(){
+        return this.i18n[this.placeholder] || this.placeholder || this.i18n.pleaseSelect;
+    }
   },
   methods: {
     handleDisplayClick(e) {

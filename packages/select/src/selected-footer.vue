@@ -1,15 +1,15 @@
 <template>
   <div class="mint-selected-footer mt-bg-lv3 mt-bColor-grey-lv5">
     <div v-show="!isShowDetail" class="mint-selected-footer-bar">
-      <mt-button class="mint-selected-footer-detail" :disabled="value.length === 0" size="large" @click="isShowDetail = true">查看已选({{value.length}})</mt-button>
-      <mt-button class="mint-selected-footer-confirm" size="large" type="primary" @click="handleConfirm">确定</mt-button>
+      <mt-button class="mint-selected-footer-detail" :disabled="value.length === 0" size="large" @click="isShowDetail = true">{{i18n.viewSelected}}({{value.length}})</mt-button>
+      <mt-button class="mint-selected-footer-confirm" size="large" type="primary" @click="handleConfirm">{{i18n.buttonConfirm}}</mt-button>
     </div>
     <div v-show="isShowDetail" class="mint-selected-footer-list-mask mt-bg-mask"></div>
     <div v-show="isShowDetail" class="mint-selected-footer-list-container mt-bg-lv2">
       <div class="mint-selected-footer-list-header mt-bg-lv3">
         <a href="javascript:void(0)" @click="handleCancel"><i class="iconfont icon-close"></i></a>
-        <span class="mt-color-grey">已选({{value.length}})</span>
-        <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm mt-color-theme" href="javascript:void(0)">确定</a>
+        <span class="mt-color-grey">{{i18n.selected}}({{value.length}})</span>
+        <a @click="handleClickListConfirm" class="mint-selected-footer-list-confirm mt-color-theme" href="javascript:void(0)">{{i18n.buttonConfirm}}</a>
       </div>
       <div class="mint-selected-footer-list"  :style="[{'max-height': listHeight + 'px'}]">
         <mt-box-group v-model="currentValue">
@@ -59,7 +59,10 @@ export default {
     listHeight () {
 
       return document.documentElement.clientHeight*0.8-44
-    }
+    },
+    i18n(){
+        return this.$t('message');
+    },
   },
   methods: {
     handleCancel() {

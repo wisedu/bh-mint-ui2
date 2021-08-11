@@ -5,20 +5,11 @@
       showToolbar
       :columns="columns"
       :visibileColumnCount="visibileColumnCount"
-      :cancelText="cancelText" :confirmText="confirmText"
+      :cancelText="cancelText" :confirmText="computedConfirmText"
       @change="onChange" @confirm="onConfirm" @cancel="visible = false;maskFunAvailable=false; $emit('cancel')">
     </mt-picker>
   </mt-popup>
 </template>
-
-<style lang="css">
-
-  @component-namespace mint {
-    @component datetime {
-      width: 100%;
-    }
-  }
-</style>
 
 <script type="text/babel">
   import picker from 'bh-mint-ui2/packages/picker/index.js';
@@ -77,7 +68,7 @@
       },
       confirmText: {
         type: String,
-        default: '确定'
+        default: 'buttonConfirm' // 确定
       },
       maskFun:{
         type: Boolean,
@@ -134,6 +125,13 @@
           };
         });
         return results;
+      },
+      i18n(){
+          return this.$t('message');
+      },
+    //   确定按钮文字国际化
+      computedConfirmText(){
+          return this.i18n[this.confirmText] || this.confirmText;
       }
     },
     methods: {
@@ -377,3 +375,12 @@
   };
 
 </script>
+
+<style lang="css">
+
+  @component-namespace mint {
+    @component datetime {
+      width: 100%;
+    }
+  }
+</style>
