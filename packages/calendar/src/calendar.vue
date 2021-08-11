@@ -1,7 +1,7 @@
 <template>
 	<div class="calendar">
 		<div class="calendar-tools">
-			<div class="today" @click.stop="setToday()">今日</div>
+			<div class="today" @click.stop="setToday()">{{i18n.today}}</div>
 			<div class="action" @click.stop="actionEvent">
 				 <slot name="action"></slot>
 			</div>
@@ -17,11 +17,11 @@
 				</slot>
 			</div>
 			<div class="calendar-info">
-				<div class="year" @click.stop="changeYear">{{year}}年</div>
+				<div class="year" @click.stop="changeYear">{{year}}{{i18n.year}}</div>
 				<!-- {{monthString}} -->
 				<div class="month" @click.stop="changeMonth">
 					<div class="month-inner" :style="{'top':-(this.month*40)+'px'}" name="month">
-						<span v-for="m in months">{{m}}</span>
+						<span v-for="m in newMonths">{{m}}</span>
 					</div>
 				</div>
 
@@ -40,7 +40,7 @@
 			<table cellpadding="5">
 			<thead>
 				<tr>
-					<td v-for="week in weeks" class="week">{{week}}</td>
+					<td v-for="week in newWeeks" class="week">{{week}}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -69,7 +69,7 @@
 			<span v-for="y in years" @click.stop="selectYear(y)" :class="[{'active':y==year}]">{{y}}</span>
 		</div>
 		<div class="calendar-months" :class="[{'show':monthsShow}]">
-			<span v-for="m in months" @click.stop="selectMonth(m)" :class="[{'active':months.indexOf(m)==month}]">{{m}}</span>
+			<span v-for="m in newMonths" @click.stop="selectMonth(m)" :class="[{'active':newMonths.indexOf(m)==month}]">{{m}}</span>
 		</div>
 	</div>
 </template>
@@ -133,14 +133,14 @@ export default {
 		weeks: {
 			type: Array,
 			default:function(){
-				return window.navigator.language.toLowerCase() == "zh-cn"?['日', '一', '二', '三', '四', '五', '六']:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+				return []
 			}
 		},
 		// 自定义月份
 		months:{
 			type: Array,
 			default:function(){
-				return window.navigator.language.toLowerCase() == "zh-cn"?['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+				return []
 			}
 		},
 		// 自定义事件
@@ -162,6 +162,8 @@ export default {
 			days: [],
 			multiDays:[],
 			today: [],
+			newWeeks:[],
+			newMonths:[],
 			festival:{
 				lunar:{
 					"1-1":"春节",
@@ -205,6 +207,50 @@ export default {
 			},
 			deep: true
 		},
+		weeks:{
+			handler: function(val=[]){
+				 if(val&&val.length){
+					 this.newWeeks=val
+				 }else
+				 {
+					 this.newWeeks=[
+						 this.i18n.xqyi,
+						 this.i18n.xqer,
+						 this.i18n.xqsan,
+						 this.i18n.xqsi,
+						 this.i18n.xqwu,
+						 this.i18n.xqliu,
+						 this.i18n.xqri
+					 ]
+				 }
+			},
+			immediate: true
+		},
+		months:{
+			handler: function(val){
+				 if(val&&val.length){
+					 this.newMonths=val
+				 }else
+				 {
+					 this.newMonths=[
+						 this.i18n.yiyue,
+						 this.i18n.eryue,
+						 this.i18n.sanyue,
+						 this.i18n.siyue,
+						 this.i18n.wuyue,
+						 this.i18n.liuyue,
+						 this.i18n.qiyue,
+						 this.i18n.bayue,
+						 this.i18n.jiuyue,
+						 this.i18n.shiyue,
+						 this.i18n.shiyiyue,
+						 this.i18n.shieryue,
+					 ]
+				 }
+			},
+			immediate: true
+		},
+		
 		value(){
 			this.init();
 		}
@@ -216,6 +262,9 @@ export default {
 			const m = String(now.getMonth());
 			const d = String(now.getDate()); 
 			return  y + "/" + m + "/" + d;
+		},
+		i18n(){
+			return this.$t('message');
 		}
 	},
 	mounted() {
@@ -620,7 +669,7 @@ export default {
 		},
 		selectMonth(value){
 			this.monthsShow=false;
-			this.month = this.months.indexOf(value);
+			this.month = this.newMonths.indexOf(value);
 			this.day = 1;
 			this.render(this.year, this.month);
 			this.locateSelectDate();

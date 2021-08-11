@@ -1,19 +1,19 @@
 <template>
   <mt-cell :title="label" @click.native="handleDisplayClick" isLink :required="required" :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" valueAlign="valueAlign">
     <div class="select-value">
-      <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
+      <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.newPlaceholder}]">{{singleSelectDisplay()}}</span></template>
     </div>
     <transition name="slide">
       <div class="select-container mt-bg-lv1" :style="{height: cHeight + 'px'}" v-show="selectorShow" @click.stop>
         <template>
           <div class="select-container-title mt-color-grey-lv3">{{label+"："}}</div>
-          <mt-textarea :placeholder="placeholder" v-model="currentValue" :rows="rows"  wrapperpaddingleft="15px" :readonly="true"></mt-textarea>
+          <mt-textarea :placeholder="newPlaceholder" v-model="currentValue" :rows="rows"  wrapperpaddingleft="15px" :readonly="true"></mt-textarea>
           <div class="select-container-buttons">
             <div class="select-container-button" :class="[opt.active?'mt-bColor-primary mt-color-primary mt-bg-primary-opacity1':'mt-bColor-grey-lv4 mt-color-grey-lv2 mt-bg-lv3']"  v-for="opt in options" @click="selectOption(opt)">{{opt.name}}
             </div>
           </div>
           <div class="select-container-confirm">
-            <mt-button size="large" type="primary" @click.native="selectorShow=false">确定</mt-button>
+            <mt-button size="large" type="primary" @click.native="selectorShow=false">{{i18n.buttonConfirm}}</mt-button>
           </div>
         </template>
       </div>
@@ -71,7 +71,7 @@ export default {
      * @type input
      * @value 请选择
      */
-    placeholder: { type: String, default: '请选择' },
+    placeholder: { type: String, default: '' },
     /**
      * @noteType prop
      * @field options
@@ -90,7 +90,8 @@ export default {
   data() {
     return {
       selectorShow: false,
-      currentValue: ""
+      currentValue: "",
+      newPlaceholder:''
     };
   },
   watch: {
@@ -105,12 +106,25 @@ export default {
           });
         });
       }
+    },
+    placeholder:{
+      immediate: true,
+      handler(val) {
+         if(!val){
+           this.newPlaceholder=this.i18n.pleaseSelect
+         }else{
+           this.newPlaceholder=val
+         }
+      }
     }
   },
   computed: {
     cHeight () {
       return document.documentElement.clientHeight
-    }
+    },
+    i18n(){
+          return this.$t('message');
+      }
   },
   methods: {
     handleDisplayClick(e) {
@@ -144,7 +158,7 @@ export default {
         this.options.forEach(function(value){
           value.active=false;
         });
-        return this.placeholder
+        return this.newPlaceholder
       }else{
         let valueArray = this.value.split('，');
         for(let i=0;i<valueArray.length;i++){

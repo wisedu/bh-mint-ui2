@@ -3,7 +3,7 @@ export default {
     "func": function (value) {
       return value !== undefined && value !== null && $.trim(value.toString()) !== ''; 
     },
-    "alertText": '* 不能为空'
+    "alertText": `* 不能为空`
   },
   "double": {
     "regex": /^(\-)?\d+(\.\d+)?$/,

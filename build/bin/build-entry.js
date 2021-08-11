@@ -62,7 +62,37 @@ const install = function(Vue, config = {}) {
     formatFallbackMessages: true,
     messages: messages
 });
-
+const currentMsg = i18n.messages[i18n.locale].message;
+const roleLan = {
+  'required': '* ' + currentMsg.canNotBeEmpty,
+  'double': '* ' + currentMsg.beNumber,
+  'tele': '* ' + currentMsg.beRightPhoneNumber,
+  'tel': '* ' + currentMsg.beRightPhoneNumber,
+  'phone': '* ' + currentMsg.beRightTellNumber,
+  'email': '* ' + currentMsg.beRightEmailNumber,
+  'mail': '* ' + currentMsg.beRightEmailNumber,
+  'integer': '* ' + currentMsg.beInt,
+  'integer+0': '* ' + currentMsg.beNoneNegativeInt,
+  'integer+': '* ' + currentMsg.beGreaterThanZeroInt,
+  'money': '* ' + currentMsg.beRightAmount,
+  'score': '* ' + currentMsg.beRightScore,
+  'number': '* ' + currentMsg.beNumber,
+  'date': '* ' + currentMsg.beRightDateFormat,
+  'ipv4': '* ' + currentMsg.beRightIPAddress,
+  'url': '* ' + currentMsg.beRightURLAddress,
+  'onlyNumberSp': '* ' + currentMsg.beNumber,
+  'onlyLetterSp': '* ' + currentMsg.beLetters,
+  'onlyLetterNumber': '* ' + currentMsg.beNumberOrLetters,
+  'dateFormat': '* ' + currentMsg.beValidDateFormat,
+  'chinese': '* ' + currentMsg.beChineseChar,
+  'chinaId': '* ' + currentMsg.beValidIDNumber,
+  'chinaIdLoose': '* ' + currentMsg.beValidIDNumber,
+  'chinaZip': '* ' + currentMsg.beValidZipCode,
+  'qq': '* ' + currentMsg.beValidQQNumber
+};
+for (let rule in ValidateRules) {
+  ValidateRules[rule].alertText = roleLan[rule];
+}
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;
   Vue.$indicator = Vue.prototype.$indicator = Indicator;
