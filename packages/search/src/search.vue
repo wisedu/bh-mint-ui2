@@ -11,7 +11,7 @@
           @blur="handleBlur"
           type="search"
           v-model="currentValue"
-          :placeholder="placeholder"
+          :placeholder="computedPlaceholder"
           @keypress.enter.prevent="onSearch"
           class="mint-searchbar-core mt-color-grey mt-bg-transparent">
         </div>
@@ -25,7 +25,7 @@
           class="mint-searchbar-cancel mt-color-theme"
           @click="handleCancel"
           v-show="visible"
-          v-text="cancelText">
+          v-text="computedCancelText">
         </a>
       </div>
       <div class="mint-search-list" v-show="show || currentValue" :style="{'margin-top':margintop}">
@@ -96,12 +96,23 @@ export default {
       default:"43px"
     },
     cancelText: {
-      default: '取消'
+      default: 'buttonCancel' // 取消
     },
     placeholder: {
-      default: '搜索'
+      default: 'textSearch' //搜索
     },
     result: Array
+  },
+  computed:{
+      i18n(){
+          return this.$t('message');
+      },
+      computedCancelText(){
+          return this.i18n[this.cancelText] || this.cancelText || this.i18n.buttonCancel;
+      },
+      computedPlaceholder(){
+          return this.i18n[this.placeholder] || this.placeholder || this.i18n.textSearch;
+      }
   },
 
   mounted() {

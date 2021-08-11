@@ -18,44 +18,6 @@
   </div>
 </template>
 
-<style>
-  @component-namespace mint {
-    @component loadmore {
-      overflow: hidden;
-
-      @descendent content {
-        @when dropped {
-          transition: .2s;
-        }
-      }
-
-      @descendent top, bottom {
-        text-align: center;
-        height: 50px;
-        line-height: 50px;
-      }
-
-      @descendent top {
-        margin-top: -50px;
-      }
-
-      @descendent bottom {
-        margin-bottom: -50px;
-      }
-
-      @descendent spinner {
-        display: inline-block;
-        margin-right: 5px;
-        vertical-align: middle;
-      }
-
-      @descendent text {
-        vertical-align: middle;
-      }
-    }
-  }
-</style>
-
 <script type="text/babel">
   import spinner from 'bh-mint-ui2/packages/spinner/src/spinner/fading-circle.vue';
   export default {
@@ -79,15 +41,15 @@
       },
       topPullText: {
         type: String,
-        default: '下拉刷新'
+        default: 'textPullDownRefresh' // 下拉刷新
       },
       topDropText: {
         type: String,
-        default: '释放更新'
+        default: 'textReleaseUpdate' // 释放更新
       },
       topLoadingText: {
         type: String,
-        default: '加载中...'
+        default: 'textLoading' // 加载中
       },
       topDistance: {
         type: Number,
@@ -98,15 +60,15 @@
       },
       bottomPullText: {
         type: String,
-        default: '上拉刷新'
+        default: 'textPullUpRefresh' // 上拉刷新
       },
       bottomDropText: {
         type: String,
-        default: '释放更新'
+        default: 'textReleaseUpdate' // 释放更新
       },
       bottomLoadingText: {
         type: String,
-        default: '加载中...'
+        default: 'textLoading' // 加载中
       },
       bottomDistance: {
         type: Number,
@@ -143,6 +105,33 @@
     computed: {
       transform() {
         return this.translate === 0 ? null : 'translate3d(0, ' + this.translate + 'px, 0)';
+      },
+      i18n(){
+          return this.$t('message');
+      },
+      // 下拉刷新文字国际化
+      computedTopPullText(){
+          return this.i18n[this.topPullText] || this.topPullText;
+      },
+      // 下拉释放更新文字国际化
+      computedTopDropText(){
+          return this.i18n[this.topDropText] || this.topDropText;
+      },
+      // 下拉加载中文字国际化
+      computedTopLoadingText(){
+          return this.i18n[this.topLoadingText] || this.topLoadingText;
+      },
+      // 上拉刷新文字国际化
+      computedBottomPullText(){
+          return this.i18n[this.bottomPullText] || this.bottomPullText;
+      },
+      // 上拉释放更新文字国际化
+      computedBottomDropText(){
+          return this.i18n[this.bottomDropText] || this.bottomDropText;
+      },
+      // 上拉加载中文字国际化
+      computedBottomLoadingText(){
+          return this.i18n[this.bottomLoadingText] || this.bottomLoadingText;
       }
     },
 
@@ -151,13 +140,13 @@
         this.$emit('top-status-change', val);
         switch (val) {
           case 'pull':
-            this.topText = this.topPullText;
+            this.topText = this.computedTopPullText;
             break;
           case 'drop':
-            this.topText = this.topDropText;
+            this.topText = this.computedTopDropText;
             break;
           case 'loading':
-            this.topText = this.topLoadingText;
+            this.topText = this.computedTopLoadingText;
             break;
         }
       },
@@ -166,13 +155,13 @@
         this.$emit('bottom-status-change', val);
         switch (val) {
           case 'pull':
-            this.bottomText = this.bottomPullText;
+            this.bottomText = this.computedBottomPullText;
             break;
           case 'drop':
-            this.bottomText = this.bottomDropText;
+            this.bottomText = this.computedBottomDropText;
             break;
           case 'loading':
-            this.bottomText = this.bottomLoadingText;
+            this.bottomText = this.computedBottomLoadingText;
             break;
         }
       }
@@ -232,7 +221,7 @@
       init() {
         this.topStatus = 'pull';
         this.bottomStatus = 'pull';
-        this.topText = this.topPullText;
+        this.topText = this.computedTopPullText;
         this.scrollEventTarget = this.getScrollEventTarget(this.$el);
         if (typeof this.bottomMethod === 'function') {
           this.fillContainer();
@@ -361,3 +350,41 @@
     }
   };
 </script>
+
+<style>
+  @component-namespace mint {
+    @component loadmore {
+      overflow: hidden;
+
+      @descendent content {
+        @when dropped {
+          transition: .2s;
+        }
+      }
+
+      @descendent top, bottom {
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+      }
+
+      @descendent top {
+        margin-top: -50px;
+      }
+
+      @descendent bottom {
+        margin-bottom: -50px;
+      }
+
+      @descendent spinner {
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+
+      @descendent text {
+        vertical-align: middle;
+      }
+    }
+  }
+</style>

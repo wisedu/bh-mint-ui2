@@ -3,7 +3,7 @@
     <mt-cell :title="label" @click.native="popupVisible = (disabled||readonly)?false:true" arrowdefined :disabled="disabled" :readonly="readonly" :titlewidth="titlewidth" :value-align="valueAlign" :required="required">
       <i slot="arrowdefined" class="iconfont icon-keyboardarrowright mt-color-grey-lv3"></i>
       <div class="select-value">
-        <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.placeholder}]">{{singleSelectDisplay()}}</span></template>
+        <template><span :class="[{'mt-color-grey-lv3': singleSelectDisplay()=== this.computedPlaceholder}]">{{singleSelectDisplay()}}</span></template>
       </div>
     </mt-cell>
     <mt-popup v-model="popupVisible" position="bottom">
@@ -38,7 +38,7 @@ export default {
      * @type input
      * @value 请选择
      */
-    placeholder: { type: String, default: '请选择' },
+    placeholder: { type: String, default: 'pleaseSelect' }, // 请选择
     /**
      * @noteType prop
      * @field options
@@ -58,9 +58,21 @@ export default {
       popupVisible: false
     };
   },
+  computed:{
+      i18n(){
+          return this.$t('message');
+      },
+    //   placeholder文字国际化,没传则显示默认请选择
+      computedPlaceholder(){
+          if(this.placeholder){
+              return this.i18n[this.placeholder] || this.placeholder;
+          }
+          return this.i18n.pleaseSelect
+      }
+  },
   methods: {
     singleSelectDisplay () {
-      if (this.value === '') return this.placeholder
+      if (this.value === '') return this.computedPlaceholder
       if (this.options.length === 0) {
         this.$emit('selector-click', e)
         return ''

@@ -7,7 +7,7 @@
 		</div>
 		<div ref='crop_btn' class="mint-image-clip-btn" v-if="!type">
 			<slot>
-				<mt-button type="primary">{{text}}</mt-button>
+				<mt-button type="primary">{{computedText}}</mt-button>
 			</slot>
 		</div>
 	</div>
@@ -33,11 +33,11 @@
 			},
 			confirmText: {
 				type: String,
-				default: '确定'
+				default: 'buttonConfirm' // 确定
 			},
 			cancelText: {
 				type: String,
-				default: '取消'
+				default: 'buttonCancel' // 取消
 			},
 			type: {
 				type: String,
@@ -45,7 +45,7 @@
 			},
 			text: {
 				type: String,
-				default: '裁剪图片'
+				default: 'imageCrop' // 裁剪图片
 			}
 		},
 		data() {
@@ -53,6 +53,23 @@
 				data: this.src
 			}
 		},
+        computed:{
+            i18n(){
+                return this.$t('message');
+            },
+            // 确定按钮国际化
+            computedConfirmText(){
+                return this.i18n[this.confirmText] || this.confirmText;
+            },
+            // 取消按钮国际化
+            computedCancelText(){
+                return this.i18n[this.cancelText] || this.cancelText;
+            },
+            // 裁剪图片按钮国际化
+            computedText(){
+                return this.i18n[this.text] || this.text;
+            }
+        },
 		methods: {
 			hanldeClick: function(){
 				var crop_btn = this.$refs.crop_btn;
@@ -70,8 +87,8 @@
 							height: _that.height,
 							output: 1,
 							className: 'm-clip-box',
-							ok_text: _that.confirmText,
-							cancel_text: _that.cancelText,
+							ok_text: _that.computedConfirmText,
+							cancel_text: _that.computedCancelText,
 							ok: function (base64, canvas) {
 								_that.$emit('input',base64);
 								mAlloyCrop.destroy();
@@ -97,8 +114,8 @@
 							height: _that.height,
 							output: 1,
 							className: 'm-clip-box',
-							ok_text: _that.confirmText,
-							cancel_text: _that.cancelText,
+							ok_text: _that.computedConfirmText,
+							cancel_text: _that.computedCancelText,
 							ok: function (base64, canvas) {
 								_that.$emit('input',base64);
 								mAlloyCrop.destroy();
