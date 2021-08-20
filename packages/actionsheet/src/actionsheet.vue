@@ -72,11 +72,11 @@ export default {
         };
     },
     computed:{
+        i18n(){
+            return this.$t('message');
+        },
         cancelButtonText(){
-            if(this.cancelText === 'buttonCancel'){
-                return this.$t('message.buttonCancel');
-            }
-            return this.cancelText;
+            return this.i18n[this.cancelText]||this.cancelText;
         }
     },
 
