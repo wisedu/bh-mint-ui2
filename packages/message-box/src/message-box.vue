@@ -3,7 +3,7 @@
     <transition name="msgbox-bounce">
       <div class="mint-msgbox mt-bg-white" v-show="value">
         <div class="mint-msgbox-header" v-if="title !== ''">
-          <div class="mint-msgbox-title mt-color-grey">{{ title }}</div>
+          <div class="mint-msgbox-title mt-color-grey">{{ title==="Tip"?i18n.tip:title }}</div>
         </div>
         <div class="mint-msgbox-content">
           <div

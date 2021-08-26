@@ -2,7 +2,7 @@ var CONFIRM_TEXT = '确定';
 var CANCEL_TEXT = '取消';
 
 var defaults = {
-  title: '提示',
+  title: "Tip",
   message: '',
   type: '',
   showInput: false,
@@ -91,7 +91,6 @@ var showNextMsg = function() {
   if (!instance) {
     initInstance();
   }
-
   if (!instance.value || instance.closeTimer) {
     if (msgQueue.length > 0) {
       currentMsg = msgQueue.shift();
