@@ -5,8 +5,11 @@
       showToolbar
       :columns="columns"
       :visibileColumnCount="visibileColumnCount"
+      :showClear="showClear"
+      :clearText="computedClearText"
       :cancelText="cancelText" :confirmText="computedConfirmText"
-      @change="onChange" @confirm="onConfirm" @cancel="visible = false;maskFunAvailable=false; $emit('cancel')">
+      :clearVisible="true"
+      @change="onChange" @confirm="onConfirm" @clear="onClear" @cancel="visible = false;maskFunAvailable=false; $emit('cancel')">
     </mt-picker>
   </mt-popup>
 </template>
@@ -70,6 +73,15 @@
         type: String,
         default: 'buttonConfirm' // 确定
       },
+      //   2021-08-26 吴志远 XG-11890 批次中毕业生申请开始/结束时间无法清除置空
+      clearVisible:{
+          type:Boolean,
+          default:false,
+      },
+      clearText: {
+        type: String,
+        default: 'buttonClear' // 清空
+      },
       maskFun:{
         type: Boolean,
         default: false
@@ -129,9 +141,17 @@
       i18n(){
           return this.$t('message');
       },
-    //   确定按钮文字国际化
+      // 确定按钮文字国际化
       computedConfirmText(){
           return this.i18n[this.confirmText] || this.confirmText;
+      },
+      // 2021-08-26 吴志远 XG-11890 批次中毕业生申请开始/结束时间无法清除置空
+      // 清空按钮文字国际化
+      computedClearText(){
+          return this.i18n[this.clearText] || this.clearText;
+      },
+      showClear(){
+          return this.clearVisible && this.computedClearText ? true :false;
       }
     },
     methods: {
@@ -271,6 +291,11 @@
         for (var k in o)
           if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
         return fmt;
+      },
+      // 2021-08-26 吴志远 XG-11890 批次中毕业生申请开始/结束时间无法清除置空
+      onClear(){
+          this.visible=false;   
+          this.$emit('clear');
       },
       onConfirm(val, index, picker) {
         this.visible = false;
