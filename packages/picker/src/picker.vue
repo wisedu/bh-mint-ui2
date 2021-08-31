@@ -4,6 +4,7 @@
       <slot>
         <div class="mint-picker__cancel mt-color-grey" @click="emit('cancel')"><i v-if="!cancelText" class="iconfont icon-close"></i><span class="mt-color-theme">{{cancelText}}</span></div>
         <div class="mint-picker__confirm  mt-color-theme" @click="emit('confirm')">{{ confirmText }}</div>
+        <div class="mint-picker__confirm  mt-color-theme" v-if="showClear" @click="$emit('clear')">{{clearText}}</div>
         <div class="mint-picker__title  mt-color-grey" v-if="title" v-text="title" />
       </slot>
     </div>
@@ -52,6 +53,14 @@ export default {
     confirmText: {
       type: String,
       default: '确定'
+    },
+    clearText: {
+      type: String,
+      default: ''
+    },
+    showClear: {
+      type: Boolean,
+      default: false
     },
     isInterrelated: Boolean
   },

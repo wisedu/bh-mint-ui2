@@ -2,6 +2,7 @@ export default{
     today: 'Today', // 今日
     buttonCancel: 'Cancel', // 取消
     buttonConfirm: 'Confirm', // 确定
+    buttonClear: 'Clear', // 清空
     xqyi: 'Mon', // 周一
     xqer: 'Tue', // 周二
     xqsan: 'Wed', // 周三
