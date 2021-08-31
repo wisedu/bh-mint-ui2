@@ -203,7 +203,7 @@ export default {
             if (!el || !attr_val) {
               return
             }else{
-              attr_val=typeof attr_val==='string'?JSON.parse(attr_val):attr_val;
+              attr_val=typeof attr_val==='string'?eval('('+attr_val+')'):attr_val;
             }
             Object.keys(attr_val).map(name => el.setAttribute(name, attr_val[name]));
           });
