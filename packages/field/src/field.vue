@@ -199,8 +199,13 @@ export default {
         this.$nextTick(() => {
           const target = [this.$refs.input, this.$refs.textarea];
           target.forEach(el => {
-            if (!el || !attrs) return;
-            Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));
+            var attr_val=attrs
+            if (!el || !attr_val) {
+              return
+            }else{
+              attr_val=typeof attr_val==='string'?JSON.parse(attr_val):attr_val;
+            }
+            Object.keys(attr_val).map(name => el.setAttribute(name, attr_val[name]));
           });
         });
       }
