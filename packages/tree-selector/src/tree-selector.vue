@@ -141,7 +141,7 @@ export default {
         return this.$t('message')
     },
     computedPlaceholder(){
-        return this.i18n[this.placeholder] || this.placeholder || this.i18n.pleaseSelect;
+        return this.i18n[this.placeholder] || this.placeholder;
     },
     cttHeight(){
       if(this.parentSelectable){

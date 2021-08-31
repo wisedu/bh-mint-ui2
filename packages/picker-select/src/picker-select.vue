@@ -64,10 +64,7 @@ export default {
       },
     //   placeholder文字国际化,没传则显示默认请选择
       computedPlaceholder(){
-          if(this.placeholder){
-              return this.i18n[this.placeholder] || this.placeholder;
-          }
-          return this.i18n.pleaseSelect
+          return this.i18n[this.placeholder] || this.placeholder;
       }
   },
   methods: {
