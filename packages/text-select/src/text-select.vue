@@ -71,7 +71,7 @@ export default {
      * @type input
      * @value 请选择
      */
-    placeholder: { type: String, default: '' },
+    placeholder: { type: String, default: 'pleaseSelect' },
     /**
      * @noteType prop
      * @field options
@@ -111,7 +111,7 @@ export default {
       immediate: true,
       handler(val) {
          if(!val){
-           this.newPlaceholder=this.i18n.pleaseSelect
+           this.newPlaceholder=this.i18n[this.placeholder] || this.placeholder
          }else{
            this.newPlaceholder=val
          }

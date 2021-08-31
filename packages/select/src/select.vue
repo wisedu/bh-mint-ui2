@@ -145,7 +145,7 @@ export default {
         return this.$t('message');
     },
     computedPlaceholder(){
-        return this.i18n[this.placeholder] || this.placeholder || this.i18n.pleaseSelect;
+        return this.i18n[this.placeholder] || this.placeholder;
     }
   },
   methods: {
@@ -173,7 +173,7 @@ export default {
     singleSelectDisplay () {
       if (this.value === '' || this.value === null || this.value === undefined){
         this.isDefalut = true;
-        return this.placeholder;
+        return this.computedPlaceholder;
       }
       if (this.options.length === 0) {
         this.$emit('selector-click', '')
@@ -197,7 +197,7 @@ export default {
     multiSelectDisplay () {
       if (this.value === '') {
         this.isDefalut = true;
-        return this.placeholder
+        return this.computedPlaceholder
       }
       if (this.options.length === 0) {
         this.$emit('selector-click', '')

@@ -314,13 +314,13 @@
     data() {
       return {
         readonly:true,
-        singleSelectValue: '00000010011111',
+        singleSelectValue: '',
         singleSelectOptions: [],
 
-        multiSelectValue: '0000001005,0000001007',
+        multiSelectValue: '',
         multiSelectOptions: [],
 
-        value: '1984',
+        value: '',
         multiValue: [],
         dicValue: [],
         asynvDicValue: [],
