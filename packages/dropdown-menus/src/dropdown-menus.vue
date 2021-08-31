@@ -182,7 +182,11 @@
           var observe=new MutationObserver(function (mutations,observe) {
               that.setContentHeight()
           });
-          observe.observe(document.getElementsByClassName('bh-ddm')[0],{ childList: true,subtree: true});
+          var els=document.getElementsByClassName('bh-ddm');
+          if(els.length){//添加条件判断，在els有值时运行  2021-8-31 王敏
+            observe.observe(els[0],{ childList: true,subtree: true});
+          }
+          
         },
         methods:{
             setContentHeight:function(){
