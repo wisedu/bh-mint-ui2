@@ -43,6 +43,7 @@
 
 <script>
 import XCell from 'bh-mint-ui2/packages/cell/index.js';
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 if (process.env.NODE_ENV === 'component') {
   require('bh-mint-ui2/packages/cell/style.css');
 }
@@ -67,7 +68,7 @@ if (process.env.NODE_ENV === 'component') {
  */
 export default {
   name: 'mt-search',
-
+  mixins: [Locale],
   data() {
     return {
       visible: false,
@@ -105,7 +106,7 @@ export default {
   },
   computed:{
       i18n(){
-          return this.$t('message');
+          return this.t('mint');
       },
       computedCancelText(){
           return this.i18n[this.cancelText] || this.cancelText || this.i18n.buttonCancel;

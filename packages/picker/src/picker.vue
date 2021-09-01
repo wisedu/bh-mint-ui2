@@ -3,7 +3,7 @@
     <div class="mint-picker__toolbar mt-bColor-grey-lv6" v-if="showToolbar">
       <slot>
         <div class="mint-picker__cancel mt-color-grey" @click="emit('cancel')"><i v-if="!cancelText" class="iconfont icon-close"></i><span class="mt-color-theme">{{cancelText}}</span></div>
-        <div class="mint-picker__confirm  mt-color-theme" @click="emit('confirm')">{{ confirmText }}</div>
+        <div class="mint-picker__confirm  mt-color-theme" @click="emit('confirm')">{{ confirmText?confirmText:i18n['buttonConfirm']}}</div>
         <div class="mint-picker__confirm  mt-color-theme" v-if="showClear" @click="$emit('clear')">{{clearText}}</div>
         <div class="mint-picker__title  mt-color-grey" v-if="title" v-text="title" />
       </slot>
@@ -28,8 +28,10 @@
 
 <script>
 import Column from './PickerColumn';
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
   name: 'mt-picker',
+  mixins: [Locale],
   components: {
     [Column.name]: Column
   },
@@ -52,7 +54,7 @@ export default {
     },
     confirmText: {
       type: String,
-      default: '确定'
+      default: ''
     },
     clearText: {
       type: String,
@@ -81,7 +83,13 @@ export default {
       this.initColumns();
     },
   },
+  computed:{
+    i18n() {
+      return this.t('mint');
+    },
+  },
   methods: {
+    
     initColumns() {
       const columns = JSON.parse(JSON.stringify(this.columns));
       if(columns.length){

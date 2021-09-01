@@ -40,6 +40,7 @@
 </template>
 <script>
 import SelectedFooter from './selected-footer.vue';
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 /**
  * @event selector-click - 点击选择器触发的事件
  */
@@ -56,6 +57,7 @@ import SelectedFooter from './selected-footer.vue';
  */
 export default {
   name: 'mt-select',
+  mixins: [ Locale],
   components: { SelectedFooter },
   props: {
     value: { default: '' },
@@ -142,7 +144,7 @@ export default {
     },
     /***** select 专有属性 end *****/
     i18n(){
-        return this.$t('message');
+        return this.t('mint');
     },
     computedPlaceholder(){
         return this.i18n[this.placeholder] || this.placeholder;

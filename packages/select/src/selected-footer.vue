@@ -24,7 +24,9 @@
   </div>  
 </template>
 <script>
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
+  mixins: [ Locale],
   props: {
     options: {required: true, type: Array},
     value: {required: true, type: Array},
@@ -61,7 +63,7 @@ export default {
       return document.documentElement.clientHeight*0.8-44
     },
     i18n(){
-        return this.$t('message');
+        return this.t('mint');
     },
   },
   methods: {

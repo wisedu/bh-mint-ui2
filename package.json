@@ -41,6 +41,7 @@
     "axios": "^0.16.2",
     "babel-preset-es2015": "^6.24.1",
     "better-scroll": "^1.13.2",
+    "deepmerge": "^4.2.2",
     "element-theme-chalk": "^2.0.1",
     "raf.js": "0.0.4",
     "vue": "^2.5.9",

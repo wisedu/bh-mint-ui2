@@ -16,8 +16,10 @@
 <script>
 	import AlloyCrop from 'alloycrop';
 	import AlloyFinger from 'alloyfinger';
+	import Locale from 'bh-mint-ui2/src/mixins/locale';
 	export default {
 		name: 'mt-image-clip',
+		mixins: [Locale],
 		props: {
 			src: {
 				type: String,
@@ -55,7 +57,7 @@
 		},
         computed:{
             i18n(){
-                return this.$t('message');
+                return this.t('mint');
             },
             // 确定按钮国际化
             computedConfirmText(){

@@ -20,12 +20,13 @@
 
 <script type="text/babel">
   import spinner from 'bh-mint-ui2/packages/spinner/src/spinner/fading-circle.vue';
+  import Locale from 'bh-mint-ui2/src/mixins/locale';
   export default {
     name: 'mt-loadmore',
     components: {
       'spinner': spinner
     },
-
+    mixins: [Locale],
     props: {
       maxDistance: {
         type: Number,
@@ -107,7 +108,7 @@
         return this.translate === 0 ? null : 'translate3d(0, ' + this.translate + 'px, 0)';
       },
       i18n(){
-          return this.$t('message');
+          return this.t('mint');
       },
       // 下拉刷新文字国际化
       computedTopPullText(){

@@ -32,12 +32,12 @@
 <script type="text/babel">
 import Popup from "bh-mint-ui2/src/utils/popup";
 import "bh-mint-ui2/src/style/popup.css";
-
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
     name: "mt-actionsheet",
 
-    mixins: [Popup],
-
+    mixins: [Popup ,Locale],
+    
     props: {
         modal: {
             default: true,
@@ -73,7 +73,7 @@ export default {
     },
     computed:{
         i18n(){
-            return this.$t('message');
+            return this.t('mint');
         },
         cancelButtonText(){
             return this.i18n[this.cancelText]||this.cancelText;

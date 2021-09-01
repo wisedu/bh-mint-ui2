@@ -52,9 +52,9 @@ let CONFIRM_TEXT = "确定";
 let CANCEL_TEXT = "取消";
 
 import Popup from "bh-mint-ui2/src/utils/popup";
-
+ import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
-  mixins: [Popup],
+  mixins: [Popup,Locale],
 
   props: {
     modal: {
@@ -97,7 +97,7 @@ export default {
       return classes;
     },
     i18n() {
-      return this.$t("message");
+      return this.t('mint');
     },
   },
 

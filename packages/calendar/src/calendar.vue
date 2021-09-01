@@ -76,8 +76,10 @@
 
 <script>
 import calendar from './calendar.js'
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
 	name: 'mt-calendar',
+	mixins: [Locale],
 	props: {
 		// 多选模式
 		multi: {
@@ -264,7 +266,7 @@ export default {
 			return  y + "/" + m + "/" + d;
 		},
 		i18n(){
-			return this.$t('message');
+			return this.t('mint');
 		}
 	},
 	mounted() {

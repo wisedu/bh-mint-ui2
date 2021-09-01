@@ -17,11 +17,12 @@
 <script type="text/babel">
   import picker from 'bh-mint-ui2/packages/picker/index.js';
   import popup from 'bh-mint-ui2/packages/popup/index.js';
+  import Locale from 'bh-mint-ui2/src/mixins/locale';
   if (process.env.NODE_ENV === 'component') {
     require('bh-mint-ui2/packages/picker/style.css');
     require('bh-mint-ui2/packages/popup/style.css');
   }
-
+  
   const isValidDate = date => Object.prototype.toString.call(date) === "[object Date]" && !isNaN(date.getTime());
   export default {
     name: 'mt-datetime-picker',
@@ -29,6 +30,7 @@
       'mt-picker': picker,
       'mt-popup': popup
     },
+    mixins: [Locale],
     props: {
       type: {
         type: String,
@@ -139,7 +141,7 @@
         return results;
       },
       i18n(){
-          return this.$t('message');
+          return this.t('mint');
       },
       // 确定按钮文字国际化
       computedConfirmText(){

@@ -112,6 +112,7 @@ export default {
     methods:{
       handleFocus(val){
         console.log(val)
+        console.log(this)
       }
     }
 };

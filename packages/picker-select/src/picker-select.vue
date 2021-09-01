@@ -26,8 +26,10 @@
  * @html
  * <mt-text-select label="标题文字"></mt-text-select>
  */
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
   name: 'mt-picker-select',
+  mixins: [Locale],
   props: {
     value: { default: '' },
     label: { type: String, required: true },
@@ -60,7 +62,7 @@ export default {
   },
   computed:{
       i18n(){
-          return this.$t('message');
+          return this.t('mint');
       },
     //   placeholder文字国际化,没传则显示默认请选择
       computedPlaceholder(){

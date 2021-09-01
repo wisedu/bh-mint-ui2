@@ -35,8 +35,10 @@
  * @html
  * <mt-text-select label="标题文字"></mt-text-select>
  */
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 export default {
   name: 'mt-text-select',
+  mixins: [ Locale],
   props: {
     value: { default: '' },
     // url: { type: String, default: '' },
@@ -112,7 +114,7 @@ export default {
       return document.documentElement.clientHeight
     },
     i18n(){
-          return this.$t('message');
+          return this.t('mint');
       },
       // 2021.09.01 吴志远 textSelect国际化问题修改
       newPlaceholder(){

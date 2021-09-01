@@ -34,6 +34,7 @@
 import Bread from './bread.vue';
 import SelectedFooter from '../../select/src/selected-footer.vue';
 import TreeCheckboxList from './tree-checkbox-list';
+import Locale from 'bh-mint-ui2/src/mixins/locale';
 /**
  * @noteType component
  * @name TreeSelector
@@ -44,6 +45,7 @@ import TreeCheckboxList from './tree-checkbox-list';
  */
 export default {
   name: 'mt-tree-selector',
+  mixins: [ Locale],
   props: {
     value: [String, Number],
     /**
@@ -138,7 +140,7 @@ export default {
   },
   computed: {
       i18n(){
-        return this.$t('message')
+        return this.t('mint')
     },
     computedPlaceholder(){
         return this.i18n[this.placeholder] || this.placeholder;
