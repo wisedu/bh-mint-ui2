@@ -90,8 +90,7 @@ export default {
   data() {
     return {
       selectorShow: false,
-      currentValue: "",
-      newPlaceholder:''
+      currentValue: ""
     };
   },
   watch: {
@@ -106,16 +105,6 @@ export default {
           });
         });
       }
-    },
-    placeholder:{
-      immediate: true,
-      handler(val) {
-         if(!val){
-           this.newPlaceholder=this.i18n[this.placeholder] || this.placeholder
-         }else{
-           this.newPlaceholder=val
-         }
-      }
     }
   },
   computed: {
@@ -124,6 +113,10 @@ export default {
     },
     i18n(){
           return this.$t('message');
+      },
+      // 2021.09.01 吴志远 textSelect国际化问题修改
+      newPlaceholder(){
+          return this.i18n[this.placeholder] || this.placeholder
       }
   },
   methods: {
