@@ -103,7 +103,7 @@ export default {
   width: 100%;
 }
 .mint-selected-footer .mint-button {
-  height: 34px;
+  height: 44px;
   margin-top: 0;
   width: auto;
 }
