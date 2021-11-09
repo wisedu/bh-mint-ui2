@@ -327,7 +327,10 @@
           case "time":
             break;
         }
-        this.$emit('confirm', this.innerValue, picker, val);
+        this.$nextTick(()=>{
+          this.$emit('confirm', this.innerValue, picker, val);
+        })
+        
       },
       onChange(picker, org_value, index) {
         const values = picker.getValues();
