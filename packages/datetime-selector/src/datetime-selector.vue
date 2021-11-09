@@ -3,7 +3,7 @@
               'is-nolabel': !label
             }]">
     <div class="mint-field-core" :class="[{'mt-color-grey-lv3':placeholder===showValue},{'mt-color-danger':state==='error'},{'mt-color-warning':state==='warning'}]" :style="{'text-align': valueAlign}" @click="handlePick()">{{showValue}}</div>
-    <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue && active">
+    <div @click="handleClear" class="mint-field-clear" v-if="!disableClear" v-show="currentValue">
       <i class="iconfont icon-weiwancheng"></i>
     </div>
     <span class="mint-field-state" v-if="state" :class="iconColor">
