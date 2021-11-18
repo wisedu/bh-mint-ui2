@@ -1,12 +1,17 @@
 <template>
   <transition :name="currentTransition">
     <div
-      v-show="currentValue"
       class="mint-popup mt-bg-white"
       :class="[position ? 'mint-popup-' + position : '']"
       :id="pid"
     >
+    <!--
+      XG-12622 by:pengzhongyan 2021.11.18 原因是:将v-show="currentValue"改为v-if="currentValue", 前者点击事件时不会再次渲染picker.vue组件,
+      导致PickerColumn.vue文件中的 setIndex(){this.$refs.ul.scrollTop = -this.offset }不执行
+    -->
+    <template v-if="currentValue">
       <slot></slot>
+      </template>
     </div>
   </transition>
 </template>
