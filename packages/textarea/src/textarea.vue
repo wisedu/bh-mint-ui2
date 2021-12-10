@@ -364,12 +364,16 @@ export default {
         padding: 10px 0;
       }
       .mint-cell-value {
-        padding-top: 5px;
+        /* RS-12218 王敏 2021-12-10 */
+        padding-top: 8px;
       }
 
       .mint-cell-title {
-        width: 80px;
+        /* RS-12219 王敏 2021-12-10 */
+        /* label宽度统一为96px */
+        width: 96px;
         flex: none;
+        
       }
 
       .mint-cell-value {
@@ -398,9 +402,10 @@ export default {
         border: 0;
         flex: 1;
         outline: 0;
-        line-height: 1.6;
+        line-height: 1.5; /* RS-12218 王敏 2021-12-10 */
         font-size: inherit;
         width: 100%;
+        padding: 0 !important;/* RS-12218 王敏 2021-12-10 */
       }
 
       @descendent clear {
@@ -433,13 +438,16 @@ export default {
     font-family: inherit;
     visibility:hidden;
     min-height: 79px;
-    line-height: 1.6;
+    line-height: 1.5; /* RS-12218 王敏 2021-12-10 */
     width: 100%;
     word-break:break-all;
     white-space: pre-wrap;
     padding: 0;
   }
-  textarea{
-    padding:1px 0 0;
-  }
+  /* RS-12218 王敏 2021-12-10 */
+  /* textarea{ */
+    /* padding:1px 0 0; */
+    /* border:none; */
+    
+  /* } */
 </style>
