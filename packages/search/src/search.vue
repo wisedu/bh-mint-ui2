@@ -28,7 +28,7 @@
           v-text="computedCancelText">
         </a>
       </div>
-      <div class="mint-search-list" v-show="show || currentValue" :style="{'margin-top':margintop}">
+      <div  v-if="showResult" class="mint-search-list" v-show="show || currentValue" :style="{'margin-top':margintop}">
         <div class="mint-search-list-warp">
           <slot>
             <mt-cell-group>
@@ -102,7 +102,11 @@ export default {
     placeholder: {
       default: 'textSearch' //搜索
     },
-    result: Array
+    result: Array,
+    showResult:{
+      type:Boolean,
+      default:true
+    },
   },
   computed:{
       i18n(){
