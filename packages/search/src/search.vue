@@ -28,6 +28,7 @@
           v-text="computedCancelText">
         </a>
       </div>
+      <!-- XG-13148 添加showResult控制自带搜索结果是否展示 王敏 2021-12-17 -->
       <div  v-if="showResult" class="mint-search-list" v-show="show || currentValue" :style="{'margin-top':margintop}">
         <div class="mint-search-list-warp">
           <slot>
@@ -103,7 +104,7 @@ export default {
       default: 'textSearch' //搜索
     },
     result: Array,
-    showResult:{
+    showResult:{//XG-13148 添加showResult控制自带搜索结果是否展示 王敏 2021-12-17
       type:Boolean,
       default:true
     },
