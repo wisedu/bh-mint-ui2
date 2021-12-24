@@ -114,10 +114,14 @@ export default {
   data() {
     return {
       currentValue: false,
+
       currentTransition: this.popupTransition,
     };
   },
-
+  beforeDestroy(){
+    //页面跳转时移出节点  王敏 2021-12-24
+    this.$el.remove();
+  },
   watch: {
     currentValue(val) {
       if (!val) {
