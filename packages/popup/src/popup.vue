@@ -119,7 +119,7 @@ export default {
     };
   },
   beforeDestroy(){
-    //页面跳转时移出节点  王敏 2021-12-24
+    //页面跳转时移除节点  王敏 2021-12-24
     this.$el.remove();
   },
   watch: {
