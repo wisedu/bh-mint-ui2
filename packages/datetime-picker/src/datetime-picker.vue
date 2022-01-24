@@ -200,8 +200,20 @@
             value = new Date();
           }
         } else if (!value) {
-          const { minHour } = this;
-          value = `${minHour > 10 ? minHour : '0' + minHour}:00`;
+          //XG-13383 time时默认展示当前时间 王敏 2022-01-24
+          const nowDate=new Date();
+          const nowHour=nowDate.getHours();
+          const howMinute=nowDate.getMinutes();
+          const { minHour,maxHour } = this;
+          let currHour=Math.min(nowHour, maxHour)
+           currHour=Math.max(nowHour, minHour)
+           const getDoubleNum=function(num){
+             if(num.length<2){
+               return "0"+num
+             }
+             return num
+           }
+          value = getDoubleNum(currHour)+":"+getDoubleNum(howMinute);
         }
         // time type
         if (!isDateType) {
@@ -325,6 +337,7 @@
             }
             break;
           case "time":
+
             break;
         }
         this.$nextTick(()=>{
