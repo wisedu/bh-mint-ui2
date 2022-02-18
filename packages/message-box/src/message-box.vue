@@ -32,14 +32,16 @@
             v-show="showCancelButton"
             @click="handleAction('cancel')"
           >
-            {{ i18n.buttonCancel }}
+          <!-- 修复MessageBox自定义按钮文本  王敏 2022-02-18 -->
+            {{ cancelButtonText }}
           </button>
           <button
             class="mint-msgbox-btn mint-msgbox-confirm mt-btn-primary"
             v-show="showConfirmButton"
             @click="handleAction('confirm')"
           >
-            {{ i18n.buttonConfirm }}
+          <!-- 修复MessageBox自定义按钮文本  王敏 2022-02-18 -->
+            {{ confirmButtonText }}
           </button>
         </div>
       </div>
@@ -48,8 +50,8 @@
 </template>
 
 <script type="text/babel">
-let CONFIRM_TEXT = "确定";
-let CANCEL_TEXT = "取消";
+// let CONFIRM_TEXT = "确定";
+// let CANCEL_TEXT = "取消";
 
 import Popup from "bh-mint-ui2/src/utils/popup";
  import Locale from 'bh-mint-ui2/src/mixins/locale';
@@ -209,8 +211,9 @@ export default {
       inputErrorMessage: "",
       showConfirmButton: true,
       showCancelButton: false,
-      confirmButtonText: CONFIRM_TEXT,
-      cancelButtonText: CANCEL_TEXT,
+      //  修复MessageBox自定义按钮文本  王敏 2022-02-18 
+      confirmButtonText:'' ,
+      cancelButtonText:'' ,
       confirmButtonClass: "",
       confirmButtonDisabled: false,
       cancelButtonClass: "",

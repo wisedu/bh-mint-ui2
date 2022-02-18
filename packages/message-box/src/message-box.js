@@ -1,5 +1,7 @@
-var CONFIRM_TEXT = '确定';
-var CANCEL_TEXT = '取消';
+// var CONFIRM_TEXT = '确定';
+// var CANCEL_TEXT = '取消';
+//修复MessageBox自定义按钮文本  王敏 2022-02-18
+import { t } from 'bh-mint-ui2/src/utils/lang';
 
 var defaults = {
   title: "Tip",
@@ -20,8 +22,8 @@ var defaults = {
   confirmButtonPosition: 'right',
   confirmButtonHighlight: false,
   cancelButtonHighlight: false,
-  confirmButtonText: CONFIRM_TEXT,
-  cancelButtonText: CANCEL_TEXT,
+  confirmButtonText: t('mint').buttonConfirm,
+  cancelButtonText: t('mint').buttonCancel,
   confirmButtonClass: '',
   cancelButtonClass: ''
 };

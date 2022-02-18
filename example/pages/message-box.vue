@@ -41,7 +41,7 @@
       },
 
       openConfirm() {
-        MessageBox.confirm('确定执行此操作?').then(action =>{
+        MessageBox.confirm('确定执行此操作?',{confirmButtonText:"自定义按钮"}).then(action =>{
           console.log(action)
         });
       },
