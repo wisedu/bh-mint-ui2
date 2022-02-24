@@ -26,5 +26,9 @@
     };
 </script>
 <style lang="css">
-
+/* 添加强制断行 2022-02-24 王敏 */
+.mint-layout-container{
+    word-break: break-all;
+      white-space: pre-wrap;
+  }
 </style>

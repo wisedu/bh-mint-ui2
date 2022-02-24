@@ -69,7 +69,11 @@
          }
     }
   }
-
+  /* 添加强制断行 2022-02-24 王敏 */
+.mint-layout-container{
+      word-break: break-all;
+      white-space: pre-wrap;
+}
   .mint-layout-container:after{
     content: "";
     display: table;
