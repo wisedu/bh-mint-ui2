@@ -215,14 +215,16 @@ export default {
 					 this.newWeeks=val
 				 }else
 				 {
+					 //修复日期星期几显示错误  王敏  2022-03-04
 					 this.newWeeks=[
+						 this.i18n.xqri,
 						 this.i18n.xqyi,
 						 this.i18n.xqer,
 						 this.i18n.xqsan,
 						 this.i18n.xqsi,
 						 this.i18n.xqwu,
 						 this.i18n.xqliu,
-						 this.i18n.xqri
+						 
 					 ]
 				 }
 			},
