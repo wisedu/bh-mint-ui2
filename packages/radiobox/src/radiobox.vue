@@ -2,7 +2,7 @@
   <x-cell @click.native="handleRadioClick" :isLink="isLink" :title="name" :titlewidth="direction === 'horizon'?'80px':''" :wrapperpaddingleft="direction === 'horizon'?wrapperpaddingleft:''" :valueAlign="valueAlign" :required="required">
     <label class="mint-radiobox-row" slot="title" v-if="direction === 'vertical'">
       <span :class="{'is-right': align === 'right'}" class="mint-radiobox">
-        <input :name="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"  @click.stop/>
+        <input :value="name" v-model="currentValue" type="radio" class="mint-radiobox-input" :disabled="isDisabled"  @click.stop/>
         <span class="mint-radiobox-core" :class="['mint-radiobox-core-'+iconpattern,{'mt-bg-after-white':iconpattern==='circle'},isDisabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===name?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></span>
       </span>
       <span class="mint-radiobox-label">
@@ -15,7 +15,7 @@
         <div class="mint-input-block">
           <label v-for="item in options" :key="item.id">
             <!-- 修改name值被写死  王敏 2022-03-09 -->
-            <input type="radio" :name="name" :value="item.id" :title="item.label" checked="" class="mint-radiobox-input" v-model="currentValue" :disabled="item.disabled" @click.stop>
+            <input type="radio"  :value="item.id" :title="item.label" checked="" class="mint-radiobox-input" v-model="currentValue" :disabled="item.disabled" @click.stop>
             <i class="mint-radiobox-core mint-radiobox-core-circle mt-bg-after-white" :class="[item.disabled?'mt-bg-grey-lv6 mt-bColor-grey-lv6 mt-bColor-after-white':(currentValue===item.id?'mt-bg-primary mt-bColor-primary mt-bColor-after-white':'mt-bColor-grey-lv3 mt-bg-lv3')]"></i>
             <span>{{item.label}}</span>
           </label>
